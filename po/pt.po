@@ -1,0 +1,184 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-31 15:30+0000\n"
+"PO-Revision-Date: 2022-11-21 15:00+0000\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Language-Team: \n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2\n"
+
+#: src/data/main.ui:144
+msgid "Password"
+msgstr "Palavra-passe"
+
+#: src/data/main.ui:175
+msgid "username"
+msgstr "nome de utilizador"
+
+#: src/data/main.ui:184
+msgid "show"
+msgstr "mostrar"
+
+#: src/data/main.ui:193 src/data/main.ui:269
+msgid "Username"
+msgstr "Nome de utilizador"
+
+#: src/data/main.ui:201
+msgid "edit"
+msgstr "editar"
+
+#: src/data/main.ui:214
+msgid "Login"
+msgstr "Sessão"
+
+#: src/data/main.ui:289
+msgid "New Password"
+msgstr "Nova palavra-passe"
+
+#: src/data/main.ui:309
+msgid "New Password Again"
+msgstr "Reintroduzir a nova palavra-passe"
+
+#: src/data/main.ui:329 src/data/main.ui:444 src/data/main.ui:542
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/data/main.ui:345
+msgid "Change Password"
+msgstr "Alterar palavra-passe"
+
+#: src/data/main.ui:375
+msgid "Hata Mesajı"
+msgstr "Hata Mesajı"
+
+#: src/data/main.ui:413
+msgid "<big>RESTART</big>"
+msgstr "<big>REINICIAR</big>"
+
+#: src/data/main.ui:426
+msgid ""
+"Are you sure you want to close all programs \n"
+"and restart the computer ?"
+msgstr ""
+"Fechar todos os programas \n"
+"e reiniciar o computador ?"
+
+#: src/data/main.ui:460
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: src/data/main.ui:511
+msgid "<big>POWER OFF</big>"
+msgstr "<big>DESLIGAR</big>"
+
+#: src/data/main.ui:524
+msgid ""
+"Are you sure you want to close all programs \n"
+"and power off the computer ?"
+msgstr ""
+"Fechar todos os programas \n"
+"e desligar o computador ?"
+
+#: src/data/main.ui:558
+msgid "Power Off"
+msgstr "Desligar"
+
+#: src/data/main.ui:644
+msgid "Num"
+msgstr "Num"
+
+#: src/data/main.ui:684
+msgid "Caps"
+msgstr "Caps"
+
+#: src/data/main.ui:866
+msgid "TÜBİTAK ULAKBİM | 2022"
+msgstr "TÜBİTAK ULAKBİM | 2022"
+
+#: src/data/main.ui:982
+msgid "Keyboard Layout"
+msgstr "Disposição do teclado"
+
+#: src/data/main.ui:1085
+msgid "Session"
+msgstr "Sessão"
+
+#: src/data/main.ui:1179
+msgid "Virtual keyboard"
+msgstr "Teclado virtual"
+
+#: src/data/main.ui:1245
+msgid "Shutdown"
+msgstr "Desligar"
+
+#: src/data/main.ui:1297
+msgid "Reboot"
+msgstr "Reiniciar"
+
+#: src/module/network.py:4
+msgid "Loading..."
+msgstr "A carregar..."
+
+#: src/module/network.py:20
+msgid ""
+"Local IP:\n"
+"{}"
+msgstr ""
+"IP local:\n"
+"{}"
+
+#: src/module/network.py:23
+msgid ""
+"WAN IP:\n"
+"- {}"
+msgstr ""
+"IP WAN:\n"
+"- {}"
+
+#: src/module/sessionlist.py:61 src/module/sessionlist.py:62
+#: src/module/sessionlist.py:63
+msgid "Default"
+msgstr "Predefinido"
+
+#: src/module/lightdm.py:46
+msgid "login as root is blocked"
+msgstr "iniciar sessão como root está bloqueado"
+
+#: src/module/lightdm.py:101
+msgid "Invalid sesion : {}"
+msgstr "Sessão inválida : {}"
+
+#: src/module/lightdm.py:105
+msgid "Failed to start session: {}"
+msgstr "Falha ao iniciar sessão: {}"
+
+#: src/module/lightdm.py:110
+msgid "Authentication failed: {}"
+msgstr "Falha de autenticação: {}"
+
+#: src/msgs.py:2
+msgid "Failed to shutdown system"
+msgstr "Falha ao desligar o sistema"
+
+#: src/msgs.py:3
+msgid "Failed to reboot system"
+msgstr "Falha ao reiniciar o sistema"
+
+#: src/msgs.py:4
+msgid "Place your right index finger on the fingerprint reader"
+msgstr "Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
+
+#: src/msgs.py:5
+msgid "Place your left index finger on the fingerprint reader"
+msgstr "Coloque o seu dedo indicador esquerdo no leitor de impressões digitais"
