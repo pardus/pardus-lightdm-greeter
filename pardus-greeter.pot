@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-31 15:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/data/main.ui:144
+msgid "Password"
+msgstr ""
+
+#: src/data/main.ui:175
+msgid "username"
+msgstr ""
+
+#: src/data/main.ui:184
+msgid "show"
+msgstr ""
+
+#: src/data/main.ui:193 src/data/main.ui:269
+msgid "Username"
+msgstr ""
+
+#: src/data/main.ui:201
+msgid "edit"
+msgstr ""
+
+#: src/data/main.ui:214
+msgid "Login"
+msgstr ""
+
+#: src/data/main.ui:289
+msgid "New Password"
+msgstr ""
+
+#: src/data/main.ui:309
+msgid "New Password Again"
+msgstr ""
+
+#: src/data/main.ui:329 src/data/main.ui:444 src/data/main.ui:542
+msgid "Cancel"
+msgstr ""
+
+#: src/data/main.ui:345
+msgid "Change Password"
+msgstr ""
+
+#: src/data/main.ui:375
+msgid "Hata Mesajı"
+msgstr ""
+
+#: src/data/main.ui:413
+msgid "<big>RESTART</big>"
+msgstr ""
+
+#: src/data/main.ui:426
+msgid ""
+"Are you sure you want to close all programs \n"
+"and restart the computer ?"
+msgstr ""
+
+#: src/data/main.ui:460
+msgid "Restart"
+msgstr ""
+
+#: src/data/main.ui:511
+msgid "<big>POWER OFF</big>"
+msgstr ""
+
+#: src/data/main.ui:524
+msgid ""
+"Are you sure you want to close all programs \n"
+"and power off the computer ?"
+msgstr ""
+
+#: src/data/main.ui:558
+msgid "Power Off"
+msgstr ""
+
+#: src/data/main.ui:644
+msgid "Num"
+msgstr ""
+
+#: src/data/main.ui:684
+msgid "Caps"
+msgstr ""
+
+#: src/data/main.ui:866
+msgid "TÜBİTAK ULAKBİM | 2022"
+msgstr ""
+
+#: src/data/main.ui:982
+msgid "Keyboard Layout"
+msgstr ""
+
+#: src/data/main.ui:1085
+msgid "Session"
+msgstr ""
+
+#: src/data/main.ui:1179
+msgid "Virtual keyboard"
+msgstr ""
+
+#: src/data/main.ui:1245
+msgid "Shutdown"
+msgstr ""
+
+#: src/data/main.ui:1297
+msgid "Reboot"
+msgstr ""
+
+#: src/module/network.py:4
+msgid "Loading..."
+msgstr ""
+
+#: src/module/network.py:20
+msgid ""
+"Local IP:\n"
+"{}"
+msgstr ""
+
+#: src/module/network.py:23
+msgid ""
+"WAN IP:\n"
+"- {}"
+msgstr ""
+
+#: src/module/sessionlist.py:61 src/module/sessionlist.py:62
+#: src/module/sessionlist.py:63
+msgid "Default"
+msgstr ""
+
+#: src/module/lightdm.py:46
+msgid "login as root is blocked"
+msgstr ""
+
+#: src/module/lightdm.py:101
+msgid "Invalid sesion : {}"
+msgstr ""
+
+#: src/module/lightdm.py:105
+msgid "Failed to start session: {}"
+msgstr ""
+
+#: src/module/lightdm.py:110
+msgid "Authentication failed: {}"
+msgstr ""
+
+#: src/msgs.py:2
+msgid "Failed to shutdown system"
+msgstr ""
+
+#: src/msgs.py:3
+msgid "Failed to reboot system"
+msgstr ""
+
+#: src/msgs.py:4
+msgid "Place your right index finger on the fingerprint reader"
+msgstr ""
+
+#: src/msgs.py:5
+msgid "Place your left index finger on the fingerprint reader"
+msgstr ""

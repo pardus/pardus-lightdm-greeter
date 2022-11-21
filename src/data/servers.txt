@@ -1,0 +1,3 @@
+https://pardus.org.tr/ip.php?V1
+https://checkip.amazonaws.com
+https://api.ipify.org

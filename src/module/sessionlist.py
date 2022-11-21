@@ -1,0 +1,84 @@
+_lang = ""
+if "LANG" in os.environ:
+    _lang = "["+str(os.environ["LANG"].split("_")[0])+"]"
+
+class sessionButton(Gtk.Button):
+    def __init__(self, session):
+        super().__init__()
+        self.session = session
+        self.session_name = self.get_session_name()
+        self.set_relief(Gtk.ReliefStyle.NONE)
+        self.label = Gtk.Label()
+        self.image = Gtk.Image()
+        self.label.set_text("  "+self.session_name)
+        box = Gtk.Box()
+        box.pack_start(self.label, False, False, 0)
+        box.pack_start(Gtk.Label(), True, True, 0)
+        box.pack_start(self.image, False, False, 0)
+        box.show_all()
+        self.add(box)
+
+    def set_default(self, status=False):
+        if status:
+            self.image.set_from_icon_name("emblem-default-symbolic", 0)
+        else:
+            self.image.set_from_icon_name("", 0)
+
+    def get_session_name(self):
+        session = ""
+        for path in [ "/usr/share/xsessions/{}.desktop".format(self.session),
+                      "/usr/share/wayland-sessions/{}.desktop".format(self.session)]:
+            if os.path.exists(path):
+                for line in open(path, "r").read().split("\n"):
+                    for n in ["Name"+_lang+"=", "Name="]:
+                       if n in line:
+                           session = line.replace(n, "")
+                           break
+        if session == "":
+            session = self.session
+        return session
+
+_sessionlist_loaded = False
+def load_sessionlist():
+    global _sessionlist_loaded
+    if _sessionlist_loaded:
+        return
+    _sessionlist_loaded = True
+    box = loginwindow.builder.get_object("ui_box_session")
+    sessions = ["default"] + lightdm.get_session_list()
+    for session in sessions:
+        session_buttons[session] = sessionButton(session)
+
+        def button_event(widget):
+            lightdm.session = widget.session
+            for b in session_buttons:
+                session_buttons[b].set_default(False)
+            widget.set_default(True)
+        session_buttons[session].connect("clicked", button_event)
+        box.add(session_buttons[session])
+        box.show_all()
+    session_buttons["default"].session = ""
+    session_buttons["default"].session_name = _("Default")
+    session_buttons["default"].session_name = _("Default")
+    session_buttons["default"].label.set_text("  "+_("Default"))
+    last_session = readfile("last-session")
+    if last_session == "" or last_session not in sessions:
+        last_session = sessions[0]
+    session_buttons[last_session].set_default(True)
+
+
+def _session_button_event(widget):
+    revealer = loginwindow.builder.get_object("ui_revealer_default_session")
+    status = revealer.get_reveal_child()
+    revealer.set_reveal_child(not status)
+    load_sessionlist()
+
+
+session_buttons = {}
+
+
+def module_init():
+    global session_buttons
+    loginwindow.builder.get_object("ui_button_default_session").connect(
+        "clicked", _session_button_event)
+    

@@ -1,0 +1,21 @@
+menu, .menu, .button, .entry, .popover {
+  background: alpha(black,0.31);
+  color: white;
+  border: none;
+}
+
+menu {
+  background: alpha(black,0.55);
+}
+
+
+.text, .button, .entry {
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  -gtk-icon-shadow: 1px 1px 3px black;
+}
+
+.textview, .textview text {
+  background: none;
+  border: none;
+}

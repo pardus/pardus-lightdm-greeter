@@ -1,0 +1,6 @@
+.login_window, .loginscreen_overlay {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-origin: content-box;
+  background: none;
+}
