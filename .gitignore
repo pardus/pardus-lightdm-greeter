@@ -1,1 +1,5 @@
+src/data/main.ui~
+src/data/#main.ui#
+debian/pardus-lightdm-greeter
+*.pyc
 *.mo
