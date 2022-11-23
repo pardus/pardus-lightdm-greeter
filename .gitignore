@@ -3,3 +3,8 @@ src/data/#main.ui#
 debian/pardus-lightdm-greeter
 *.pyc
 *.mo
+debian/.debhelper/generated/pardus-lightdm-greeter/installed-by-dh_installdocs
+debian/debhelper-build-stamp
+debian/files
+debian/pardus-lightdm-greeter.debhelper.log
+debian/pardus-lightdm-greeter.substvars
