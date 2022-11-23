@@ -50,19 +50,22 @@ base_modules = ["lightdm.py","gtkwindow.py", "monitor.py"]
 for module in base_modules + os.listdir("module"):
     if module in loaded_modules:
         continue
-    if not os.path.isfile("module/{}".format(module)):
+    if not os.path.isfile("module/{}".format(module)) or not module.endswith(".py"):
         continue
     with open("module/{}".format(module),"r") as f:
         debug("Loading:{}".format(module))
-        exec(f.read())
-        if get("load-async",False):
-            if module in base_modules:
-                module_init()
+        try:
+            exec(f.read())
+            if get("load-async",False):
+                if module in base_modules:
+                    module_init()
+                else:
+                    GLib.idle_add(module_init)
             else:
-                GLib.idle_add(module_init)
-        else:
-            module_init()
-        del(module_init)
+                module_init()
+            del(module_init)
+        except Exception as e:
+            print(e,file=sys.stderr)
         loaded_modules.append(module)
 
 ltime = time.time()
