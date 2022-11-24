@@ -7,7 +7,7 @@ Standards-Version: 4.3.0
 Homepage: https://www.pardus.org.tr
 
 Package: pardus-lightdm-greeter
-Architecture: amd64
+Architecture: all
 Depends: ${misc:Depends},
          ${python3:Depends},
          lightdm,
