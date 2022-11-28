@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 15:30+0000\n"
+"POT-Creation-Date: 2022-11-28 13:04+0300\n"
 "PO-Revision-Date: 2022-10-18 11:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -49,7 +49,7 @@ msgstr "Yeni Parola"
 msgid "New Password Again"
 msgstr "Yeni Parola Tekrarla"
 
-#: src/data/main.ui:329 src/data/main.ui:444 src/data/main.ui:542
+#: src/data/main.ui:329 src/data/main.ui:453 src/data/main.ui:557
 msgid "Cancel"
 msgstr "İptal"
 
@@ -61,11 +61,11 @@ msgstr "Parola Değiştir"
 msgid "Hata Mesajı"
 msgstr "Hata Mesajı"
 
-#: src/data/main.ui:413
+#: src/data/main.ui:416
 msgid "<big>RESTART</big>"
 msgstr "<big>YENİDEN BAŞLAT</big>"
 
-#: src/data/main.ui:426
+#: src/data/main.ui:432
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
@@ -73,15 +73,15 @@ msgstr ""
 "Tüm programları sonlandırıp bilgisayarı yeniden \n"
 "başlatmak istediğinizden emin misiniz?"
 
-#: src/data/main.ui:460
+#: src/data/main.ui:469
 msgid "Restart"
 msgstr "Yeniden başlat"
 
-#: src/data/main.ui:511
+#: src/data/main.ui:520
 msgid "<big>POWER OFF</big>"
 msgstr "<big>KAPAT</big>"
 
-#: src/data/main.ui:524
+#: src/data/main.ui:536
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
@@ -89,82 +89,41 @@ msgstr ""
 "Tüm programları sonlandırıp bilgisayarı kapatmak \n"
 "istediğinizden emin misiniz?"
 
-#: src/data/main.ui:558
+#: src/data/main.ui:573
 msgid "Power Off"
 msgstr "Kapat"
 
-#: src/data/main.ui:644
+#: src/data/main.ui:659
 msgid "Num"
 msgstr "Num"
 
-#: src/data/main.ui:684
+#: src/data/main.ui:703
 msgid "Caps"
 msgstr "Caps"
 
-#: src/data/main.ui:866
+#: src/data/main.ui:889
 msgid "TÜBİTAK ULAKBİM | 2022"
 msgstr ""
 
-#: src/data/main.ui:982
+#: src/data/main.ui:1008
 msgid "Keyboard Layout"
 msgstr "Klavye Düzeni"
 
-#: src/data/main.ui:1085
+#: src/data/main.ui:1114
 msgid "Session"
 msgstr "Oturum"
 
-#: src/data/main.ui:1179
+#: src/data/main.ui:1208
 msgid "Virtual keyboard"
 msgstr "Sanal Klavye"
 
-#: src/data/main.ui:1245
+#: src/data/main.ui:1274
 msgid "Shutdown"
 msgstr "Kapat"
 
-#: src/data/main.ui:1297
+#: src/data/main.ui:1326
 msgid "Reboot"
 msgstr "Yeniden başlat"
-
-#: src/module/network.py:4
-msgid "Loading..."
-msgstr "Yükleniyor..."
-
-#: src/module/network.py:20
-msgid ""
-"Local IP:\n"
-"{}"
-msgstr ""
-"Yerel IP:\n"
-"{}"
-
-#: src/module/network.py:23
-msgid ""
-"WAN IP:\n"
-"- {}"
-msgstr ""
-"WAN IP:\n"
-"- {}"
-
-#: src/module/sessionlist.py:61 src/module/sessionlist.py:62
-#: src/module/sessionlist.py:63
-msgid "Default"
-msgstr "Varsayılan"
-
-#: src/module/lightdm.py:46
-msgid "login as root is blocked"
-msgstr "root ile giriş engellendi"
-
-#: src/module/lightdm.py:101
-msgid "Invalid sesion : {}"
-msgstr "Geçersiz oturum: {}"
-
-#: src/module/lightdm.py:105
-msgid "Failed to start session: {}"
-msgstr "Oturum başlatılamadı: {}"
-
-#: src/module/lightdm.py:110
-msgid "Authentication failed: {}"
-msgstr "Doğrulama başarısız: {}"
 
 #: src/msgs.py:2
 msgid "Failed to shutdown system"
@@ -181,3 +140,48 @@ msgstr "Sağ işaret parmağınızı parmak izi okuyucusuna yerleştirin"
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
 msgstr "Sol işaret parmağınızı parmak izi okuyucusuna yerleştirin"
+
+#: src/module/network.py:5
+msgid "Loading..."
+msgstr "Yükleniyor..."
+
+#: src/module/network.py:30
+msgid "Network not available"
+msgstr "Ağ mevcut değil"
+
+#: src/module/network.py:34
+msgid ""
+"Local IP:\n"
+"{}"
+msgstr ""
+"Yerel IP:\n"
+"{}"
+
+#: src/module/network.py:37
+msgid ""
+"WAN IP:\n"
+"- {}"
+msgstr ""
+"WAN IP:\n"
+"- {}"
+
+#: src/module/lightdm.py:46
+msgid "login as root is blocked"
+msgstr "root ile giriş engellendi"
+
+#: src/module/lightdm.py:101
+msgid "Invalid sesion : {}"
+msgstr "Geçersiz oturum: {}"
+
+#: src/module/lightdm.py:111
+msgid "Failed to start session: {}"
+msgstr "Oturum başlatılamadı: {}"
+
+#: src/module/lightdm.py:116
+msgid "Authentication failed: {}"
+msgstr "Doğrulama başarısız: {}"
+
+#: src/module/sessionlist.py:61 src/module/sessionlist.py:62
+#: src/module/sessionlist.py:63
+msgid "Default"
+msgstr "Varsayılan"

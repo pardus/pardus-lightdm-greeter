@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 15:30+0000\n"
+"POT-Creation-Date: 2022-11-28 13:04+0300\n"
 "PO-Revision-Date: 2022-11-21 15:00+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: \n"
@@ -50,7 +50,7 @@ msgstr "Nova palavra-passe"
 msgid "New Password Again"
 msgstr "Reintroduzir a nova palavra-passe"
 
-#: src/data/main.ui:329 src/data/main.ui:444 src/data/main.ui:542
+#: src/data/main.ui:329 src/data/main.ui:453 src/data/main.ui:557
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -62,11 +62,11 @@ msgstr "Alterar palavra-passe"
 msgid "Hata Mesajı"
 msgstr "Hata Mesajı"
 
-#: src/data/main.ui:413
+#: src/data/main.ui:416
 msgid "<big>RESTART</big>"
 msgstr "<big>REINICIAR</big>"
 
-#: src/data/main.ui:426
+#: src/data/main.ui:432
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
@@ -74,15 +74,15 @@ msgstr ""
 "Fechar todos os programas \n"
 "e reiniciar o computador ?"
 
-#: src/data/main.ui:460
+#: src/data/main.ui:469
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: src/data/main.ui:511
+#: src/data/main.ui:520
 msgid "<big>POWER OFF</big>"
 msgstr "<big>DESLIGAR</big>"
 
-#: src/data/main.ui:524
+#: src/data/main.ui:536
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
@@ -90,82 +90,41 @@ msgstr ""
 "Fechar todos os programas \n"
 "e desligar o computador ?"
 
-#: src/data/main.ui:558
+#: src/data/main.ui:573
 msgid "Power Off"
 msgstr "Desligar"
 
-#: src/data/main.ui:644
+#: src/data/main.ui:659
 msgid "Num"
 msgstr "Num"
 
-#: src/data/main.ui:684
+#: src/data/main.ui:703
 msgid "Caps"
 msgstr "Caps"
 
-#: src/data/main.ui:866
+#: src/data/main.ui:889
 msgid "TÜBİTAK ULAKBİM | 2022"
 msgstr "TÜBİTAK ULAKBİM | 2022"
 
-#: src/data/main.ui:982
+#: src/data/main.ui:1008
 msgid "Keyboard Layout"
 msgstr "Disposição do teclado"
 
-#: src/data/main.ui:1085
+#: src/data/main.ui:1114
 msgid "Session"
 msgstr "Sessão"
 
-#: src/data/main.ui:1179
+#: src/data/main.ui:1208
 msgid "Virtual keyboard"
 msgstr "Teclado virtual"
 
-#: src/data/main.ui:1245
+#: src/data/main.ui:1274
 msgid "Shutdown"
 msgstr "Desligar"
 
-#: src/data/main.ui:1297
+#: src/data/main.ui:1326
 msgid "Reboot"
 msgstr "Reiniciar"
-
-#: src/module/network.py:4
-msgid "Loading..."
-msgstr "A carregar..."
-
-#: src/module/network.py:20
-msgid ""
-"Local IP:\n"
-"{}"
-msgstr ""
-"IP local:\n"
-"{}"
-
-#: src/module/network.py:23
-msgid ""
-"WAN IP:\n"
-"- {}"
-msgstr ""
-"IP WAN:\n"
-"- {}"
-
-#: src/module/sessionlist.py:61 src/module/sessionlist.py:62
-#: src/module/sessionlist.py:63
-msgid "Default"
-msgstr "Predefinido"
-
-#: src/module/lightdm.py:46
-msgid "login as root is blocked"
-msgstr "iniciar sessão como root está bloqueado"
-
-#: src/module/lightdm.py:101
-msgid "Invalid sesion : {}"
-msgstr "Sessão inválida : {}"
-
-#: src/module/lightdm.py:105
-msgid "Failed to start session: {}"
-msgstr "Falha ao iniciar sessão: {}"
-
-#: src/module/lightdm.py:110
-msgid "Authentication failed: {}"
-msgstr "Falha de autenticação: {}"
 
 #: src/msgs.py:2
 msgid "Failed to shutdown system"
@@ -177,8 +136,54 @@ msgstr "Falha ao reiniciar o sistema"
 
 #: src/msgs.py:4
 msgid "Place your right index finger on the fingerprint reader"
-msgstr "Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
+msgstr ""
+"Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
 msgstr "Coloque o seu dedo indicador esquerdo no leitor de impressões digitais"
+
+#: src/module/network.py:5
+msgid "Loading..."
+msgstr "A carregar..."
+
+#: src/module/network.py:30
+msgid "Network not available"
+msgstr ""
+
+#: src/module/network.py:34
+msgid ""
+"Local IP:\n"
+"{}"
+msgstr ""
+"IP local:\n"
+"{}"
+
+#: src/module/network.py:37
+msgid ""
+"WAN IP:\n"
+"- {}"
+msgstr ""
+"IP WAN:\n"
+"- {}"
+
+#: src/module/lightdm.py:46
+msgid "login as root is blocked"
+msgstr "iniciar sessão como root está bloqueado"
+
+#: src/module/lightdm.py:101
+msgid "Invalid sesion : {}"
+msgstr "Sessão inválida : {}"
+
+#: src/module/lightdm.py:111
+msgid "Failed to start session: {}"
+msgstr "Falha ao iniciar sessão: {}"
+
+#: src/module/lightdm.py:116
+msgid "Authentication failed: {}"
+msgstr "Falha de autenticação: {}"
+
+#: src/module/sessionlist.py:61 src/module/sessionlist.py:62
+#: src/module/sessionlist.py:63
+msgid "Default"
+msgstr "Predefinido"

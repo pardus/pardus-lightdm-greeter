@@ -25,7 +25,11 @@ def network_control_event():
         j = len(ip) + len(dev) + 3
         if j > i:
             i = j
-    for ip, dev in get_local_ip():
+    ip_list = get_local_ip()
+    if len(ip_list) == 0:
+        network_label_text=_("Network not available")
+        return
+    for ip, dev in ip_list:
         j = len(ip) + len(dev) + 2
         lan_ip += "- {} {}{}\n".format(dev," "*(i-j), ip)
     ctx = _("Local IP:\n{}").format(lan_ip)

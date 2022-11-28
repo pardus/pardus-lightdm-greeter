@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 15:30+0000\n"
+"POT-Creation-Date: 2022-11-28 13:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 msgid "New Password Again"
 msgstr ""
 
-#: src/data/main.ui:329 src/data/main.ui:444 src/data/main.ui:542
+#: src/data/main.ui:329 src/data/main.ui:453 src/data/main.ui:557
 msgid "Cancel"
 msgstr ""
 
@@ -61,101 +61,64 @@ msgstr ""
 msgid "Hata Mesajı"
 msgstr ""
 
-#: src/data/main.ui:413
+#: src/data/main.ui:416
 msgid "<big>RESTART</big>"
 msgstr ""
 
-#: src/data/main.ui:426
+#: src/data/main.ui:432
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
 msgstr ""
 
-#: src/data/main.ui:460
+#: src/data/main.ui:469
 msgid "Restart"
 msgstr ""
 
-#: src/data/main.ui:511
+#: src/data/main.ui:520
 msgid "<big>POWER OFF</big>"
 msgstr ""
 
-#: src/data/main.ui:524
+#: src/data/main.ui:536
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
 msgstr ""
 
-#: src/data/main.ui:558
+#: src/data/main.ui:573
 msgid "Power Off"
 msgstr ""
 
-#: src/data/main.ui:644
+#: src/data/main.ui:659
 msgid "Num"
 msgstr ""
 
-#: src/data/main.ui:684
+#: src/data/main.ui:703
 msgid "Caps"
 msgstr ""
 
-#: src/data/main.ui:866
+#: src/data/main.ui:889
 msgid "TÜBİTAK ULAKBİM | 2022"
 msgstr ""
 
-#: src/data/main.ui:982
+#: src/data/main.ui:1008
 msgid "Keyboard Layout"
 msgstr ""
 
-#: src/data/main.ui:1085
+#: src/data/main.ui:1114
 msgid "Session"
 msgstr ""
 
-#: src/data/main.ui:1179
+#: src/data/main.ui:1208
 msgid "Virtual keyboard"
 msgstr ""
 
-#: src/data/main.ui:1245
+#: src/data/main.ui:1274
 msgid "Shutdown"
 msgstr ""
 
-#: src/data/main.ui:1297
+#: src/data/main.ui:1326
 msgid "Reboot"
-msgstr ""
-
-#: src/module/network.py:4
-msgid "Loading..."
-msgstr ""
-
-#: src/module/network.py:20
-msgid ""
-"Local IP:\n"
-"{}"
-msgstr ""
-
-#: src/module/network.py:23
-msgid ""
-"WAN IP:\n"
-"- {}"
-msgstr ""
-
-#: src/module/sessionlist.py:61 src/module/sessionlist.py:62
-#: src/module/sessionlist.py:63
-msgid "Default"
-msgstr ""
-
-#: src/module/lightdm.py:46
-msgid "login as root is blocked"
-msgstr ""
-
-#: src/module/lightdm.py:101
-msgid "Invalid sesion : {}"
-msgstr ""
-
-#: src/module/lightdm.py:105
-msgid "Failed to start session: {}"
-msgstr ""
-
-#: src/module/lightdm.py:110
-msgid "Authentication failed: {}"
 msgstr ""
 
 #: src/msgs.py:2
@@ -172,4 +135,45 @@ msgstr ""
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
+msgstr ""
+
+#: src/module/network.py:5
+msgid "Loading..."
+msgstr ""
+
+#: src/module/network.py:30
+msgid "Network not available"
+msgstr ""
+
+#: src/module/network.py:34
+msgid ""
+"Local IP:\n"
+"{}"
+msgstr ""
+
+#: src/module/network.py:37
+msgid ""
+"WAN IP:\n"
+"- {}"
+msgstr ""
+
+#: src/module/lightdm.py:46
+msgid "login as root is blocked"
+msgstr ""
+
+#: src/module/lightdm.py:101
+msgid "Invalid sesion : {}"
+msgstr ""
+
+#: src/module/lightdm.py:111
+msgid "Failed to start session: {}"
+msgstr ""
+
+#: src/module/lightdm.py:116
+msgid "Authentication failed: {}"
+msgstr ""
+
+#: src/module/sessionlist.py:61 src/module/sessionlist.py:62
+#: src/module/sessionlist.py:63
+msgid "Default"
 msgstr ""
