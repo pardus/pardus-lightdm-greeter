@@ -1,12 +1,23 @@
 import asyncio
 
 def _network_button_event(widget=None):
-    loginwindow.builder.get_object("ui_label_network").set_text(_("Loading..."))
+    global network_label_text
+    network_label_text=_("Loading...")
     loginwindow.builder.get_object("ui_popover_network").popup()
     network_control_event()
 
+network_label_text=""
+_last_network_label_text=""
+def update_popover_text():
+    global _last_network_label_text
+    if _last_network_label_text != network_label_text:
+        _last_network_label_text = network_label_text
+        loginwindow.builder.get_object("ui_label_network").set_text(network_label_text)
+    GLib.timeout_add(500,update_popover_text)
+
 @asynchronous
 def network_control_event():
+    global network_label_text
     lan_ip = ""
     # Calculate line length
     i = 0
@@ -21,9 +32,12 @@ def network_control_event():
     if get("show-wan-ip",False,"network"):
         wan_ip = get_ip()
         ctx +=_("WAN IP:\n- {}").format(wan_ip)
-    loginwindow.builder.get_object("ui_label_network").set_text(ctx.strip())
+    network_label_text=ctx.strip()
+
 
 def module_init():
     if not get("show-widget",True,"network"):
         loginwindow.builder.get_object("ui_button_network").hide()
     loginwindow.builder.get_object("ui_button_network").connect("clicked",_network_button_event)
+    update_popover_text()
+
