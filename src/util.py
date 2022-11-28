@@ -105,7 +105,8 @@ def  get_local_ip():
                 0x8915,  # SIOCGIFADDR
                 struct.pack('256s', ifname[:15].encode("utf-8"))
             )[20:24])
-            ret.append((ip,ifname))
+            if ifname != "lo":
+                ret.append((ip,ifname))
         except:
             pass
     return ret
