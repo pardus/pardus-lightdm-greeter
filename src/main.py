@@ -29,6 +29,8 @@ os.system("xhost +local:")
 os.system("xset s {0} {0}".format(get("blank-timeout",300)))
 
 scale=get("scale",1)
+if scale < 1 :
+    scale = 1
 os.environ["GDK_SCALE"]=str(scale)
 os.environ["GDK_DPI_SCALE"]=str(1/scale)
 
