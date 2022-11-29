@@ -36,11 +36,17 @@ def get(variable, default=None, section="pardus"):
     if variable not in config[section]:
         return default
     ret = config[section][variable]
-    if str(ret).lower() == "true":
-        return True
-    elif str(ret).lower() == "false":
-        return False
-    return ret
+    if default == True or default == False:
+        if str(ret).lower() == "true":
+            return True
+        else:
+            return False
+    elif str(default).isnumeric():
+        if not str(ret).isnumeric():
+            return int(default)
+        else:
+            return int(ret)
+    return str(ret)
 
 if get("debug", False, "pardus"):
     def debug(msg):
