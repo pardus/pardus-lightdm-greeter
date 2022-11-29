@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-28 13:04+0300\n"
-"PO-Revision-Date: 2022-11-21 15:00+0000\n"
+"PO-Revision-Date: 2022-11-29 14:28+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -40,7 +40,7 @@ msgstr "editar"
 
 #: src/data/main.ui:214
 msgid "Login"
-msgstr "Sessão"
+msgstr "Entrar"
 
 #: src/data/main.ui:289
 msgid "New Password"
@@ -136,12 +136,11 @@ msgstr "Falha ao reiniciar o sistema"
 
 #: src/msgs.py:4
 msgid "Place your right index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
-msgstr "Coloque o seu dedo indicador esquerdo no leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
 
 #: src/module/network.py:5
 msgid "Loading..."
@@ -149,7 +148,7 @@ msgstr "A carregar..."
 
 #: src/module/network.py:30
 msgid "Network not available"
-msgstr ""
+msgstr "Rede não disponível"
 
 #: src/module/network.py:34
 msgid ""
