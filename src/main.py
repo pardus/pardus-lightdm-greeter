@@ -26,6 +26,7 @@ except:
 os.environ["UBUNTU_MENUPROXY"]=""
 os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
 os.system("xhost +local:")
+os.system("xset s {0} {0}".format(int(get("blank-timeout","300"))))
 
 scale=int(get("scale","1"))
 os.environ["GDK_SCALE"]=str(scale)

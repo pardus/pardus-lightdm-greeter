@@ -100,6 +100,8 @@ def load_keyboardlist():
     loginwindow.builder.get_object("ui_button_virtual_keyboard").connect(
         "clicked", _screen_keyboard_event)
     box = loginwindow.builder.get_object("ui_box_keyboard_layout")
+    if len(xkbs.split(" ")) == 0:
+        loginwindow.builder.get_object("ui_button_keyboard_layout").hide()
     for xkb in xkbs.split(" "):
         try:
             layout = xkb.split(":")[0]
