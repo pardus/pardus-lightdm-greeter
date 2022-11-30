@@ -16,7 +16,7 @@ pot:
 	    mv $$file.new $$file ; \
 	done
 
-install: installmo
+install: uninstall installmo
 	mkdir -p $(DESTDIR)/usr/share/pardus/pardus-greeter/
 	mkdir -p $(DESTDIR)/usr/share/xgreeters/
 	mkdir -p $(DESTDIR)/usr/bin
@@ -26,8 +26,7 @@ install: installmo
 	mkdir -p $(DESTDIR)/sbin
 	cp -prfv ./src/* $(DESTDIR)/usr/share/pardus/pardus-greeter/
 	chmod +x $(DESTDIR)/usr/share/pardus/pardus-greeter/*
-	install src/data/lightdm.conf $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/99-pardus.conf
-	install src/data/servers.txt $(DESTDIR)/usr/share/pardus/pardus-greeter/servers.txt
+	ln -s ../../pardus/pardus-greeter/data/lightdm.conf $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/99-pardus.conf || true
 	ln -s ../pardus/pardus-greeter/data/greeter.desktop $(DESTDIR)/usr/share/xgreeters/pardus.desktop || true
 	ln -s ../share/pardus/pardus-greeter/main.py $(DESTDIR)/usr/bin/pardus-greeter || true
 	ln -s ../../usr/share/pardus/pardus-greeter/data/config.ini $(DESTDIR)/etc/pardus/greeter.conf || true
@@ -40,6 +39,19 @@ installmo:
 	    mkdir -p $(DESTDIR)/usr/share/locale/$$lang/LC_MESSAGES/; \
 	    install po/$$lang.mo $(DESTDIR)/usr/share/locale/$$lang/LC_MESSAGES/pardus-greeter.mo ;\
 	done
+
+uninstallmo:
+	for file in `ls po/*.po`; do \
+	    lang=`echo $$file | sed 's@po/@@' | sed 's/\.po//'`; \
+	    rm -f $(DESTDIR)/usr/share/locale/$$lang/LC_MESSAGES/pardus-greeter.mo ;\
+	done
+
+uninstall: uninstallmo
+	rm -rvf $(DESTDIR)/usr/share/pardus/pardus-greeter/
+	rm -fv $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/99-pardus.conf
+	rm -fv $(DESTDIR)/etc/pardus/greeter.conf
+	rm -fv $(DESTDIR)/usr/bin/pardus-greeter
+	rm -fv $(DESTDIR)/usr/share/xgreeters/pardus.desktop
 
 clean:
 	find -iname "__pycache__" | xargs rm -rfv

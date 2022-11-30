@@ -87,7 +87,7 @@ def get_ip():
     except Exception:
         return '0.0.0.0'
     # Check internet connection from server list
-    servers = open("/usr/share/pardus/pardus-greeter/servers.txt","r").read().split("\n")
+    servers = open("/usr/share/pardus/pardus-greeter/data/servers.txt","r").read().split("\n")
     debug(servers)
     for server in servers:
         try:
