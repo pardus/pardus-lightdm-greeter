@@ -93,14 +93,14 @@ def load_keyboardlist():
     if _keyboardlist_loaded:
         return
     _keyboardlist_loaded = True
-    xkbs = get("keyboard-layouts", "tr tr:f us", "keyboard")
+    xkbs = get("keyboard-layouts", "tr::Türkçe tr:f:Türkçe_F us::İngilizce", "keyboard")
     xkb_buttons = {}
     loginwindow.builder.get_object("ui_button_keyboard_layout").connect(
         "clicked", _keyboard_button_event)
     loginwindow.builder.get_object("ui_button_virtual_keyboard").connect(
         "clicked", _screen_keyboard_event)
     box = loginwindow.builder.get_object("ui_box_keyboard_layout")
-    if len(xkbs.split(" ")) == 0:
+    if len(xkbs.strip()) == 0:
         loginwindow.builder.get_object("ui_button_keyboard_layout").hide()
     for xkb in xkbs.split(" "):
         try:
