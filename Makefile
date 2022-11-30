@@ -23,7 +23,6 @@ install: uninstall installmo
 	mkdir -p $(DESTDIR)/etc/pardus
 	mkdir -p $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/
 	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/status/
-	mkdir -p $(DESTDIR)/sbin
 	cp -prfv ./src/* $(DESTDIR)/usr/share/pardus/pardus-greeter/
 	chmod +x $(DESTDIR)/usr/share/pardus/pardus-greeter/*
 	ln -s ../../pardus/pardus-greeter/data/lightdm.conf $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/99-pardus.conf || true
@@ -32,6 +31,7 @@ install: uninstall installmo
 	ln -s ../../usr/share/pardus/pardus-greeter/data/config.ini $(DESTDIR)/etc/pardus/greeter.conf || true
 	chmod 755 -R $(DESTDIR)/usr/share/pardus/pardus-greeter/
 	cp -pf src/data/icon/*.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/status/
+	rm -rf $(DESTDIR)/usr/share/pardus/pardus-greeter/data/icon
 
 installmo:
 	for file in `ls po/*.po`; do \
