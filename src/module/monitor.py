@@ -60,7 +60,7 @@ class monitor_class:
 
     def get_common_resolution(self):
         monitors = self.get_monitors()
-        if len(monitors) > 0:
+        if len(monitors) > 0 and not is_virtual_machine():
             prim_res = self.get_resolutions(monitors[0])
             for monitor in monitors[1:]:
                 for res in self.get_resolutions(monitor):
@@ -75,7 +75,7 @@ class monitor_class:
                    if res in prim_res:
                        return res
            return prim_res[0]
-        
+
     def get_resolutions(self, monitor):
         with open("/sys/class/drm/{}/modes".format(self.get_device(monitor)),"r") as f:
             return f.read().split("\n")
