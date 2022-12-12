@@ -39,10 +39,14 @@ class monitor_class:
         if self.screen_event_lock:
             return
         self.screen_event_lock = True
+        monitors = self.get_xrandr_monitor()
+        if len(monitors) < 2:
+            self.screen_event_lock = False
+            return
         common_resolution = self.get_common_resolution()
-        for monitor in self.get_xrandr_monitor():
+        for monitor in monitors:
             os.system("xrandr --output {} --pos 0x0".format(monitor))
-        for monitor in self.get_xrandr_monitor():
+        for monitor in monitors:
             os.system(
                 "xrandr --output {} --mode {}".format(monitor, common_resolution))
         self.screen_event_lock = False
@@ -60,39 +64,26 @@ class monitor_class:
 
     def get_common_resolution(self):
         monitors = self.get_monitors()
-        if len(monitors) > 0:
-            prim_res = self.get_resolutions(monitors[0])
-            for monitor in monitors[1:]:
-                for res in self.get_resolutions(monitor):
-                    if res in prim_res:
-                        return res
-            return prim_res[0]
-        else:
-           monitors = self.get_xrandr_monitor()
-           prim_res = self.get_xrandr_resolutions(monitors[0])
-           for monitor in monitors[1:]:
-               for res in self.get_xrandr_resolutions(monitor):
-                   if res in prim_res:
-                       return res
-           return prim_res[0]
-        
-    def get_resolutions(self, monitor):
-        with open("/sys/class/drm/{}/modes".format(self.get_device(monitor)),"r") as f:
-            return f.read().split("\n")
-        return ["800x600"]
+        if len(monitors) < 2:
+            display = Gdk.Display.get_default()
+            geom = display.get_monitor(0).get_geometry()
+            return "{}x{}".format(geom.width, geom.height)
+        prim_res = self.get_resolutions(monitors[0])
+        for monitor in monitors[1:]:
+            for res in self.get_resolutions(monitor):
+                if res in prim_res:
+                    return res
+        return prim_res[0]
 
-    def get_xrandr_resolutions(self,monitor):
-        res = []
-        e = False
-        for line in subprocess.getoutput("xrandr").split("\n"):
-            if e:
-                if line.startswith(" "):
-                    res.append(line.strip().split(" ")[0])
-                else:
-                   break
-            if line.strip().startswith(monitor):
-                e = True
-        return res
+    def get_resolutions(self, monitor):
+        ret = []
+        with open("/sys/class/drm/{}/modes".format(self.get_device(monitor)),"r") as f:
+            for line in f.read().split("\n"):
+                if line[0].isnumeric():
+                    ret.append(line)
+        if len(ret) > 0:
+            return ret
+        return ["800x600"]
 
 monitor = None
 
@@ -114,14 +105,17 @@ def set_window_monitor(screen_index=0):
     monitor.screen_event_lock = True
     if type(screen_index) != type(0):
         screen_index = 0
-    m = monitor.get_monitors()[screen_index]
+    monitors = monitor.get_monitors()
+    if len(monitors) < screen_index:
+        return
+    m = monitors[screen_index]
     res = monitor.get_resolutions(m)[0]
     w = int(res.split("x")[0])
     h = int(res.split("x")[1])
     new_x = get_monitor_offset(screen_index)
     loginwindow.window.unfullscreen()
     loginwindow.window.move(int(new_x), 0)
-    loginwindow.window.unfullscreen()
+    loginwindow.window.fullscreen()
     update_window_resolution(w, h)
     monitor.screen_event_lock = False
 
