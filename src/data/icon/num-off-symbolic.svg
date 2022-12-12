@@ -1,48 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   height="16px"
-   viewBox="0 0 16 16"
-   width="16px"
-   version="1.1"
-   id="svg8"
-   sodipodi:docname="nm-of.svg"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs12" />
-  <sodipodi:namedview
-     id="namedview10"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     showgrid="false"
-     inkscape:zoom="5.6171875"
-     inkscape:cx="5.9638387"
-     inkscape:cy="10.681502"
-     inkscape:window-width="1920"
-     inkscape:window-height="1163"
-     inkscape:window-x="1920"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg8" />
-  <g
-     id="g3315"
-     transform="matrix(0.90497432,0,0,0.90497432,125.85192,2.9515031)">
-    <path
-       d="m -134.19849,-1.9340106 c -1.79473,0 -3.24318,1.44844903 -3.24318,3.243175 v 8.648467 c 0,1.7947226 1.44845,3.2431736 3.24318,3.2431736 h 8.64846 c 1.79473,0 3.24318,-1.448451 3.24318,-3.2431736 v -8.648467 c 0,-1.79472597 -1.44845,-3.243175 -3.24318,-3.243175 z m 3.24317,3.243175 h 2.16212 v 8.648467 h -2.16212 v -5.405291 h -2.16212 v -1.081057 c 1.19508,0 2.16212,-0.967042 2.16212,-2.162119 z m 0,0"
-       fill="#2e3436"
-       id="path1012"
-       style="stroke-width:1.08106" />
-    <path
-       d="m -136.1534,-2.1564182 14.01459,13.6621922 -2.16142,1.80786 -14.01459,-13.66219233 z m 0,0"
-       fill="#2e3436"
-       id="path3054"
-       style="fill:#ffffff;fill-opacity:0.99957;stroke-width:1.39982" />
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="katman_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#2F3536;stroke-width:3.3294;stroke-miterlimit:10;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#2F3536;}
+	.st2{fill:#2F3536;}
+</style>
+<path class="st0" d="M10.6,2.3h43.1c4.5,0,8.1,3.6,8.1,8.1v43.1c0,4.5-3.6,8.1-8.1,8.1H10.6c-4.5,0-8.1-3.6-8.1-8.1V10.5
+	C2.5,6,6.1,2.3,10.6,2.3z"/>
+<path class="st1" d="M3.8,3.8L3.8,3.8c-2,2-2,5.2,0,7.2l49.5,49.5c2,2,5.2,2,7.2,0l0,0c2-2,2-5.2,0-7.2L11,3.8
+	C9,1.8,5.8,1.8,3.8,3.8z"/>
+<g>
+	<path class="st2" d="M41.7,44.6V12c0-0.4-0.2-0.8-0.5-1.1c-0.3-0.3-0.7-0.5-1.1-0.5h-5.3c-0.4,0-0.9,0.1-1.4,0.3
+		c-0.5,0.2-0.9,0.4-1.2,0.7L20,23L41.7,44.6z"/>
+	<path class="st2" d="M28.9,46.2v10.2c0,0.4,0.2,0.8,0.5,1.1c0.3,0.3,0.7,0.5,1.1,0.5h9.7c0.1,0,0.3,0,0.4-0.1L28.9,46.2z"/>
+</g>
 </svg>
