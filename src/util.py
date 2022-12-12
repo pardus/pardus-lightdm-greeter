@@ -99,6 +99,12 @@ def get_ip():
             continue
     return '0.0.0.0'
 
+def is_virtual_machine():
+    cpuinfo = readfile("/proc/cpuinfo").split("\n")
+    for line in cpuinfo:
+        if line.startswith("flags"):
+            return "hypervisor" in line
+    return False
 
 # https://stackoverflow.com/questions/24196932/how-can-i-get-the-ip-address-from-a-nic-network-interface-controller-in-python
 import socket

@@ -74,7 +74,6 @@ class monitor_class:
                 if res in prim_res:
                     return res
         return prim_res[0]
-
     def get_resolutions(self, monitor):
         ret = []
         with open("/sys/class/drm/{}/modes".format(self.get_device(monitor)),"r") as f:
