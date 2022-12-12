@@ -43,6 +43,7 @@ class monitor_class:
         if len(monitors) < 2:
             self.screen_event_lock = False
             return
+
         common_resolution = self.get_common_resolution()
         for monitor in monitors:
             os.system("xrandr --output {} --pos 0x0".format(monitor))
@@ -74,11 +75,12 @@ class monitor_class:
                 if res in prim_res:
                     return res
         return prim_res[0]
+
     def get_resolutions(self, monitor):
         ret = []
         with open("/sys/class/drm/{}/modes".format(self.get_device(monitor)),"r") as f:
             for line in f.read().split("\n"):
-                if line[0].isnumeric():
+                if len(line) > 0 and line[0].isnumeric():
                     ret.append(line)
         if len(ret) > 0:
             return ret
