@@ -37,7 +37,7 @@ class LoginWindow:
         self.window.set_keep_above(True)
         self.window.connect("focus-out-event", self.on_focus_out)
         self.window.connect("draw",self.draw)
-        if "user" == get("background", "", "gtkwindow"):
+        if "user" == get("background", "user", "gtkwindow"):
             self._username_entry_event_changed(self.username_entry)
         lightdm.login()
         GLib.idle_add(self.__update_user_background_loop)
@@ -92,7 +92,7 @@ class LoginWindow:
 
     def update_user_background(self):
         u = LightDM.UserList.get_instance().get_user_by_name(lightdm.username)
-        if u != None and "user" == get("background", "", "gtkwindow"):
+        if u != None and "user" == get("background", "user", "gtkwindow"):
             background = u.get_background()
             self.set_background(background)
 
@@ -189,10 +189,10 @@ class LoginWindow:
         self.window.resize(self.width/scale, self.height/scale)
         self.window.set_size_request(self.width/scale, self.height/scale)
         self.background_pixbuf = None
-        if "user" == get("background", "", "gtkwindow"):
+        if "user" == get("background", "user", "gtkwindow"):
             self.update_user_background()
         else:
-            self.set_background(get("background", "", "gtkwindow"))
+            self.set_background(get("background", "user", "gtkwindow"))
 
     def __update_user_background_loop(self):
         self.update_user_background()
