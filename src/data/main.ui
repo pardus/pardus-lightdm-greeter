@@ -645,44 +645,16 @@ and power off the computer ?</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="margin-start">10</property>
-                        <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkImage" id="ui_icon_numlock">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="spacing">5</property>
-                            <property name="homogeneous">True</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Num</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkImage" id="ui_icon_numlock">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="pixel-size">22</property>
-                                <property name="icon-name">num-off</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
+                            <property name="pixel-size">36</property>
+                            <property name="icon-name">num-off</property>
+                            <property name="icon_size">5</property>
+                            <style>
+                              <class name="text"/>
+                            </style>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -691,42 +663,15 @@ and power off the computer ?</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkImage" id="ui_icon_capslock">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="spacing">5</property>
-                            <property name="homogeneous">True</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Caps</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkImage" id="ui_icon_capslock">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="pixel-size">22</property>
-                                <property name="icon-name">caps-off</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
+                            <property name="pixel-size">36</property>
+                            <property name="icon-name">caps-off</property>
+                            <property name="icon_size">5</property>
+                            <style>
+                              <class name="text"/>
+                            </style>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -770,6 +715,7 @@ and power off the computer ?</property>
                             <property name="can-focus">False</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
+                            <property name="pixel-size">36</property>
                             <property name="icon-name">network-transmit-receive-symbolic</property>
                             <property name="icon_size">5</property>
                             <style>
@@ -800,6 +746,7 @@ and power off the computer ?</property>
                             <property name="can-focus">False</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
+                            <property name="pixel-size">36</property>
                             <property name="icon-name">system-shutdown-symbolic</property>
                             <property name="icon_size">5</property>
                             <style>
@@ -830,6 +777,7 @@ and power off the computer ?</property>
                             <property name="can-focus">False</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
+                            <property name="pixel-size">36</property>
                             <property name="icon-name">application-x-executable-symbolic</property>
                             <property name="icon_size">5</property>
                             <style>
@@ -860,6 +808,7 @@ and power off the computer ?</property>
                             <property name="can-focus">False</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
+                            <property name="pixel-size">36</property>
                             <property name="icon-name">open-menu-symbolic</property>
                             <property name="icon_size">5</property>
                             <style>
