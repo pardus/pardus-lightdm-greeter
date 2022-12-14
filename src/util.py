@@ -106,6 +106,15 @@ def is_virtual_machine():
             return "hypervisor" in line
     return False
 
+def is_virtualbox():
+    if os.path.isfile("/sys/class/dmi/id/product_name"):
+        with open("/sys/class/dmi/id/product_name","r") as f:
+            if "virtualbox" in f.read().lower():
+                return True
+            elif "virtual box" in f.read().lower():
+                return True
+    return False
+
 # https://stackoverflow.com/questions/24196932/how-can-i-get-the-ip-address-from-a-nic-network-interface-controller-in-python
 import socket
 import fcntl
