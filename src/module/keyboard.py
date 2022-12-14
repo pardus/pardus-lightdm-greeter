@@ -135,9 +135,9 @@ def load_keyboardlist():
 def module_init():
     if get("numlock-on",True,"keyboard"):
         os.system("numlockx on")
-    if evdev_available aand not is_virtualbox():
+    if evdev_available and not is_virtualbox():
         loginwindow.window.connect("key-press-event", _key_press_event)
         update_numlock_capslock()
-    elif not evdev_available:
+    else:
         loginwindow.builder.get_object("ui_box_numlock_capslock").hide()
     load_keyboardlist()
