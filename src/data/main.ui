@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.40.0 -->
+<!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkWindow" id="ui_window_main">
@@ -214,7 +214,7 @@
                             <property name="label" translatable="yes">Login</property>
                             <property name="width-request">128</property>
                             <property name="visible">True</property>
-                            <property name="can-focus">True</property>
+                            <property name="can-focus">False</property>
                             <property name="receives-default">True</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
@@ -702,7 +702,7 @@ and power off the computer ?</property>
                     <child>
                       <object class="GtkButton" id="ui_button_network">
                         <property name="visible">True</property>
-                        <property name="can-focus">True</property>
+                        <property name="can-focus">False</property>
                         <property name="receives-default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
@@ -733,7 +733,7 @@ and power off the computer ?</property>
                     <child>
                       <object class="GtkButton" id="ui_button_powermenu">
                         <property name="visible">True</property>
-                        <property name="can-focus">True</property>
+                        <property name="can-focus">False</property>
                         <property name="receives-default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
@@ -764,7 +764,7 @@ and power off the computer ?</property>
                     <child>
                       <object class="GtkButton" id="ui_button_actionsmenu">
                         <property name="visible">True</property>
-                        <property name="can-focus">True</property>
+                        <property name="can-focus">False</property>
                         <property name="receives-default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
@@ -795,7 +795,7 @@ and power off the computer ?</property>
                     <child>
                       <object class="GtkButton" id="ui_button_options">
                         <property name="visible">True</property>
-                        <property name="can-focus">True</property>
+                        <property name="can-focus">False</property>
                         <property name="receives-default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
@@ -923,7 +923,7 @@ WAN IP: </property>
             <child>
               <object class="GtkButton" id="ui_button_keyboard_layout">
                 <property name="visible">True</property>
-                <property name="can-focus">True</property>
+                <property name="can-focus">False</property>
                 <property name="receives-default">True</property>
                 <property name="relief">none</property>
                 <property name="image-position">top</property>
@@ -1029,7 +1029,7 @@ WAN IP: </property>
             <child>
               <object class="GtkButton" id="ui_button_default_session">
                 <property name="visible">True</property>
-                <property name="can-focus">True</property>
+                <property name="can-focus">False</property>
                 <property name="receives-default">True</property>
                 <property name="relief">none</property>
                 <property name="image-position">top</property>
@@ -1127,7 +1127,7 @@ WAN IP: </property>
         <child>
           <object class="GtkButton" id="ui_button_virtual_keyboard">
             <property name="visible">True</property>
-            <property name="can-focus">True</property>
+            <property name="can-focus">False</property>
             <property name="receives-default">True</property>
             <property name="relief">none</property>
             <child>
@@ -1191,7 +1191,7 @@ WAN IP: </property>
         <child>
           <object class="GtkButton" id="ui_button_poweroff">
             <property name="visible">True</property>
-            <property name="can-focus">True</property>
+            <property name="can-focus">False</property>
             <property name="receives-default">True</property>
             <property name="relief">none</property>
             <property name="image-position">top</property>
@@ -1243,7 +1243,7 @@ WAN IP: </property>
         <child>
           <object class="GtkButton" id="ui_button_restart">
             <property name="visible">True</property>
-            <property name="can-focus">True</property>
+            <property name="can-focus">False</property>
             <property name="receives-default">True</property>
             <property name="relief">none</property>
             <property name="image-position">top</property>
