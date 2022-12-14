@@ -1,10 +1,10 @@
-evdev_available=True
+xlib_available=True
 try:
-    import evdev
-    if evdev:
-        devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
+    import Xlib
+    from Xlib import display
+    DISPLAY = Xlib.display.Display()
 except:
-    evdev_available=False
+    xlib_available=False
 
 
 class xkbButton(Gtk.Button):
@@ -34,24 +34,12 @@ class xkbButton(Gtk.Button):
 
 
 def is_capslock_on():
-    if not evdev_available:
-        return False
-    for dev in devices:
-        for led in dev.leds(verbose=True):
-            if "LED_CAPSL" in led:
-                return True
-    return False
-
+    c = DISPLAY.get_keyboard_control()
+    return c.led_mask & 1
 
 def is_numlock_on():
-    if not evdev_available:
-        return False
-    for dev in devices:
-        for led in dev.leds(verbose=True):
-            if "LED_NUML" in led:
-                return True
-    return False
-
+    c = DISPLAY.get_keyboard_control()
+    return c.led_mask & 2
 
 def set_keyboard(layout, variant):
     return len(subprocess.getoutput("setxkbmap {} {}".format(layout, variant))) == 0
@@ -64,8 +52,8 @@ def _keyboard_button_event(widget):
 
 
 def update_numlock_capslock():
-    if not evdev_available:
-        return 
+    if not xlib_available:
+        return
     numlock = loginwindow.builder.get_object("ui_icon_numlock")
     capslock = loginwindow.builder.get_object("ui_icon_capslock")
     numlock.set_from_icon_name("num-off-symbolic", 0)
@@ -135,7 +123,7 @@ def load_keyboardlist():
 def module_init():
     if get("numlock-on",True,"keyboard"):
         os.system("numlockx on")
-    if evdev_available and not is_virtualbox():
+    if xlib_available and not is_virtualbox():
         loginwindow.window.connect("key-press-event", _key_press_event)
         update_numlock_capslock()
     else:
