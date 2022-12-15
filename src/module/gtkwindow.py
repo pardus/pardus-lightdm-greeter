@@ -118,12 +118,22 @@ class LoginWindow:
 
     def msg_handler(self, message=""):
         log(message)
+        self.unblock_gui()
+        self.builder.get_object("ui_spinner_login").stop()
         self.error_message.set_text(message)
         self.error_message_reset.set_text(message)
         self.password_entry.set_text("")
         lightdm.password=""
         self.builder.get_object("ui_entry_new_password1").set_text("")
         self.builder.get_object("ui_entry_new_password2").set_text("")
+
+    def unblock_gui(self):
+        self.main_stack.set_sensitive(True)
+        self.password_entry.grab_focus()
+
+    def block_gui(self):
+        self.main_stack.set_sensitive(False)
+        self.builder.get_object("ui_spinner_login").start()
 
     def reset_messages(self):
         self.error_message.set_text("")
@@ -133,6 +143,7 @@ class LoginWindow:
         lightdm.password = self.password_entry.get_text()
         if lightdm.password == "":
             return
+        self.block_gui()
         lightdm.username = self.username_entry.get_text().replace(" ","")
         hidden = readfile("hidden-users")
         data = ""
