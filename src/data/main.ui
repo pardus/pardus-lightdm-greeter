@@ -645,10 +645,16 @@ and power off the computer ?</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="margin-start">10</property>
+                        <property name="spacing">6</property>
+                        <property name="homogeneous">True</property>
                         <child>
                           <object class="GtkImage" id="ui_icon_numlock">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="margin-start">3</property>
+                            <property name="margin-end">4</property>
+                            <property name="margin-top">3</property>
+                            <property name="margin-bottom">3</property>
                             <property name="pixel-size">36</property>
                             <property name="icon-name">num-off</property>
                             <property name="icon_size">5</property>
@@ -666,6 +672,10 @@ and power off the computer ?</property>
                           <object class="GtkImage" id="ui_icon_capslock">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="margin-start">3</property>
+                            <property name="margin-end">3</property>
+                            <property name="margin-top">3</property>
+                            <property name="margin-bottom">3</property>
                             <property name="pixel-size">36</property>
                             <property name="icon-name">caps-off</property>
                             <property name="icon_size">5</property>
