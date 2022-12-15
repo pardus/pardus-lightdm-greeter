@@ -14,6 +14,12 @@ menu {
   text-shadow: 1px 1px 3px black;
   -gtk-icon-shadow: 1px 1px 3px black;
 }
+.button:hover {
+  background: alpha(black,0.50);
+}
+.button:active {
+  background: alpha(black,0.69);
+}
 
 .textview, .textview text {
   background: none;
