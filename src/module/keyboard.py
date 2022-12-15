@@ -10,6 +10,7 @@ except:
 class xkbButton(Gtk.Button):
     def __init__(self, layout, variant=""):
         super().__init__()
+        self.set_can_focus(False)
         self.layout = layout
         self.variant = variant
         if self.variant != "":
