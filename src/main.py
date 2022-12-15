@@ -74,5 +74,5 @@ for module in base_modules + os.listdir("module"):
 ltime = time.time()
 os.chdir(os.environ["HOME"])
 debug("Loading finished: {}".format(ltime-ctime))
-loginwindow.window.show_all()
+loginwindow.window.show()
 Gtk.main()
