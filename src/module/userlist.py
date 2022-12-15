@@ -5,6 +5,7 @@ class userButton(Gtk.Box):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL)
         self.label = Gtk.Button()
         self.label.set_can_focus(False)
+        self.label.get_style_context().add_class("icon")
         self.label.username = username
         self.label.set_alignment(0,self.label.get_alignment()[1])
         if get("show-realname", True, "userlist"):
@@ -17,6 +18,7 @@ class userButton(Gtk.Box):
         self.label.connect("clicked", user_button_event)
         if get("user-hide-button",True,"userlist"):
             delbut = Gtk.Button()
+            delbut.get_style_context().add_class("icon")
             delbut.set_can_focus(False)
             delbut.set_relief(Gtk.ReliefStyle.NONE)
             delbut.connect("clicked",self.delete_button_event)

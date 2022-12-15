@@ -6,6 +6,7 @@ class sessionButton(Gtk.Button):
     def __init__(self, session):
         super().__init__()
         self.set_can_focus(False)
+        self.get_style_context().add_class("icon")
         self.session = session
         self.session_name = self.get_session_name()
         self.set_relief(Gtk.ReliefStyle.NONE)

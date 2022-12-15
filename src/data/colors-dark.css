@@ -1,4 +1,4 @@
-menu, .menu, .button, .entry, .popover {
+menu, .menu, .button, .entry, .popover, .icon {
   background: alpha(black,0.31);
   color: white;
   border: none;
@@ -14,10 +14,14 @@ menu {
   text-shadow: 1px 1px 3px black;
   -gtk-icon-shadow: 1px 1px 3px black;
 }
-.button:hover {
+
+.icon {
+    background: none;
+}
+.icon:hover, .button:hover {
   background: alpha(black,0.50);
 }
-.button:active {
+.icon:active, .button:active {
   background: alpha(black,0.69);
 }
 
