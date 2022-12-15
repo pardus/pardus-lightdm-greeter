@@ -13,7 +13,6 @@ class LoginWindow:
         self.msg_handler()
         self.background_pixbuf = None
         self.bg_old = ""
-        self.window.show_all()
         username = readfile("last-username")
         if get("username-cache", True, "gtkwindow"):
             if username == "":
@@ -194,7 +193,7 @@ class LoginWindow:
         if os.path.isfile(logo):
             loginwindow.logo.set_from_file(logo)
         else:
-            loginwindow.logo.hide()
+            loginwindow.logo.set_from_file(None)
 
     def sync_resolution(self):
         self.window.resize(self.width/scale, self.height/scale)

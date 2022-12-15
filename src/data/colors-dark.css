@@ -15,7 +15,7 @@ menu {
   -gtk-icon-shadow: 1px 1px 3px black;
 }
 
-.button:insensitive, .entry:insensitive {
+.button:disabled, .entry:disabled {
     background: alpha(black,0.13);
 }
 
