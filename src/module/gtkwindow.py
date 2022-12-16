@@ -140,7 +140,7 @@ class LoginWindow:
 
     def _login_button_event(self, widget):
         lightdm.password = self.password_entry.get_text()
-        if not get("allow-empty-password",True,"gtkwindow") and lightdm.password == "":
+        if not get("allow-empty-password",True,"") and lightdm.password == "":
             return
         self.block_gui()
         lightdm.username = self.username_entry.get_text().replace(" ","")

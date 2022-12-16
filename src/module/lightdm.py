@@ -53,8 +53,9 @@ class lightdm_class:
             self._pressed = True
             self.greeter.authenticate(self.username)
             log("Login process started for {}".format(self.username))
-        if self.password != "":
-            self.greeter.respond(self.password)
+        if self.password == "" and not get("allow-empty-password",True,""):
+            return
+        self.greeter.respond(self.password)
 
     def __show_prompt_cb(self, greeter, text, promptType):
         debug("Prompt: "+text)
