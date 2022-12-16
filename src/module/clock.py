@@ -26,4 +26,4 @@ def module_init():
     global clock_format
     date_format=get("date-format","%e %b %Y - %A","clock").replace("\\n","\n")
     clock_format=get("clock-format","%H:%M","clock").replace("\\n","\n")
-    clock_event
+    clock_event()
