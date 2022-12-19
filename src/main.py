@@ -28,7 +28,8 @@ os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
 os.system("xhost +local:")
 os.system("xset s {0} {0}".format(get("blank-timeout",300)))
 
-scale=get("scale",1)
+scale=int(get("scale","1"))
+print(scale,file=sys.stderr)
 if scale < 1 :
     scale = 1
 os.environ["GDK_SCALE"]=str(scale)
