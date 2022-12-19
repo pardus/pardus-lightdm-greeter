@@ -41,11 +41,6 @@ def get(variable, default=None, section="pardus"):
             return True
         else:
             return False
-    elif str(default).isnumeric():
-        if not str(ret).isnumeric():
-            return int(default)
-        else:
-            return int(ret)
     return str(ret)
 
 if get("debug", False, "pardus"):

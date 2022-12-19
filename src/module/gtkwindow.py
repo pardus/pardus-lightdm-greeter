@@ -118,7 +118,6 @@ class LoginWindow:
     def msg_handler(self, message=""):
         log(message)
         self.unblock_gui()
-        self.builder.get_object("ui_spinner_login").stop()
         self.error_message.set_text(message)
         self.error_message_reset.set_text(message)
         self.password_entry.set_text("")
@@ -129,10 +128,13 @@ class LoginWindow:
     def unblock_gui(self):
         self.main_stack.set_sensitive(True)
         self.password_entry.grab_focus()
+        self.builder.get_object("ui_spinner_login").stop()
 
     def block_gui(self):
         self.main_stack.set_sensitive(False)
         self.builder.get_object("ui_spinner_login").start()
+        timeout = 1000*int(get("block-gui-timeout", "10", "gtkwindow"))
+        GLib.timeout_add(timeout,self.unblock_gui)
 
     def reset_messages(self):
         self.error_message.set_text("")
