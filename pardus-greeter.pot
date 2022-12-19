@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 13:04+0300\n"
+"POT-Creation-Date: 2022-12-19 17:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "show"
 msgstr ""
 
-#: src/data/main.ui:193 src/data/main.ui:269
+#: src/data/main.ui:193 src/data/main.ui:307
 msgid "Username"
 msgstr ""
 
@@ -37,87 +37,79 @@ msgstr ""
 msgid "edit"
 msgstr ""
 
-#: src/data/main.ui:214
+#: src/data/main.ui:231 src/module/gtkwindow.py:94
 msgid "Login"
 msgstr ""
 
-#: src/data/main.ui:289
+#: src/data/main.ui:327
 msgid "New Password"
 msgstr ""
 
-#: src/data/main.ui:309
+#: src/data/main.ui:347
 msgid "New Password Again"
 msgstr ""
 
-#: src/data/main.ui:329 src/data/main.ui:453 src/data/main.ui:557
+#: src/data/main.ui:367 src/data/main.ui:491 src/data/main.ui:595
 msgid "Cancel"
 msgstr ""
 
-#: src/data/main.ui:345
+#: src/data/main.ui:383
 msgid "Change Password"
 msgstr ""
 
-#: src/data/main.ui:375
+#: src/data/main.ui:413
 msgid "Hata Mesajı"
 msgstr ""
 
-#: src/data/main.ui:416
+#: src/data/main.ui:454
 msgid "<big>RESTART</big>"
 msgstr ""
 
-#: src/data/main.ui:432
+#: src/data/main.ui:470
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
 msgstr ""
 
-#: src/data/main.ui:469
+#: src/data/main.ui:507
 msgid "Restart"
 msgstr ""
 
-#: src/data/main.ui:520
+#: src/data/main.ui:558
 msgid "<big>POWER OFF</big>"
 msgstr ""
 
-#: src/data/main.ui:536
+#: src/data/main.ui:574
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
 msgstr ""
 
-#: src/data/main.ui:573
+#: src/data/main.ui:611
 msgid "Power Off"
 msgstr ""
 
-#: src/data/main.ui:659
-msgid "Num"
-msgstr ""
-
-#: src/data/main.ui:703
-msgid "Caps"
-msgstr ""
-
-#: src/data/main.ui:889
+#: src/data/main.ui:898
 msgid "TÜBİTAK ULAKBİM | 2022"
 msgstr ""
 
-#: src/data/main.ui:1008
+#: src/data/main.ui:1017
 msgid "Keyboard Layout"
 msgstr ""
 
-#: src/data/main.ui:1114
+#: src/data/main.ui:1126
 msgid "Session"
 msgstr ""
 
-#: src/data/main.ui:1208
+#: src/data/main.ui:1223
 msgid "Virtual keyboard"
 msgstr ""
 
-#: src/data/main.ui:1274
+#: src/data/main.ui:1292
 msgid "Shutdown"
 msgstr ""
 
-#: src/data/main.ui:1326
+#: src/data/main.ui:1347
 msgid "Reboot"
 msgstr ""
 
@@ -145,13 +137,13 @@ msgstr ""
 msgid "Network not available"
 msgstr ""
 
-#: src/module/network.py:34
+#: src/module/network.py:35
 msgid ""
 "Local IP:\n"
 "{}"
 msgstr ""
 
-#: src/module/network.py:37
+#: src/module/network.py:38
 msgid ""
 "WAN IP:\n"
 "- {}"
@@ -161,19 +153,23 @@ msgstr ""
 msgid "login as root is blocked"
 msgstr ""
 
-#: src/module/lightdm.py:101
+#: src/module/lightdm.py:102
 msgid "Invalid sesion : {}"
 msgstr ""
 
-#: src/module/lightdm.py:111
+#: src/module/lightdm.py:112
 msgid "Failed to start session: {}"
 msgstr ""
 
-#: src/module/lightdm.py:116
+#: src/module/lightdm.py:117
 msgid "Authentication failed: {}"
 msgstr ""
 
-#: src/module/sessionlist.py:61 src/module/sessionlist.py:62
-#: src/module/sessionlist.py:63
+#: src/module/sessionlist.py:63 src/module/sessionlist.py:64
+#: src/module/sessionlist.py:65
 msgid "Default"
+msgstr ""
+
+#: src/module/gtkwindow.py:92
+msgid "Unlock"
 msgstr ""

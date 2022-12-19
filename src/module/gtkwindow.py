@@ -88,6 +88,10 @@ class LoginWindow:
             lightdm.username = widget.get_text()
             lightdm.login()
         self.update_user_background()
+        if u != None and u.get_logged_in():
+            self.login_button.set_label(_("Unlock"))
+        else:
+            self.login_button.set_label(_("Login"))
 
     def update_user_background(self):
         u = LightDM.UserList.get_instance().get_user_by_name(lightdm.username)
