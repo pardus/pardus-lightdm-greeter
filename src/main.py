@@ -27,14 +27,14 @@ os.environ["UBUNTU_MENUPROXY"]=""
 os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
 os.system("xhost +local:")
 os.system("xset s {0} {0}".format(get("blank-timeout",300)))
-
-scale=int(get("scale","1"))
-print(scale,file=sys.stderr)
-if scale < 1 :
+try:
+    scale=float(get("scale","1"))
+    if scale < 1 :
+        scale = 1
+    os.environ["GDK_SCALE"]=str(scale)
+    os.environ["GDK_DPI_SCALE"]=str(1/scale)
+except:
     scale = 1
-os.environ["GDK_SCALE"]=str(scale)
-os.environ["GDK_DPI_SCALE"]=str(1/scale)
-
 
 os.system(get("init",""))
 
@@ -44,6 +44,7 @@ from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
 settings = Gtk.Settings.get_default()
 settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
+settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(10*(scale%1 + 1))))
 settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
 settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
 settings.set_property("gtk-xft-dpi", 1024*96*scale)

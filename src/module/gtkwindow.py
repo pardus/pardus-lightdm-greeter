@@ -179,8 +179,8 @@ class LoginWindow:
                 bg = appdir+"/data/bg-dark.png"
         if os.path.isfile(bg):
             try:
-                py = GdkPixbuf.Pixbuf.new_from_file_at_scale(bg,self.width/scale, self.height/scale,True)
-                px = py.scale_simple(self.width/scale, self.height/scale, GdkPixbuf.InterpType.BILINEAR)
+                py = GdkPixbuf.Pixbuf.new_from_file_at_scale(bg,self.width, self.height,True)
+                px = py.scale_simple(self.width, self.height, GdkPixbuf.InterpType.BILINEAR)
                 if px and self.background_pixbuf != px:
                     self.background_pixbuf = px
                     self.window.queue_draw()
@@ -202,8 +202,8 @@ class LoginWindow:
             loginwindow.logo.set_from_file(None)
 
     def sync_resolution(self):
-        self.window.resize(self.width/scale, self.height/scale)
-        self.window.set_size_request(self.width/scale, self.height/scale)
+        self.window.resize(self.width, self.height)
+        self.window.set_size_request(self.width, self.height)
         self.background_pixbuf = None
         if "user" == get("background", "user", "gtkwindow"):
             self.update_user_background()
