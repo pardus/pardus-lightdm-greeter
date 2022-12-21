@@ -20,6 +20,7 @@ install: uninstall installmo
 	mkdir -p $(DESTDIR)/usr/share/pardus/pardus-greeter/
 	mkdir -p $(DESTDIR)/usr/share/xgreeters/
 	mkdir -p $(DESTDIR)/usr/bin
+	mkdir -p $(DESTDIR)/usr/libexec
 	mkdir -p $(DESTDIR)/etc/pardus
 	mkdir -p $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/
 	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/status/
@@ -27,7 +28,7 @@ install: uninstall installmo
 	chmod +x $(DESTDIR)/usr/share/pardus/pardus-greeter/*
 	ln -s ../../pardus/pardus-greeter/data/lightdm.conf $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/99-pardus.conf || true
 	ln -s ../pardus/pardus-greeter/data/greeter.desktop $(DESTDIR)/usr/share/xgreeters/pardus.desktop || true
-	ln -s ../share/pardus/pardus-greeter/main.py $(DESTDIR)/usr/bin/pardus-greeter || true
+	install pardus-greeter.sh $(DESTDIR)/usr/libexec/pardus-greeter || true
 	ln -s ../../usr/share/pardus/pardus-greeter/data/config.ini $(DESTDIR)/etc/pardus/greeter.conf || true
 	chmod 755 -R $(DESTDIR)/usr/share/pardus/pardus-greeter/
 	cp -pf src/data/icon/*.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/status/
