@@ -51,7 +51,7 @@ uninstall: uninstallmo
 	rm -rvf $(DESTDIR)/usr/share/pardus/pardus-greeter/
 	rm -fv $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/99-pardus.conf
 	rm -fv $(DESTDIR)/etc/pardus/greeter.conf
-	rm -fv $(DESTDIR)/usr/bin/pardus-greeter
+	rm -fv $(DESTDIR)/usr/libexec/pardus-greeter
 	rm -fv $(DESTDIR)/usr/share/xgreeters/pardus.desktop
 
 clean:
