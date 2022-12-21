@@ -32,6 +32,7 @@ class LoginWindow:
         else:
             self.builder.get_object("ui_stack_username").set_visible_child_name("edit")
         debug("Username cache loaded {}".format(username))
+        self.window.show()
         self.window.present()
         self.window.set_keep_above(True)
         self.window.connect("focus-out-event", self.on_focus_out)
