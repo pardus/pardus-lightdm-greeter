@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-19 17:41+0300\n"
-"PO-Revision-Date: 2022-11-29 14:28+0000\n"
+"PO-Revision-Date: 2022-12-20 20:43+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/data/main.ui:144
 msgid "Password"
@@ -128,13 +128,11 @@ msgstr "Falha ao reiniciar o sistema"
 
 #: src/msgs.py:4
 msgid "Place your right index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
 
 #: src/module/network.py:5
 msgid "Loading..."
@@ -183,7 +181,7 @@ msgstr "Predefinido"
 
 #: src/module/gtkwindow.py:92
 msgid "Unlock"
-msgstr ""
+msgstr "Desbloquear"
 
 #~ msgid "Num"
 #~ msgstr "Num"
