@@ -5,15 +5,11 @@
   background: none;
 }
 
-.entry, .button, .popover, .menu {
+.entry, .button {
     padding-left: 13px;
     padding-right: 13px;
     padding-top: 8px;
     padding-bottom: 8px;
-    min-height: 21px;
+    min-height: 16px;
 }
 
-.popover {
-    padding-left: 8px;
-    padding-right: 8px;
-}

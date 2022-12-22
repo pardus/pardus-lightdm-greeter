@@ -90,10 +90,10 @@ class LoginWindow:
         self.update_user_background()
         if u != None and u.get_logged_in():
             self.login_button.set_label(_("Unlock"))
-            self.builder.get_object("ui_button_default_session").hide()
+            self.builder.get_object("ui_box_session_menu").hide()
         else:
             self.login_button.set_label(_("Login"))
-            self.builder.get_object("ui_button_default_session").show()
+            self.builder.get_object("ui_box_session_menu").show()
 
     def update_user_background(self):
         u = LightDM.UserList.get_instance().get_user_by_name(lightdm.username)
