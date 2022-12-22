@@ -1,4 +1,6 @@
 def _options_event(widget):
+    loginwindow.builder.get_object("ui_revealer_default_session").set_reveal_child(False)
+    loginwindow.builder.get_object("ui_revealer_keyboard_layout").set_reveal_child(False)
     loginwindow.builder.get_object("ui_popover_options").popup()
 
 def _powermenu_event(widget):
