@@ -454,6 +454,9 @@
                             <property name="can-focus">False</property>
                             <property name="icon-name">system-reboot-symbolic</property>
                             <property name="icon_size">6</property>
+                            <style>
+                              <class name="icon"/>
+                            </style>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -558,6 +561,9 @@ and restart the computer ?</property>
                             <property name="can-focus">False</property>
                             <property name="icon-name">system-shutdown-symbolic</property>
                             <property name="icon_size">6</property>
+                            <style>
+                              <class name="icon"/>
+                            </style>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1074,6 +1080,7 @@ WAN IP: </property>
                 </child>
                 <style>
                   <class name="icon"/>
+                  <class name="button"/>
                 </style>
               </object>
               <packing>
@@ -1180,6 +1187,7 @@ WAN IP: </property>
                 </child>
                 <style>
                   <class name="icon"/>
+                  <class name="button"/>
                 </style>
               </object>
               <packing>
@@ -1261,6 +1269,7 @@ WAN IP: </property>
             </child>
             <style>
               <class name="icon"/>
+              <class name="button"/>
             </style>
           </object>
           <packing>
@@ -1330,6 +1339,7 @@ WAN IP: </property>
             </child>
             <style>
               <class name="icon"/>
+              <class name="button"/>
             </style>
           </object>
           <packing>
@@ -1385,6 +1395,7 @@ WAN IP: </property>
             </child>
             <style>
               <class name="icon"/>
+              <class name="button"/>
             </style>
           </object>
           <packing>
