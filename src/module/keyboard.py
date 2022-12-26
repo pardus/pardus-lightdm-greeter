@@ -50,6 +50,10 @@ def set_keyboard(layout, variant):
 def _keyboard_button_event(widget):
     revealer = loginwindow.builder.get_object("ui_revealer_keyboard_layout")
     status = revealer.get_reveal_child()
+    if status:
+        loginwindow.builder.get_object("ui_icon_keyboard_layout_dd").set_from_icon_name("go-next-symbolic", 0)
+    else:
+        loginwindow.builder.get_object("ui_icon_keyboard_layout_dd").set_from_icon_name("go-down-symbolic", 0)
     revealer.set_reveal_child(not status)
 
 

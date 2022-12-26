@@ -73,6 +73,10 @@ def _session_button_event(widget):
     revealer = loginwindow.builder.get_object("ui_revealer_default_session")
     status = revealer.get_reveal_child()
     revealer.set_reveal_child(not status)
+    if status:
+        loginwindow.builder.get_object("ui_icon_default_session_dd").set_from_icon_name("go-next-symbolic", 0)
+    else:
+        loginwindow.builder.get_object("ui_icon_default_session_dd").set_from_icon_name("go-down-symbolic", 0)
     load_sessionlist()
 
 

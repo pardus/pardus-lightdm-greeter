@@ -920,7 +920,7 @@ and power off the computer ?</property>
                       <object class="GtkLabel" id="ui_label_bottom">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">TÜBİTAK ULAKBİM | 2022</property>
+                        <property name="label" translatable="yes">TÜBİTAK ULAKBİM | 2023</property>
                         <style>
                           <class name="text"/>
                         </style>
@@ -1061,6 +1061,7 @@ WAN IP: </property>
                       <object class="GtkImage" id="ui_icon_keyboard_layout_dd">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="pixel-size">0</property>
                         <property name="icon-name">go-next-symbolic</property>
                         <style>
                           <class name="text"/>
@@ -1171,6 +1172,7 @@ WAN IP: </property>
                       <object class="GtkImage" id="ui_icon_default_session_dd">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="pixel-size">0</property>
                         <property name="icon-name">go-next-symbolic</property>
                         <style>
                           <class name="text"/>

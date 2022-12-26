@@ -1,6 +1,8 @@
 def _options_event(widget):
     loginwindow.builder.get_object("ui_revealer_default_session").set_reveal_child(False)
     loginwindow.builder.get_object("ui_revealer_keyboard_layout").set_reveal_child(False)
+    loginwindow.builder.get_object("ui_icon_default_session_dd").set_from_icon_name("go-next-symbolic", 0)
+    loginwindow.builder.get_object("ui_icon_keyboard_layout_dd").set_from_icon_name("go-next-symbolic", 0)
     loginwindow.builder.get_object("ui_popover_options").popup()
 
 def _powermenu_event(widget):
