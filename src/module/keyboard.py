@@ -58,12 +58,12 @@ def update_numlock_capslock():
         return
     numlock = loginwindow.builder.get_object("ui_icon_numlock")
     capslock = loginwindow.builder.get_object("ui_icon_capslock")
-    numlock.set_from_icon_name("num-off-symbolic", 0)
-    capslock.set_from_icon_name("caps-off-symbolic", 0)
+    numlock.set_from_icon_name("numlock-off-symbolic", 0)
+    capslock.set_from_icon_name("capslock-off-symbolic", 0)
     if is_numlock_on():
-        numlock.set_from_icon_name("num-on-symbolic", 0)
+        numlock.set_from_icon_name("numlock-on-symbolic", 0)
     if is_capslock_on():
-        capslock.set_from_icon_name("caps-on-symbolic", 0)
+        capslock.set_from_icon_name("capslock-on-symbolic", 0)
 
 
 def _key_press_event(widget, event):
