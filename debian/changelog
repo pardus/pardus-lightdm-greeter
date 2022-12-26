@@ -1,7 +1,86 @@
 pardus-lightdm-greeter (0.0.1) unstable; urgency=medium
 
-  [ Ali Riza KESKIN ]
-  * Init
+  [ Hugo Carvalho ]
+  * Add Portuguese translation
 
- -- Ali Riza KESKIN <aliriza.keskin@pardus.org.tr>  Mon, 02 Aug 2021 16:58:09 +0300
+  [ aliriza ]
+  * fix broken module crash issue and module search algorithm
+  * debug disabled by default
+  * gitignore
+  * Create main.yml
 
+  [ aliriza ]
+  * package compress format is gzip
+  * monitor resolution find mechanism fallback
+  * architecture is all
+  * async network label update fix
+  * hide lo ip from netwoek widget
+  * config load fail exception
+  * network is not available message added
+  * screen blank timeout added
+  * fix non-integer timeout issue
+  * config reader improvements
+
+  [ Hugo Carvalho ]
+  * Update Portuguese translation
+
+  [ aliriza ]
+  * fix negative scale issue
+  * makefile improvements
+  * config update
+  * config file definition
+  * conffile definition
+  * virtual machine resolution detector method changed
+  * mirror feature fixes
+  * fix background default
+  * fix multi monitor resolution find bug
+  * update icons
+  * numlock indicator
+  * virtualbox disable numlock capslock indicator
+  * minor fix
+  * evdev replaced by xlib
+
+  [ Fatih Altun ]
+  * Disable can focus of some buttons
+
+  [ aliriza ]
+  * disable can focus
+  * css improvements
+  * css improvements
+  * indicator margin fix
+  * login feeling improvements
+  * window show order changed
+  * clock update bug fix
+  * window show fix
+  * allow empty password config
+  * allow empty password fix
+  * allow empty password fix
+  * fix scale
+  * gui-block-timeout config
+  * login button text changed if user logged in
+  * scale fixes and font scale
+  * glade improvements
+  * font scale clock fix
+
+  [ Hugo Carvalho ]
+  * Update Portuguese translation
+
+  [ aliriza ]
+  * window focus issue & pardus-greeter command move to libexec
+  * fix uninstall
+  * fix window focus bug
+  * hide session menu if user is logined
+  * css fix for entry padding
+  * fig session menu hide bug
+  * revealer reset when options button clicked
+  * remove unused postinstall
+  * default wallpaper if background not exists for debian
+  * update icons
+  * icons
+  * quick fix
+  * rename project name
+  * rename praject name
+  * ignore lightdm-xsession fix
+  * revealer icon animation
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 26 Dec 2022 18:26:34 +0300
