@@ -179,6 +179,8 @@ class LoginWindow:
             bg = appdir+"/data/bg-light.png"
             if get("dark-theme", True):
                 bg = appdir+"/data/bg-dark.png"
+            if os.path.exists("/etc/alternatives/desktop-theme/login/background.svg"):
+                bg = "/etc/alternatives/desktop-theme/login/background.svg"
         if os.path.isfile(bg):
             try:
                 py = GdkPixbuf.Pixbuf.new_from_file_at_scale(bg,self.width, self.height,True)
