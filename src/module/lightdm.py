@@ -123,7 +123,7 @@ class lightdm_class:
 
     def get_session_list(self):
         sessions = []
-        hidden_sessions = get("hidden-sessions", "", "lightdm").split(" ")
+        hidden_sessions = ["lightdm-xsession"] + get("hidden-sessions", "", "lightdm").split(" ")
         debug("hidden-sessions: {}".format(hidden_sessions))
         for session in LightDM.get_sessions():
             if session.get_key() not in hidden_sessions:
