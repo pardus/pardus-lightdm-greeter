@@ -192,11 +192,11 @@ class LoginWindow:
                 return
 
     def load_css(self):
-        css = open("/usr/share/pardus/pardus-greeter/data/main.css", "r").read()
+        css = open("/usr/share/pardus/pardus-lightdm-greeter/data/main.css", "r").read()
         if get("dark-theme", True):
-            css += open("/usr/share/pardus/pardus-greeter/data/colors-dark.css").read()
+            css += open("/usr/share/pardus/pardus-lightdm-greeter/data/colors-dark.css").read()
         else:
-            css += open("/usr/share/pardus/pardus-greeter/data/colors.css").read()
+            css += open("/usr/share/pardus/pardus-lightdm-greeter/data/colors.css").read()
         cssprovider.load_from_data(bytes(css, "UTF-8"))
 
     def set_logo(self,logo):

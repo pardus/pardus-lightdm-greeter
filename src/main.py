@@ -5,7 +5,7 @@ import time
 import subprocess
 from util import *
 ctime = time.time()
-appdir = "/usr/share/pardus/pardus-greeter/"
+appdir = "/usr/share/pardus/pardus-lightdm-greeter/"
 os.chdir(appdir)
 os.umask(0o077)
 try:
@@ -13,7 +13,7 @@ try:
     from locale import gettext as _
 
     # Translation Constants:
-    APPNAME = "pardus-greeter"
+    APPNAME = "pardus-lightdm-greeter"
     TRANSLATIONS_PATH = "/usr/share/locale"
     locale.bindtextdomain(APPNAME, TRANSLATIONS_PATH)
     locale.textdomain(APPNAME)

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Pardus Greeter
 Comment=This runs the Pardus greeter, it should only be run from LightDM
-Exec=/usr/libexec/pardus-greeter
+Exec=/usr/libexec/pardus-lightdm-greeter
 Type=Application
 X-Ubuntu-Gettext-Domain=lightdm
