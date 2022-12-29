@@ -24,7 +24,7 @@ def _update_resolution_event(flag=None):
 
 
 def module_init():
-    screen = loginwindow.window.get_screen()
+    screen = loginwindow.o("ui_window_main").get_screen()
     _update_resolution_event()
     screen.connect("monitors_changed", _update_resolution_event)
-    loginwindow.window.set_keep_below(True)
+    loginwindow.o("ui_window_main").set_keep_below(True)

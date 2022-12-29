@@ -4,122 +4,194 @@ gi.require_version('LightDM', '1')
 from gi.repository import LightDM
 
 
+############### class definition ###############
 class lightdm_class:
 
-    def __init__(self):
-        self.username = ""
-        self.password = ""
-        self.session = ""
-        self.greeter = LightDM.Greeter()
+    def __init_variables(self):
+        # variables
+        self.__username = None
+        self.__password = None
+        self.__session = None
+        self.__is_reset = False
+        self.__last_prompt = None
+        # password reset variables
+        self.__password_new = None
+        # Handlers
         self.msg_handler = None
+        self.err_handler = None
         self.login_handler = None
         self.reset_page_handler = None
+        # Messages
+        self.__reset_messages = ["Current password:", "New password:", "Retype new password:"]
+        self.__prompt_messages = ["Password:"]
 
-        self._pressed = False
+    def __init__(self):
+        self.greeter = LightDM.Greeter()
+        self.__init_variables()
+        self.__connect_signals()
 
-        self.reset_process = False
-        self.cur_password = ""
-        self.new_password = ""
-        self.new_password_again = ""
 
-        self.greeter.connect("authentication-complete",
-                             self.__authentication_complete_cb)
-        self.greeter.connect("show_prompt", self.__show_prompt_cb)
-        self.greeter.connect("show-message", self.__show_message_cb)
+    def __connect_signals(self):
+        self.greeter.connect("authentication-complete", self.__authentication_complete)
+        self.greeter.connect("show_prompt", self.__show_prompt)
+        self.greeter.connect("show-message", self.__show_message)
         self.greeter.connect_to_daemon_sync()
-        self.prompt_messages = []
 
-    def set(username=None, password=None, session=None):
-        if username:
-            self.username = username
-        if password:
-            self.password = password
-        if session:
-            self.session = session
+############### set - reset - login ###############
 
-    def login(self, widget=None):
-        self.username = self.username.replace(" ","")
-        if self.username == "root":
-            if not get("allow-root-login", False, "lightdm"):
-                log("lightdm: root login blocked")
-                if self.msg_handler:
-                    self.msg_handler(_("login as root is blocked"))
-                return
-        if self.greeter.get_authentication_user() != self.username:
+    def set(self,username=None, password=None, session=None):
+        """Set greeter variables"""
+        if username != None:
+            self.__username = username.replace(" ","")
+        if password != None:
+            self.__password = password
+        if session != None:
+            self.__session = session
+
+    def set2(self,username=None, password=None):
+        """Set reset password variables"""
+        if username != None:
+            self.__username = username
+        if password != None:
+            self.__password_new = password
+
+    def get_username(self):
+        """get current username"""
+        if self.__username == None:
+            return ""
+        return self.__username
+
+    def get_session(self):
+        """get current session"""
+        if self.__session == None:
+            return ""
+        return self.__session
+
+    def get_is_reset(self):
+        """get reset status"""
+        return self.__is_reset
+
+
+    def get_password(self):
+        """get current session"""
+        if self.__password == None:
+            return ""
+        return self.__password
+
+
+    def reset(self):
+        """Remove variables and cancel authentication"""
+        if self.greeter.get_in_authentication():
             self.greeter.cancel_authentication()
-            debug("Authentication start:"+self.username)
-            self.greeter.authenticate(self.username)
-        if not self._pressed:
-            self._pressed = True
-            self.greeter.authenticate(self.username)
-            log("Login process started for {}".format(self.username))
-        if self.password == "" and not get("allow-empty-password",True):
-            return
-        self.greeter.respond(self.password)
+        self.__username = None
+        self.__password = None
+        self.__session = None
+        self.__is_reset = False
+        self.__password_new = None
 
-    def __show_prompt_cb(self, greeter, text, promptType):
-        debug("Prompt: "+text)
-        message = text.strip()
-        reset_msg=["Current password:", "New password:", "Retype new password:"]
-        normal_msg = ["Password:"]
-        response = ""
-        if self.msg_handler:
-            if message not in normal_msg+reset_msg:
-                self.msg_handler(_(message))
-        if message not in reset_msg:
-            response = self.password
+    def login(self):
+        """Main login button event"""
+        self.write_values("Login:")
+        if self.__username == None:
+            return
+        if self.__password == None:
+            return
+        if self.greeter.get_in_authentication():
+            if not self.__is_reset and self.__last_prompt != None:
+                self.greeter.respond(self.__password)
+                return
+            # First cancel if authenticated user is not target user
+            self.greeter.cancel_authentication()
+        # Start authentication
+        self.greeter.authenticate(self.__username)
+
+
+############### lightdm greeter functions ###############
+
+    def __show_prompt(self, greeter, text, promptType):
+        """Prompt function"""
+        self.__last_prompt = text.strip()
+        debug("Prompt: {} ({})".format(text.strip(),self.__is_reset))
+        self.write_values("Show Prompt:")
+        if self.__is_reset:
+            # create response variable
+            response = None
+            # set response from prompt message
+            if text.strip() == "Current password:":
+                response = self.__password
+            elif text.strip() == "Password:":
+                response = self.__password
+            else:
+                response = self.__password_new
+            # Send response
+            if response != None:
+                self.greeter.respond(response)
         else:
-            if(self.reset_page_handler and not self.reset_process):
-                self.reset_page_handler()
-            if self.reset_process and self.password != "":
-                self.cur_password = self.password
-            if reset_msg[0] == message:
-                response = self.cur_password
-            elif reset_msg[1] == message:
-                response = self.new_password
-            elif reset_msg[2] == message:
-                response = self.new_password_again
-        if response == "" and self._pressed:
-            return
+           # Check password reset required.
+            if text.strip() in self.__reset_messages:
+                # Trigger reset handler
+                if(self.reset_page_handler):
+                    self.reset_page_handler()
+                # Set reset value
+                self.__is_reset = True
+                # then exit function
+                return
+            # Respond with password
+            elif text.strip() in self.__prompt_messages:
+                if self.__password == None:
+                    return
+                self.greeter.respond(self.__password)
+            # Unknown prompts.
+            else:
+                return
 
-        while self.greeter.respond(response):
-            debug("Response sent")
-
-    def __show_message_cb(self, greeter, text, message_type=None, **kwargs):
+    def __show_message(self, greeter, text, message_type=None, **kwargs):
+        """Message function"""
+        # Send message to message handler
         if self.msg_handler:
             self.msg_handler(_(text.strip()))
-        log(text)
 
-    def __authentication_complete_cb(self, greeter):
-        self.login()
-        self._pressed = False
-        debug("Authentication completed")
-        error = ""
+
+    def __authentication_complete(self, greeter):
+        """After auth function"""
+        self.__last_prompt = None
+        # Check authentication successfully
         if self.greeter.get_is_authenticated():
+            # Trigger login handler
             if self.login_handler:
-                self.login_handler()
-            if self.session not in self.get_session_list() and self.session != "":
-                error += _("Invalid sesion : {}").format(self.session) + "\n"
+                    self.login_handler()
+            # Check session is valid
+            if self.__session == None:
+                self.__session = ""
+            if self.__session not in self.get_session_list() + [""]:
+                self.__show_message(greeter, _("Invalid sesion : {}").format(self.__session))
+                self.__session = ""
             try:
-                log("Login success for {}".format(self.username))
-                prestart = get("prestart","")
-                loginwindow.window.hide()
-                if prestart != "":
-                    prestart = prestart.replace("%u",self.username)
-                    prestart = prestart.replace("%s",self.session)
-                    os.system(prestart)
-                if not self.greeter.start_session_sync(self.session):
-                    error += _("Failed to start session: {}").format(
-                        self.session) + "\n"
+                # Start session
+                if not self.greeter.start_session_sync(self.__session):
+                    self.__show_message(greeter,_("Failed to start session: {}").format(self.__session))
             except:
+                # Exit greeter (for reload)
                 sys.exit(0)
         else:
-            error += _("Authentication failed: {}").format(self.username)
-        if error != "":
-            log(error)
-            if self.msg_handler:
-                self.msg_handler(error)
-            self.cancel()
+            # Authentication failed.
+            self.__show_message(greeter,_("Authentication failed: {}").format(self.__username))
+            # Reset variables and cancel authentication
+            if self.err_handler:
+                self.err_handler()
+
+############### Extra functions ###############
+
+
+    def write_values(self,msg):
+        debug(msg)
+        debug("   Username: {}".format(self.__username))
+        debug("   Password: {}".format(self.__password))
+        debug("   Session: {}".format(self.__session))
+        debug("   Is reset: {}".format(self.__is_reset))
+        debug("   New password: {}".format(self.__password_new))
+        debug("   In User: {}".format(self.greeter.get_authentication_user()))
+        debug("   In Auth: {}".format(self.greeter.get_in_authentication()))
 
     def get_session_list(self):
         sessions = []
@@ -143,29 +215,19 @@ class lightdm_class:
         if LightDM.get_can_restart():
             LightDM.restart()
         else:
-            error = "Failed to reboot system"
-            log(error)
             if self.msg_handler:
-                self.msg_handler(_(error))
+                self.msg_handler(_("Failed to reboot system"))
 
     def shutdown(self, widget=None):
         if LightDM.get_can_shutdown():
             LightDM.shutdown()
         else:
-            error = "Failed to shutdown system"
-            log(error)
             if self.msg_handler:
-                self.msg_handler(_(error))
+                self.msg_handler(_("Failed to shutdown system"))
 
-    def cancel(self):
-        self.greeter.cancel_authentication()
-        self._pressed = False
-        self.password=""
-        self.login()
-
+############### end of class ###############
 
 lightdm = None
-
 
 def module_init():
     global lightdm

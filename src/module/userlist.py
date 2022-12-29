@@ -51,17 +51,17 @@ class userButton(Gtk.Box):
 
 def user_button_event(widget):
     username = widget.username
-    loginwindow.user_search.set_text("")
-    loginwindow.userlist.popdown()
-    lightdm.cancel()
-    loginwindow.username_entry.set_text(username)
-    lightdm.username = username
+    loginwindow.o("ui_entry_search_user").set_text("")
+    loginwindow.o("ui_popover_userlist").popdown()
+    loginwindow.err_handler()
+    loginwindow.o("ui_entry_username").set_text(username)
+    lightdm.set(username = username)
     lightdm.login()
-    loginwindow.password_entry.grab_focus()
+    loginwindow.o("ui_entry_password").grab_focus()
 
 def show_userlist(entry, icon_pos, event):
     load_userlist()
-    loginwindow.userlist.popup()
+    loginwindow.o("ui_popover_userlist").popup()
 
 
 def _user_search_event(widget):
@@ -89,22 +89,22 @@ def load_userlist():
         if user in hidden_users:
             continue
         users[user] = userButton(user)
-        loginwindow.userbox.add(users[user])
-    loginwindow.userbox.show_all()
+        loginwindow.o("ui_box_userlist").add(users[user])
+    loginwindow.o("ui_box_userlist").show_all()
     if len(users) < 3:
-        loginwindow.user_search.hide()
+        loginwindow.o("ui_entry_search_user").hide()
     else:
-        loginwindow.user_search.connect("icon-press", _clear_user_search)
-        loginwindow.user_search.connect("changed", _user_search_event)
+        loginwindow.o("ui_entry_search_user").connect("icon-press", _clear_user_search)
+        loginwindow.o("ui_entry_search_user").connect("changed", _user_search_event)
 
 def module_init():
     global users
     if not get("enabled", True, "userlist"):
-        loginwindow.username_entry.set_icon_sensitive(1, False)
-        loginwindow.username_entry.set_icon_from_pixbuf(None)
+        loginwindow.o("ui_entry_username").set_icon_sensitive(1, False)
+        loginwindow.o("ui_entry_username").set_icon_from_pixbuf(None)
         return
 
-    loginwindow.username_entry.connect("icon-press", show_userlist)
+    loginwindow.o("ui_entry_username").connect("icon-press", show_userlist)
     height = int(monitor.get_common_resolution().split("x")[1])
-    loginwindow.userlist.set_size_request(150, height/3)
+    loginwindow.o("ui_popover_userlist").set_size_request(150, height/3)
 

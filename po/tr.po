@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-19 17:41+0300\n"
+"POT-Creation-Date: 2022-12-29 13:43+0000\n"
 "PO-Revision-Date: 2022-10-18 11:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,55 +17,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: src/data/main.ui:144
+#: src/data/main.ui:158
 msgid "Password"
 msgstr "Parola"
 
-#: src/data/main.ui:175
+#: src/data/main.ui:189
 msgid "username"
 msgstr "kullanıcı adı"
 
-#: src/data/main.ui:184
+#: src/data/main.ui:198
 msgid "show"
 msgstr "göster"
 
-#: src/data/main.ui:193 src/data/main.ui:307
+#: src/data/main.ui:207 src/data/main.ui:321
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: src/data/main.ui:201
+#: src/data/main.ui:215
 msgid "edit"
 msgstr "düzenle"
 
-#: src/data/main.ui:231 src/module/gtkwindow.py:94
+#: src/data/main.ui:245 src/module/gtkwindow.py:163
 msgid "Login"
 msgstr "Giriş"
 
-#: src/data/main.ui:327
+#: src/data/main.ui:341
 msgid "New Password"
 msgstr "Yeni Parola"
 
-#: src/data/main.ui:347
+#: src/data/main.ui:361
 msgid "New Password Again"
 msgstr "Yeni Parola Tekrarla"
 
-#: src/data/main.ui:367 src/data/main.ui:491 src/data/main.ui:595
+#: src/data/main.ui:381 src/data/main.ui:523 src/data/main.ui:630
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/data/main.ui:383
+#: src/data/main.ui:397
 msgid "Change Password"
 msgstr "Parola Değiştir"
 
-#: src/data/main.ui:413
+#: src/data/main.ui:426
+msgid "Your password has expired."
+msgstr "Parolanızın geçerlilik süresi doldu."
+
+#: src/data/main.ui:442
 msgid "Hata Mesajı"
 msgstr "Hata Mesajı"
 
-#: src/data/main.ui:454
+#: src/data/main.ui:486
 msgid "<big>RESTART</big>"
 msgstr "<big>YENİDEN BAŞLAT</big>"
 
-#: src/data/main.ui:470
+#: src/data/main.ui:502
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
@@ -73,15 +77,15 @@ msgstr ""
 "Tüm programları sonlandırıp bilgisayarı yeniden \n"
 "başlatmak istediğinizden emin misiniz?"
 
-#: src/data/main.ui:507
+#: src/data/main.ui:539
 msgid "Restart"
 msgstr "Yeniden başlat"
 
-#: src/data/main.ui:558
+#: src/data/main.ui:593
 msgid "<big>POWER OFF</big>"
 msgstr "<big>KAPAT</big>"
 
-#: src/data/main.ui:574
+#: src/data/main.ui:609
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
@@ -89,39 +93,39 @@ msgstr ""
 "Tüm programları sonlandırıp bilgisayarı kapatmak \n"
 "istediğinizden emin misiniz?"
 
-#: src/data/main.ui:611
+#: src/data/main.ui:646
 msgid "Power Off"
 msgstr "Kapat"
 
-#: src/data/main.ui:898
-msgid "TÜBİTAK ULAKBİM | 2022"
+#: src/data/main.ui:938
+msgid "TÜBİTAK ULAKBİM | 2023"
 msgstr ""
 
-#: src/data/main.ui:1017
+#: src/data/main.ui:1064
 msgid "Keyboard Layout"
 msgstr "Klavye Düzeni"
 
-#: src/data/main.ui:1126
+#: src/data/main.ui:1175
 msgid "Session"
 msgstr "Oturum"
 
-#: src/data/main.ui:1223
+#: src/data/main.ui:1274
 msgid "Virtual keyboard"
 msgstr "Sanal Klavye"
 
-#: src/data/main.ui:1292
+#: src/data/main.ui:1344
 msgid "Shutdown"
 msgstr "Kapat"
 
-#: src/data/main.ui:1347
+#: src/data/main.ui:1400
 msgid "Reboot"
 msgstr "Yeniden başlat"
 
-#: src/msgs.py:2
+#: src/msgs.py:2 src/module/lightdm.py:225
 msgid "Failed to shutdown system"
 msgstr "Sistem kapatılamadı"
 
-#: src/msgs.py:3
+#: src/msgs.py:3 src/module/lightdm.py:218
 msgid "Failed to reboot system"
 msgstr "Sistem yeniden başlatılamadı"
 
@@ -157,30 +161,29 @@ msgstr ""
 "WAN IP:\n"
 "- {}"
 
-#: src/module/lightdm.py:46
-msgid "login as root is blocked"
-msgstr "root ile giriş engellendi"
-
-#: src/module/lightdm.py:102
+#: src/module/lightdm.py:167
 msgid "Invalid sesion : {}"
 msgstr "Geçersiz oturum: {}"
 
-#: src/module/lightdm.py:112
+#: src/module/lightdm.py:171
 msgid "Failed to start session: {}"
 msgstr "Oturum başlatılamadı: {}"
 
-#: src/module/lightdm.py:117
+#: src/module/lightdm.py:177
 msgid "Authentication failed: {}"
 msgstr "Doğrulama başarısız: {}"
+
+#: src/module/gtkwindow.py:160
+msgid "Unlock"
+msgstr "Kilit Aç"
 
 #: src/module/sessionlist.py:63 src/module/sessionlist.py:64
 #: src/module/sessionlist.py:65
 msgid "Default"
 msgstr "Varsayılan"
 
-#: src/module/gtkwindow.py:92
-msgid "Unlock"
-msgstr "Kilit Aç"
+#~ msgid "login as root is blocked"
+#~ msgstr "root ile giriş engellendi"
 
 #~ msgid "Num"
 #~ msgstr "Num"

@@ -114,9 +114,9 @@ def set_window_monitor(screen_index=0):
     w = int(res.split("x")[0])
     h = int(res.split("x")[1])
     new_x = get_monitor_offset(screen_index)
-    loginwindow.window.unfullscreen()
-    loginwindow.window.move(int(new_x), 0)
-    loginwindow.window.fullscreen()
+    loginwindow.o("ui_window_main").unfullscreen()
+    loginwindow.o("ui_window_main").move(int(new_x), 0)
+    loginwindow.o("ui_window_main").fullscreen()
     update_window_resolution(w, h)
     monitor.screen_event_lock = False
 

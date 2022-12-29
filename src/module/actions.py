@@ -17,12 +17,12 @@ class action_button(Gtk.Button):
 
 
 def _actions_button_event(widget):
-    loginwindow.builder.get_object("ui_popover_actions").popup()
+    loginwindow.o("ui_popover_actions").popup()
 
 
 def module_init():
     i = 0
-    action_box = loginwindow.builder.get_object("ui_box_actions")
+    action_box = loginwindow.o("ui_box_actions")
 
     while True:
         label = get("label-"+str(i), "", "actions")
@@ -33,7 +33,7 @@ def module_init():
         button = action_button(label, command)
         action_box.add(button)
         action_box.show_all()
-    button = loginwindow.builder.get_object("ui_button_actionsmenu")
+    button = loginwindow.o("ui_button_actionsmenu")
     if i == 0:
         button.hide()
     else:

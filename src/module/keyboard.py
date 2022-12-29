@@ -48,20 +48,20 @@ def set_keyboard(layout, variant):
 
 
 def _keyboard_button_event(widget):
-    revealer = loginwindow.builder.get_object("ui_revealer_keyboard_layout")
+    revealer = loginwindow.o("ui_revealer_keyboard_layout")
     status = revealer.get_reveal_child()
     if status:
-        loginwindow.builder.get_object("ui_icon_keyboard_layout_dd").set_from_icon_name("go-next-symbolic", 0)
+        loginwindow.o("ui_icon_keyboard_layout_dd").set_from_icon_name("go-next-symbolic", 0)
     else:
-        loginwindow.builder.get_object("ui_icon_keyboard_layout_dd").set_from_icon_name("go-down-symbolic", 0)
+        loginwindow.o("ui_icon_keyboard_layout_dd").set_from_icon_name("go-down-symbolic", 0)
     revealer.set_reveal_child(not status)
 
 
 def update_numlock_capslock():
     if not xlib_available:
         return
-    numlock = loginwindow.builder.get_object("ui_icon_numlock")
-    capslock = loginwindow.builder.get_object("ui_icon_capslock")
+    numlock = loginwindow.o("ui_icon_numlock")
+    capslock = loginwindow.o("ui_icon_capslock")
     numlock.set_from_icon_name("numlock-off-symbolic", 0)
     capslock.set_from_icon_name("capslock-off-symbolic", 0)
     if is_numlock_on():
@@ -89,13 +89,13 @@ def load_keyboardlist():
     _keyboardlist_loaded = True
     xkbs = get("keyboard-layouts", "tr::Türkçe tr:f:Türkçe_F us::İngilizce", "keyboard")
     xkb_buttons = {}
-    loginwindow.builder.get_object("ui_button_keyboard_layout").connect(
+    loginwindow.o("ui_button_keyboard_layout").connect(
         "clicked", _keyboard_button_event)
-    loginwindow.builder.get_object("ui_button_virtual_keyboard").connect(
+    loginwindow.o("ui_button_virtual_keyboard").connect(
         "clicked", _screen_keyboard_event)
-    box = loginwindow.builder.get_object("ui_box_keyboard_layout")
+    box = loginwindow.o("ui_box_keyboard_layout")
     if len(xkbs.strip()) == 0:
-        loginwindow.builder.get_object("ui_button_keyboard_layout").hide()
+        loginwindow.o("ui_button_keyboard_layout").hide()
     for xkb in xkbs.split(" "):
         try:
             layout = xkb.split(":")[0]
@@ -130,8 +130,8 @@ def module_init():
     if get("numlock-on",True,"keyboard"):
         os.system("numlockx on")
     if xlib_available and not is_virtualbox():
-        loginwindow.window.connect("key-press-event", _key_press_event)
+        loginwindow.o("ui_window_main").connect("key-press-event", _key_press_event)
         update_numlock_capslock()
     else:
-        loginwindow.builder.get_object("ui_box_numlock_capslock").hide()
+        loginwindow.o("ui_box_numlock_capslock").hide()
     load_keyboardlist()

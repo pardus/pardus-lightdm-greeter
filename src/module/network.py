@@ -3,7 +3,7 @@ import asyncio
 def _network_button_event(widget=None):
     global network_label_text
     network_label_text=_("Loading...")
-    loginwindow.builder.get_object("ui_popover_network").popup()
+    loginwindow.o("ui_popover_network").popup()
     network_control_event()
 
 network_label_text=""
@@ -12,7 +12,7 @@ def update_popover_text():
     global _last_network_label_text
     if _last_network_label_text != network_label_text:
         _last_network_label_text = network_label_text
-        loginwindow.builder.get_object("ui_label_network").set_text(network_label_text)
+        loginwindow.o("ui_label_network").set_text(network_label_text)
     GLib.timeout_add(500,update_popover_text)
 
 @asynchronous
@@ -41,7 +41,7 @@ def network_control_event():
 
 def module_init():
     if not get("show-widget",True,"network"):
-        loginwindow.builder.get_object("ui_button_network").hide()
-    loginwindow.builder.get_object("ui_button_network").connect("clicked",_network_button_event)
+        loginwindow.o("ui_button_network").hide()
+    loginwindow.o("ui_button_network").connect("clicked",_network_button_event)
     update_popover_text()
 

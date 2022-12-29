@@ -338,6 +338,7 @@
                             <property name="valign">center</property>
                             <property name="visibility">False</property>
                             <property name="invisible-char">*</property>
+                            <property name="secondary-icon-name">view-reveal-symbolic</property>
                             <property name="placeholder-text" translatable="yes">New Password</property>
                             <style>
                               <class name="entry"/>
@@ -346,7 +347,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">2</property>
+                            <property name="position">1</property>
                           </packing>
                         </child>
                         <child>
@@ -358,6 +359,7 @@
                             <property name="valign">center</property>
                             <property name="visibility">False</property>
                             <property name="invisible-char">*</property>
+                            <property name="secondary-icon-name">view-reveal-symbolic</property>
                             <property name="placeholder-text" translatable="yes">New Password Again</property>
                             <style>
                               <class name="entry"/>
@@ -366,7 +368,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">3</property>
+                            <property name="position">2</property>
                           </packing>
                         </child>
                         <child>
@@ -412,6 +414,21 @@
                                 <property name="position">1</property>
                               </packing>
                             </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Your password has expired.</property>
+                            <style>
+                              <class name="text"/>
+                            </style>
                           </object>
                           <packing>
                             <property name="expand">False</property>

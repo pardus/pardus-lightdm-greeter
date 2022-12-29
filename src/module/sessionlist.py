@@ -46,13 +46,13 @@ def load_sessionlist():
     if _sessionlist_loaded:
         return
     _sessionlist_loaded = True
-    box = loginwindow.builder.get_object("ui_box_session")
+    box = loginwindow.o("ui_box_session")
     sessions = ["default"] + lightdm.get_session_list()
     for session in sessions:
         session_buttons[session] = sessionButton(session)
 
         def button_event(widget):
-            lightdm.session = widget.session
+            lightdm.set(session = widget.session)
             for b in session_buttons:
                 session_buttons[b].set_default(False)
             widget.set_default(True)
@@ -66,17 +66,18 @@ def load_sessionlist():
     last_session = readfile("last-session")
     if last_session == "" or last_session not in sessions:
         last_session = sessions[0]
+    lightdm.set(session = last_session)
     session_buttons[last_session].set_default(True)
 
 
 def _session_button_event(widget):
-    revealer = loginwindow.builder.get_object("ui_revealer_default_session")
+    revealer = loginwindow.o("ui_revealer_default_session")
     status = revealer.get_reveal_child()
     revealer.set_reveal_child(not status)
     if status:
-        loginwindow.builder.get_object("ui_icon_default_session_dd").set_from_icon_name("go-next-symbolic", 0)
+        loginwindow.o("ui_icon_default_session_dd").set_from_icon_name("go-next-symbolic", 0)
     else:
-        loginwindow.builder.get_object("ui_icon_default_session_dd").set_from_icon_name("go-down-symbolic", 0)
+        loginwindow.o("ui_icon_default_session_dd").set_from_icon_name("go-down-symbolic", 0)
     load_sessionlist()
 
 
@@ -85,6 +86,5 @@ session_buttons = {}
 
 def module_init():
     global session_buttons
-    loginwindow.builder.get_object("ui_button_default_session").connect(
-        "clicked", _session_button_event)
+    loginwindow.o("ui_button_default_session").connect("clicked", _session_button_event)
     
