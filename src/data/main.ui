@@ -247,6 +247,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="receives-default">True</property>
+                                <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="margin-start">20</property>
                                 <property name="margin-end">20</property>
@@ -713,6 +714,8 @@ and power off the computer ?</property>
                   <object class="GtkBox" id="ui_box_bottom_left">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
                     <child>
                       <object class="GtkBox" id="ui_box_numlock_capslock">
                         <property name="visible">True</property>
@@ -768,7 +771,24 @@ and power off the computer ?</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">3</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="ui_box_actions">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
                       </packing>
                     </child>
                   </object>
@@ -783,6 +803,7 @@ and power off the computer ?</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="valign">center</property>
                     <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkButton" id="ui_button_network">
@@ -853,40 +874,6 @@ and power off the computer ?</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="ui_button_actionsmenu">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="receives-default">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="relief">none</property>
-                        <property name="image-position">top</property>
-                        <property name="always-show-image">True</property>
-                        <child>
-                          <object class="GtkImage" id="ui_icon_actionsmenu">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="pixel-size">36</property>
-                            <property name="icon-name">application-x-executable-symbolic</property>
-                            <property name="icon_size">5</property>
-                            <style>
-                              <class name="text"/>
-                            </style>
-                          </object>
-                        </child>
-                        <style>
-                          <class name="icon"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkButton" id="ui_button_options">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
@@ -937,6 +924,8 @@ and power off the computer ?</property>
                       <object class="GtkLabel" id="ui_label_bottom">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">TÜBİTAK ULAKBİM | 2023</property>
                         <style>
                           <class name="text"/>
@@ -974,23 +963,6 @@ and power off the computer ?</property>
     </child>
     <style>
       <class name="login_window"/>
-    </style>
-  </object>
-  <object class="GtkPopover" id="ui_popover_actions">
-    <property name="can-focus">False</property>
-    <property name="relative-to">ui_button_actionsmenu</property>
-    <child>
-      <object class="GtkBox" id="ui_box_actions">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <placeholder/>
-        </child>
-      </object>
-    </child>
-    <style>
-      <class name="popover"/>
     </style>
   </object>
   <object class="GtkPopover" id="ui_popover_network">
