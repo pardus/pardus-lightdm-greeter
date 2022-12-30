@@ -24,6 +24,7 @@ install: uninstall installmo
 	mkdir -p $(DESTDIR)/etc/pardus
 	mkdir -p $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/
 	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/status/
+	mkdir -p $(DESTDIR)/etc/pardus/greeter.conf.d/
 	cp -prfv ./src/* $(DESTDIR)/usr/share/pardus/pardus-lightdm-greeter/
 	chmod +x $(DESTDIR)/usr/share/pardus/pardus-lightdm-greeter/*
 	ln -s ../../pardus/pardus-lightdm-greeter/data/lightdm.conf $(DESTDIR)/usr/share/lightdm/lightdm.conf.d/99-pardus.conf || true
