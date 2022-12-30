@@ -38,5 +38,6 @@ def module_init():
             break
         i += 1
         button = action_button(label, icon, command)
+        button.set_can_focus(False)
         action_box.add(button)
         action_box.show_all()
