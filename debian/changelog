@@ -1,3 +1,19 @@
+pardus-lightdm-greeter (0.0.2) unstable; urgency=medium
+
+  [ aliriza ]
+  * update & improvements
+  * action button improvements
+  * css add action buttons
+
+  [ Fatih Altun ]
+  * Update action buttons orientation
+
+  [ aliriza ]
+  * greeter.conf.d directory
+  * buttons set_can_focus(False)
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 30 Dec 2022 14:45:03 +0300
+
 pardus-lightdm-greeter (0.0.1) unstable; urgency=medium
 
   [ Hugo Carvalho ]
