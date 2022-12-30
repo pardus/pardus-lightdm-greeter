@@ -9,13 +9,13 @@ class action_button(Gtk.Button):
         self.label.set_text("  "+label)
         self.label.get_style_context().add_class("text")
         self.image.set_from_icon_name(icon,Gtk.IconSize.DND)
-        self.set_relief(Gtk.ReliefStyle.NONE)
+        #self.set_relief(Gtk.ReliefStyle.NONE)
         box = Gtk.Box()
         box.pack_start(self.image, False, False, 0)
         box.pack_start(self.label, False, False, 0)
         box.show_all()
         self.add(box)
-        self.get_style_context().add_class("botton")
+        self.get_style_context().add_class("button")
         self.show_all()
 
     def run(self, widget):
