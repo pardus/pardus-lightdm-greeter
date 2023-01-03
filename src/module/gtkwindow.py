@@ -151,7 +151,7 @@ class LoginWindow:
 
     def __event_username_entry_clicked(self, widget=None):
         if not get("allow-root-login", False, "lightdm"):
-            is_root = (self.o("ui_entry_username").get_text() == "root")
+            is_root = (self.o("ui_entry_username").get_text().replace(" ","") == "root")
             if is_root:
                 return
         self.update_username_button(lightdm.get_username())
@@ -159,7 +159,7 @@ class LoginWindow:
     def __event_username_entry_changed(self, widget=None):
         # Get lightdm user object
         if not get("allow-root-login", False, "lightdm"):
-            is_root = (widget.get_text() == "root")
+            is_root = (widget.get_text().replace(" ","") == "root")
             self.o("ui_button_login").set_sensitive(not is_root)
             self.o("ui_entry_password").set_sensitive(not is_root)
             if is_root:
@@ -205,7 +205,7 @@ class LoginWindow:
             if self.o("ui_entry_password").get_text() == "" :
                 return
         if not get("allow-root-login", False, "lightdm"):
-            is_root = (self.o("ui_entry_username").get_text() == "root")
+            is_root = (self.o("ui_entry_username").get_text().replace(" ","") == "root")
             if is_root:
                 return
         lightdm.set(
