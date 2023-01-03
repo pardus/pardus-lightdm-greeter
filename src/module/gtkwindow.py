@@ -146,6 +146,7 @@ class LoginWindow:
             if not lightdm.get_is_reset():
                 # password entry focus
                 self.o("ui_entry_password").grab_focus()
+        self.update_user_background()
 
 
     def __event_username_entry_clicked(self, widget=None):
@@ -159,7 +160,6 @@ class LoginWindow:
             lightdm.set(username = widget.get_text())
             self.err_handler()
         # Update user background
-        self.update_user_background()
         self.update_username_button(widget.get_text())
 
         # Update login button label
@@ -242,7 +242,8 @@ class LoginWindow:
         if get("background", "user", "gtkwindow") != "user":
             return
         # get lightdm username object
-        u = LightDM.UserList.get_instance().get_user_by_name(lightdm.get_username())
+        username = self.o("ui_entry_username").get_text()
+        u = LightDM.UserList.get_instance().get_user_by_name(username)
         if u != None:
             background = u.get_background()
             self.set_background(background)
