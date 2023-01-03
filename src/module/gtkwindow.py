@@ -133,7 +133,7 @@ class LoginWindow:
         u = LightDM.UserList.get_instance().get_user_by_name(username)
         # if object is none go edit mode
         if u == None:
-            self.__event_username_button()
+            return
         else:
             self.o("ui_stack_username").set_visible_child_name("show")
             # get real name
