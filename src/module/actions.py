@@ -42,14 +42,12 @@ def module_init():
         action_box.add(button)
     # new method
     i = 0
-    while True:
-        label = get("label", "", "button-"+str(i))
-        icon = get("icon", "", "button-"+str(i))
-        command = get("command", "", "button-"+str(i))
-        if label == "" or command == "":
-            break
-        i += 1
-        button = action_button(label, icon, command)
-        button.set_can_focus(False)
-        action_box.add(button)
+    for section in config.sections():
+        if section.startswith("button-"):
+            label = get("label", "", "button-"+str(i))
+            icon = get("icon", "", "button-"+str(i))
+            command = get("command", "", "button-"+str(i))
+            button = action_button(label, icon, command)
+            button.set_can_focus(False)
+            action_box.add(button)
     action_box.show_all()
