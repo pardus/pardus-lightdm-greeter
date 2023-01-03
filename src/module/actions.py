@@ -19,7 +19,7 @@ class action_button(Gtk.Button):
         self.show_all()
 
     def run(self, widget):
-        os.system(self.command+" &")
+        os.system("dbus-run-session {} &".format(self.command))
 
 
 def _actions_button_event(widget):
