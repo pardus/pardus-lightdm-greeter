@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-29 13:43+0000\n"
+"POT-Creation-Date: 2023-01-03 16:03+0300\n"
 "PO-Revision-Date: 2022-10-18 11:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr "kullanıcı adı"
 msgid "show"
 msgstr "göster"
 
-#: src/data/main.ui:207 src/data/main.ui:321
+#: src/data/main.ui:207 src/data/main.ui:322
 msgid "Username"
 msgstr "Kullanıcı adı"
 
@@ -37,39 +37,39 @@ msgstr "Kullanıcı adı"
 msgid "edit"
 msgstr "düzenle"
 
-#: src/data/main.ui:245 src/module/gtkwindow.py:163
+#: src/data/main.ui:245 src/module/gtkwindow.py:170
 msgid "Login"
 msgstr "Giriş"
 
-#: src/data/main.ui:341
+#: src/data/main.ui:343
 msgid "New Password"
 msgstr "Yeni Parola"
 
-#: src/data/main.ui:361
+#: src/data/main.ui:364
 msgid "New Password Again"
 msgstr "Yeni Parola Tekrarla"
 
-#: src/data/main.ui:381 src/data/main.ui:523 src/data/main.ui:630
+#: src/data/main.ui:384 src/data/main.ui:526 src/data/main.ui:633
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/data/main.ui:397
+#: src/data/main.ui:400
 msgid "Change Password"
 msgstr "Parola Değiştir"
 
-#: src/data/main.ui:426
+#: src/data/main.ui:429
 msgid "Your password has expired."
 msgstr "Parolanızın geçerlilik süresi doldu."
 
-#: src/data/main.ui:442
+#: src/data/main.ui:445
 msgid "Hata Mesajı"
 msgstr "Hata Mesajı"
 
-#: src/data/main.ui:486
+#: src/data/main.ui:489
 msgid "<big>RESTART</big>"
 msgstr "<big>YENİDEN BAŞLAT</big>"
 
-#: src/data/main.ui:502
+#: src/data/main.ui:505
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
@@ -77,15 +77,15 @@ msgstr ""
 "Tüm programları sonlandırıp bilgisayarı yeniden \n"
 "başlatmak istediğinizden emin misiniz?"
 
-#: src/data/main.ui:539
+#: src/data/main.ui:542
 msgid "Restart"
 msgstr "Yeniden başlat"
 
-#: src/data/main.ui:593
+#: src/data/main.ui:596
 msgid "<big>POWER OFF</big>"
 msgstr "<big>KAPAT</big>"
 
-#: src/data/main.ui:609
+#: src/data/main.ui:612
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
@@ -93,39 +93,35 @@ msgstr ""
 "Tüm programları sonlandırıp bilgisayarı kapatmak \n"
 "istediğinizden emin misiniz?"
 
-#: src/data/main.ui:646
+#: src/data/main.ui:649
 msgid "Power Off"
 msgstr "Kapat"
 
-#: src/data/main.ui:938
-msgid "TÜBİTAK ULAKBİM | 2023"
-msgstr ""
-
-#: src/data/main.ui:1064
+#: src/data/main.ui:1039
 msgid "Keyboard Layout"
 msgstr "Klavye Düzeni"
 
-#: src/data/main.ui:1175
+#: src/data/main.ui:1150
 msgid "Session"
 msgstr "Oturum"
 
-#: src/data/main.ui:1274
+#: src/data/main.ui:1249
 msgid "Virtual keyboard"
 msgstr "Sanal Klavye"
 
-#: src/data/main.ui:1344
+#: src/data/main.ui:1319
 msgid "Shutdown"
 msgstr "Kapat"
 
-#: src/data/main.ui:1400
+#: src/data/main.ui:1375
 msgid "Reboot"
 msgstr "Yeniden başlat"
 
-#: src/msgs.py:2 src/module/lightdm.py:225
+#: src/msgs.py:2 src/module/lightdm.py:228
 msgid "Failed to shutdown system"
 msgstr "Sistem kapatılamadı"
 
-#: src/msgs.py:3 src/module/lightdm.py:218
+#: src/msgs.py:3 src/module/lightdm.py:221
 msgid "Failed to reboot system"
 msgstr "Sistem yeniden başlatılamadı"
 
@@ -161,26 +157,26 @@ msgstr ""
 "WAN IP:\n"
 "- {}"
 
-#: src/module/lightdm.py:167
+#: src/module/lightdm.py:169
 msgid "Invalid sesion : {}"
 msgstr "Geçersiz oturum: {}"
 
-#: src/module/lightdm.py:171
+#: src/module/lightdm.py:174
 msgid "Failed to start session: {}"
 msgstr "Oturum başlatılamadı: {}"
 
-#: src/module/lightdm.py:177
+#: src/module/lightdm.py:180
 msgid "Authentication failed: {}"
 msgstr "Doğrulama başarısız: {}"
-
-#: src/module/gtkwindow.py:160
-msgid "Unlock"
-msgstr "Kilit Aç"
 
 #: src/module/sessionlist.py:63 src/module/sessionlist.py:64
 #: src/module/sessionlist.py:65
 msgid "Default"
 msgstr "Varsayılan"
+
+#: src/module/gtkwindow.py:167
+msgid "Unlock"
+msgstr "Kilit Aç"
 
 #~ msgid "login as root is blocked"
 #~ msgstr "root ile giriş engellendi"

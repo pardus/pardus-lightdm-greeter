@@ -94,6 +94,8 @@ class lightdm_class:
         self.write_values("Login:")
         if self.__username == None:
             return
+        if self.__username == "root" and get("allow-root-login", False, "lightdm"):
+            return
         if self.__password == None:
             return
         if self.greeter.get_in_authentication():

@@ -27,9 +27,9 @@ def _actions_button_event(widget):
 
 
 def module_init():
-    i = 0
     action_box = loginwindow.o("ui_box_actions")
-
+    # Deprecated method
+    i = 0
     while True:
         label = get("label-"+str(i), "", "actions")
         icon = get("icon-"+str(i), "", "actions")
@@ -40,4 +40,16 @@ def module_init():
         button = action_button(label, icon, command)
         button.set_can_focus(False)
         action_box.add(button)
-        action_box.show_all()
+    # new method
+    i = 0
+    while True:
+        label = get("label", "", "button-"+str(i))
+        icon = get("icon", "", "button-"+str(i))
+        command = get("command", "", "button-"+str(i))
+        if label == "" or command == "":
+            break
+        i += 1
+        button = action_button(label, icon, command)
+        button.set_can_focus(False)
+        action_box.add(button)
+    action_box.show_all()

@@ -927,7 +927,7 @@ and power off the computer ?</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">TÜBİTAK ULAKBİM | 2023</property>
+                        <property name="label" translatable="no">TÜBİTAK ULAKBİM | 2023</property>
                         <style>
                           <class name="text"/>
                         </style>
