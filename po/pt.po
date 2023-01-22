@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-03 16:03+0300\n"
-"PO-Revision-Date: 2022-12-20 20:43+0000\n"
+"PO-Revision-Date: 2023-01-22 22:19+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -60,7 +60,7 @@ msgstr "Alterar palavra-passe"
 
 #: src/data/main.ui:429
 msgid "Your password has expired."
-msgstr ""
+msgstr "A sua palavra-passe expirou."
 
 #: src/data/main.ui:445
 msgid "Hata Mesajı"
@@ -128,13 +128,11 @@ msgstr "Falha ao reiniciar o sistema"
 
 #: src/msgs.py:4
 msgid "Place your right index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
 
 #: src/module/network.py:5
 msgid "Loading..."
