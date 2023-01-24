@@ -87,15 +87,37 @@ def load_keyboardlist():
     if _keyboardlist_loaded:
         return
     _keyboardlist_loaded = True
-    xkbs = get("keyboard-layouts", "tr::Türkçe tr:f:Türkçe_F us::İngilizce", "keyboard")
-    xkb_buttons = {}
+    keyboard_default = "tr::Türkçe tr:f:Türkçe_F us::İngilizce"
+    xkbs = get("keyboard-layouts", keyboard_default, "keyboard")
     loginwindow.o("ui_button_keyboard_layout").connect(
         "clicked", _keyboard_button_event)
     loginwindow.o("ui_button_virtual_keyboard").connect(
         "clicked", _screen_keyboard_event)
-    box = loginwindow.o("ui_box_keyboard_layout")
     if len(xkbs.strip()) == 0:
         loginwindow.o("ui_button_keyboard_layout").hide()
+    query = subprocess.getoutput("setxkbmap -query")
+    layout = "tr"
+    variant = ""
+    for line in query.split("\n"):
+        if "layout" in line:
+            layout = line[len(line.split(":")[0])+1:].strip()
+        if "variant" in line:
+            variant = line[len(line.split(":")[0])+1:].strip()
+
+    if xkbs != keyboard_default:
+        xkb_buttons = _get_xkbs_buttons(xkbs)
+    elif layout == "tr":
+        xkb_buttons = _get_xkbs_buttons(keyboard_default)
+    else:
+        xkb_buttons = _get_xkbs_buttons("{}:{}:{}".format(layout,variant,_("Default")))
+
+    debug(layout+":"+variant)
+    if (layout+":"+variant) in xkb_buttons:
+        xkb_buttons[layout+":"+variant].set_default(True)
+
+def _get_xkbs_buttons(xkbs):
+    xkb_buttons = {}
+    box = loginwindow.o("ui_box_keyboard_layout")
     for xkb in xkbs.split(" "):
         try:
             layout = xkb.split(":")[0]
@@ -113,17 +135,7 @@ def load_keyboardlist():
             xkb_buttons[layout+":"+variant].label.set_text(label.replace("_"," "))
         box.add(xkb_buttons[layout+":"+variant])
         xkb_buttons[layout+":"+variant].connect("clicked", button_event)
-    try:
-        layout = subprocess.getoutput(
-            "setxkbmap -query | grep layout").split()[-1]
-        variant = subprocess.getoutput(
-            "setxkbmap -query | grep variant").split()[-1]
-    except:
-        layout = "tr"
-        variant = ""
-    debug(layout+":"+variant)
-    if (layout+":"+variant) in xkb_buttons:
-        xkb_buttons[layout+":"+variant].set_default(True)
+    return xkb_buttons
 
 
 def module_init():

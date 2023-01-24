@@ -171,7 +171,6 @@ class LoginWindow:
             self.err_handler()
         # Update user background
         self.update_username_button(widget.get_text())
-
         # Update login button label
         if u != None and u.get_logged_in():
             self.o("ui_button_login").set_label(_("Unlock"))

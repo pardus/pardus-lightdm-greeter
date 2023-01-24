@@ -85,6 +85,7 @@ def load_userlist():
     _userlist_loaded = True
     hidden_users = get("hidden-users", "root", "userlist").split(" ") + readfile("hidden-users").split("\n")
     for user in lightdm.get_user_list():
+        print(user.get_layouts(), file=sys.stderr)
         user = user.get_name()
         if user in hidden_users:
             continue
