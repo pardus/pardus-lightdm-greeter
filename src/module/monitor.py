@@ -53,6 +53,9 @@ class monitor_class:
         self.screen_event_lock = False
 
     def init_monitor(self):
+        monitors = self.get_monitors()
+        if len(monitors) < 2:
+            return
         wtot = 0
         self.screen_event_lock = True
         common_resolution = self.get_common_resolution()
