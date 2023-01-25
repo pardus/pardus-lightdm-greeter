@@ -38,11 +38,10 @@ class monitor_class:
     def mirror(self):
         if self.screen_event_lock:
             return
-        self.screen_event_lock = True
         monitors = self.get_xrandr_monitor()
         if len(monitors) < 2:
-            self.screen_event_lock = False
             return
+        self.screen_event_lock = True
 
         common_resolution = self.get_common_resolution()
         for monitor in monitors:
@@ -53,6 +52,8 @@ class monitor_class:
         self.screen_event_lock = False
 
     def init_monitor(self):
+        if self.screen_event_lock:
+            return
         monitors = self.get_monitors()
         if len(monitors) < 2:
             return
