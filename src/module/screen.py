@@ -7,15 +7,12 @@ def _update_resolution_event(flag=None):
     debug("Screen configuration changed")
     if get("mirror",True,"screen") and not is_virtual_machine():
         monitor.mirror()
-        resolution = monitor.get_common_resolution()
     else:
         i = int(get("default-monitor",0,"screen"))
         monitor.init_monitor()
         set_window_monitor(i)
-        display = Gdk.Display.get_default()
-        geom = display.get_monitor(i).get_geometry()
-        resolution = "{}x{}".format(geom.width, geom.height)
     try:
+        resolution = monitor.get_common_resolution()
         w = int(resolution.split("x")[0])
         h = int(resolution.split("x")[1])
         update_window_resolution(w, h)

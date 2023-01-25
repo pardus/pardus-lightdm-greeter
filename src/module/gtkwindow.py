@@ -302,6 +302,7 @@ class LoginWindow:
     def sync_resolution(self):
         self.o("ui_window_main").resize(self.width, self.height)
         self.o("ui_window_main").set_size_request(self.width, self.height)
+        self.o("ui_window_main").fullscreen()
         self.background_pixbuf = None
         if "user" == get("background", "user", "gtkwindow"):
             self.update_user_background()
