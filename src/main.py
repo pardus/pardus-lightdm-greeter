@@ -48,7 +48,7 @@ settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
 settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(10*(scale%1 + 1))))
 settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
 settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
-settings.set_property("gtk-xft-dpi", 1024*96*scale)
+settings.set_property("gtk-xft-dpi", 1024*find_best_dpi()*scale)
 settings.set_property("gtk-xft-antialias", True)
 
 loaded_modules = []
