@@ -28,9 +28,11 @@ os.environ["SESSION_MANAGER"]="lightdm"
 os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
 os.system("xhost +local:")
 os.system("xset s {0} {0}".format(get("blank-timeout",300)))
+dpi = 96
 try:
-    scale=float(get("scale","1"))
+    scale=float(get("scale","0"))
     if scale < 1 :
+        dpi = find_best_dpi()
         scale = 1
     os.environ["GDK_SCALE"]=str(scale)
     os.environ["GDK_DPI_SCALE"]=str(1/scale)
@@ -48,7 +50,7 @@ settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
 settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(10*(scale%1 + 1))))
 settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
 settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
-settings.set_property("gtk-xft-dpi", 1024*find_best_dpi()*scale)
+settings.set_property("gtk-xft-dpi", 1024*dpi*scale)
 settings.set_property("gtk-xft-antialias", True)
 
 loaded_modules = []
