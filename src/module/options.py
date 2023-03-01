@@ -21,6 +21,14 @@ def _restart_event(widget):
     loginwindow.o("ui_stack_main").set_visible_child_name("page_restart")
 
 
+def _sleep_event(widget):
+    loginwindow.o("ui_stack_main").set_visible_child_name("page_sleep")
+
+
+def sleep_action(widget):
+    _cancel_event(widget)
+    GLib.timeout_add(500,lightdm.sleep)
+
 def _cancel_event(widget):
     loginwindow.err_handler()
     loginwindow.msg_handler("")
@@ -31,10 +39,13 @@ def _cancel_event(widget):
 def module_init():
     loginwindow.o("ui_button_options").connect("clicked", _options_event)
     loginwindow.o("ui_button_powermenu").connect("clicked", _powermenu_event)
+    loginwindow.o("ui_button_sleep").connect("clicked", _sleep_event)
     loginwindow.o("ui_button_poweroff").connect("clicked", _poweroff_event)
     loginwindow.o("ui_button_restart").connect("clicked", _restart_event)
-    loginwindow.o("ui_button_stack_restart_cancel").connect("clicked", _cancel_event)
     loginwindow.o("ui_button_reset_cancel").connect("clicked", _cancel_event)
     loginwindow.o("ui_button_stack_poweroff_cancel").connect("clicked", _cancel_event)
+    loginwindow.o("ui_button_stack_restart_cancel").connect("clicked", _cancel_event)
+    loginwindow.o("ui_button_stack_sleep_cancel").connect("clicked", _cancel_event)
     loginwindow.o("ui_button_stack_restart").connect("clicked",lightdm.reboot)
+    loginwindow.o("ui_button_stack_sleep").connect("clicked",sleep_action)
     loginwindow.o("ui_button_stack_poweroff").connect("clicked",lightdm.shutdown)

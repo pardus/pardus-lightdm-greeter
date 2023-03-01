@@ -220,6 +220,14 @@ class lightdm_class:
             if self.msg_handler:
                 self.msg_handler(_("Failed to reboot system"))
 
+    def sleep(self, widget=None):
+        if LightDM.get_can_suspend():
+            LightDM.suspend()
+        else:
+            if self.msg_handler:
+                self.msg_handler(_("Failed to sleep system"))
+
+
     def shutdown(self, widget=None):
         if LightDM.get_can_shutdown():
             LightDM.shutdown()
