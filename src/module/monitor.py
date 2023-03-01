@@ -16,9 +16,9 @@ class monitor_class:
 
     def get_resolutions(self, monitor):
        if os.path.isdir("/sys/class/drm"):
-           self.get_drm_resolutions(monitor)
+           return self.get_drm_resolutions(monitor)
        else:
-           self.get_xrandr_resolutions(monitor)
+           return self.get_xrandr_resolutions(monitor)
 
 
     #### /sys/class/drm backend ####
