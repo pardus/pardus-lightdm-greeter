@@ -68,6 +68,9 @@ class LoginWindow:
             lightdm.set(username = username)
             lightdm.greeter.authenticate(username)
             self.update_username_button(username)
+        # Disable suspend options if oem stuff detected.
+        if os.path.exists("/sys/firmware/acpi/tables/MSDM"):
+            self.o("ui_button_sleep").hide()
 
 ############### Window event ###############
 
