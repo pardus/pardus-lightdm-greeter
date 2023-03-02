@@ -84,7 +84,7 @@ class monitor_class:
 
     def get_common_resolution(self):
         monitors = self.get_monitors()
-        if len(monitors) < 1:
+        if len(monitors) < 1 or is_virtualbox():
             display = Gdk.Display.get_default()
             geom = display.get_monitor(0).get_geometry()
             return "{}x{}".format(geom.width, geom.height)
