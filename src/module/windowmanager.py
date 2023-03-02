@@ -6,7 +6,6 @@ def which(cmd):
 
 
 def module_init():
-    for wm in ["xfwm4", "metacity", "openbox", "mate-wm", "mutter"]:
-        if which(wm.split(" ")[0]):
-            subprocess.run(["{} 2>/dev/null &".format(wm)], shell=True)
-        break
+    wm = get("window-manager","")
+    if which(wm.split(" ")[0]):
+        subprocess.run(["{} 2>/dev/null &".format(wm)], shell=True)
