@@ -84,7 +84,7 @@ class monitor_class:
 
     def get_common_resolution(self):
         monitors = self.get_monitors()
-        if len(monitors) < 2:
+        if len(monitors) < 1:
             display = Gdk.Display.get_default()
             geom = display.get_monitor(0).get_geometry()
             return "{}x{}".format(geom.width, geom.height)
@@ -101,8 +101,10 @@ class monitor_class:
         if self.screen_event_lock:
             return
         monitors = self.get_xrandr_monitors()
-        if len(monitors) < 2:
+        if len(monitors) < 1:
             return
+        if len(monitors) < 2:
+            self.init_monitor()
         self.screen_event_lock = True
 
         common_resolution = self.get_common_resolution()
@@ -116,12 +118,13 @@ class monitor_class:
     def init_monitor(self):
         if self.screen_event_lock:
             return
-        if len(monitors) < 2:
+        monitors = self.get_xrandr_monitors()
+        if len(monitors) < 1:
             return
         wtot = 0
-        self.screen_event_lock = True
         common_resolution = self.get_common_resolution()
-        for monitor in self.get_xrandr_monitors():
+        self.screen_event_lock = True
+        for monitor in monitors:
             os.system(
                 "xrandr --output {} --mode {}".format(monitor, common_resolution))
             os.system("xrandr --output {} --pos {}x0".format(monitor, wtot))
