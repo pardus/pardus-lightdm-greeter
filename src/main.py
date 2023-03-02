@@ -25,7 +25,7 @@ except:
 
 os.environ["UBUNTU_MENUPROXY"]=""
 os.environ["SESSION_MANAGER"]="lightdm"
-os.environ["GTK_TEST_TOUCHSCREEN"] = "1"
+#os.environ["GTK_TEST_TOUCHSCREEN"] = "1"
 os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
 os.system("xhost +local:")
 os.system("xset s {0} {0}".format(get("blank-timeout",300)))
@@ -35,6 +35,10 @@ try:
     if scale < 1 :
         dpi = find_best_dpi()
         scale = 1
+    if scale > 480: # max %500
+        scale = 480
+    if scale < 48: # min %50
+        scale = 48
     os.environ["GDK_SCALE"]=str(scale)
     os.environ["GDK_DPI_SCALE"]=str(1/scale)
 except:
