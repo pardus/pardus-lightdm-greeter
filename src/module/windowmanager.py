@@ -6,6 +6,6 @@ def which(cmd):
 
 
 def module_init():
-    wm = get("window-manager","")
+    wm = get("window-manager","xfwm4")
     if which(wm.split(" ")[0]):
         subprocess.run(["{} 2>/dev/null &".format(wm)], shell=True)
