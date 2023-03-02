@@ -1554,42 +1554,58 @@ WAN IP: </property>
     <property name="relative-to">ui_stack_username</property>
     <property name="position">right</property>
     <child>
-      <object class="GtkScrolledWindow" id="ui_scrolledwindow_userlist">
-        <property name="width-request">200</property>
-        <property name="height-request">-1</property>
+      <object class="GtkBox">
         <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="window-placement">bottom-right</property>
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
         <child>
-          <object class="GtkViewport" id="ui_viewport_userlist">
+          <object class="GtkEntry" id="ui_entry_search_user">
+            <property name="width-request">200</property>
             <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">True</property>
+            <property name="editable">False</property>
+            <property name="caps-lock-warning">False</property>
+            <property name="secondary-icon-name">edit-clear-symbolic</property>
+            <style>
+              <class name="entry"/>
+            </style>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="ui_scrolledwindow_userlist">
+            <property name="width-request">200</property>
+            <property name="height-request">-1</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="window-placement">bottom-right</property>
             <child>
-              <object class="GtkBox" id="ui_box_userlist">
-                <property name="width-request">200</property>
+              <object class="GtkViewport" id="ui_viewport_userlist">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkEntry" id="ui_entry_search_user">
+                  <object class="GtkBox" id="ui_box_userlist">
                     <property name="width-request">200</property>
                     <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="caps-lock-warning">False</property>
-                    <property name="secondary-icon-name">edit-clear-symbolic</property>
-                    <style>
-                      <class name="entry"/>
-                    </style>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <placeholder/>
+                    </child>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
               </object>
             </child>
           </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
         </child>
       </object>
     </child>
