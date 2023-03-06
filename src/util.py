@@ -36,7 +36,7 @@ except:
 
 
 def find_best_dpi():
-    constant_screen = 42
+    constant_screen = 50.95481424
     display = Gdk.Display.get_default()
     i = 0
     ret = 0

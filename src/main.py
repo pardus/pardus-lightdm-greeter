@@ -34,18 +34,18 @@ try:
     scale=float(get("scale","0"))
     if scale < 1 :
         dpi = find_best_dpi()
-        scale = dpi / 96
+        scale = dpi / 120
     else:
-        dpi = 96 * scale
+        dpi = 120 * scale
     if dpi > 480: # max %500
         dpi = 480
     if dpi < 48: # min %50
         dpi = 48
 except:
     scale = 1
-
-os.environ["GDK_SCALE"]=str(scale)
-os.environ["GDK_DPI_SCALE"]=str(1/scale)
+print(scale, dpi, file=sys.stderr)
+#os.environ["GDK_SCALE"]=str(scale)
+#os.environ["GDK_DPI_SCALE"]=str(1/scale)
 
 os.system(get("init",""))
 
@@ -55,10 +55,10 @@ from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
 settings = Gtk.Settings.get_default()
 settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
-settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(10*(scale%1 + 1))))
+settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), get("font-size","10")))
 settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
 settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
-settings.set_property("gtk-xft-dpi", 1024*dpi*scale)
+settings.set_property("gtk-xft-dpi", 1024*dpi)
 settings.set_property("gtk-xft-antialias", True)
 
 loaded_modules = []

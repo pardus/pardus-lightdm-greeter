@@ -19,6 +19,7 @@ class xkbButton(Gtk.Button):
         self.set_relief(Gtk.ReliefStyle.NONE)
         self.label = Gtk.Label()
         self.image = Gtk.Image()
+        self.image.set_pixel_size(int(12*scale))
         self.label.set_text("  "+layout + variant)
         self.label.set_justify(Gtk.Justification.LEFT)
         box = Gtk.Box()
@@ -30,9 +31,9 @@ class xkbButton(Gtk.Button):
 
     def set_default(self, status=False):
         if status:
-            self.image.set_from_icon_name("emblem-default-symbolic", int(18*scale))
+            self.image.set_from_icon_name("emblem-default-symbolic", 0)
         else:
-            self.image.set_from_icon_name("", int(18*scale))
+            self.image.set_from_icon_name("", 0)
 
 
 def is_capslock_on():
