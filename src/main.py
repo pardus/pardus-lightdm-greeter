@@ -34,9 +34,9 @@ try:
     scale=float(get("scale","1"))
     if scale <= 0 :
         dpi = find_best_dpi()
-        scale = dpi / 120
+        scale = dpi / 96
     else:
-        dpi = 120 * scale
+        dpi = 96 * scale
     if dpi > 480: # max %500
         dpi = 480
     if dpi < 48: # min %50
