@@ -12,12 +12,12 @@ def clock_event():
         last_label_clock = label_clock
         debug("Clock update")
         loginwindow.o("ui_label_time").set_label(
-            "<span font='{}'>{}</span>".format(int(64*(scale%1 + 1)), label_clock))
+            "<span font='64'>{}</span>".format(label_clock))
     if last_label_date != label_date:
         last_label_date = label_date
         debug("Date update")
         loginwindow.o("ui_label_date").set_label(
-            "<span font='{}'>{}</span>".format(int(16*(scale%1 + 1)), label_date))
+            "<span font='16'>{}</span>".format(label_date))
     GLib.timeout_add(1000, clock_event)
 
 
