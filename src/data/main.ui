@@ -470,6 +470,7 @@
                           <object class="GtkImage" id="ui_icon_stack_restart">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="pixel-size">64</property>
                             <property name="icon-name">pardus-greeter-reboot-symbolic</property>
                             <property name="icon_size">6</property>
                             <style>
@@ -577,6 +578,7 @@ and restart the computer ?</property>
                           <object class="GtkImage" id="ui_icon_stack_poweroff">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="pixel-size">64</property>
                             <property name="icon-name">pardus-greeter-shutdown-symbolic</property>
                             <property name="icon_size">6</property>
                             <style>
@@ -684,6 +686,7 @@ and power off the computer ?</property>
                           <object class="GtkImage" id="ui_icon_stack_sleep">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="pixel-size">64</property>
                             <property name="icon-name">pardus-greeter-suspend-symbolic</property>
                             <property name="icon_size">6</property>
                             <style>
@@ -1111,6 +1114,7 @@ WAN IP: </property>
                       <object class="GtkImage" id="ui_icon_keyboard_layout">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="pixel-size">22</property>
                         <property name="icon-name">accessories-character-map-symbolic</property>
                         <style>
                           <class name="text"/>
@@ -1141,7 +1145,7 @@ WAN IP: </property>
                       <object class="GtkImage" id="ui_icon_keyboard_layout_dd">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="pixel-size">0</property>
+                        <property name="pixel-size">18</property>
                         <property name="icon-name">go-next-symbolic</property>
                         <style>
                           <class name="text"/>
@@ -1222,6 +1226,7 @@ WAN IP: </property>
                       <object class="GtkImage" id="ui_icon_default_session">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="pixel-size">22</property>
                         <property name="icon-name">computer-symbolic</property>
                         <style>
                           <class name="text"/>
@@ -1252,7 +1257,7 @@ WAN IP: </property>
                       <object class="GtkImage" id="ui_icon_default_session_dd">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="pixel-size">0</property>
+                        <property name="pixel-size">18</property>
                         <property name="icon-name">go-next-symbolic</property>
                         <style>
                           <class name="text"/>
@@ -1321,6 +1326,7 @@ WAN IP: </property>
                   <object class="GtkImage" id="ui_icon_virtual_keyboard">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="pixel-size">22</property>
                     <property name="icon-name">input-keyboard-symbolic</property>
                     <style>
                       <class name="text"/>
@@ -1391,6 +1397,7 @@ WAN IP: </property>
                   <object class="GtkImage" id="ui_icon_poweroff">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="pixel-size">22</property>
                     <property name="icon-name">pardus-greeter-shutdown-symbolic</property>
                     <style>
                       <class name="text"/>
@@ -1447,6 +1454,7 @@ WAN IP: </property>
                   <object class="GtkImage" id="ui_icon_reboot">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="pixel-size">22</property>
                     <property name="icon-name">pardus-greeter-reboot-symbolic</property>
                     <style>
                       <class name="text"/>
@@ -1503,6 +1511,7 @@ WAN IP: </property>
                   <object class="GtkImage" id="ui_icon_sleep">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="pixel-size">22</property>
                     <property name="icon-name">pardus-greeter-suspend-symbolic</property>
                     <style>
                       <class name="text"/>

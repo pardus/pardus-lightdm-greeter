@@ -22,9 +22,9 @@ class sessionButton(Gtk.Button):
 
     def set_default(self, status=False):
         if status:
-            self.image.set_from_icon_name("emblem-default-symbolic", 0)
+            self.image.set_from_icon_name("emblem-default-symbolic", int(18*scale))
         else:
-            self.image.set_from_icon_name("", 0)
+            self.image.set_from_icon_name("", int(18*scale))
 
     def get_session_name(self):
         session = ""

@@ -23,7 +23,7 @@ class userButton(Gtk.Box):
             delbut.set_relief(Gtk.ReliefStyle.NONE)
             delbut.connect("clicked",self.delete_button_event)
             img = Gtk.Image()
-            img.set_from_icon_name("list-remove-symbolic",Gtk.IconSize.MENU)
+            img.set_from_icon_name("list-remove-symbolic", int(18*scale))
             delbut.set_image(img)
             self.pack_end(delbut,False,False,0)
 

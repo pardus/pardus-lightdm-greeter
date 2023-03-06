@@ -34,15 +34,18 @@ try:
     scale=float(get("scale","0"))
     if scale < 1 :
         dpi = find_best_dpi()
-        scale = 1
+        scale = dpi / 96
+    else:
+        dpi = 96 * scale
     if dpi > 480: # max %500
         dpi = 480
     if dpi < 48: # min %50
         dpi = 48
-    os.environ["GDK_SCALE"]=str(scale)
-    os.environ["GDK_DPI_SCALE"]=str(1/scale)
 except:
     scale = 1
+
+os.environ["GDK_SCALE"]=str(scale)
+os.environ["GDK_DPI_SCALE"]=str(1/scale)
 
 os.system(get("init",""))
 

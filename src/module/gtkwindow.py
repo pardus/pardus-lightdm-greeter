@@ -81,6 +81,7 @@ class LoginWindow:
                      "ui_icon_poweroff", "ui_icon_reboot",
                      "ui_icon_sleep", "ui_icon_stack_restart",
                      "ui_icon_stack_poweroff", "ui_icon_stack_sleep",
+                     "ui_icon_keyboard_layout_dd", "ui_icon_default_session_dd"
                      ]:
             size = self.o(icon).get_pixel_size()
             self.o(icon).set_pixel_size(scale*size)

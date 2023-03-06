@@ -25,7 +25,7 @@ def asynchronous(func):
 
 try:
     cfgs = ["/etc/pardus/greeter.conf"]
-    if os.path.isdir("/etc/pardus/greeter.conf.d/"):
+    if os.path.isdir("/etc/pardus/greeter.conf.d"):
         for cdir in os.listdir("/etc/pardus/greeter.conf.d/"):
             cfgs.append("/etc/pardus/greeter.conf.d/"+cdir)
 
@@ -34,8 +34,9 @@ try:
 except:
     config = []
 
+
 def find_best_dpi():
-    constant_screen = 50.95481424
+    constant_screen = 42
     display = Gdk.Display.get_default()
     i = 0
     ret = 0
