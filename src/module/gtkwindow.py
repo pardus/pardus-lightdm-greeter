@@ -329,7 +329,7 @@ class LoginWindow:
         if fsize < 250:
             fsize = 250
         self.o("ui_entry_password").set_size_request(fsize, -1)
-        self.o("ui_popover_userlist").set_size_request(fsize, self.width/3)
+        self.o("ui_popover_userlist").set_size_request(fsize, self.height/3)
         self.o("ui_popover_options").set_size_request(fsize, -1)
         self.o("ui_popover_powermenu").set_size_request(fsize, -1)
         self.o("ui_popover_network").set_size_request(fsize, -1)
