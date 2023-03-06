@@ -20,9 +20,6 @@ def asynchronous(func):
         return thread
     return wrapper
 
-
-
-
 try:
     cfgs = ["/etc/pardus/greeter.conf"]
     if os.path.isdir("/etc/pardus/greeter.conf.d"):

@@ -25,14 +25,14 @@ except:
 
 os.environ["UBUNTU_MENUPROXY"]=""
 os.environ["SESSION_MANAGER"]="lightdm"
-#os.environ["GTK_TEST_TOUCHSCREEN"] = "1"
+if get("touch-mode",False):
+    os.environ["GTK_TEST_TOUCHSCREEN"] = "1"
 os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
 os.system("xhost +local:")
 os.system("xset s {0} {0}".format(get("blank-timeout",300)))
-dpi = 96
 try:
-    scale=float(get("scale","0"))
-    if scale < 1 :
+    scale=float(get("scale","1"))
+    if scale <= 0 :
         dpi = find_best_dpi()
         scale = dpi / 120
     else:
@@ -43,9 +43,8 @@ try:
         dpi = 48
 except:
     scale = 1
+    dpi = 96
 print(scale, dpi, file=sys.stderr)
-#os.environ["GDK_SCALE"]=str(scale)
-#os.environ["GDK_DPI_SCALE"]=str(1/scale)
 
 os.system(get("init",""))
 
