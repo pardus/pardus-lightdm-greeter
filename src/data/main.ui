@@ -1066,6 +1066,8 @@ and power off the computer ?</property>
       <object class="GtkLabel" id="ui_label_network">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="halign">start</property>
+        <property name="valign">start</property>
         <property name="margin-start">5</property>
         <property name="margin-end">5</property>
         <property name="margin-top">5</property>
