@@ -69,7 +69,6 @@ def update_numlock_capslock():
     if is_capslock_on():
         capslock.set_from_icon_name("capslock-on-symbolic", 0)
 
-
 def _key_press_event(widget, event):
     if event.keyval == Gdk.KEY_Num_Lock or event.keyval == Gdk.KEY_Caps_Lock:
         i = 0

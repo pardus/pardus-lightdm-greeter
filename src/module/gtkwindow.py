@@ -71,6 +71,19 @@ class LoginWindow:
         # Disable suspend options if oem stuff detected.
         if os.path.exists("/sys/firmware/acpi/tables/MSDM"):
             self.o("ui_button_sleep").hide()
+        self._scale_icons()
+
+    def _scale_icons(self):
+        for icon in ["ui_icon_numlock", "ui_icon_capslock",
+                     "ui_icon_network", "ui_icon_powermenu",
+                     "ui_icon_options", "ui_icon_keyboard_layout",
+                     "ui_icon_default_session","ui_icon_virtual_keyboard",
+                     "ui_icon_poweroff", "ui_icon_reboot",
+                     "ui_icon_sleep", "ui_icon_stack_restart",
+                     "ui_icon_stack_poweroff", "ui_icon_stack_sleep",
+                     ]:
+            size = self.o(icon).get_pixel_size()
+            self.o(icon).set_pixel_size(scale*size)
 
 ############### Window event ###############
 
