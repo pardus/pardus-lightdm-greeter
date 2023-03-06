@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-03 16:03+0300\n"
+"POT-Creation-Date: 2023-03-06 18:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "edit"
 msgstr ""
 
-#: src/data/main.ui:245 src/module/gtkwindow.py:170
+#: src/data/main.ui:245 src/module/gtkwindow.py:197
 msgid "Login"
 msgstr ""
 
@@ -49,7 +49,8 @@ msgstr ""
 msgid "New Password Again"
 msgstr ""
 
-#: src/data/main.ui:384 src/data/main.ui:526 src/data/main.ui:633
+#: src/data/main.ui:384 src/data/main.ui:527 src/data/main.ui:635
+#: src/data/main.ui:742
 msgid "Cancel"
 msgstr ""
 
@@ -65,55 +66,71 @@ msgstr ""
 msgid "Hata Mesajı"
 msgstr ""
 
-#: src/data/main.ui:489
+#: src/data/main.ui:490
 msgid "<big>RESTART</big>"
 msgstr ""
 
-#: src/data/main.ui:505
+#: src/data/main.ui:506
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
 msgstr ""
 
-#: src/data/main.ui:542
+#: src/data/main.ui:543
 msgid "Restart"
 msgstr ""
 
-#: src/data/main.ui:596
+#: src/data/main.ui:598
 msgid "<big>POWER OFF</big>"
 msgstr ""
 
-#: src/data/main.ui:612
+#: src/data/main.ui:614
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
 msgstr ""
 
-#: src/data/main.ui:649
+#: src/data/main.ui:651
 msgid "Power Off"
 msgstr ""
 
-#: src/data/main.ui:1039
+#: src/data/main.ui:706
+msgid "<big>SLEEP</big>"
+msgstr ""
+
+#: src/data/main.ui:722
+msgid "Are you sure you want to sleep the computer ?"
+msgstr ""
+
+#: src/data/main.ui:758 src/data/main.ui:1532
+msgid "Sleep"
+msgstr ""
+
+#: src/data/main.ui:782
+msgid "page_sleep"
+msgstr ""
+
+#: src/data/main.ui:1135
 msgid "Keyboard Layout"
 msgstr ""
 
-#: src/data/main.ui:1150
+#: src/data/main.ui:1247
 msgid "Session"
 msgstr ""
 
-#: src/data/main.ui:1249
+#: src/data/main.ui:1347
 msgid "Virtual keyboard"
 msgstr ""
 
-#: src/data/main.ui:1319
+#: src/data/main.ui:1418
 msgid "Shutdown"
 msgstr ""
 
-#: src/data/main.ui:1375
+#: src/data/main.ui:1475
 msgid "Reboot"
 msgstr ""
 
-#: src/msgs.py:2 src/module/lightdm.py:228
+#: src/msgs.py:2 src/module/lightdm.py:236
 msgid "Failed to shutdown system"
 msgstr ""
 
@@ -149,6 +166,15 @@ msgid ""
 "- {}"
 msgstr ""
 
+#: src/module/sessionlist.py:64 src/module/sessionlist.py:65
+#: src/module/sessionlist.py:66 src/module/keyboard.py:112
+msgid "Default"
+msgstr ""
+
+#: src/module/gtkwindow.py:194
+msgid "Unlock"
+msgstr ""
+
 #: src/module/lightdm.py:169
 msgid "Invalid sesion : {}"
 msgstr ""
@@ -161,11 +187,6 @@ msgstr ""
 msgid "Authentication failed: {}"
 msgstr ""
 
-#: src/module/sessionlist.py:63 src/module/sessionlist.py:64
-#: src/module/sessionlist.py:65
-msgid "Default"
-msgstr ""
-
-#: src/module/gtkwindow.py:167
-msgid "Unlock"
+#: src/module/lightdm.py:228
+msgid "Failed to sleep system"
 msgstr ""
