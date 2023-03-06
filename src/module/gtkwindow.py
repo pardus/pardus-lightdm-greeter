@@ -325,15 +325,16 @@ class LoginWindow:
             self.update_user_background()
         else:
             self.set_background(get("background", "user", "gtkwindow"))
-        fsize = int(self.width/6)
-        if fsize < 250:
-            fsize = 250
-        self.o("ui_entry_password").set_size_request(fsize, -1)
-        self.o("ui_popover_userlist").set_size_request(fsize, self.height/3)
-        self.o("ui_popover_options").set_size_request(fsize, -1)
-        self.o("ui_popover_powermenu").set_size_request(fsize, -1)
-        self.o("ui_popover_network").set_size_request(fsize, -1)
-        self.o("ui_stack_username").set_size_request(fsize, -1)
+        if autoscale:
+            fsize = int(self.width/6)
+            if fsize < 250:
+                fsize = 250
+            self.o("ui_entry_password").set_size_request(fsize, -1)
+            self.o("ui_popover_userlist").set_size_request(fsize, self.height/3)
+            self.o("ui_popover_options").set_size_request(fsize, -1)
+            self.o("ui_popover_powermenu").set_size_request(fsize, -1)
+            self.o("ui_popover_network").set_size_request(fsize, -1)
+            self.o("ui_stack_username").set_size_request(fsize, -1)
 
 ############### class end ###############
 

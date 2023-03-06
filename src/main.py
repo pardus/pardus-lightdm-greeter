@@ -30,9 +30,11 @@ if get("touch-mode",False):
 os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
 os.system("xhost +local:")
 os.system("xset s {0} {0}".format(get("blank-timeout",300)))
+autoscale = False
 try:
     scale=float(get("scale","1"))
     if scale <= 0 :
+        autoscale = True
         dpi = find_best_dpi()
         scale = dpi / 96
     else:
@@ -44,7 +46,6 @@ try:
 except:
     scale = 1
     dpi = 96
-print(scale, dpi, file=sys.stderr)
 
 os.system(get("init",""))
 
