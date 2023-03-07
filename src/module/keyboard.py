@@ -20,7 +20,7 @@ class xkbButton(Gtk.Button):
         self.label = Gtk.Label()
         self.image = Gtk.Image()
         self.image.set_pixel_size(int(12*scale))
-        self.label.set_text("  "+layout + variant)
+        self.label.set_label(layout + variant)
         self.label.set_justify(Gtk.Justification.LEFT)
         box = Gtk.Box()
         box.pack_start(self.label, False, False, 0)

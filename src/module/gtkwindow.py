@@ -85,6 +85,15 @@ class LoginWindow:
                      ]:
             size = self.o(icon).get_pixel_size()
             self.o(icon).set_pixel_size(scale*size)
+        fsize = 250 * scale
+        wsize = 24 * scale
+        print(fsize, file=sys.stderr)
+        self.o("ui_entry_password").set_size_request(fsize, wsize)
+        self.o("ui_popover_options").set_size_request(fsize, wsize)
+        self.o("ui_popover_powermenu").set_size_request(fsize, wsize)
+        self.o("ui_button_login").set_size_request(128 * scale, wsize)
+        self.o("ui_popover_network").set_size_request(fsize, wsize)
+        self.o("ui_stack_username").set_size_request(fsize, wsize)
 
 ############### Window event ###############
 
@@ -326,15 +335,6 @@ class LoginWindow:
         else:
             self.set_background(get("background", "user", "gtkwindow"))
         self.o("ui_popover_userlist").set_size_request(fsize, self.height/3)
-        if autoscale:
-            fsize = 250 * scale
-            self.o("ui_entry_password").set_size_request(fsize, -1)
-            self.o("ui_popover_options").set_size_request(fsize, -1)
-            self.o("ui_popover_powermenu").set_size_request(fsize, -1)
-            self.o("ui_button_login").set_size_request(128 * scale, -1)
-            self.o("ui_popover_network").set_size_request(fsize, -1)
-            self.o("ui_stack_username").set_size_request(fsize, -1)
-
 ############### class end ###############
 
 loginwindow = None
