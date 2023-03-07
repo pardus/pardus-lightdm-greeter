@@ -30,11 +30,10 @@ if get("touch-mode",False):
 os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
 os.system("xhost +local:")
 os.system("xset s {0} {0}".format(get("blank-timeout",300)))
-autoscale = False
+autoscale = True
 try:
     scale=float(get("scale","1"))
     if scale <= 0 :
-        autoscale = True
         dpi = find_best_dpi()
         scale = dpi / 96
     else:
@@ -49,13 +48,23 @@ except:
 
 os.system(get("init",""))
 
+if int(scale) == scale:
+    #dpi = 96
+    autoscale = False
+    os.environ["GDK_SCALE"]=str(scale)
+    os.environ["GDK_DPI_SCALE"]=str(1/scale)
+
+
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
 settings = Gtk.Settings.get_default()
 settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
-settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), get("font-size","10")))
+if autoscale:
+    settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), get("font-size","10")))
+else:
+    settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(int(get("font-size","10"))*scale)))
 settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
 settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
 settings.set_property("gtk-xft-dpi", 1024*dpi)
