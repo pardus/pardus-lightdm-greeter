@@ -151,8 +151,8 @@ def set_window_monitor(screen_index=0):
         return
     monitor.screen_event_lock = True
     monitors = monitor.get_monitors()
-    if len(monitors) < screen_index:
-        return
+    if len(monitors) <= screen_index:
+        screen_index = 0
     m = monitors[screen_index]
     res = monitor.get_resolutions(m)[0]
     w = int(res.split("x")[0])
