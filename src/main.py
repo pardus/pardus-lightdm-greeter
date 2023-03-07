@@ -22,6 +22,12 @@ except:
     def _(msg):
         return msg
 
+scale=float(get("scale","0"))
+if scale < 1 :
+    scale = 1
+
+os.environ["GDK_SCALE"]=str(int(scale))
+os.environ["GDK_DPI_SCALE"]=str(1/scale)
 
 os.environ["UBUNTU_MENUPROXY"]=""
 os.environ["SESSION_MANAGER"]="lightdm"
@@ -30,26 +36,12 @@ if get("touch-mode",False):
 os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
 os.system("xhost +local:")
 os.system("xset s {0} {0}".format(get("blank-timeout",300)))
-scale=float(get("scale","1"))
-if scale <= 0 :
-    dpi = find_best_dpi()
-    scale = dpi / 96
-else:
-    dpi = 96 * scale
 
 os.system(get("init",""))
 
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
-
-settings = Gtk.Settings.get_default()
-settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
-settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), get("font-size","10")))
-settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
-settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
-settings.set_property("gtk-xft-dpi", 1024*dpi)
-settings.set_property("gtk-xft-antialias", True)
 
 loaded_modules = []
 base_modules = ["lightdm.py","gtkwindow.py", "monitor.py"]
@@ -79,4 +71,13 @@ os.chdir(os.environ["HOME"])
 debug("Loading finished: {}".format(ltime-ctime))
 loginwindow.o("ui_window_main").show()
 loginwindow.o("ui_window_main").present()
+
+settings = Gtk.Settings.get_default()
+settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
+settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
+settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
+settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(10*(scale%1 + 1))))
+settings.set_property("gtk-xft-dpi", 1024*96*scale)
+settings.set_property("gtk-xft-antialias", True)
+
 Gtk.main()

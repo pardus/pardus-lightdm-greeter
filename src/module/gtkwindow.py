@@ -71,29 +71,6 @@ class LoginWindow:
         # Disable suspend options if oem stuff detected.
         if os.path.exists("/sys/firmware/acpi/tables/MSDM"):
             self.o("ui_button_sleep").hide()
-        self._scale_icons()
-
-    def _scale_icons(self):
-        for icon in ["ui_icon_numlock", "ui_icon_capslock",
-                     "ui_icon_network", "ui_icon_powermenu",
-                     "ui_icon_options", "ui_icon_keyboard_layout",
-                     "ui_icon_default_session","ui_icon_virtual_keyboard",
-                     "ui_icon_poweroff", "ui_icon_reboot",
-                     "ui_icon_sleep", "ui_icon_stack_restart",
-                     "ui_icon_stack_poweroff", "ui_icon_stack_sleep",
-                     "ui_icon_keyboard_layout_dd", "ui_icon_default_session_dd"
-                     ]:
-            size = self.o(icon).get_pixel_size()
-            self.o(icon).set_pixel_size(scale*size)
-        fsize = 250 * scale
-        wsize = 24 * scale
-        print(fsize, file=sys.stderr)
-        self.o("ui_entry_password").set_size_request(fsize, wsize)
-        self.o("ui_popover_options").set_size_request(fsize, wsize)
-        self.o("ui_popover_powermenu").set_size_request(fsize, wsize)
-        self.o("ui_button_login").set_size_request(128 * scale, wsize)
-        self.o("ui_popover_network").set_size_request(fsize, wsize)
-        self.o("ui_stack_username").set_size_request(fsize, wsize)
 
 ############### Window event ###############
 
@@ -327,8 +304,10 @@ class LoginWindow:
 ############### resolution sync ###############
 
     def sync_resolution(self):
+        self.o("ui_window_main").resize(self.width / int(scale), self.height / int(scale))
+        self.o("ui_window_main").set_size_request(self.width / int(scale), self.height / int(scale))
+        self.o("ui_window_main").fullscreen()
         self.o("ui_window_main").set_resizable(False)
-        self.o("ui_window_main").set_size_request(self.width, self.height)
         self.background_pixbuf = None
         if "user" == get("background", "user", "gtkwindow"):
             self.update_user_background()

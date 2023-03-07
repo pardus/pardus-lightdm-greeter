@@ -6,12 +6,6 @@ import time
 import threading
 import subprocess
 
-import gi
-gi.require_version('Gtk', '3.0')
-gi.require_version('Gdk', '3.0')
-from gi.repository import Gdk, GLib
-
-
 def asynchronous(func):
     def wrapper(*args, **kwargs):
         thread = threading.Thread(target=func, args=args, kwargs=kwargs)
@@ -30,28 +24,6 @@ try:
     config.read(cfgs)
 except:
     config = []
-
-
-def find_best_dpi():
-    constant_screen = 50.95481424
-    display = Gdk.Display.get_default()
-    i = 0
-    ret = 0
-    mon_total = display.get_n_monitors()
-    if mon_total == 0:
-        return 96
-    while i < mon_total:
-        monitor = display.get_monitor(i)
-        width_milimeter = monitor.get_width_mm()
-        height_milimeter = monitor.get_height_mm()
-        width_pixel =  monitor.get_geometry().width
-        height_pixel = monitor.get_geometry().height
-        wdpi = width_milimeter/width_pixel
-        hdpi = height_milimeter/height_pixel
-        ret += (constant_screen/(wdpi+hdpi))
-        i+=1
-    return ret / mon_total
-
 
 def get(variable, default=None, section="pardus"):
     if section not in config:

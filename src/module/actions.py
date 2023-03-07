@@ -9,7 +9,6 @@ class action_button(Gtk.Button):
         self.label.set_text("  "+label)
         self.label.get_style_context().add_class("text")
         self.image.set_from_icon_name(icon, 0)
-        self.image.set_pixel_size(int(36*scale))
         box = Gtk.Box()
         box.pack_start(self.image, False, False, 0)
         box.pack_start(self.label, False, False, 0)

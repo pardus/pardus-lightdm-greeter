@@ -12,7 +12,6 @@ class sessionButton(Gtk.Button):
         self.set_relief(Gtk.ReliefStyle.NONE)
         self.label = Gtk.Label()
         self.image = Gtk.Image()
-        self.image.set_pixel_size(int(12*scale))
         self.label.set_text("  "+self.session_name)
         box = Gtk.Box()
         box.pack_start(self.label, False, False, 0)
