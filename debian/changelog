@@ -1,3 +1,85 @@
+pardus-lightdm-greeter (0.0.4) unstable; urgency=medium
+
+  [ aliriza ]
+  * icon fix
+
+  [ Hugo Carvalho ]
+  * Update Portuguese translation
+
+  [ aliriza ]
+  * keyboard layout improvements
+  * remove unused line
+  * readme
+  * sync resolution improvement
+  * ignore init monitor if single
+  * monitor improvements
+  * xrandr backend improvements
+  * dpi finder
+  * 0 scale value find best dpi
+  * entry size scale fix
+  * fix resolution finder
+  * sleep button
+  * suspend icon added
+  * userlist fixes
+  * glade gix
+
+  [ Ali Riza KESKIN ]
+  * fix auto resize window
+
+  [ aliriza ]
+  * dpi min max values and disable touch event tester
+
+  [ Ali Riza KESKIN ]
+  * fix virtualbox resize
+
+  [ aliriza ]
+  * window manager config
+
+  [ Ali Riza KESKIN ]
+  * dpi limits fix
+  * window manager default
+
+  [ aliriza ]
+  * scale images
+  * scale improvements
+  * font double scale issue fix
+  * font config
+
+  [ Ali Riza KESKIN ]
+  * clock font scale bug fix
+  * scale fix userlist
+
+  [ aliriza ]
+  * fix userlist height
+
+  [ Ali Riza KESKIN ]
+  * fix default scale
+  * fix action buttons
+
+  [ aliriza ]
+  * popdown power menu when button pressed
+  * update icons
+  * default dpi fix
+
+  [ Ali Riza KESKIN ]
+  * popover resize only autoscale allowed
+  * translation
+
+  [ aliriza ]
+  * autoscale fixes
+  * aaa
+
+  [ Ali Riza KESKIN ]
+  * dpi rewritten
+  * dpi wallpaper fix
+
+  [ aliriza ]
+  * non mirror mode fix
+  * update resolution event fix
+  * action button size fix
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Tue, 07 Mar 2023 19:40:50 +0300
+
 pardus-lightdm-greeter (0.0.3) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
