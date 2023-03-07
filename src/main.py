@@ -43,6 +43,14 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
+settings = Gtk.Settings.get_default()
+settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
+settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
+settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
+settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(10*(scale%1 + 1))))
+settings.set_property("gtk-xft-dpi", 1024*96*scale)
+settings.set_property("gtk-xft-antialias", True)
+
 loaded_modules = []
 base_modules = ["lightdm.py","gtkwindow.py", "monitor.py"]
 for module in base_modules + os.listdir("module"):
@@ -71,13 +79,5 @@ os.chdir(os.environ["HOME"])
 debug("Loading finished: {}".format(ltime-ctime))
 loginwindow.o("ui_window_main").show()
 loginwindow.o("ui_window_main").present()
-
-settings = Gtk.Settings.get_default()
-settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
-settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
-settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
-settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(10*(scale%1 + 1))))
-settings.set_property("gtk-xft-dpi", 1024*96*scale)
-settings.set_property("gtk-xft-antialias", True)
 
 Gtk.main()

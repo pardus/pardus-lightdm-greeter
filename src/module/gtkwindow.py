@@ -274,8 +274,8 @@ class LoginWindow:
                 bg = "/etc/alternatives/desktop-theme/login/background.svg"
         if os.path.isfile(bg):
             try:
-                py = GdkPixbuf.Pixbuf.new_from_file_at_scale(bg,self.width, self.height,True)
-                px = py.scale_simple(self.width, self.height, GdkPixbuf.InterpType.BILINEAR)
+                py = GdkPixbuf.Pixbuf.new_from_file_at_scale(bg,self.width / int(scale), self.height / int(scale),True)
+                px = py.scale_simple(self.width / int(scale), self.height / int(scale), GdkPixbuf.InterpType.BILINEAR)
                 if px and self.background_pixbuf != px:
                     self.background_pixbuf = px
                     self.o("ui_window_main").queue_draw()
