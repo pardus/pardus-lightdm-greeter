@@ -141,7 +141,7 @@ def get_monitor_offset(screen_index):
     for m in monitor.get_monitors():
         if j == screen_index:
             return offset
-        offset = monitor.get_resolutions(m)[0].split("x")[0]
+        offset += int(monitor.get_resolutions(m)[0].split("x")[0])
         j += 1
     return offset
 
@@ -150,8 +150,6 @@ def set_window_monitor(screen_index=0):
     if monitor.screen_event_lock:
         return
     monitor.screen_event_lock = True
-    if type(screen_index) != type(0):
-        screen_index = 0
     monitors = monitor.get_monitors()
     if len(monitors) < screen_index:
         return

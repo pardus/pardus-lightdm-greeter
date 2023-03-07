@@ -313,7 +313,7 @@ class LoginWindow:
             self.update_user_background()
         else:
             self.set_background(get("background", "user", "gtkwindow"))
-        self.o("ui_popover_userlist").set_size_request(fsize, self.height/3)
+        self.o("ui_popover_userlist").set_size_request(250, self.height/3)
 ############### class end ###############
 
 loginwindow = None
