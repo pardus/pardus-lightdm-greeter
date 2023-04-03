@@ -136,9 +136,7 @@ class LoginWindow:
         # Get lightdm user object
         u = LightDM.UserList.get_instance().get_user_by_name(username)
         # if object is none go edit mode
-        if u == None:
-            return
-        else:
+        if u != None:
             self.o("ui_stack_username").set_visible_child_name("show")
             # get real name
             realname = u.get_real_name()
@@ -168,11 +166,9 @@ class LoginWindow:
             self.o("ui_entry_password").set_sensitive(not is_root)
             if is_root:
                 return
-        u = LightDM.UserList.get_instance().get_user_by_name(widget.get_text())
         # Cancel current auth and auth new user if user is valid
-        if u != None and lightdm.greeter.get_in_authentication():
-            lightdm.set(username = widget.get_text())
-            self.err_handler()
+        lightdm.set(username = widget.get_text())
+        self.err_handler()
         # Update user background
         self.update_username_button(widget.get_text())
         # Update login button label
@@ -264,6 +260,8 @@ class LoginWindow:
         if u != None:
             background = u.get_background()
             self.set_background(background)
+        else:
+            self.set_background(None)
 
     def set_background(self, bg=None):
         if bg == None or not os.path.isfile(bg):
