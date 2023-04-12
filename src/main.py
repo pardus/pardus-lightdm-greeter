@@ -43,10 +43,20 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
+# Theme settings
 settings = Gtk.Settings.get_default()
-settings.set_property("gtk-theme-name", get("gtk-theme","Adwaita"))
-settings.set_property("gtk-icon-theme-name", get("gtk-theme","Adwaita"))
+gtk_theme = get("gtk-theme","Adwaita")
+icon_theme = get("gtk-icon-theme-name","Adwaita")
 settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
+if os.path.exists("/usr/share/themes/{}".format(gtk_theme)):
+    settings.set_property("gtk-theme-name", gtk_theme)
+else:
+    settings.set_property("gtk-theme-name", "Adwaita")
+if os.path.exists("/usr/share/themes/{}".format(icon_theme)):
+    settings.set_property("gtk-icon-theme-name", icon_theme)
+else:
+    settings.set_property("gtk-icon-theme-name", "Adwaita")
+
 settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(10*(scale%1 + 1))))
 settings.set_property("gtk-xft-dpi", 1024*96*scale)
 settings.set_property("gtk-xft-antialias", True)
