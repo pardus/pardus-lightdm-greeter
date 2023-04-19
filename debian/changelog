@@ -1,3 +1,16 @@
+pardus-lightdm-greeter (0.0.5) unstable; urgency=medium
+
+  [ Hugo Carvalho ]
+  * Update portuguese translation
+
+  [ Ali Riza KESKIN ]
+  * fix invalid user lightdm login bug
+
+  [ aliriza.keskin ]
+  * more check for gtk theme settings
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Wed, 19 Apr 2023 11:22:27 +0300
+
 pardus-lightdm-greeter (0.0.4) unstable; urgency=medium
 
   [ aliriza ]
