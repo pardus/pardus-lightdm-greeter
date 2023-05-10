@@ -8,7 +8,7 @@ def _update_resolution_event(flag=None):
     if get("mirror",True,"screen") and not is_virtual_machine():
         monitor.mirror()
     else:
-        i = int(get("default-monitor","1","screen"))
+        i = int(float(get("default-monitor","1","screen")))
         monitor.init_monitor()
         set_window_monitor(i)
     try:

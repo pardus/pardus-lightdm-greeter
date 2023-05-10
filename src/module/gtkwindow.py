@@ -82,6 +82,7 @@ class LoginWindow:
     def __draw_window(self, widget, context):
         if self.background_pixbuf:
             Gdk.cairo_set_source_pixbuf(context, self.background_pixbuf, 0, 0)
+            context.rectangle(0,0,self.width, self.height)
             context.paint()
 
 ############### password entry icon events ###############
@@ -274,8 +275,7 @@ class LoginWindow:
                 bg = "/etc/alternatives/desktop-theme/login/background.svg"
         if os.path.isfile(bg):
             try:
-                py = GdkPixbuf.Pixbuf.new_from_file_at_scale(bg,self.width / int(scale), self.height / int(scale),True)
-                px = py.scale_simple(self.width / int(scale), self.height / int(scale), GdkPixbuf.InterpType.BILINEAR)
+                px = GdkPixbuf.Pixbuf.new_from_file_at_scale(bg,self.width, self.height,True)
                 if px and self.background_pixbuf != px:
                     self.background_pixbuf = px
                     self.o("ui_window_main").queue_draw()
