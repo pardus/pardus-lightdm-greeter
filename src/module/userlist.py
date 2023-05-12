@@ -101,7 +101,7 @@ def module_init():
     global users
     if not get("enabled", True, "userlist"):
         loginwindow.o("ui_entry_username").set_icon_sensitive(1, False)
-        loginwindow.o("ui_entry_username").set_icon_from_pixbuf(None)
+        loginwindow.o("ui_entry_username").set_icon_from_icon_name(1, None)
         return
 
     loginwindow.o("ui_entry_username").connect("icon-press", show_userlist)
