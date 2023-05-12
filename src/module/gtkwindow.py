@@ -10,10 +10,10 @@ class LoginWindow:
         self.__init_variables()
         self.__connect_signals()
         self.__init_gui()
-        self.__blocked = False
         self.__update_user_background_loop()
 
     def __init_variables(self):
+        self.__blocked = False
         self.width = -1
         self.height = -1
         self.background_pixbuf = None
@@ -175,6 +175,7 @@ class LoginWindow:
         # Update user background
         self.update_username_button(widget.get_text())
         # Update login button label
+        u = LightDM.UserList.get_instance().get_user_by_name(widget.get_text())
         if u != None and u.get_logged_in():
             self.o("ui_button_login").set_label(_("Unlock"))
             self.o("ui_box_session_menu").hide()
@@ -276,7 +277,8 @@ class LoginWindow:
         if os.path.isfile(bg):
             try:
                 py = GdkPixbuf.Pixbuf.new_from_file(bg)
-                px = py.scale_simple(self.width / int(scale) , self.height / int(scale), GdkPixbuf.InterpType.BILINEAR)
+                if self.width / int(scale) > 0:
+                    px = py.scale_simple(self.width / int(scale) , self.height / int(scale), GdkPixbuf.InterpType.BILINEAR)
                 if px and self.background_pixbuf != px:
                     self.background_pixbuf = px
                     self.o("ui_window_main").queue_draw()
