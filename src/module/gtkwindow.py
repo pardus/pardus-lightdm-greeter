@@ -13,6 +13,7 @@ class LoginWindow:
         self.__update_user_background_loop()
 
     def __init_variables(self):
+        self.greeter_loaded = False
         self.__blocked = False
         self.width = -1
         self.height = -1
@@ -105,6 +106,8 @@ class LoginWindow:
 ############### handlers ###############
 
     def err_handler(self):
+        if not self.greeter_loaded:
+            return
         self.unblock_gui()
         self.o("ui_entry_password").set_text("")
         self.ignore_password_cache = True
@@ -172,9 +175,11 @@ class LoginWindow:
         # Cancel current auth and auth new user if user is valid
         lightdm.set(username = widget.get_text())
         self.err_handler()
-        self.ignore_password_cache = False
-        # Update user background
-        self.update_username_button(widget.get_text())
+        if not self.greeter_loaded:
+            self.ignore_password_cache = False
+        if widget.get_text() in lightdm.get_user_list():
+            # Update user background
+            self.update_username_button(widget.get_text())
         # Update login button label
         u = LightDM.UserList.get_instance().get_user_by_name(widget.get_text())
         if u != None and u.get_logged_in():

@@ -83,7 +83,7 @@ for module in base_modules + os.listdir("module"):
         except Exception as e:
             print(e,file=sys.stderr)
         loaded_modules.append(module)
-
+loginwindow.greeter_loaded=True
 ltime = time.time()
 os.chdir(os.environ["HOME"])
 debug("Loading finished: {}".format(ltime-ctime))
