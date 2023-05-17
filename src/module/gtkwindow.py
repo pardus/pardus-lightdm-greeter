@@ -172,6 +172,7 @@ class LoginWindow:
         # Cancel current auth and auth new user if user is valid
         lightdm.set(username = widget.get_text())
         self.err_handler()
+        self.ignore_password_cache = False
         # Update user background
         self.update_username_button(widget.get_text())
         # Update login button label
