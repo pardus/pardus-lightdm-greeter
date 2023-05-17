@@ -8,9 +8,9 @@ class LoginWindow:
         self.builder = Gtk.Builder()
         self.builder.add_from_file("data/main.ui")
         self.__init_variables()
-        self.__connect_signals()
         self.__init_gui()
         self.__update_user_background_loop()
+        self.__connect_signals()
 
     def __init_variables(self):
         self.greeter_loaded = False
