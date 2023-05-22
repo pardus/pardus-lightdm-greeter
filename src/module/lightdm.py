@@ -24,6 +24,9 @@ class lightdm_class:
         # Messages
         self.__reset_messages = ["Current password:", "New password:", "Retype new password:"]
         self.__prompt_messages = ["Password:"]
+        # lists
+        self.__ulist = None
+        self.__slist = None
 
     def __init__(self):
         self.greeter = LightDM.Greeter()
@@ -196,16 +199,19 @@ class lightdm_class:
         debug("   In Auth: {}".format(self.greeter.get_in_authentication()))
 
     def get_session_list(self):
-        sessions = []
-        hidden_sessions = ["lightdm-xsession"] + get("hidden-sessions", "", "lightdm").split(" ")
-        debug("hidden-sessions: {}".format(hidden_sessions))
-        for session in LightDM.get_sessions():
-            if session.get_key() not in hidden_sessions:
-                sessions.append(session.get_key())
-        return sessions
+        if self.__slist == None:
+            self.__slist = []
+            hidden_sessions = ["lightdm-xsession"] + get("hidden-sessions", "", "lightdm").split(" ")
+            debug("hidden-sessions: {}".format(hidden_sessions))
+            for session in LightDM.get_sessions():
+                if session.get_key() not in hidden_sessions:
+                    self.__slist.append(session.get_key())
+        return self.__slist
 
     def get_user_list(self):
-        return LightDM.UserList.get_instance().get_users()
+        if self.__ulist == None:
+            self.__ulist = LightDM.UserList.get_instance().get_users()
+        return self.__ulist
 
     def is_lockscreen(self):
         if get("no-lockscreen", False, "lightdm"):

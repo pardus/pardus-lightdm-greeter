@@ -56,21 +56,23 @@ class LoginWindow:
         # Clear error messages
         self.o("ui_label_login_error").set_text("")
         self.o("ui_label_reset_password_error").set_text("")
+        # Disable suspend options if oem stuff detected.
+        if os.path.exists("/sys/firmware/acpi/tables/MSDM"):
+            self.o("ui_button_sleep").hide()
         # init username if cache enabled
         if get("username-cache", True, "gtkwindow"):
             # read username from cache
             username = readfile("last-username")
             # select first username from list if empty
             if username == "":
-                username = lightdm.get_user_list()[0].get_name()
+                users = lightdm.get_user_list()
+                if len(users) > 0:
+                    username = users[0].get_name()
             # Start authentication
             self.o("ui_entry_username").set_text(username)
             lightdm.set(username = username)
             lightdm.greeter.authenticate(username)
             self.update_username_button(username)
-        # Disable suspend options if oem stuff detected.
-        if os.path.exists("/sys/firmware/acpi/tables/MSDM"):
-            self.o("ui_button_sleep").hide()
 
 ############### Window event ###############
 
