@@ -5,7 +5,7 @@ import time
 import subprocess
 from util import *
 ctime = time.time()
-appdir = "/usr/share/pardus/pardus-lightdm-greeter/"
+appdir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(appdir)
 os.umask(0o077)
 try:
