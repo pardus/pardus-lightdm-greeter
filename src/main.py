@@ -1,9 +1,14 @@
 #!/usr/bin/python3
+import gi
 import os
 import sys
 import time
 import subprocess
 from util import *
+
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
+
 ctime = time.time()
 appdir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(appdir)
@@ -22,32 +27,31 @@ except:
     def _(msg):
         return msg
 
-scale=float(get("scale","0"))
-if scale < 1 :
+scale = float(get("scale", "0"))
+if scale < 1:
     scale = 1
 
-os.environ["GDK_SCALE"]=str(int(scale))
-os.environ["GDK_DPI_SCALE"]=str(1/scale)
+os.environ["GDK_SCALE"] = str(int(scale))
+os.environ["GDK_DPI_SCALE"] = str(1/scale)
 
-os.environ["UBUNTU_MENUPROXY"]=""
-os.environ["SESSION_MANAGER"]="lightdm"
-if get("touch-mode",False):
+os.environ["UBUNTU_MENUPROXY"] = ""
+os.environ["SESSION_MANAGER"] = "lightdm"
+if get("touch-mode", False):
     os.environ["GTK_TEST_TOUCHSCREEN"] = "1"
-os.environ["GDK_CORE_DEVICE_EVENTS"]="1"
+os.environ["GDK_CORE_DEVICE_EVENTS"] = "1"
 os.system("xhost +local:")
-os.system("xset s {0} {0}".format(get("blank-timeout",300)))
+os.system("xset s {0} {0}".format(get("blank-timeout", 300)))
 
-os.system(get("init",""))
+os.system(get("init", ""))
 
-import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
 # Theme settings
 settings = Gtk.Settings.get_default()
-gtk_theme = get("gtk-theme","Adwaita")
-icon_theme = get("gtk-icon-theme-name","Adwaita")
-settings.set_property("gtk-application-prefer-dark-theme", get("dark-theme",True))
+gtk_theme = get("gtk-theme", "Adwaita")
+icon_theme = get("gtk-icon-theme-name", "Adwaita")
+settings.set_property("gtk-application-prefer-dark-theme",
+                      get("dark-theme", True))
 if os.path.exists("/usr/share/themes/{}".format(gtk_theme)):
     settings.set_property("gtk-theme-name", gtk_theme)
 else:
@@ -57,33 +61,34 @@ if os.path.exists("/usr/share/themes/{}".format(icon_theme)):
 else:
     settings.set_property("gtk-icon-theme-name", "Adwaita")
 
-settings.set_property("gtk-font-name", "{} {}".format(get("font","Regular"), int(10*(scale%1 + 1))))
+settings.set_property(
+    "gtk-font-name", "{} {}".format(get("font", "Regular"), int(10*(scale % 1 + 1))))
 settings.set_property("gtk-xft-dpi", 1024*96*scale)
 settings.set_property("gtk-xft-antialias", True)
 
 loaded_modules = []
-base_modules = ["lightdm.py","gtkwindow.py", "monitor.py"]
+base_modules = ["lightdm.py", "gtkwindow.py", "monitor.py"]
 for module in base_modules + os.listdir("module"):
     if module in loaded_modules:
         continue
     if not os.path.isfile("module/{}".format(module)) or not module.endswith(".py"):
         continue
-    with open("module/{}".format(module),"r") as f:
+    with open("module/{}".format(module), "r") as f:
         debug("Loading:{}".format(module))
         try:
             exec(f.read())
-            if get("load-async",False):
+            if get("load-async", False):
                 if module in base_modules:
                     module_init()
                 else:
                     GLib.idle_add(module_init)
             else:
                 module_init()
-            del(module_init)
+            del (module_init)
         except Exception as e:
-            print(e,file=sys.stderr)
+            print(e, file=sys.stderr)
         loaded_modules.append(module)
-loginwindow.greeter_loaded=True
+loginwindow.greeter_loaded = True
 ltime = time.time()
 os.chdir(os.environ["HOME"])
 debug("Loading finished: {}".format(ltime-ctime))

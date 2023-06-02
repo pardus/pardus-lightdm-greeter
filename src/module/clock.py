@@ -1,7 +1,9 @@
 last_label_clock = None
 last_label_date = None
-date_format=""
-clock_format=""
+date_format = ""
+clock_format = ""
+
+
 def clock_event():
     global last_label_clock
     global last_label_date
@@ -24,6 +26,7 @@ def clock_event():
 def module_init():
     global date_format
     global clock_format
-    date_format=get("date-format","%e %b %Y - %A","clock").replace("\\n","\n")
-    clock_format=get("clock-format","%H:%M","clock").replace("\\n","\n")
+    date_format = get("date-format", "%e %b %Y - %A",
+                      "clock").replace("\\n", "\n")
+    clock_format = get("clock-format", "%H:%M", "clock").replace("\\n", "\n")
     clock_event()

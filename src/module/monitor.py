@@ -7,7 +7,7 @@ class monitor_class:
     def __init__(self):
         self.screen_event_lock = False
 
-    #### common backends
+    # common backends
     def get_monitors(self):
         if os.path.isdir("/sys/class/drm"):
             return self.get_drm_monitors()
@@ -15,11 +15,10 @@ class monitor_class:
             return self.get_xrandr_monitors()
 
     def get_resolutions(self, monitor):
-       if os.path.isdir("/sys/class/drm"):
-           return self.get_drm_resolutions(monitor)
-       else:
-           return self.get_xrandr_resolutions(monitor)
-
+        if os.path.isdir("/sys/class/drm"):
+            return self.get_drm_resolutions(monitor)
+        else:
+            return self.get_xrandr_resolutions(monitor)
 
     #### /sys/class/drm backend ####
 
@@ -35,7 +34,7 @@ class monitor_class:
                         monitors.append(device[len(card)+1:])
         return monitors
 
-    def get_device(self,monitor):
+    def get_device(self, monitor):
         for device in os.listdir("/sys/class/drm"):
             if device.endswith(monitor):
                 return device
@@ -43,14 +42,13 @@ class monitor_class:
 
     def get_drm_resolutions(self, monitor):
         ret = []
-        with open("/sys/class/drm/{}/modes".format(self.get_device(monitor)),"r") as f:
+        with open("/sys/class/drm/{}/modes".format(self.get_device(monitor)), "r") as f:
             for line in f.read().split("\n"):
                 if len(line) > 0 and line[0].isnumeric():
                     ret.append(line)
         if len(ret) > 0:
             return ret
         return ["800x600"]
-
 
     #### xrandr backend ####
 

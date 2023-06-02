@@ -1,6 +1,8 @@
 
 _reset_username = None
 _reset_password = None
+
+
 def _reset_password(widget=None):
     p1 = loginwindow.o("ui_entry_new_password1").get_text()
     p2 = loginwindow.o("ui_entry_new_password2").get_text()
@@ -20,17 +22,23 @@ def _reset_event(widget=None):
     # Reset lightdm variables
     loginwindow.err_handler()
     # Change page
-    loginwindow.o("ui_stack_main").set_visible_child_name("page_reset_password")
+    loginwindow.o("ui_stack_main").set_visible_child_name(
+        "page_reset_password")
     loginwindow.o("ui_stack_window").set_visible_child_name("main_page")
+
 
 def _reset_password_entry1_event(widget):
     loginwindow.o("ui_entry_new_password2").grab_focus()
 
+
 def module_init():
     # button
-    loginwindow.o("ui_button_change_password").connect("clicked", _reset_password)
+    loginwindow.o("ui_button_change_password").connect(
+        "clicked", _reset_password)
     # entry enter events
-    loginwindow.o("ui_entry_new_password1").connect("activate", _reset_password_entry1_event)
-    loginwindow.o("ui_entry_new_password2").connect("activate", _reset_password)
+    loginwindow.o("ui_entry_new_password1").connect(
+        "activate", _reset_password_entry1_event)
+    loginwindow.o("ui_entry_new_password2").connect(
+        "activate", _reset_password)
     # handler connect
     lightdm.reset_page_handler = _reset_event

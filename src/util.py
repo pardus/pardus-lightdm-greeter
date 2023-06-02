@@ -1,10 +1,14 @@
 #!/usr/bin/python3
+import struct
+import fcntl
+import socket
 import configparser
 import sys
 import os
 import time
 import threading
 import subprocess
+
 
 def asynchronous(func):
     def wrapper(*args, **kwargs):
@@ -13,6 +17,7 @@ def asynchronous(func):
         thread.start()
         return thread
     return wrapper
+
 
 try:
     cfgs = ["/etc/pardus/greeter.conf"]
@@ -24,6 +29,7 @@ try:
     config.read(cfgs)
 except:
     config = []
+
 
 def get(variable, default=None, section="pardus"):
     if section not in config:
@@ -38,6 +44,7 @@ def get(variable, default=None, section="pardus"):
             return False
     return str(ret)
 
+
 if get("debug", False, "pardus"):
     def debug(msg):
         log("[DEBUG] => {}\n".format(msg), type="debug")
@@ -50,7 +57,6 @@ def log(msg, type="log"):
     if len(msg.strip()) == 0:
         return
     sys.stderr.write(msg.strip()+"\n")
-
 
 
 def readfile(path):
@@ -77,17 +83,19 @@ def get_ip():
     except Exception:
         return '0.0.0.0'
     # Check internet connection from server list
-    servers = open("/usr/share/pardus/pardus-lightdm-greeter/data/servers.txt","r").read().split("\n")
+    servers = open(
+        "/usr/share/pardus/pardus-lightdm-greeter/data/servers.txt", "r").read().split("\n")
     debug(servers)
     for server in servers:
         try:
             debug("Server request: "+server)
-            r = requests.get(server,timeout=1)
+            r = requests.get(server, timeout=1)
             if r.content:
                 return r.content.decode("utf-8")
         except:
             continue
     return '0.0.0.0'
+
 
 def is_virtual_machine():
     cpuinfo = readfile("/proc/cpuinfo").split("\n")
@@ -96,20 +104,21 @@ def is_virtual_machine():
             return "hypervisor" in line
     return False
 
+
 def is_virtualbox():
     if os.path.isfile("/sys/class/dmi/id/product_name"):
-        with open("/sys/class/dmi/id/product_name","r") as f:
+        with open("/sys/class/dmi/id/product_name", "r") as f:
             if "virtualbox" in f.read().lower():
                 return True
             elif "virtual box" in f.read().lower():
                 return True
     return False
 
+
 # https://stackoverflow.com/questions/24196932/how-can-i-get-the-ip-address-from-a-nic-network-interface-controller-in-python
-import socket
-import fcntl
-import struct
-def  get_local_ip():
+
+
+def get_local_ip():
     ret = []
     for ifname in os.listdir("/sys/class/net"):
         try:
@@ -120,7 +129,7 @@ def  get_local_ip():
                 struct.pack('256s', ifname[:15].encode("utf-8"))
             )[20:24])
             if ifname != "lo":
-                ret.append((ip,ifname))
+                ret.append((ip, ifname))
         except:
             pass
     return ret

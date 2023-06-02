@@ -2,6 +2,7 @@ _lang = ""
 if "LANG" in os.environ:
     _lang = "["+str(os.environ["LANG"].split("_")[0])+"]"
 
+
 class sessionButton(Gtk.Button):
     def __init__(self, session):
         super().__init__()
@@ -28,19 +29,22 @@ class sessionButton(Gtk.Button):
 
     def get_session_name(self):
         session = ""
-        for path in [ "/usr/share/xsessions/{}.desktop".format(self.session),
-                      "/usr/share/wayland-sessions/{}.desktop".format(self.session)]:
+        for path in ["/usr/share/xsessions/{}.desktop".format(self.session),
+                     "/usr/share/wayland-sessions/{}.desktop".format(self.session)]:
             if os.path.exists(path):
                 for line in open(path, "r").read().split("\n"):
                     for n in ["Name"+_lang+"=", "Name="]:
-                       if n in line:
-                           session = line.replace(n, "")
-                           break
+                        if n in line:
+                            session = line.replace(n, "")
+                            break
         if session == "":
             session = self.session
         return session
 
+
 _sessionlist_loaded = False
+
+
 def load_sessionlist():
     global _sessionlist_loaded
     if _sessionlist_loaded:
@@ -52,7 +56,7 @@ def load_sessionlist():
         session_buttons[session] = sessionButton(session)
 
         def button_event(widget):
-            lightdm.set(session = widget.session)
+            lightdm.set(session=widget.session)
             for b in session_buttons:
                 session_buttons[b].set_default(False)
             widget.set_default(True)
@@ -66,7 +70,7 @@ def load_sessionlist():
     last_session = readfile("last-session")
     if last_session == "" or last_session not in sessions:
         last_session = sessions[0]
-    lightdm.set(session = last_session)
+    lightdm.set(session=last_session)
     session_buttons[last_session].set_default(True)
 
 
@@ -75,9 +79,11 @@ def _session_button_event(widget):
     status = revealer.get_reveal_child()
     revealer.set_reveal_child(not status)
     if status:
-        loginwindow.o("ui_icon_default_session_dd").set_from_icon_name("go-next-symbolic", 0)
+        loginwindow.o("ui_icon_default_session_dd").set_from_icon_name(
+            "go-next-symbolic", 0)
     else:
-        loginwindow.o("ui_icon_default_session_dd").set_from_icon_name("go-down-symbolic", 0)
+        loginwindow.o("ui_icon_default_session_dd").set_from_icon_name(
+            "go-down-symbolic", 0)
     load_sessionlist()
 
 
@@ -86,5 +92,5 @@ session_buttons = {}
 
 def module_init():
     global session_buttons
-    loginwindow.o("ui_button_default_session").connect("clicked", _session_button_event)
-    
+    loginwindow.o("ui_button_default_session").connect(
+        "clicked", _session_button_event)

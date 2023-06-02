@@ -1,7 +1,7 @@
+from gi.repository import LightDM
 import sys
 import gi
 gi.require_version('LightDM', '1')
-from gi.repository import LightDM
 
 
 ############### class definition ###############
@@ -22,7 +22,8 @@ class lightdm_class:
         self.login_handler = None
         self.reset_page_handler = None
         # Messages
-        self.__reset_messages = ["Current password:", "New password:", "Retype new password:"]
+        self.__reset_messages = ["Current password:",
+                                 "New password:", "Retype new password:"]
         self.__prompt_messages = ["Password:"]
         # lists
         self.__ulist = None
@@ -33,25 +34,25 @@ class lightdm_class:
         self.__init_variables()
         self.__connect_signals()
 
-
     def __connect_signals(self):
-        self.greeter.connect("authentication-complete", self.__authentication_complete)
+        self.greeter.connect("authentication-complete",
+                             self.__authentication_complete)
         self.greeter.connect("show_prompt", self.__show_prompt)
         self.greeter.connect("show-message", self.__show_message)
         self.greeter.connect_to_daemon_sync()
 
 ############### set - reset - login ###############
 
-    def set(self,username=None, password=None, session=None):
+    def set(self, username=None, password=None, session=None):
         """Set greeter variables"""
         if username != None:
-            self.__username = username.replace(" ","")
+            self.__username = username.replace(" ", "")
         if password != None:
             self.__password = password
         if session != None:
             self.__session = session
 
-    def set2(self,username=None, password=None):
+    def set2(self, username=None, password=None):
         """Set reset password variables"""
         if username != None:
             self.__username = username
@@ -74,13 +75,11 @@ class lightdm_class:
         """get reset status"""
         return self.__is_reset
 
-
     def get_password(self):
         """get current session"""
         if self.__password == None:
             return ""
         return self.__password
-
 
     def reset(self):
         """Remove variables and cancel authentication"""
@@ -116,7 +115,7 @@ class lightdm_class:
     def __show_prompt(self, greeter, text, promptType):
         """Prompt function"""
         self.__last_prompt = text.strip()
-        debug("Prompt: {} ({})".format(text.strip(),self.__is_reset))
+        debug("Prompt: {} ({})".format(text.strip(), self.__is_reset))
         self.write_values("Show Prompt:")
         if self.__is_reset:
             # create response variable
@@ -135,7 +134,7 @@ class lightdm_class:
            # Check password reset required.
             if text.strip() in self.__reset_messages:
                 # Trigger reset handler
-                if(self.reset_page_handler):
+                if (self.reset_page_handler):
                     self.reset_page_handler()
                 # Set reset value
                 self.__is_reset = True
@@ -156,7 +155,6 @@ class lightdm_class:
         if self.msg_handler:
             self.msg_handler(_(text.strip()))
 
-
     def __authentication_complete(self, greeter):
         """After auth function"""
         self.__last_prompt = None
@@ -164,31 +162,33 @@ class lightdm_class:
         if self.greeter.get_is_authenticated():
             # Trigger login handler
             if self.login_handler:
-                    self.login_handler()
+                self.login_handler()
             # Check session is valid
             if self.__session == None:
                 self.__session = ""
             if self.__session not in self.get_session_list() + [""]:
-                self.__show_message(greeter, _("Invalid sesion : {}").format(self.__session))
+                self.__show_message(greeter, _(
+                    "Invalid sesion : {}").format(self.__session))
                 self.__session = ""
             try:
                 # Start session
                 if not self.greeter.start_session_sync(self.__session):
-                    self.__show_message(greeter,_("Failed to start session: {}").format(self.__session))
+                    self.__show_message(greeter, _(
+                        "Failed to start session: {}").format(self.__session))
             except:
                 # Exit greeter (for reload)
                 sys.exit(0)
         else:
             # Authentication failed.
-            self.__show_message(greeter,_("Authentication failed: {}").format(self.__username))
+            self.__show_message(greeter, _(
+                "Authentication failed: {}").format(self.__username))
             # Reset variables and cancel authentication
             if self.err_handler:
                 self.err_handler()
 
 ############### Extra functions ###############
 
-
-    def write_values(self,msg):
+    def write_values(self, msg):
         debug(msg)
         debug("   Username: {}".format(self.__username))
         debug("   Password: {}".format(self.__password))
@@ -201,7 +201,8 @@ class lightdm_class:
     def get_session_list(self):
         if self.__slist == None:
             self.__slist = []
-            hidden_sessions = ["lightdm-xsession"] + get("hidden-sessions", "", "lightdm").split(" ")
+            hidden_sessions = ["lightdm-xsession"] + \
+                get("hidden-sessions", "", "lightdm").split(" ")
             debug("hidden-sessions: {}".format(hidden_sessions))
             for session in LightDM.get_sessions():
                 if session.get_key() not in hidden_sessions:
@@ -233,7 +234,6 @@ class lightdm_class:
             if self.msg_handler:
                 self.msg_handler(_("Failed to sleep system"))
 
-
     def shutdown(self, widget=None):
         if LightDM.get_can_shutdown():
             LightDM.shutdown()
@@ -243,7 +243,9 @@ class lightdm_class:
 
 ############### end of class ###############
 
+
 lightdm = None
+
 
 def module_init():
     global lightdm

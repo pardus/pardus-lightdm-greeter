@@ -2,6 +2,7 @@ import hashlib
 
 ############### class definition ###############
 
+
 class LoginWindow:
 
     def __init__(self):
@@ -20,40 +21,52 @@ class LoginWindow:
         self.background_pixbuf = None
         self.ignore_password_cache = False
 
-    def o(self,name=None):
+    def o(self, name=None):
         return self.builder.get_object(name)
-    
+
     def __connect_signals(self):
         # Main window
-        self.o("ui_window_main").connect("destroy",Gtk.main_quit)
-        self.o("ui_window_main").connect("draw",self.__draw_window)
-        self.o("ui_window_main").connect("focus-out-event",self.__event_window_focus_out)
+        self.o("ui_window_main").connect("destroy", Gtk.main_quit)
+        self.o("ui_window_main").connect("draw", self.__draw_window)
+        self.o("ui_window_main").connect(
+            "focus-out-event", self.__event_window_focus_out)
         # Login button and password entry enter
-        self.o("ui_button_login").connect("clicked",self.__event_login_button)
-        self.o("ui_entry_password").connect("activate",self.__event_login_button)
+        self.o("ui_button_login").connect("clicked", self.__event_login_button)
+        self.o("ui_entry_password").connect(
+            "activate", self.__event_login_button)
         # password entry
-        self.o("ui_entry_password").connect("changed",self.__event_password_entry_changed)
+        self.o("ui_entry_password").connect(
+            "changed", self.__event_password_entry_changed)
         # username entry
-        self.o("ui_entry_username").connect("activate",self.__event_username_entry_clicked)
-        self.o("ui_entry_username").connect("changed",self.__event_username_entry_changed)
+        self.o("ui_entry_username").connect(
+            "activate", self.__event_username_entry_clicked)
+        self.o("ui_entry_username").connect(
+            "changed", self.__event_username_entry_changed)
         # password entry icons
-        self.o("ui_entry_password").connect("icon-press", self.password_entry_icon_press)
-        self.o("ui_entry_password").connect("icon-release", self.password_entry_icon_release)
+        self.o("ui_entry_password").connect(
+            "icon-press", self.password_entry_icon_press)
+        self.o("ui_entry_password").connect(
+            "icon-release", self.password_entry_icon_release)
         # reset entry 1
-        self.o("ui_entry_new_password1").connect("icon-press", self.password_entry_icon_press)
-        self.o("ui_entry_new_password1").connect("icon-release", self.password_entry_icon_release)
+        self.o("ui_entry_new_password1").connect(
+            "icon-press", self.password_entry_icon_press)
+        self.o("ui_entry_new_password1").connect(
+            "icon-release", self.password_entry_icon_release)
         # reset entry 2
-        self.o("ui_entry_new_password2").connect("icon-press", self.password_entry_icon_press)
-        self.o("ui_entry_new_password2").connect("icon-release", self.password_entry_icon_release)
+        self.o("ui_entry_new_password2").connect(
+            "icon-press", self.password_entry_icon_press)
+        self.o("ui_entry_new_password2").connect(
+            "icon-release", self.password_entry_icon_release)
 
-        # username button 
-        self.o("ui_button_username").connect("clicked",self.__event_username_button)
+        # username button
+        self.o("ui_button_username").connect(
+            "clicked", self.__event_username_button)
 
     def __init_gui(self):
         # Show main window and present
         self.o("ui_window_main").show()
         self.o("ui_window_main").present()
-        self.o("ui_window_main").set_app_paintable(True);
+        self.o("ui_window_main").set_app_paintable(True)
         # Clear error messages
         self.o("ui_label_login_error").set_text("")
         self.o("ui_label_reset_password_error").set_text("")
@@ -71,7 +84,7 @@ class LoginWindow:
                     username = users[0].get_name()
             # Start authentication
             self.o("ui_entry_username").set_text(username)
-            lightdm.set(username = username)
+            lightdm.set(username=username)
             lightdm.greeter.authenticate(username)
             self.update_username_button(username)
 
@@ -83,7 +96,7 @@ class LoginWindow:
     def __draw_window(self, widget, context):
         if self.background_pixbuf:
             Gdk.cairo_set_source_pixbuf(context, self.background_pixbuf, 0, 0)
-            context.rectangle(0,0,self.width, self.height)
+            context.rectangle(0, 0, self.width, self.height)
             context.fill()
 
 ############### password entry icon events ###############
@@ -135,7 +148,7 @@ class LoginWindow:
 
 ############### events ###############
 
-    def update_username_button(self,username):
+    def update_username_button(self, username):
         # Clear error messages
         self.o("ui_label_login_error").set_text("")
         self.o("ui_label_reset_password_error").set_text("")
@@ -156,24 +169,24 @@ class LoginWindow:
                 self.o("ui_entry_password").grab_focus()
         self.update_user_background()
 
-
     def __event_username_entry_clicked(self, widget=None):
         if not get("allow-root-login", False, "lightdm"):
-            is_root = (self.o("ui_entry_username").get_text().replace(" ","") == "root")
+            is_root = (self.o("ui_entry_username").get_text().replace(
+                " ", "") == "root")
             if is_root:
                 return
         self.update_username_button(lightdm.get_username())
-        
+
     def __event_username_entry_changed(self, widget=None):
         # Get lightdm user object
         if not get("allow-root-login", False, "lightdm"):
-            is_root = (widget.get_text().replace(" ","") == "root")
+            is_root = (widget.get_text().replace(" ", "") == "root")
             self.o("ui_button_login").set_sensitive(not is_root)
             self.o("ui_entry_password").set_sensitive(not is_root)
             if is_root:
                 return
         # Cancel current auth and auth new user if user is valid
-        lightdm.set(username = widget.get_text())
+        lightdm.set(username=widget.get_text())
         self.err_handler()
         if not self.greeter_loaded:
             self.ignore_password_cache = False
@@ -210,11 +223,12 @@ class LoginWindow:
 
     def __event_login_button(self, widget=None):
         # ignore empty password if not allowed
-        if not get("allow-empty-password",True):
-            if self.o("ui_entry_password").get_text() == "" :
+        if not get("allow-empty-password", True):
+            if self.o("ui_entry_password").get_text() == "":
                 return
         if not get("allow-root-login", False, "lightdm"):
-            is_root = (self.o("ui_entry_username").get_text().replace(" ","") == "root")
+            is_root = (self.o("ui_entry_username").get_text().replace(
+                " ", "") == "root")
             if is_root:
                 return
         lightdm.set(
@@ -229,14 +243,15 @@ class LoginWindow:
         for user in hidden.split("\n"):
             if user != self.o("ui_entry_username").get_text():
                 data += "{}\n".format(user)
-        writefile("hidden-users",data)
+        writefile("hidden-users", data)
         # start lightdm login
         return lightdm.login()
 
     def __update_user_background_loop(self):
         self.update_user_background()
-        interval = 1000*int(get("background-update-interval", "0", "gtkwindow"))
-        if(interval > 0):
+        interval = 1000 * \
+            int(get("background-update-interval", "0", "gtkwindow"))
+        if (interval > 0):
             GLib.timeout_add(interval, self.__update_user_background_loop)
 
 ############### block - unblock gui ###############
@@ -256,7 +271,7 @@ class LoginWindow:
         self.o("ui_spinner_login").start()
         # unblock after timeout
         timeout = 1000*int(get("block-gui-timeout", "10", "gtkwindow"))
-        GLib.timeout_add(timeout,self.unblock_gui)
+        GLib.timeout_add(timeout, self.unblock_gui)
 
 ############### background update ###############
 
@@ -284,7 +299,8 @@ class LoginWindow:
             try:
                 py = GdkPixbuf.Pixbuf.new_from_file(bg)
                 if self.width / int(scale) > 0:
-                    px = py.scale_simple(self.width / int(scale) , self.height / int(scale), GdkPixbuf.InterpType.BILINEAR)
+                    px = py.scale_simple(
+                        self.width / int(scale), self.height / int(scale), GdkPixbuf.InterpType.BILINEAR)
                 if px and self.background_pixbuf != px:
                     self.background_pixbuf = px
                     self.o("ui_window_main").queue_draw()
@@ -294,7 +310,8 @@ class LoginWindow:
 ############### css load ###############
 
     def load_css(self):
-        css = open("/usr/share/pardus/pardus-lightdm-greeter/data/main.css", "r").read()
+        css = open(
+            "/usr/share/pardus/pardus-lightdm-greeter/data/main.css", "r").read()
         if get("dark-theme", True):
             css += open("/usr/share/pardus/pardus-lightdm-greeter/data/colors-dark.css").read()
         else:
@@ -304,7 +321,8 @@ class LoginWindow:
 
 ############### logo update ###############
 
-    def set_logo(self,logo):
+
+    def set_logo(self, logo):
         if os.path.isfile(logo):
             self.o("ui_image_logo").set_from_file(logo)
         else:
@@ -313,8 +331,10 @@ class LoginWindow:
 ############### resolution sync ###############
 
     def sync_resolution(self):
-        self.o("ui_window_main").resize(self.width / int(scale), self.height / int(scale))
-        self.o("ui_window_main").set_size_request(self.width / int(scale), self.height / int(scale))
+        self.o("ui_window_main").resize(
+            self.width / int(scale), self.height / int(scale))
+        self.o("ui_window_main").set_size_request(
+            self.width / int(scale), self.height / int(scale))
         self.o("ui_window_main").fullscreen()
         self.o("ui_window_main").set_resizable(False)
         self.background_pixbuf = None
@@ -324,6 +344,7 @@ class LoginWindow:
             self.set_background(get("background", "user", "gtkwindow"))
         self.o("ui_popover_userlist").set_size_request(250, self.height/3)
 ############### class end ###############
+
 
 loginwindow = None
 screen = None

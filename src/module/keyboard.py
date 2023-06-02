@@ -1,10 +1,10 @@
-xlib_available=True
+xlib_available = True
 try:
     import Xlib
     from Xlib import display
     DISPLAY = Xlib.display.Display()
 except:
-    xlib_available=False
+    xlib_available = False
 
 
 class xkbButton(Gtk.Button):
@@ -39,9 +39,11 @@ def is_capslock_on():
     c = DISPLAY.get_keyboard_control()
     return c.led_mask & 1
 
+
 def is_numlock_on():
     c = DISPLAY.get_keyboard_control()
     return c.led_mask & 2
+
 
 def set_keyboard(layout, variant):
     return len(subprocess.getoutput("setxkbmap {} {}".format(layout, variant))) == 0
@@ -51,9 +53,11 @@ def _keyboard_button_event(widget):
     revealer = loginwindow.o("ui_revealer_keyboard_layout")
     status = revealer.get_reveal_child()
     if status:
-        loginwindow.o("ui_icon_keyboard_layout_dd").set_from_icon_name("go-next-symbolic", 0)
+        loginwindow.o("ui_icon_keyboard_layout_dd").set_from_icon_name(
+            "go-next-symbolic", 0)
     else:
-        loginwindow.o("ui_icon_keyboard_layout_dd").set_from_icon_name("go-down-symbolic", 0)
+        loginwindow.o("ui_icon_keyboard_layout_dd").set_from_icon_name(
+            "go-down-symbolic", 0)
     revealer.set_reveal_child(not status)
 
 
@@ -69,18 +73,22 @@ def update_numlock_capslock():
     if is_capslock_on():
         capslock.set_from_icon_name("capslock-on-symbolic", 0)
 
+
 def _key_press_event(widget, event):
     if event.keyval == Gdk.KEY_Num_Lock or event.keyval == Gdk.KEY_Caps_Lock:
         i = 0
         while i < 10:
-            i+=1
+            i += 1
             GLib.timeout_add(100*i, update_numlock_capslock)
 
 
 def _screen_keyboard_event(widget):
     os.system(get("screen-keyboard", "onboard", "keyboard")+"&")
 
+
 _keyboardlist_loaded = False
+
+
 def load_keyboardlist():
     global _keyboardlist_loaded
     if _keyboardlist_loaded:
@@ -108,11 +116,13 @@ def load_keyboardlist():
     elif layout == "tr":
         xkb_buttons = _get_xkbs_buttons(keyboard_default)
     else:
-        xkb_buttons = _get_xkbs_buttons("{}:{}:{}".format(layout,variant,_("Default")))
+        xkb_buttons = _get_xkbs_buttons(
+            "{}:{}:{}".format(layout, variant, _("Default")))
 
     debug(layout+":"+variant)
     if (layout+":"+variant) in xkb_buttons:
         xkb_buttons[layout+":"+variant].set_default(True)
+
 
 def _get_xkbs_buttons(xkbs):
     xkb_buttons = {}
@@ -124,24 +134,27 @@ def _get_xkbs_buttons(xkbs):
             label = xkb.split(":")[2]
         except:
             continue
+
         def button_event(widget):
             set_keyboard(widget.layout, widget.variant)
             for x in xkb_buttons:
                 xkb_buttons[x].set_default()
                 widget.set_default(True)
         xkb_buttons[layout+":"+variant] = xkbButton(layout, variant)
-        if len(label.strip())>0:
-            xkb_buttons[layout+":"+variant].label.set_text(label.replace("_"," "))
+        if len(label.strip()) > 0:
+            xkb_buttons[layout+":" +
+                        variant].label.set_text(label.replace("_", " "))
         box.add(xkb_buttons[layout+":"+variant])
         xkb_buttons[layout+":"+variant].connect("clicked", button_event)
     return xkb_buttons
 
 
 def module_init():
-    if get("numlock-on",True,"keyboard"):
+    if get("numlock-on", True, "keyboard"):
         os.system("numlockx on")
     if xlib_available and not is_virtualbox():
-        loginwindow.o("ui_window_main").connect("key-press-event", _key_press_event)
+        loginwindow.o("ui_window_main").connect(
+            "key-press-event", _key_press_event)
         update_numlock_capslock()
     else:
         loginwindow.o("ui_box_numlock_capslock").hide()
