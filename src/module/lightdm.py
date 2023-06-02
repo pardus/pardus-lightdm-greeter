@@ -1,8 +1,7 @@
-from gi.repository import LightDM
 import sys
 import gi
 gi.require_version('LightDM', '1')
-
+from gi.repository import LightDM
 
 ############### class definition ###############
 class lightdm_class:
