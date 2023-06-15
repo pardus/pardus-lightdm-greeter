@@ -9,6 +9,7 @@ def _reset_password(widget=None):
     if p1 == p2:
         lightdm.set(password=_reset_password, username=_reset_username)
         lightdm.set2(password=p1, username=_reset_username)
+        loginwindow.login_handler()
         lightdm.login()
 
 
