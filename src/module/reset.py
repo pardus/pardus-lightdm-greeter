@@ -9,7 +9,10 @@ def _reset_password(widget=None):
     if p1 == p2:
         lightdm.set(password=_reset_password, username=_reset_username)
         lightdm.set2(password=p1, username=_reset_username)
-        loginwindow.login_handler()
+        if get("password-cache", True, "gtkwindow"):
+            new_hash = hashlib.sha512(
+                _reset_password.encode("utf-8")).hexdigest()
+             writefile("{}-last-hash".format(_reset_username), new_hash)
         lightdm.login()
 
 
