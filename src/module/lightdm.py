@@ -76,6 +76,8 @@ class lightdm_class:
 
     def get_password(self):
         """get current session"""
+        if self.__password_new != None:
+            return self.__password_new
         if self.__password == None:
             return ""
         return self.__password
