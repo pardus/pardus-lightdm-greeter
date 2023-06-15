@@ -208,6 +208,12 @@ class lightdm_class:
                     self.__slist.append(session.get_key())
         return self.__slist
 
+    def is_valid_user(self, name):
+        for u in self.get_user_list():
+            if name == u.get_name():
+                return True
+        return False
+
     def get_user_list(self):
         if self.__ulist == None:
             self.__ulist = LightDM.UserList.get_instance().get_users()

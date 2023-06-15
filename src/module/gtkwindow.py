@@ -177,7 +177,8 @@ class LoginWindow:
                 return
         self.update_username_button(lightdm.get_username())
 
-    def __event_username_entry_changed(self, widget=None):
+    def __event_username_entry_changed(self, w=None):
+        widget = self.o("ui_entry_username")
         # Get lightdm user object
         if not get("allow-root-login", False, "lightdm"):
             is_root = (widget.get_text().replace(" ", "") == "root")
@@ -190,7 +191,7 @@ class LoginWindow:
         self.err_handler()
         if not self.greeter_loaded:
             self.ignore_password_cache = False
-        if widget.get_text() in lightdm.get_user_list():
+        if lightdm.is_valid_user(widget.get_text()):
             # Update user background
             self.update_username_button(widget.get_text())
         # Update login button label
@@ -201,6 +202,8 @@ class LoginWindow:
         else:
             self.o("ui_button_login").set_label(_("Login"))
             self.o("ui_box_session_menu").show()
+            
+        self.o("ui_window_main").queue_draw()
 
     def __event_password_entry_changed(self, widget):
         # ignore if disabled
@@ -303,9 +306,9 @@ class LoginWindow:
                         self.width / int(scale), self.height / int(scale), GdkPixbuf.InterpType.BILINEAR)
                 if px and self.background_pixbuf != px:
                     self.background_pixbuf = px
-                    self.o("ui_window_main").queue_draw()
-            except:
-                return
+            except Exception as e:
+                print(str(e))
+        GLib.idle_add(self.o("ui_window_main").queue_draw)
 
 ############### css load ###############
 
