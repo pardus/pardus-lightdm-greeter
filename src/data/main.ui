@@ -1576,7 +1576,6 @@ WAN IP: </property>
             <property name="width-request">200</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
-            <property name="editable">False</property>
             <property name="caps-lock-warning">False</property>
             <property name="secondary-icon-name">edit-clear-symbolic</property>
             <style>
