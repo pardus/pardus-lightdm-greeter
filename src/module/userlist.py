@@ -62,7 +62,7 @@ def user_button_event(widget):
     loginwindow.o("ui_entry_password").grab_focus()
 
 
-def show_userlist(entry, icon_pos, event):
+def show_userlist(widget):
     load_userlist()
     loginwindow.o("ui_popover_userlist").popup()
 
@@ -109,10 +109,9 @@ def load_userlist():
 def module_init():
     global users
     if not get("enabled", True, "userlist"):
-        loginwindow.o("ui_entry_username").set_icon_sensitive(1, False)
-        loginwindow.o("ui_entry_username").set_icon_from_icon_name(1, None)
+        loginwindow.o("ui_button_userselect").hide()
         return
 
-    loginwindow.o("ui_entry_username").connect("icon-press", show_userlist)
+    loginwindow.o("ui_button_userselect").connect("clicked", show_userlist)
     height = int(monitor.get_common_resolution().split("x")[1])
     loginwindow.o("ui_popover_userlist").set_size_request(150, height/3)

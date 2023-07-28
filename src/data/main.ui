@@ -145,6 +145,94 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">5</property>
                         <child>
+                          <object class="GtkBox">
+                            <property name="width-request">250</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <child>
+                              <object class="GtkStack" id="ui_stack_username">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="transition-duration">100</property>
+                                <property name="transition-type">crossfade</property>
+                                <child>
+                                  <object class="GtkButton" id="ui_button_username">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="receives-default">True</property>
+                                    <property name="valign">center</property>
+                                    <child>
+                                      <object class="GtkLabel" id="ui_button_username_label">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">username</property>
+                                      </object>
+                                    </child>
+                                    <style>
+                                      <class name="button"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="name">show</property>
+                                    <property name="title" translatable="yes">show</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkEntry" id="ui_entry_username">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="valign">center</property>
+                                    <property name="placeholder-text" translatable="yes">Username</property>
+                                    <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                                    <style>
+                                      <class name="entry"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="name">edit</property>
+                                    <property name="title" translatable="yes">edit</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="ui_button_userselect">
+                                <property name="width-request">30</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">True</property>
+                                <child>
+                                  <object class="GtkImage" id="ui_icon_userselect">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="icon-name">system-users-symbolic</property>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="button"/>
+                                </style>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
                           <object class="GtkEntry" id="ui_entry_password">
                             <property name="width-request">250</property>
                             <property name="visible">True</property>
@@ -165,62 +253,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkStack" id="ui_stack_username">
-                            <property name="width-request">250</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="halign">center</property>
-                            <property name="transition-duration">100</property>
-                            <property name="transition-type">crossfade</property>
-                            <child>
-                              <object class="GtkButton" id="ui_button_username">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">True</property>
-                                <child>
-                                  <object class="GtkLabel" id="ui_button_username_label">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="label" translatable="yes">username</property>
-                                  </object>
-                                </child>
-                                <style>
-                                  <class name="button"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="name">show</property>
-                                <property name="title" translatable="yes">show</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="ui_entry_username">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="valign">center</property>
-                                <property name="secondary-icon-name">system-users-symbolic</property>
-                                <property name="placeholder-text" translatable="yes">Username</property>
-                                <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
-                                <style>
-                                  <class name="entry"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="name">edit</property>
-                                <property name="title" translatable="yes">edit</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
+                            <property name="position">1</property>
                           </packing>
                         </child>
                         <child>
@@ -258,7 +291,7 @@
                               <packing>
                                 <property name="expand">True</property>
                                 <property name="fill">True</property>
-                                <property name="position">1</property>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                             <child>
@@ -1564,7 +1597,7 @@ WAN IP: </property>
   <object class="GtkPopover" id="ui_popover_userlist">
     <property name="width-request">200</property>
     <property name="can-focus">False</property>
-    <property name="relative-to">ui_stack_username</property>
+    <property name="relative-to">ui_button_userselect</property>
     <property name="position">right</property>
     <child>
       <object class="GtkBox">
