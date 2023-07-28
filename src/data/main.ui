@@ -148,11 +148,11 @@
                           <object class="GtkBox">
                             <property name="width-request">250</property>
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
+                            <property name="can-focus">True</property>
                             <child>
                               <object class="GtkStack" id="ui_stack_username">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                                <property name="can-focus">True</property>
                                 <property name="transition-duration">100</property>
                                 <property name="transition-type">crossfade</property>
                                 <child>
@@ -171,6 +171,7 @@
                                     </child>
                                     <style>
                                       <class name="button"/>
+                                      <class name="button_left"/>
                                     </style>
                                   </object>
                                   <packing>
@@ -187,6 +188,7 @@
                                     <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
                                     <style>
                                       <class name="entry"/>
+                                      <class name="button_left"/>
                                     </style>
                                   </object>
                                   <packing>
@@ -217,6 +219,7 @@
                                 </child>
                                 <style>
                                   <class name="button"/>
+                                  <class name="button_right"/>
                                 </style>
                               </object>
                               <packing>

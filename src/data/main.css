@@ -13,3 +13,12 @@
     min-height: 16px;
 }
 
+.button_left {
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+}
+
+.button_right {
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+}
