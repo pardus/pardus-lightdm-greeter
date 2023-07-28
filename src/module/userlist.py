@@ -110,6 +110,8 @@ def module_init():
     global users
     if not get("enabled", True, "userlist"):
         loginwindow.o("ui_button_userselect").hide()
+        loginwindow.o("ui_button_username").get_style_context().remove_class("button_left")
+        loginwindow.o("ui_entry_username").get_style_context().remove_class("button_left")
         return
 
     loginwindow.o("ui_button_userselect").connect("clicked", show_userlist)
