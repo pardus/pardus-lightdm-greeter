@@ -55,6 +55,7 @@ def user_button_event(widget):
     username = widget.username
     loginwindow.o("ui_entry_search_user").set_text("")
     loginwindow.o("ui_popover_userlist").popdown()
+    loginwindow.o("ui_stack_username").set_visible_child_name("show")
     loginwindow.err_handler()
     loginwindow.o("ui_entry_username").set_text(username)
     lightdm.set(username=username)
