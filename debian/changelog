@@ -1,3 +1,30 @@
+pardus-lightdm-greeter (0.0.6) unstable; urgency=medium
+
+  [ Ali Riza Keskin ]
+  * fix username list length check
+  * background draw algorithm improvement
+  * fix scale image
+  * minor fixes
+  * remove userlist icon when disabled
+  * fix password cache
+  * greeter loaded check added
+  * signal connect order changed
+  * dynamic appdir
+  * lint fixes
+  * lint fixes
+  * fix user background change event
+  * login handler run when password reset
+  * login handler run when password reset
+  * fix password reset cache issue
+  * disable cursor settings in gtk module init
+  * fix user search editable issue
+  * user selection button
+  * appearance fix
+  * fix appearance for userlist disabled
+  * username buttun mode show when select from list
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 21 Aug 2023 14:45:45 +0300
+
 pardus-lightdm-greeter (0.0.5) unstable; urgency=medium
 
   [ Hugo Carvalho ]
