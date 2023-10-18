@@ -94,8 +94,10 @@ class wifi_item(Gtk.Box):
 
         first_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         first_row.pack_start(self.image, False, False, 0)
+        first_row.set_spacing(5)
         
         second_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        second_row.set_spacing(5)
 
         label_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         label_box.pack_start(self.ssid, False, False, 0)
@@ -124,6 +126,7 @@ class wifi_item(Gtk.Box):
         self.second_row_revealer = Gtk.Revealer()
         self.second_row_revealer.add(second_row)
         self.pack_start(self.second_row_revealer, True, True, 0)
+        
         
         first_row_button.get_style_context().add_class("icon")
         connect_button.get_style_context().add_class("button")
