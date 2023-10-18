@@ -1,5 +1,5 @@
 import asyncio
-
+from wifi import widget as wifi_widget
 
 def _network_button_event(widget=None):
     global network_label_text
@@ -7,6 +7,8 @@ def _network_button_event(widget=None):
     loginwindow.o("ui_popover_network").popup()
     network_control_event()
 
+def _wifi_button_event(widget=None):
+    loginwindow.o("ui_popover_wifi").popup()
 
 network_label_text = ""
 _last_network_label_text = ""
@@ -50,3 +52,10 @@ def module_init():
     loginwindow.o("ui_button_network").connect(
         "clicked", _network_button_event)
     update_popover_text()
+    if not wifi_widget.wifi.available():
+         loginwindow.o("ui_button_wifi").hide()
+    else:
+        loginwindow.o("ui_button_wifi").connect(
+            "clicked", _wifi_button_event)
+        wmenu = wifi_widget.wifimenu()
+        loginwindow.o("ui_popover_wifi").add(wmenu)
