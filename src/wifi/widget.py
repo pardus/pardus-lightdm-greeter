@@ -41,13 +41,13 @@ class wifi_item(Gtk.Box):
         self.wifi_obj = wifi_obj
         self.widget_ctx = widget_ctx
         if int(self.wifi_obj.signal) > 80:
-            self.image.set_from_icon_name("network-wireless-signal-excellent",0)
+            self.image.set_from_icon_name("network-wireless-signal-excellent-symbolic",0)
         elif int(self.wifi_obj.signal) > 60:
-            self.image.set_from_icon_name("network-wireless-signal-good",0)
+            self.image.set_from_icon_name("network-wireless-signal-good-symbolic",0)
         elif int(self.wifi_obj.signal) > 40:
-            self.image.set_from_icon_name("network-wireless-signal-ok",0)
+            self.image.set_from_icon_name("network-wireless-signal-ok-symbolic",0)
         else:
-            self.image.set_from_icon_name("network-wireless-signal-weak",0)
+            self.image.set_from_icon_name("network-wireless-signal-weak-symbolic",0)
         self.ssid = Gtk.Label()
         self.ssid.set_markup("<b>{}</b>".format(self.wifi_obj.ssid))
         self.ssid.set_xalign(0)
