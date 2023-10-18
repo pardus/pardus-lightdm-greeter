@@ -59,9 +59,12 @@ class wifi_item(Gtk.Box):
         self.security.set_xalign(0)
         self.status = Gtk.Label()
         if self.wifi_obj.connected:
-            self.status.set_text("disconnect")
-        elif not self.wifi_obj.need_password():
+            self.status.set_text("connected")
+        elif self.wifi_obj.is_saved():
             self.status.set_text("saved")
+        elif not self.wifi_obj.need_password():
+            self.status.set_text("insecured")
+
         self.layout_init()
 
     def first_row_click_event(self, widget=None):

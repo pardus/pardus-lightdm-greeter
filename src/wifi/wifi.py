@@ -36,8 +36,11 @@ class wifi_object:
             str = str + " 802.1X"
         return str.lstrip()
 
+    def is_saved(self):
+        return os.path.exists("/etc/NetworkManager/system-connections/{}.nmconnection".format(self.ssid))
+
     def need_password(self):
-        if os.path.exists("/etc/NetworkManager/system-connections/{}.nmconnection".format(self.ssid)):
+        if self.is_saved():
             return False
         elif self.security == "":
             return False
