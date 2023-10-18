@@ -9,6 +9,7 @@ def _network_button_event(widget=None):
 
 def _wifi_button_event(widget=None):
     loginwindow.o("ui_popover_wifi").popup()
+    wmenu.refresh()
 
 network_label_text = ""
 _last_network_label_text = ""
@@ -45,8 +46,9 @@ def network_control_event():
         ctx += _("WAN IP:\n- {}").format(wan_ip)
     network_label_text = ctx.strip()
 
-
+wmenu = None
 def module_init():
+    global wmenu
     if not get("show-widget", True, "network"):
         loginwindow.o("ui_button_network").hide()
     loginwindow.o("ui_button_network").connect(
@@ -59,3 +61,5 @@ def module_init():
             "clicked", _wifi_button_event)
         wmenu = wifi_widget.wifimenu()
         loginwindow.o("ui_popover_wifi").add(wmenu)
+        height = int(monitor.get_common_resolution().split("x")[1])
+        loginwindow.o("ui_popover_wifi").set_size_request(400, height/3)

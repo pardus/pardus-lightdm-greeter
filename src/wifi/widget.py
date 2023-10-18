@@ -8,11 +8,8 @@ class wifimenu(Gtk.Box):
         self.wifi_list = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.refresh_signal=False
         if True or wifi.available():
-            refresh = Gtk.Button(label="refresh")
-            refresh.connect("clicked",self.refresh)
             scrolledwindow = Gtk.ScrolledWindow()
             scrolledwindow.add(self.wifi_list)
-            self.pack_start(refresh,False, False,0)
             self.pack_start(scrolledwindow,True, True,0)
             self.show_all()
             self.refresh()
