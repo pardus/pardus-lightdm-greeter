@@ -125,7 +125,9 @@ class wifi_item(Gtk.Box):
         self.second_row_revealer.add(second_row)
         self.pack_start(self.second_row_revealer, True, True, 0)
         
-        
+        first_row_button.get_style_context().add_class("icon")
+        connect_button.get_style_context().add_class("button")
+        self.password_entry.get_style_context().add_class("entry")
         
         self.show_all()
         if self.wifi_obj.connected:
