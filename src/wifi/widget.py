@@ -2,6 +2,8 @@ import gi, sys
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GLib, GObject, Gio, Gdk
 from wifi import wifi
+from util import asynchronous
+
 class wifimenu(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
@@ -16,16 +18,21 @@ class wifimenu(Gtk.Box):
 
         scrolledwindow = Gtk.ScrolledWindow()
         scrolledwindow.add(self.wifi_list)
+        self.wifi_list.get_style_context().add_class("button")
+        self.wifi_list.get_style_context().add_class("icon")
 
         self.stack.add_titled(scrolledwindow,"main","main")
 
         # connect box
         self.connect_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        self.connect_box.set_spacing(5)
-
         status_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         self.connect_box.pack_start(status_box, False, False, 0)
         status_box.set_spacing(5)
+
+        self.connect_box.set_spacing(5)
+        self.connect_box.get_style_context().add_class("button")
+        self.connect_box.get_style_context().add_class("icon")
+
 
         self.image = Gtk.Image()
         self.image.set_pixel_size(48)
@@ -33,7 +40,7 @@ class wifimenu(Gtk.Box):
 
         info_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         status_box.pack_start(info_box,False,False,0)
-        info_box.set_spacing(5)
+        status_box.set_spacing(13)
 
         self.ssid = Gtk.Label()
         self.signal = Gtk.Label()
@@ -119,6 +126,7 @@ class wifimenu(Gtk.Box):
         self.refresh()
 
 
+    @asynchronous
     def connect_button_event(self, widget=None):
         print(self.wifi_item,file=sys.stderr)
         if not self.wifi_item:
@@ -132,7 +140,7 @@ class wifimenu(Gtk.Box):
         self.refresh()
 
 
-
+    @asynchronous
     def disconnect_button_event(self, widget=None):
         if not self.wifi_item:
             return

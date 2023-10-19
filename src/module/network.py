@@ -64,4 +64,4 @@ def module_init():
         wmenu = wifi_widget.wifimenu()
         loginwindow.o("ui_popover_wifi").add(wmenu)
         height = int(monitor.get_common_resolution().split("x")[1])
-        loginwindow.o("ui_popover_wifi").set_size_request(400, height/3)
+        loginwindow.o("ui_popover_wifi").set_size_request(400, height/2)
