@@ -54,8 +54,12 @@ class wifi_object:
         else:
             print("Fixme")
             return False
+
     def disconnect(self):
         return 0 == os.system("nmcli con down '{}'".format(self.ssid))
+
+    def forget(self):
+        return 0 == os.system("nmcli con delete '{}'".format(self.ssid))
 
 def available():
     for adapter in os.listdir("/sys/class/net/"):

@@ -5,35 +5,75 @@ from wifi import wifi
 class wifimenu(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
+
+        # wifi list
         self.wifi_list = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.refresh_signal=False
         self.wifi_item = None
 
         self.stack = Gtk.Stack()
+        self.stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
 
         scrolledwindow = Gtk.ScrolledWindow()
         scrolledwindow.add(self.wifi_list)
+
         self.stack.add_titled(scrolledwindow,"main","main")
 
+        # connect box
         self.connect_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.connect_box.set_spacing(5)
 
-        self.connect_button = Gtk.Button(label="connect")
-        self.connect_button.connect("clicked",self.connect_button_event)
+        status_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.connect_box.pack_start(status_box, False, False, 0)
+        status_box.set_spacing(5)
+
+        self.image = Gtk.Image()
+        self.image.set_pixel_size(48)
+        status_box.pack_start(self.image,False,False,0)
+
+        info_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        status_box.pack_start(info_box,False,False,0)
+        info_box.set_spacing(5)
+
+        self.ssid = Gtk.Label()
+        self.signal = Gtk.Label()
+        self.security = Gtk.Label()
+        self.ssid.set_xalign(0)
+        self.signal.set_xalign(0)
+        self.security.set_xalign(0)
+        info_box.pack_start(self.ssid, False,False,0)
+        info_box.pack_start(self.signal, False,False,0)
+        info_box.pack_start(self.security, False,False,0)
+
+        self.connect_box.pack_start(info_box, False, False, 0)
 
         self.password_entry = Gtk.Entry()
         self.password_entry.set_visibility(False)
         self.connect_box.pack_start(self.password_entry, False, False, 0)
-        self.connect_box.pack_start(self.connect_button, False, False, 0)
+
+        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        button_box.set_spacing(5)
+        self.connect_box.pack_start(button_box, False, False, 0)
+
+        self.connect_button = Gtk.Button(label="connect")
+        self.connect_button.connect("clicked",self.connect_button_event)
+        button_box.pack_start(self.connect_button, True, True, 0)
+
+        self.forget_button = Gtk.Button(label="forget")
+        self.forget_button.connect("clicked",self.forget_button_event)
+        button_box.pack_start(self.forget_button, True, True, 0)
+
         self.stack.add_titled(self.connect_box,"connect","connect")
 
-
         self.connect_button.get_style_context().add_class("button")
+        self.forget_button.get_style_context().add_class("button")
         self.password_entry.get_style_context().add_class("entry")
 
         self.stack.set_visible_child_name("main")
         self.pack_start(self.stack,True,True,0)
 
-        if True or wifi.available():
+
+        if wifi.available():
             self.show_all()
             self.connect_box.show_all()
             self.stack.show_all()
@@ -42,6 +82,19 @@ class wifimenu(Gtk.Box):
     def update_connect_box(self):
         if not self.wifi_item:
             return
+
+        if int(self.wifi_item.wifi_obj.signal) > 80:
+            self.image.set_from_icon_name("network-wireless-signal-excellent-symbolic",0)
+        elif int(self.wifi_item.wifi_obj.signal) > 60:
+            self.image.set_from_icon_name("network-wireless-signal-good-symbolic",0)
+        elif int(self.wifi_item.wifi_obj.signal) > 40:
+            self.image.set_from_icon_name("network-wireless-signal-ok-symbolic",0)
+        else:
+            self.image.set_from_icon_name("network-wireless-signal-weak-symbolic",0)
+
+        self.ssid.set_markup("<b>SSID:</b> {}".format(self.wifi_item.wifi_obj.ssid))
+        self.security.set_markup("<b>Security:</b>{}".format(self.wifi_item.wifi_obj.security))
+        self.signal.set_markup("<b>Signal:</b> %{}".format(self.wifi_item.wifi_obj.signal))
 
         if self.wifi_item.wifi_obj.connected:
             self.connect_button.set_label("disconnect")
@@ -52,6 +105,19 @@ class wifimenu(Gtk.Box):
 
         if not self.wifi_item.wifi_obj.need_password():
             self.password_entry.hide()
+        else:
+            self.password_entry.show()
+
+        if not self.wifi_item.wifi_obj.is_saved():
+            self.forget_button.hide()
+        else:
+            self.forget_button.show()
+
+
+    def forget_button_event(self, widget=None):
+        self.stack.set_visible_child_name("main")
+        self.wifi_item.wifi_obj.forget()
+        self.refresh()
 
 
     def connect_button_event(self, widget=None):
@@ -63,8 +129,9 @@ class wifimenu(Gtk.Box):
         else:
             self.disconnect_button_event(widget)
 
-        self.refresh()
         self.stack.set_visible_child_name("main")
+        self.refresh()
+
 
 
     def disconnect_button_event(self, widget=None):

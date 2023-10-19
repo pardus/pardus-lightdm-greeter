@@ -9,7 +9,9 @@ def _network_button_event(widget=None):
 
 def _wifi_button_event(widget=None):
     loginwindow.o("ui_popover_wifi").popup()
-    wmenu.refresh()
+    if wmenu:
+        wmenu.refresh()
+        wmenu.stack.set_visible_child_name("main")
 
 network_label_text = ""
 _last_network_label_text = ""
@@ -54,7 +56,7 @@ def module_init():
     loginwindow.o("ui_button_network").connect(
         "clicked", _network_button_event)
     update_popover_text()
-    if False and not wifi_widget.wifi.available():
+    if not wifi_widget.wifi.available():
          loginwindow.o("ui_button_wifi").hide()
     else:
         loginwindow.o("ui_button_wifi").connect(
