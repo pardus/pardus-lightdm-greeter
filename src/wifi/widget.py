@@ -22,13 +22,16 @@ class wifimenu(Gtk.Box):
 
         self.password_entry = Gtk.Entry()
         self.password_entry.set_visibility(False)
-        self.connect_box.pack_start(self.password_entry, True, True, 0)
+        self.connect_box.pack_start(self.password_entry, False, False, 0)
         self.connect_box.pack_start(self.connect_button, False, False, 0)
         self.stack.add_titled(self.connect_box,"connect","connect")
 
 
+        self.connect_button.get_style_context().add_class("button")
+        self.password_entry.get_style_context().add_class("entry")
+
         self.stack.set_visible_child_name("main")
-        self.pack_start(self.stack,False,False,0)
+        self.pack_start(self.stack,True,True,0)
 
         if True or wifi.available():
             self.show_all()
@@ -36,25 +39,39 @@ class wifimenu(Gtk.Box):
             self.stack.show_all()
             self.refresh()
 
-    def update_connect_box(self)
+    def update_connect_box(self):
         if not self.wifi_item:
             return
+
+        if self.wifi_item.wifi_obj.connected:
+            self.connect_button.set_label("disconnect")
+            self.password_entry.hide()
+        else:
+            self.connect_button.set_label("connect")
+            self.password_entry.show()
+
+        if not self.wifi_item.wifi_obj.need_password():
+            self.password_entry.hide()
 
 
     def connect_button_event(self, widget=None):
+        print(self.wifi_item,file=sys.stderr)
         if not self.wifi_item:
             return
-        if not self.wifi_item.connected:
-            self.wifi_item.connect(self.password_entry.get_text())
-            self.widget_ctx.refresh()
+        if not self.wifi_item.wifi_obj.connected:
+            self.wifi_item.wifi_obj.connect(self.password_entry.get_text())
         else:
             self.disconnect_button_event(widget)
+
+        self.refresh()
+        self.stack.set_visible_child_name("main")
+
 
     def disconnect_button_event(self, widget=None):
         if not self.wifi_item:
             return
-        self.wifi_item.disconnect()
-        self.widget_ctx.refresh()
+        self.wifi_item.wifi_obj.disconnect()
+        self.refresh()
 
 
     def refresh(self,widget=None):
@@ -113,7 +130,7 @@ class wifi_item(Gtk.Box):
         self.layout_init()
 
     def first_row_click_event(self, widget=None):
-        self.widget_ctx.wifi_obj = self
+        self.widget_ctx.wifi_item = self
         self.widget_ctx.update_connect_box()
         self.widget_ctx.stack.set_visible_child_name("connect")
 
@@ -143,8 +160,6 @@ class wifi_item(Gtk.Box):
         first_row_button.connect("clicked",self.first_row_click_event)
 
         first_row_button.get_style_context().add_class("icon")
-        connect_button.get_style_context().add_class("button")
-        self.password_entry.get_style_context().add_class("entry")
 
         self.show_all()
 
