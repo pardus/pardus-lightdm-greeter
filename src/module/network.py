@@ -54,7 +54,7 @@ def module_init():
     loginwindow.o("ui_button_network").connect(
         "clicked", _network_button_event)
     update_popover_text()
-    if not wifi_widget.wifi.available():
+    if False and not wifi_widget.wifi.available():
          loginwindow.o("ui_button_wifi").hide()
     else:
         loginwindow.o("ui_button_wifi").connect(

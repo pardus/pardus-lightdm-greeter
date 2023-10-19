@@ -85,5 +85,5 @@ def list_wifi():
             if w.ssid == aa.get_id():
                 print(w.bssid, aa.get_uuid())
                 w.connected = True
-    
+
     return wifis
