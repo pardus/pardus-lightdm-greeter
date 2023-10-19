@@ -80,6 +80,7 @@ class wifimenu(Gtk.Box):
             self.refresh()
 
     def update_connect_box(self):
+        self.password_entry.set_text("")
         if not self.wifi_item:
             return
 
