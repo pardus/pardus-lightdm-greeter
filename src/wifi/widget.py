@@ -216,7 +216,7 @@ class wifi_item(Gtk.Box):
 
         first_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         first_row.pack_start(self.image, False, False, 0)
-        first_row.set_spacing(5)
+        first_row.set_spacing(13)
 
         label_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         label_box.pack_start(self.ssid, False, False, 0)
