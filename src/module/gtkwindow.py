@@ -25,8 +25,12 @@ class LoginWindow:
         return self.builder.get_object(name)
 
     def __connect_signals(self):
+        def block_delete(*args):
+            return True
+
         # Main window
         self.o("ui_window_main").connect("destroy", Gtk.main_quit)
+        self.o("ui_window_main").connect("delete-event", block_delete)
         self.o("ui_window_main").connect("draw", self.__draw_window)
         self.o("ui_window_main").connect(
             "focus-out-event", self.__event_window_focus_out)
