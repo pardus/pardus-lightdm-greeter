@@ -45,8 +45,6 @@ class wifimenu(Gtk.Box):
         info_box.pack_start(self.signal, False,False,0)
         info_box.pack_start(self.security, False,False,0)
 
-        self.connect_box.pack_start(info_box, False, False, 0)
-
         self.password_entry = Gtk.Entry()
         self.password_entry.set_visibility(False)
         self.connect_box.pack_start(self.password_entry, False, False, 0)
@@ -157,6 +155,8 @@ class wifimenu(Gtk.Box):
         for item in wifi.list_wifi():
             w = wifi_item(item, self)
             self.wifi_list.pack_start(w,False, False,0)
+            if "802.1X" in item.security and not item.is_saved():
+                w.set_sensitive(False)
             w.show()
         self.refresh_signal=False
 
@@ -194,6 +194,8 @@ class wifi_item(Gtk.Box):
             self.status.set_text("saved")
         elif not self.wifi_obj.need_password():
             self.status.set_text("insecured")
+        elif "802.1X" in self.wifi_obj.security:
+            self.status.set_text("unsupported")
 
         self.layout_init()
 
