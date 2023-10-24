@@ -51,7 +51,9 @@ def load_sessionlist():
         return
     _sessionlist_loaded = True
     box = loginwindow.o("ui_box_session")
-    sessions = ["default"] + lightdm.get_session_list()
+    sessions = lightdm.get_session_list()
+    if is_debian_based():
+        sessions = ["default"] + sessions
     for session in sessions:
         session_buttons[session] = sessionButton(session)
 

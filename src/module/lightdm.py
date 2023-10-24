@@ -169,7 +169,7 @@ class lightdm_class:
                 self.__session = ""
             if self.__session not in self.get_session_list() + [""]:
                 self.__show_message(greeter, _(
-                    "Invalid sesion : {}").format(self.__session))
+                    "Invalid session : {}").format(self.__session))
                 self.__session = ""
             try:
                 # Start session
@@ -206,6 +206,9 @@ class lightdm_class:
                 get("hidden-sessions", "", "lightdm").split(" ")
             debug("hidden-sessions: {}".format(hidden_sessions))
             for session in LightDM.get_sessions():
+                if get("ignore-wayland", False, "lightdm"):
+                    if session.get_session_type() == "wayland":
+                        continue
                 if session.get_key() not in hidden_sessions:
                     self.__slist.append(session.get_key())
         return self.__slist
