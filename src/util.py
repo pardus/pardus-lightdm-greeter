@@ -136,3 +136,9 @@ def get_local_ip():
         except:
             pass
     return ret
+
+def which(cmd):
+    for dir in os.environ["PATH"].split(":"):
+        if os.path.exists("{}/{}".format(dir, cmd)):
+            return "{}/{}".format(dir, cmd)
+    return None

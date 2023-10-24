@@ -6,6 +6,7 @@ import hashlib
 class LoginWindow:
 
     def __init__(self):
+        self.start_windowmanager()
         self.builder = Gtk.Builder()
         self.builder.add_from_file("data/main.ui")
         self.__init_variables()
@@ -149,6 +150,9 @@ class LoginWindow:
         if get("username-cache", True, "gtkwindow"):
             writefile("last-username", lightdm.get_username())
             writefile("last-session", lightdm.get_session())
+
+        self.kill_windowmanager()
+
 
 ############### events ###############
 
@@ -350,6 +354,21 @@ class LoginWindow:
         else:
             self.set_background(get("background", "user", "gtkwindow"))
         self.o("ui_popover_userlist").set_size_request(250, self.height/3)
+
+############### windowmanager ###############
+
+    def start_windowmanager(self):
+        wm = get("window-manager", "xfwm4")
+        if which(wm.split(" ")[0]):
+            subprocess.run(["{} 2>/dev/null &".format(wm)], shell=True)
+
+    def kill_windowmanager(self):
+        wm = get("window-manager", "xfwm4")
+        if which(wm.split(" ")[0]):
+            subprocess.run(["killall {}".format(wm)], shell=True)
+
+
+
 ############### class end ###############
 
 
