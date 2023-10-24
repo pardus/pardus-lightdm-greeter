@@ -63,10 +63,11 @@ def load_sessionlist():
         session_buttons[session].connect("clicked", button_event)
         box.add(session_buttons[session])
         box.show_all()
-    session_buttons["default"].session = ""
-    session_buttons["default"].session_name = _("Default")
-    session_buttons["default"].session_name = _("Default")
-    session_buttons["default"].label.set_text("  "+_("Default"))
+    if is_debian_based():
+        session_buttons["default"].session = ""
+        session_buttons["default"].session_name = _("Default")
+        session_buttons["default"].session_name = _("Default")
+        session_buttons["default"].label.set_text("  "+_("Default"))
     last_session = readfile("last-session")
     if last_session == "" or last_session not in sessions:
         last_session = sessions[0]

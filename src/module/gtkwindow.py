@@ -355,6 +355,7 @@ class LoginWindow:
 
 loginwindow = None
 screen = None
+cursor = None
 cssprovider = None
 
 ############### module init ###############
@@ -370,8 +371,9 @@ def module_init():
     screen = loginwindow.o("ui_window_main").get_screen()
     cssprovider = Gtk.CssProvider()
     style_context = Gtk.StyleContext()
-    #cursor = Gdk.Cursor(Gdk.CursorType.LEFT_PTR)
-    #Gdk.Screen.get_root_window(screen).set_cursor(cursor)
+    if get("fix-cursor", False, "gtkwindow"):
+        cursor = Gdk.Cursor(Gdk.CursorType.LEFT_PTR)
+        Gdk.Screen.get_root_window(screen).set_cursor(cursor)
     style_context.add_provider_for_screen(
         screen, cssprovider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
     )

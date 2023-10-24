@@ -115,6 +115,9 @@ def is_virtualbox():
     return False
 
 
+def is_debian_based():
+    return os.path.exists("/var/lib/dpkg/status"):
+
 # https://stackoverflow.com/questions/24196932/how-can-i-get-the-ip-address-from-a-nic-network-interface-controller-in-python
 
 
