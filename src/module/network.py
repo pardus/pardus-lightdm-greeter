@@ -53,6 +53,7 @@ def module_init():
     global wmenu
     if not get("show-widget", True, "network"):
         loginwindow.o("ui_button_network").hide()
+        return
     loginwindow.o("ui_button_network").connect(
         "clicked", _network_button_event)
     update_popover_text()
