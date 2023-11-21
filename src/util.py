@@ -30,8 +30,23 @@ try:
 except:
     config = []
 
+try:
+    kernel_args = {}
+    with open("/proc/cmdline","r") as f:
+        cmdline = f.read().split(" ")
+        for c in cmdline:
+            if "=" in c and c.startswith("lightdm."):
+                var = c.split("=")[0]
+                val = c[len(var):]
+                kernel_args[] = c[var] = val
+except:
+    kernel_args = {}
+            
+
 
 def get(variable, default=None, section="pardus"):
+    if "lightdm.{}.{}".format(section, variable) in kernel_args:
+        return kernel_args["lightdm.{}.{}".format(section, variable)]
     if section not in config:
         return default
     if variable not in config[section]:
