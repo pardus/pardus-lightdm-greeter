@@ -112,6 +112,9 @@ class monitor_class:
             os.system(
                 "xrandr --output {} --mode {}".format(monitor, common_resolution))
         self.screen_event_lock = False
+        w = int(common_resolution.split("x")[0])
+        h = int(common_resolution.split("x")[1])
+        update_window_resolution(w, h)
 
     def init_monitor(self):
         if self.screen_event_lock:
