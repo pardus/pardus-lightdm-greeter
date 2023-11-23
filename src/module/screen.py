@@ -11,11 +11,14 @@ def _update_resolution_event(flag=None):
         w = int(resolution.split("x")[0])
         h = int(resolution.split("x")[1])
         update_window_resolution(w, h)
+        set_window_monitor(0)
         return
     if get("mirror", True, "screen") and not is_virtual_machine():
         monitor.mirror()
     else:
         i = int(float(get("default-monitor", "0", "screen")))
+        if len(monitor.get_monitors()) < i:
+            i = len(monitor.get_monitors()) -1
         monitor.init_monitor()
         set_window_monitor(i)
 
