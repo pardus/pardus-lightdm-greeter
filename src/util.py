@@ -38,7 +38,7 @@ try:
             if "=" in c and c.startswith("lightdm."):
                 var = c.split("=")[0]
                 val = c[len(var):]
-                kernel_args[] = c[var] = val
+                kernel_args[var] = val
 except:
     kernel_args = {}
             
