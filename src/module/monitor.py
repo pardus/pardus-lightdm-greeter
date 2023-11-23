@@ -122,7 +122,7 @@ class monitor_class:
         wtot = 0
         self.screen_event_lock = True
         for monitor in monitors:
-            resolution = self.get_resolutions(monitor)[0]
+            resolution = self.get_xrandr_resolutions(monitor)[0]
             os.system(
                 "xrandr --output {} --mode {}".format(monitor, resolution))
             os.system("xrandr --output {} --pos {}x0".format(monitor, wtot))

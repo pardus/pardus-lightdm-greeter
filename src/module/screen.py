@@ -12,14 +12,6 @@ def _update_resolution_event(flag=None):
         i = int(float(get("default-monitor", "1", "screen")))
         monitor.init_monitor()
         set_window_monitor(i)
-    try:
-        resolution = monitor.get_common_resolution()
-        w = int(resolution.split("x")[0])
-        h = int(resolution.split("x")[1])
-        update_window_resolution(w, h)
-    except:
-        pass
-
 
 def module_init():
     screen = loginwindow.o("ui_window_main").get_screen()
