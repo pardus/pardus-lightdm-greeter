@@ -120,13 +120,13 @@ class monitor_class:
         if len(monitors) < 1:
             return
         wtot = 0
-        common_resolution = self.get_common_resolution()
         self.screen_event_lock = True
         for monitor in monitors:
+            resolution = self.get_xrandr_resotutions(monitor)[0]
             os.system(
-                "xrandr --output {} --mode {}".format(monitor, common_resolution))
+                "xrandr --output {} --mode {}".format(monitor, resolution))
             os.system("xrandr --output {} --pos {}x0".format(monitor, wtot))
-            wtot += int(common_resolution.split("x")[0])
+            wtot += int(resolution.split("x")[0])
         self.screen_event_lock = False
 
 
