@@ -6,24 +6,26 @@ def update_window_resolution(width, height):
 
 def _update_resolution_event(flag=None):
     debug("Screen configuration changed")
-    if get("ignore-event", False, "screen"):
-        set_window_monitor(0)
-        return
-    if len(monitor.get_monitors()) < 2:
+    resolution = None
+    if get("mirror", True, "screen") and not is_virtual_machine():
+        monitor.mirror()
         resolution = monitor.get_common_resolution()
+    else:
+        i = int(float(get("default-monitor", "1", "screen")))
+        monitor.init_monitor()
+        mlist = monitor.get_monitors()
+        if len(mlist) -1 < i:
+            i = len(mlist)-1
+        m = mlist[i]
+        resolution = monitor.get_resolutions(m)[0]
+        set_window_monitor(i)
+    try:
         w = int(resolution.split("x")[0])
         h = int(resolution.split("x")[1])
         update_window_resolution(w, h)
-        set_window_monitor(0)
-        return
-    if get("mirror", True, "screen") and not is_virtual_machine():
-        monitor.mirror()
-    else:
-        i = int(float(get("default-monitor", "0", "screen")))
-        if len(monitor.get_monitors()) < i:
-            i = len(monitor.get_monitors()) -1
-        monitor.init_monitor()
-        set_window_monitor(i)
+    except:
+        pass
+
 
 def module_init():
     screen = loginwindow.o("ui_window_main").get_screen()
