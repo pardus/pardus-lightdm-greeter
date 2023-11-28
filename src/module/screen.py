@@ -3,15 +3,23 @@ def update_window_resolution(width, height):
     loginwindow.height = height
     loginwindow.sync_resolution()
 
-
+ignore_event_init = False
 def _update_resolution_event(flag=None):
+    global ignore_event_init
     debug("Screen configuration changed")
     resolution = None
-    if get("mirror", True, "screen") and not is_virtual_machine():
+    if get("ignore-event", False, "screen"):
+        if ignore_event_init:
+            return
+        m = monitor.get_monitors()[0]
+        resolution = monitor.get_resolutions(m)[0]
+        set_window_monitor(0)
+        ignore_event_init = True
+    elif get("mirror", True, "screen") and not is_virtual_machine():
         monitor.mirror()
         resolution = monitor.get_common_resolution()
     else:
-        i = int(float(get("default-monitor", "1", "screen")))
+        i = int(float(get("default-monitor", "0", "screen")))
         monitor.init_monitor()
         mlist = monitor.get_monitors()
         if len(mlist) -1 < i:
