@@ -6,6 +6,9 @@ def update_window_resolution(width, height):
 
 def _update_resolution_event(flag=None):
     debug("Screen configuration changed")
+    if get("ignore-event", False, "screen"):
+        set_window_monitor(0)
+        return
     if len(monitor.get_monitors()) < 2:
         resolution = monitor.get_common_resolution()
         w = int(resolution.split("x")[0])
