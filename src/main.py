@@ -6,6 +6,8 @@ import time
 import subprocess
 from util import *
 
+import traceback
+
 gi.require_version("Gtk","3.0")
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
@@ -86,7 +88,7 @@ for module in base_modules + os.listdir("module"):
                 module_init()
             del (module_init)
         except Exception as e:
-            print(e, file=sys.stderr)
+            print(traceback.format_exc(), file=sys.stderr)
         loaded_modules.append(module)
 loginwindow.greeter_loaded = True
 ltime = time.time()
