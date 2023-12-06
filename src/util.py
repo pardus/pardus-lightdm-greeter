@@ -9,6 +9,7 @@ import time
 import threading
 import subprocess
 
+from gi.repository import Gio
 
 def asynchronous(func):
     def wrapper(*args, **kwargs):
@@ -41,7 +42,6 @@ try:
                 kernel_args[var] = val
 except:
     kernel_args = {}
-            
 
 
 def get(variable, default=None, section="pardus"):
@@ -59,6 +59,14 @@ def get(variable, default=None, section="pardus"):
             return False
     return str(ret)
 
+
+gsettings = Gio.Settings.new("tr.org.pardus.lightdm.greeter")
+
+def gsettings_get(variable):
+    return gsettings.get_string(variable)
+
+def gsettings_set(variable, value):
+    gsettings.set_string(variable,value)
 
 if get("debug", False, "pardus"):
     def debug(msg):

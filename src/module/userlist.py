@@ -44,10 +44,10 @@ class userButton(Gtk.Box):
 
     def delete_button_event(self, widget):
         self.hide()
-        hidden = readfile("hidden-users")
+        hidden = gsettings_get("hidden-users")
         log(str(hidden))
         if self.label.username not in hidden.split("\n"):
-            writefile("hidden-users", hidden +
+            gsettings_set("hidden-users", hidden +
                       "\n{}".format(self.label.username))
 
 
@@ -90,7 +90,7 @@ def load_userlist():
         return
     _userlist_loaded = True
     hidden_users = get("hidden-users", "root", "userlist").split(" ") + \
-        readfile("hidden-users").split("\n")
+        gsettings_get("hidden-users").split("\n")
     for user in lightdm.get_user_list():
         user = user.get_name()
         if user in hidden_users:

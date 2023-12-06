@@ -81,7 +81,7 @@ class LoginWindow:
         # init username if cache enabled
         if get("username-cache", True, "gtkwindow"):
             # read username from cache
-            username = readfile("last-username")
+            username = gsettings_get("last-username")
             # select first username from list if empty
             if username == "":
                 users = lightdm.get_user_list()
@@ -148,8 +148,8 @@ class LoginWindow:
                 lightdm.get_password().encode("utf-8")).hexdigest()
             writefile("{}-last-hash".format(lightdm.get_username()), new_hash)
         if get("username-cache", True, "gtkwindow"):
-            writefile("last-username", lightdm.get_username())
-            writefile("last-session", lightdm.get_session())
+            gsettings_set("last-username", lightdm.get_username())
+            gsettings_set("last-session", lightdm.get_session())
 
         self.kill_windowmanager()
 
@@ -210,7 +210,7 @@ class LoginWindow:
         else:
             self.o("ui_button_login").set_label(_("Login"))
             self.o("ui_box_session_menu").show()
-            
+
         self.o("ui_window_main").queue_draw()
 
     def __event_password_entry_changed(self, widget):
@@ -249,12 +249,12 @@ class LoginWindow:
         # start blocking gui
         self.block_gui()
         # remove username from hidden username cache
-        hidden = readfile("hidden-users")
+        hidden = gsettings_get("hidden-users")
         data = ""
         for user in hidden.split("\n"):
             if user != self.o("ui_entry_username").get_text():
                 data += "{}\n".format(user)
-        writefile("hidden-users", data)
+        gsettings_set("hidden-users", data)
         # start lightdm login
         return lightdm.login()
 

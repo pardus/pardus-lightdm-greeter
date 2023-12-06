@@ -70,7 +70,7 @@ def load_sessionlist():
         session_buttons["default"].session_name = _("Default")
         session_buttons["default"].session_name = _("Default")
         session_buttons["default"].label.set_text("  "+_("Default"))
-    last_session = readfile("last-session")
+    last_session = gsettings_get("last-session")
     if last_session == "" or last_session not in sessions:
         last_session = sessions[0]
     lightdm.set(session=last_session)
