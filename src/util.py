@@ -59,21 +59,26 @@ def get(variable, default=None, section="pardus"):
             return False
     return str(ret)
 
-
-gsettings = Gio.Settings.new("tr.org.pardus.lightdm.greeter")
-
-def gsettings_get(variable):
-    return gsettings.get_string(variable)
-
-def gsettings_set(variable, value):
-    gsettings.set_string(variable,value)
-
 if get("debug", False, "pardus"):
     def debug(msg):
         log("[DEBUG] => {}\n".format(msg), type="debug")
 else:
     def debug(msg):
         return
+
+
+gsettings = Gio.Settings.new("tr.org.pardus.lightdm.greeter")
+
+def gsettings_get(variable):
+    debug(variable)
+    debug(gsettings.get_string(variable))
+    return gsettings.get_string(variable)
+
+def gsettings_set(variable, value):
+    debug(variable)
+    debug(value)
+    gsettings.set_string(variable,value)
+
 
 
 def log(msg, type="log"):

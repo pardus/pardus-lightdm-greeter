@@ -13,6 +13,7 @@ class LoginWindow:
         self.__init_gui()
         self.__update_user_background_loop()
         self.__connect_signals()
+        self.__last_hash = gsettings_get("last-hash").split("\n")
 
     def __init_variables(self):
         self.greeter_loaded = False
@@ -144,9 +145,16 @@ class LoginWindow:
 
     def login_handler(self):
         if get("password-cache", True, "gtkwindow"):
+            username = lightdm.get_username()
             new_hash = hashlib.sha512(
                 lightdm.get_password().encode("utf-8")).hexdigest()
-            writefile("{}-last-hash".format(lightdm.get_username()), new_hash)
+
+            new_last_hash = username+"="+new_hash+"\n"
+            for h in self.__last_hash:
+                if h.startswith(username+"="):
+                    continue
+                    new_last_hash += h + "\n"
+            gsettings_set("last-hash",new_last_hash.strip())
         if get("username-cache", True, "gtkwindow"):
             gsettings_set("last-username", lightdm.get_username())
             gsettings_set("last-session", lightdm.get_session())
@@ -227,7 +235,11 @@ class LoginWindow:
         # get username from entry
         username = self.o("ui_entry_username").get_text()
         # read sha512sum from cache
-        last_hash = readfile("{}-last-hash".format(username))
+        last_hash = None
+        for h in self.__last_hash:
+            if h.startswith(username+"="):
+                last_hash = h[len(username)+1:]
+                break
         # if hash and cache is equal run login event
         if last_hash == hashlib.sha512(password.encode("utf-8")).hexdigest():
             self.__event_login_button()

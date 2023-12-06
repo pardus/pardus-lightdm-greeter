@@ -12,5 +12,9 @@
       <default>""</default>
       <summary>Last session</summary>
     </key>
+    <key type="s" name="last-hash">
+      <default>""</default>
+      <summary>Last hash</summary>
+    </key>
   </schema>
 </schemalist>
