@@ -92,6 +92,7 @@ class wifimenu(Gtk.Box):
 
         self.connect_button.get_style_context().add_class("button")
         self.forget_button.get_style_context().add_class("button")
+        self.back_button.get_style_context().add_class("button")
         self.password_entry.get_style_context().add_class("entry")
 
         self.stack.set_visible_child_name("main")

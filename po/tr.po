@@ -144,7 +144,7 @@ msgstr "Unut"
 
 #: src/wifi/widget.py:85
 msgid "Go Back"
-msgstr "Gerı Dön"
+msgstr "Geri Dön"
 
 #: src/wifi/widget.py:121
 msgid "<b>SSID:</b> {}"
