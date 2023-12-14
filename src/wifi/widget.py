@@ -4,6 +4,19 @@ from gi.repository import Gtk, GLib, GObject, Gio, Gdk
 from wifi import wifi
 from util import asynchronous
 
+try:
+    import locale
+    from locale import gettext as _
+
+    # Translation Constants:
+    APPNAME = "pardus-lightdm-greeter"
+    TRANSLATIONS_PATH = "/usr/share/locale"
+    locale.bindtextdomain(APPNAME, TRANSLATIONS_PATH)
+    locale.textdomain(APPNAME)
+except :
+    def _(msg):
+        return msg
+
 class wifimenu(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
@@ -60,13 +73,20 @@ class wifimenu(Gtk.Box):
         button_box.set_spacing(5)
         self.connect_box.pack_start(button_box, False, False, 0)
 
-        self.connect_button = Gtk.Button(label="connect")
+        self.connect_button = Gtk.Button(label=_("Connect"))
         self.connect_button.connect("clicked",self.connect_button_event)
         button_box.pack_start(self.connect_button, True, True, 0)
 
-        self.forget_button = Gtk.Button(label="forget")
+        self.forget_button = Gtk.Button(label=_("Forget"))
         self.forget_button.connect("clicked",self.forget_button_event)
         button_box.pack_start(self.forget_button, True, True, 0)
+
+
+        self.back_button = Gtk.Button(label=_("Go Back"))
+        self.back_button.connect("clicked",self.back_button_event)
+        self.connect_box.pack_start(Gtk.Label(""), True, True, 0)
+        self.connect_box.pack_start(self.back_button, False, False, 0)
+
 
         self.stack.add_titled(self.connect_box,"connect","connect")
 
@@ -98,15 +118,15 @@ class wifimenu(Gtk.Box):
         else:
             self.image.set_from_icon_name("network-wireless-signal-weak-symbolic",0)
 
-        self.ssid.set_markup("<b>SSID:</b> {}".format(self.wifi_item.wifi_obj.ssid))
-        self.security.set_markup("<b>Security:</b>{}".format(self.wifi_item.wifi_obj.security))
-        self.signal.set_markup("<b>Signal:</b> %{}".format(self.wifi_item.wifi_obj.signal))
+        self.ssid.set_markup(_("<b>SSID:</b> {}").format(self.wifi_item.wifi_obj.ssid))
+        self.security.set_markup(_("<b>Security:</b>{}").format(self.wifi_item.wifi_obj.security))
+        self.signal.set_markup(_("<b>Signal:</b> %{}").format(self.wifi_item.wifi_obj.signal))
 
         if self.wifi_item.wifi_obj.connected:
-            self.connect_button.set_label("disconnect")
+            self.connect_button.set_label(_("Disconnect"))
             self.password_entry.hide()
         else:
-            self.connect_button.set_label("connect")
+            self.connect_button.set_label(_("Connect"))
             self.password_entry.show()
 
         if not self.wifi_item.wifi_obj.need_password():
@@ -119,6 +139,10 @@ class wifimenu(Gtk.Box):
         else:
             self.forget_button.show()
 
+
+    def back_button_event(self, widget=None):
+        self.stack.set_visible_child_name("main")
+        self.refresh()
 
     def forget_button_event(self, widget=None):
         self.stack.set_visible_child_name("main")
@@ -197,13 +221,13 @@ class wifi_item(Gtk.Box):
         self.security.set_xalign(0)
         self.status = Gtk.Label()
         if self.wifi_obj.connected:
-            self.status.set_text("connected")
+            self.status.set_text(_("Connected"))
         elif self.wifi_obj.is_saved():
-            self.status.set_text("saved")
+            self.status.set_text(_("Saved"))
         elif not self.wifi_obj.need_password():
-            self.status.set_text("insecured")
+            self.status.set_text(_("Insecured"))
         elif "802.1X" in self.wifi_obj.security:
-            self.status.set_text("unsupported")
+            self.status.set_text(_("Unsupported"))
 
         self.layout_init()
 

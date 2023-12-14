@@ -2,6 +2,7 @@ import gi
 import subprocess
 gi.require_version('NM', '1.0')
 from gi.repository import NM
+from util import get
 import os
 
 class wifi_object:
@@ -62,6 +63,8 @@ class wifi_object:
         return 0 == os.system("nmcli con delete '{}'".format(self.ssid))
 
 def available():
+    if get("debug", False, "pardus"):
+        return True
     for adapter in os.listdir("/sys/class/net/"):
         if os.path.exists("/sys/class/net/{}/wireless".format(adapter)):
             return True
@@ -89,5 +92,7 @@ def list_wifi():
             if w.ssid == aa.get_id():
                 print(w.bssid, aa.get_uuid())
                 w.connected = True
+                wifis.remove(w)
+                wifis.insert(0, w)
 
     return wifis
