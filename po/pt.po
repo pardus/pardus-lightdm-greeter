@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022, 2023.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-14 10:02+0300\n"
-"PO-Revision-Date: 2023-03-21 23:14+0000\n"
+"PO-Revision-Date: 2024-01-02 22:56+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: src/data/main.ui:169
 msgid "username"
@@ -137,47 +137,47 @@ msgstr "Reiniciar"
 
 #: src/wifi/widget.py:76 src/wifi/widget.py:129
 msgid "Connect"
-msgstr ""
+msgstr "Ligar"
 
 #: src/wifi/widget.py:80
 msgid "Forget"
-msgstr ""
+msgstr "Esquecer"
 
 #: src/wifi/widget.py:85
 msgid "Go Back"
-msgstr ""
+msgstr "Voltar"
 
 #: src/wifi/widget.py:121
 msgid "<b>SSID:</b> {}"
-msgstr ""
+msgstr "<b>SSID:</b> {}"
 
 #: src/wifi/widget.py:122
 msgid "<b>Security:</b>{}"
-msgstr ""
+msgstr "<b>Segurança:</b>{}"
 
 #: src/wifi/widget.py:123
 msgid "<b>Signal:</b> %{}"
-msgstr ""
+msgstr "<b>Sinal:</b> %{}"
 
 #: src/wifi/widget.py:126
 msgid "Disconnect"
-msgstr ""
+msgstr "Desligar"
 
 #: src/wifi/widget.py:224
 msgid "Connected"
-msgstr ""
+msgstr "Ligado"
 
 #: src/wifi/widget.py:226
 msgid "Saved"
-msgstr ""
+msgstr "Guardada"
 
 #: src/wifi/widget.py:228
 msgid "Insecured"
-msgstr ""
+msgstr "Insegura"
 
 #: src/wifi/widget.py:230
 msgid "Unsupported"
-msgstr ""
+msgstr "Sem suporte"
 
 #: src/msgs.py:2 src/module/lightdm.py:252
 msgid "Failed to shutdown system"
@@ -189,13 +189,11 @@ msgstr "Erro ao reiniciar o sistema"
 
 #: src/msgs.py:4
 msgid "Place your right index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
 
 #: src/module/keyboard.py:120 src/module/sessionlist.py:70
 #: src/module/sessionlist.py:71 src/module/sessionlist.py:72
@@ -203,7 +201,6 @@ msgid "Default"
 msgstr "Predefinido"
 
 #: src/module/lightdm.py:172
-#, fuzzy
 msgid "Invalid session : {}"
 msgstr "Sessão inválida : {}"
 
