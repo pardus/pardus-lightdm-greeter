@@ -199,6 +199,7 @@ class lightdm_class:
         debug("   In User: {}".format(self.greeter.get_authentication_user()))
         debug("   In Auth: {}".format(self.greeter.get_in_authentication()))
 
+    @cached
     def get_session_list(self):
         if self.__slist == None:
             self.__slist = []
@@ -219,6 +220,7 @@ class lightdm_class:
                 return True
         return False
 
+    @cached
     def get_user_list(self):
         if self.__ulist == None:
             self.__ulist = LightDM.UserList.get_instance().get_users()

@@ -19,6 +19,15 @@ def asynchronous(func):
         return thread
     return wrapper
 
+cached_result = {}
+def cached(func):
+    def wrapper(*args, **kwargs):
+        global cached_result
+        if func.__name__ in cached_result:
+            return cached_result[func.__name__]
+        cached_result[func.__name__] = func(*args, **kwargs)
+        return cached_result[func.__name__]
+    return wrapper
 
 try:
     cfgs = ["/etc/pardus/greeter.conf"]
@@ -125,6 +134,7 @@ def get_ip():
     return '0.0.0.0'
 
 
+@cached
 def is_virtual_machine():
     cpuinfo = readfile("/proc/cpuinfo").split("\n")
     for line in cpuinfo:
@@ -132,7 +142,7 @@ def is_virtual_machine():
             return "hypervisor" in line
     return False
 
-
+@cached
 def is_virtualbox():
     if os.path.isfile("/sys/class/dmi/id/product_name"):
         with open("/sys/class/dmi/id/product_name", "r") as f:
@@ -142,7 +152,7 @@ def is_virtualbox():
                 return True
     return False
 
-
+@cached
 def is_debian_based():
     return os.path.exists("/var/lib/dpkg/status")
 
