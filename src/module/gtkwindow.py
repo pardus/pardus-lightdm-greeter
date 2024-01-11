@@ -43,11 +43,15 @@ class LoginWindow:
         # password entry
         self.o("ui_entry_password").connect(
             "changed", self.__event_password_entry_changed)
+        self.o("ui_entry_password").connect(
+            "focus-in-event", self.__screen_keyboard_event)
         # username entry
         self.o("ui_entry_username").connect(
             "activate", self.__event_username_entry_clicked)
         self.o("ui_entry_username").connect(
             "changed", self.__event_username_entry_changed)
+        self.o("ui_entry_username").connect(
+            "focus-in-event", self.__screen_keyboard_event)
         # password entry icons
         self.o("ui_entry_password").connect(
             "icon-press", self.password_entry_icon_press)
@@ -58,11 +62,16 @@ class LoginWindow:
             "icon-press", self.password_entry_icon_press)
         self.o("ui_entry_new_password1").connect(
             "icon-release", self.password_entry_icon_release)
+        self.o("ui_entry_new_password1").connect(
+            "focus-in-event", self.__screen_keyboard_event)
+
         # reset entry 2
         self.o("ui_entry_new_password2").connect(
             "icon-press", self.password_entry_icon_press)
         self.o("ui_entry_new_password2").connect(
             "icon-release", self.password_entry_icon_release)
+        self.o("ui_entry_new_password2").connect(
+            "focus-in-event", self.__screen_keyboard_event)
 
         # username button
         self.o("ui_button_username").connect(
@@ -104,6 +113,11 @@ class LoginWindow:
             Gdk.cairo_set_source_pixbuf(context, self.background_pixbuf, 0, 0)
             context.rectangle(0, 0, self.width, self.height)
             context.fill()
+
+    def __screen_keyboard_event(self, event, data):
+        if get("touch-mode", False):
+            os.system(get("screen-keyboard", "onboard", "keyboard")+"&")
+
 
 ############### password entry icon events ###############
 
