@@ -38,10 +38,10 @@ class wifimenu(Gtk.Box):
         # connecting page
         connecting_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         connecting_box.pack_start(Gtk.Label(""), True, True, 0)
-        connecting_box.pack_start(Gtk.Label(_("Connecting...")), False, False, 0)
         spinner = Gtk.Spinner()
         spinner.start()
         connecting_box.pack_start(spinner, False, False, 0)
+        connecting_box.pack_start(Gtk.Label(_("Connecting...")), False, False, 0)
         connecting_box.pack_start(Gtk.Label(""), True, True, 0)
         self.stack.add_titled(connecting_box,"connecting","connecting")
 
@@ -77,6 +77,7 @@ class wifimenu(Gtk.Box):
 
         self.password_entry = Gtk.Entry()
         self.password_entry.set_visibility(False)
+        self.password_entry.connect("activate",self.connect_button_event)
         self.connect_box.pack_start(self.password_entry, False, False, 0)
 
         button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
