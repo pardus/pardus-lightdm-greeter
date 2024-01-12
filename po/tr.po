@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-14 10:02+0300\n"
+"POT-Creation-Date: 2024-01-12 18:32+0300\n"
 "PO-Revision-Date: 2022-10-18 11:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -37,7 +37,7 @@ msgstr "düzenle"
 msgid "Password"
 msgstr "Parola"
 
-#: src/data/main.ui:281 src/module/gtkwindow.py:219
+#: src/data/main.ui:281 src/module/gtkwindow.py:233
 msgid "Login"
 msgstr "Giriş"
 
@@ -134,55 +134,59 @@ msgstr "Kapat"
 msgid "Reboot"
 msgstr "Yeniden başlat"
 
-#: src/wifi/widget.py:76 src/wifi/widget.py:129
+#: src/wifi/widget.py:41
+msgid "Connecting..."
+msgstr "Bağlanıyor..."
+
+#: src/wifi/widget.py:86 src/wifi/widget.py:140
 msgid "Connect"
 msgstr "Bağlan"
 
-#: src/wifi/widget.py:80
+#: src/wifi/widget.py:90
 msgid "Forget"
 msgstr "Unut"
 
-#: src/wifi/widget.py:85
+#: src/wifi/widget.py:95
 msgid "Go Back"
 msgstr "Geri Dön"
 
-#: src/wifi/widget.py:121
+#: src/wifi/widget.py:132
 msgid "<b>SSID:</b> {}"
 msgstr "<b>SSID:</b> {}"
 
-#: src/wifi/widget.py:122
+#: src/wifi/widget.py:133
 msgid "<b>Security:</b>{}"
 msgstr "<b>Güvenlik:</b> {}"
 
-#: src/wifi/widget.py:123
+#: src/wifi/widget.py:134
 msgid "<b>Signal:</b> %{}"
 msgstr "<b>Sinyal:</b> {}"
 
-#: src/wifi/widget.py:126
+#: src/wifi/widget.py:137
 msgid "Disconnect"
 msgstr "Bağlantıyı Kes"
 
-#: src/wifi/widget.py:224
+#: src/wifi/widget.py:236
 msgid "Connected"
 msgstr "Bağlı"
 
-#: src/wifi/widget.py:226
+#: src/wifi/widget.py:238
 msgid "Saved"
 msgstr "Kayıtlı"
 
-#: src/wifi/widget.py:228
+#: src/wifi/widget.py:240
 msgid "Insecured"
 msgstr "Güvensiz"
 
-#: src/wifi/widget.py:230
+#: src/wifi/widget.py:242
 msgid "Unsupported"
 msgstr "Desteklenmeyen"
 
-#: src/msgs.py:2 src/module/lightdm.py:252
+#: src/msgs.py:2 src/module/lightdm.py:254
 msgid "Failed to shutdown system"
 msgstr "Sistem kapatılamadı"
 
-#: src/msgs.py:3 src/module/lightdm.py:238
+#: src/msgs.py:3 src/module/lightdm.py:240
 msgid "Failed to reboot system"
 msgstr "Sistem yeniden başlatılamadı"
 
@@ -194,26 +198,10 @@ msgstr "Sağ işaret parmağınızı parmak izi okuyucusuna yerleştirin"
 msgid "Place your left index finger on the fingerprint reader"
 msgstr "Sol işaret parmağınızı parmak izi okuyucusuna yerleştirin"
 
-#: src/module/keyboard.py:120 src/module/sessionlist.py:70
-#: src/module/sessionlist.py:71 src/module/sessionlist.py:72
+#: src/module/sessionlist.py:70 src/module/sessionlist.py:71
+#: src/module/sessionlist.py:72 src/module/keyboard.py:120
 msgid "Default"
 msgstr "Varsayılan"
-
-#: src/module/lightdm.py:172
-msgid "Invalid session : {}"
-msgstr "Geçersiz oturum: {}"
-
-#: src/module/lightdm.py:178
-msgid "Failed to start session: {}"
-msgstr "Oturum başlatılamadı: {}"
-
-#: src/module/lightdm.py:185
-msgid "Authentication failed: {}"
-msgstr "Doğrulama başarısız: {}"
-
-#: src/module/lightdm.py:245
-msgid "Failed to sleep system"
-msgstr "Sistem uyutulamadı"
 
 #: src/module/network.py:6
 msgid "Loading..."
@@ -239,7 +227,23 @@ msgstr ""
 "WAN IP:\n"
 "- {}"
 
-#: src/module/gtkwindow.py:216
+#: src/module/lightdm.py:172
+msgid "Invalid session : {}"
+msgstr "Geçersiz oturum: {}"
+
+#: src/module/lightdm.py:178
+msgid "Failed to start session: {}"
+msgstr "Oturum başlatılamadı: {}"
+
+#: src/module/lightdm.py:185
+msgid "Authentication failed: {}"
+msgstr "Doğrulama başarısız: {}"
+
+#: src/module/lightdm.py:247
+msgid "Failed to sleep system"
+msgstr "Sistem uyutulamadı"
+
+#: src/module/gtkwindow.py:230
 msgid "Unlock"
 msgstr "Kilit Aç"
 

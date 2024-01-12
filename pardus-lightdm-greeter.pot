@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-14 10:02+0300\n"
+"POT-Creation-Date: 2024-01-12 18:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: src/data/main.ui:281 src/module/gtkwindow.py:219
+#: src/data/main.ui:281 src/module/gtkwindow.py:233
 msgid "Login"
 msgstr ""
 
@@ -130,55 +130,59 @@ msgstr ""
 msgid "Reboot"
 msgstr ""
 
-#: src/wifi/widget.py:76 src/wifi/widget.py:129
+#: src/wifi/widget.py:41
+msgid "Connecting..."
+msgstr ""
+
+#: src/wifi/widget.py:86 src/wifi/widget.py:140
 msgid "Connect"
 msgstr ""
 
-#: src/wifi/widget.py:80
+#: src/wifi/widget.py:90
 msgid "Forget"
 msgstr ""
 
-#: src/wifi/widget.py:85
+#: src/wifi/widget.py:95
 msgid "Go Back"
 msgstr ""
 
-#: src/wifi/widget.py:121
+#: src/wifi/widget.py:132
 msgid "<b>SSID:</b> {}"
 msgstr ""
 
-#: src/wifi/widget.py:122
+#: src/wifi/widget.py:133
 msgid "<b>Security:</b>{}"
 msgstr ""
 
-#: src/wifi/widget.py:123
+#: src/wifi/widget.py:134
 msgid "<b>Signal:</b> %{}"
 msgstr ""
 
-#: src/wifi/widget.py:126
+#: src/wifi/widget.py:137
 msgid "Disconnect"
 msgstr ""
 
-#: src/wifi/widget.py:224
+#: src/wifi/widget.py:236
 msgid "Connected"
 msgstr ""
 
-#: src/wifi/widget.py:226
+#: src/wifi/widget.py:238
 msgid "Saved"
 msgstr ""
 
-#: src/wifi/widget.py:228
+#: src/wifi/widget.py:240
 msgid "Insecured"
 msgstr ""
 
-#: src/wifi/widget.py:230
+#: src/wifi/widget.py:242
 msgid "Unsupported"
 msgstr ""
 
-#: src/msgs.py:2 src/module/lightdm.py:252
+#: src/msgs.py:2 src/module/lightdm.py:254
 msgid "Failed to shutdown system"
 msgstr ""
 
-#: src/msgs.py:3 src/module/lightdm.py:238
+#: src/msgs.py:3 src/module/lightdm.py:240
 msgid "Failed to reboot system"
 msgstr ""
 
@@ -190,25 +194,9 @@ msgstr ""
 msgid "Place your left index finger on the fingerprint reader"
 msgstr ""
 
-#: src/module/keyboard.py:120 src/module/sessionlist.py:70
-#: src/module/sessionlist.py:71 src/module/sessionlist.py:72
+#: src/module/sessionlist.py:70 src/module/sessionlist.py:71
+#: src/module/sessionlist.py:72 src/module/keyboard.py:120
 msgid "Default"
-msgstr ""
-
-#: src/module/lightdm.py:172
-msgid "Invalid session : {}"
-msgstr ""
-
-#: src/module/lightdm.py:178
-msgid "Failed to start session: {}"
-msgstr ""
-
-#: src/module/lightdm.py:185
-msgid "Authentication failed: {}"
-msgstr ""
-
-#: src/module/lightdm.py:245
-msgid "Failed to sleep system"
 msgstr ""
 
 #: src/module/network.py:6
@@ -231,6 +219,22 @@ msgid ""
 "- {}"
 msgstr ""
 
-#: src/module/gtkwindow.py:216
+#: src/module/lightdm.py:172
+msgid "Invalid session : {}"
+msgstr ""
+
+#: src/module/lightdm.py:178
+msgid "Failed to start session: {}"
+msgstr ""
+
+#: src/module/lightdm.py:185
+msgid "Authentication failed: {}"
+msgstr ""
+
+#: src/module/lightdm.py:247
+msgid "Failed to sleep system"
+msgstr ""
+
+#: src/module/gtkwindow.py:230
 msgid "Unlock"
 msgstr ""
