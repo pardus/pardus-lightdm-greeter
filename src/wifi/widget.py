@@ -33,8 +33,18 @@ class wifimenu(Gtk.Box):
         scrolledwindow.add(self.wifi_list)
         self.wifi_list.get_style_context().add_class("button")
         self.wifi_list.get_style_context().add_class("icon")
-
         self.stack.add_titled(scrolledwindow,"main","main")
+
+        # connecting page
+        connecting_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        connecting_box.pack_start(Gtk.Label(""), True, True, 0)
+        connecting_box.pack_start(Gtk.Label(_("Connecting...")), False, False, 0)
+        spinner = Gtk.Spinner()
+        spinner.start()
+        connecting_box.pack_start(spinner, False, False, 0)
+        connecting_box.pack_start(Gtk.Label(""), True, True, 0)
+        self.stack.add_titled(connecting_box,"connecting","connecting")
+
 
         # connect box
         self.connect_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -153,6 +163,7 @@ class wifimenu(Gtk.Box):
 
     @asynchronous
     def connect_button_event(self, widget=None):
+        self.stack.set_visible_child_name("connecting")
         print(self.wifi_item,file=sys.stderr)
         if not self.wifi_item:
             return
@@ -200,7 +211,7 @@ class wifi_item(Gtk.Box):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
         # wifi icon
         self.image = Gtk.Image()
-        self.image.set_pixel_size(48)
+        self.image.set_pixel_size(32)
         self.wifi_obj = wifi_obj
         self.widget_ctx = widget_ctx
         if int(self.wifi_obj.signal) > 80:
