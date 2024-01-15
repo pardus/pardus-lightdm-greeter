@@ -37,7 +37,7 @@ def network_control_event():
             i = j
     ip_list = get_local_ip()
     if len(ip_list) == 0:
-        network_label_text = _("Network not available")
+        network_label_text = _("Network is not available")
         return
     for ip, dev in ip_list:
         j = len(ip) + len(dev) + 2

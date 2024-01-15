@@ -58,7 +58,7 @@ class wifimenu(Gtk.Box):
 
 
         self.image = Gtk.Image()
-        self.image.set_pixel_size(48)
+        self.image.set_pixel_size(32)
         status_box.pack_start(self.image,False,False,0)
 
         info_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
