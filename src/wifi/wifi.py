@@ -49,9 +49,9 @@ class wifi_object:
 
     def connect(self,password=""):
         if not self.need_password():
-            0 == os.system("nmcli device wifi connect '{}'".format(self.bssid))
+            return 0 == os.system("nmcli device wifi connect '{}'".format(self.bssid))
         elif self.security in ["WPA2", "WPA1 WPA2"]:
-            0 == os.system("nmcli device wifi connect '{}' password '{}'".format(self.bssid,password))
+            return 0 == os.system("nmcli device wifi connect '{}' password '{}'".format(self.bssid,password))
         else:
             print("Failed to connect wifi", sys.stderr)
             return False
