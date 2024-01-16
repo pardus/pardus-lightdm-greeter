@@ -75,10 +75,22 @@ class wifimenu(Gtk.Box):
         info_box.pack_start(self.signal, False,False,0)
         info_box.pack_start(self.security, False,False,0)
 
+
+		def password_entry_icon_press(entry, icon_pos, event):
+		    entry.set_visibility(True)
+		    entry.set_icon_from_icon_name(1, "view-conceal-symbolic")
+
+		def password_entry_icon_release(entry, icon_pos, event):
+		    entry.set_visibility(False)
+		    entry.set_icon_from_icon_name(1, "view-reveal-symbolic")
+
         self.password_entry = Gtk.Entry()
         self.password_entry.set_visibility(False)
         self.password_entry.connect("activate",self.connect_button_event)
         self.connect_box.pack_start(self.password_entry, False, False, 0)
+        self.password_entry.connect("icon-press", password_entry_icon_press)
+        self.password_entry.connect("icon-release", password_entry_icon_release)
+        self.password_entry.set_icon_from_icon_name(1, "view-reveal-symbolic")
 
         button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         button_box.set_spacing(5)
