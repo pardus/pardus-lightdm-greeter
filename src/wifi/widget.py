@@ -83,6 +83,7 @@ class wifimenu(Gtk.Box):
             entry.set_visibility(False)
             entry.set_icon_from_icon_name(1, "view-reveal-symbolic")
 
+
         self.password_entry = Gtk.Entry()
         self.password_entry.set_visibility(False)
         self.password_entry.connect("activate",self.connect_button_event)
@@ -103,6 +104,10 @@ class wifimenu(Gtk.Box):
         self.forget_button.connect("clicked",self.forget_button_event)
         button_box.pack_start(self.forget_button, True, True, 0)
 
+        def entry_change_event(widget):
+            self.connect_button.set_sensitive(len(widget.get_text()) >=8)
+        self.password_entry.connect("changed",entry_change_event)
+        self.password_entry.set_text("")
 
         self.back_button = Gtk.Button(label=_("Go Back"))
         self.back_button.connect("clicked",self.back_button_event)
@@ -154,8 +159,10 @@ class wifimenu(Gtk.Box):
 
         if not self.wifi_item.wifi_obj.need_password():
             self.password_entry.hide()
+            self.connect_button.set_sensitive(True)
         else:
             self.password_entry.show()
+            self.connect_button.set_sensitive(False)
 
         if not self.wifi_item.wifi_obj.is_saved():
             self.forget_button.hide()
@@ -176,7 +183,6 @@ class wifimenu(Gtk.Box):
     @asynchronous
     def connect_button_event(self, widget=None):
         self.stack.set_visible_child_name("connecting")
-        print(self.wifi_item,file=sys.stderr)
         status=False
         if not self.wifi_item:
             return
@@ -184,7 +190,6 @@ class wifimenu(Gtk.Box):
             status = self.wifi_item.wifi_obj.connect(self.password_entry.get_text())
         else:
             status = self.disconnect_button_event(widget)
-
         if not status:
             self.wifi_item.wifi_obj.forget()
             # TODO: implement error message

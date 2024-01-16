@@ -53,8 +53,9 @@ class wifi_object:
         elif self.security in ["WPA2", "WPA1 WPA2"]:
             0 == os.system("nmcli device wifi connect '{}' password '{}'".format(self.bssid,password))
         else:
-            print("Fixme")
+            print("Failed to connect wifi", sys.stderr)
             return False
+        return True
 
     def disconnect(self):
         return 0 == os.system("nmcli con down '{}'".format(self.ssid))
