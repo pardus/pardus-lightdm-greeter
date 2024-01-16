@@ -177,13 +177,17 @@ class wifimenu(Gtk.Box):
     def connect_button_event(self, widget=None):
         self.stack.set_visible_child_name("connecting")
         print(self.wifi_item,file=sys.stderr)
+        status=False
         if not self.wifi_item:
             return
         if not self.wifi_item.wifi_obj.connected:
-            self.wifi_item.wifi_obj.connect(self.password_entry.get_text())
+            status = self.wifi_item.wifi_obj.connect(self.password_entry.get_text())
         else:
-            self.disconnect_button_event(widget)
+            status = self.disconnect_button_event(widget)
 
+        if not status:
+            self.wifi_item.wifi_obj.forget()
+            # TODO: implement error message
         self.stack.set_visible_child_name("main")
         self.refresh()
 
