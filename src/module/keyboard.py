@@ -31,6 +31,7 @@ class xkbButton(Gtk.Button):
     def set_default(self, status=False):
         if status:
             self.image.set_from_icon_name("emblem-default-symbolic", 0)
+            os.system("setxkbmap {} {}".format(self.layout, self.variant))
         else:
             self.image.set_from_icon_name("", 0)
 
@@ -43,10 +44,6 @@ def is_capslock_on():
 def is_numlock_on():
     c = DISPLAY.get_keyboard_control()
     return c.led_mask & 2
-
-
-def set_keyboard(layout, variant):
-    return len(subprocess.getoutput("setxkbmap {} {}".format(layout, variant))) == 0
 
 
 def _keyboard_button_event(widget):
@@ -136,7 +133,6 @@ def _get_xkbs_buttons(xkbs):
             continue
 
         def button_event(widget):
-            set_keyboard(widget.layout, widget.variant)
             for x in xkb_buttons:
                 xkb_buttons[x].set_default()
                 widget.set_default(True)
