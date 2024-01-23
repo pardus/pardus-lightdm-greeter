@@ -335,9 +335,9 @@ class LoginWindow:
         if os.path.isfile(bg):
             try:
                 py = GdkPixbuf.Pixbuf.new_from_file(bg)
-                if self.width / int(scale) > 0:
+                if self.width > 0:
                     px = py.scale_simple(
-                        self.width / int(scale), self.height / int(scale), GdkPixbuf.InterpType.BILINEAR)
+                        self.width, self.height, GdkPixbuf.InterpType.BILINEAR)
                 if px and self.background_pixbuf != px:
                     self.background_pixbuf = px
             except Exception as e:
@@ -369,9 +369,9 @@ class LoginWindow:
 
     def sync_resolution(self):
         self.o("ui_window_main").resize(
-            self.width / int(scale), self.height / int(scale))
+            self.width , self.height)
         self.o("ui_window_main").set_size_request(
-            self.width / int(scale), self.height / int(scale))
+            self.width, self.height)
         self.o("ui_window_main").fullscreen()
         self.o("ui_window_main").set_resizable(False)
         self.background_pixbuf = None
