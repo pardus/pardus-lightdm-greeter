@@ -12,6 +12,10 @@
       <default>""</default>
       <summary>Last session</summary>
     </key>
+    <key type="s" name="note-text">
+      <default>""</default>
+      <summary>note text</summary>
+    </key>
     <key type="s" name="last-hash">
       <default>""</default>
       <summary>Last hash</summary>

@@ -936,6 +936,40 @@ and power off the computer ?</property>
                     <property name="halign">end</property>
                     <property name="valign">center</property>
                     <child>
+                      <object class="GtkButton" id="ui_button_note">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="relief">none</property>
+                        <property name="image-position">top</property>
+                        <property name="always-show-image">True</property>
+                        <child>
+                          <object class="GtkImage" id="ui_icon_wifi1">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="pixel-size">36</property>
+                            <property name="icon-name">mail-unread-symbolic</property>
+                            <property name="icon_size">5</property>
+                            <style>
+                              <class name="text"/>
+                            </style>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="icon"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
                       <object class="GtkButton" id="ui_button_wifi">
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
@@ -966,7 +1000,7 @@ and power off the computer ?</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="position">1</property>
                       </packing>
                     </child>
                     <child>
@@ -1000,7 +1034,7 @@ and power off the computer ?</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1034,7 +1068,7 @@ and power off the computer ?</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">2</property>
+                        <property name="position">3</property>
                       </packing>
                     </child>
                     <child>
@@ -1068,7 +1102,7 @@ and power off the computer ?</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">3</property>
+                        <property name="position">4</property>
                       </packing>
                     </child>
                   </object>
@@ -1150,6 +1184,31 @@ WAN IP: </property>
           <class name="text"/>
           <class name="monospace"/>
         </style>
+      </object>
+    </child>
+    <style>
+      <class name="popover"/>
+    </style>
+  </object>
+  <object class="GtkPopover" id="ui_popover_notes">
+    <property name="can-focus">False</property>
+    <property name="relative-to">ui_button_note</property>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <child>
+          <object class="GtkTextView" id="ui_textview_notes">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="wrap-mode">word</property>
+            <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+            <property name="monospace">True</property>
+            <style>
+              <class name="textview"/>
+            </style>
+          </object>
+        </child>
       </object>
     </child>
     <style>

@@ -33,3 +33,7 @@ menu {
   background: none;
   border: none;
 }
+
+.textview {
+  background: alpha(black,0.55);
+}

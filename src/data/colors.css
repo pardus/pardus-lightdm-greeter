@@ -18,6 +18,7 @@ menu {
 .button:disabled, .entry:disabled {
     background: alpha(white,0.13);
 }
+
 .icon {
     background: none;
 }
@@ -31,4 +32,8 @@ menu {
 .textview, .textview text {
   background: none;
   border: none;
+}
+
+.textview {
+  background: alpha(white,0.31);
 }

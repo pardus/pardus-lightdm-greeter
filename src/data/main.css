@@ -22,3 +22,8 @@
   border-top-left-radius: unset;
   border-bottom-left-radius: unset;
 }
+
+.textview {
+  border-radius: 8px;
+  padding: 8px;
+}
