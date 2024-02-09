@@ -222,8 +222,13 @@ class lightdm_class:
 
     @cached
     def get_user_list(self):
-        if self.__ulist == None:
-            self.__ulist = LightDM.UserList.get_instance().get_users()
+        uids = []
+        if self.__ulist == []:
+            for u in LightDM.UserList.get_instance().get_users():
+                if u.geuid() in uids or u.get_uid() < 1000:
+                    continue
+                uids.append(uid)
+            self.__ulist.append(u)
         return self.__ulist
 
     def is_lockscreen(self):
