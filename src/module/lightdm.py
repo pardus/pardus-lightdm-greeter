@@ -25,7 +25,7 @@ class lightdm_class:
                                  "New password:", "Retype new password:"]
         self.__prompt_messages = ["Password:"]
         # lists
-        self.__ulist = None
+        self.__ulist = []
         self.__slist = None
 
     def __init__(self):
@@ -225,9 +225,9 @@ class lightdm_class:
         uids = []
         if self.__ulist == []:
             for u in LightDM.UserList.get_instance().get_users():
-                if u.geuid() in uids or u.get_uid() < 1000:
+                if u.get_uid() in uids or u.get_uid() < 1000:
                     continue
-                uids.append(uid)
+                uids.append(u.get_uid())
             self.__ulist.append(u)
         return self.__ulist
 
