@@ -355,9 +355,10 @@ class LoginWindow:
         # buttons 12px
         for but in ["ui_icon_userselect", "ui_icon_keyboard_layout", "ui_icon_default_session",
                     "ui_icon_virtual_keyboard", "ui_icon_poweroff", "ui_icon_reboot",
-                    "ui_icon_sleep"]:
+                    "ui_icon_sleep", "ui_icon_keyboard_layout_dd", "ui_icon_default_session_dd"]:
             self.o(but).set_pixel_size(12*scale)
         # login box width
+        self.o("ui_box_reset_passwd").set_size_request(250*scale, -1)        
         self.o("ui_box_login").set_size_request(250*scale, -1)
         self.o("ui_button_login").set_size_request(128*scale, -1)
         # user list

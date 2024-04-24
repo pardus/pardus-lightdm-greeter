@@ -160,7 +160,6 @@
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                     <property name="receives-default">True</property>
-                                    <property name="valign">center</property>
                                     <child>
                                       <object class="GtkLabel" id="ui_button_username_label">
                                         <property name="visible">True</property>
@@ -183,7 +182,6 @@
                                   <object class="GtkEntry" id="ui_entry_username">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="valign">center</property>
                                     <property name="placeholder-text" translatable="yes">Username</property>
                                     <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
                                     <style>
@@ -206,7 +204,8 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="ui_button_userselect">
-                                <property name="width-request">30</property>
+                                <property name="width-request">31</property>
+                                <property name="height-request">31</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
@@ -237,6 +236,8 @@
                         </child>
                         <child>
                           <object class="GtkEntry" id="ui_entry_password">
+                            <property name="width-request">31</property>
+                            <property name="height-request">31</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="valign">center</property>
@@ -278,6 +279,7 @@
                               <object class="GtkButton" id="ui_button_login">
                                 <property name="label" translatable="yes">Login</property>
                                 <property name="width-request">128</property>
+                                <property name="height-request">31</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="receives-default">True</property>
@@ -347,11 +349,9 @@
                         <property name="spacing">5</property>
                         <child>
                           <object class="GtkEntry" id="ui_entry_reset_username">
-                            <property name="width-request">250</property>
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="placeholder-text" translatable="yes">Username</property>
                             <style>
@@ -366,10 +366,8 @@
                         </child>
                         <child>
                           <object class="GtkEntry" id="ui_entry_new_password1">
-                            <property name="width-request">250</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="visibility">False</property>
                             <property name="invisible-char">*</property>
@@ -387,10 +385,8 @@
                         </child>
                         <child>
                           <object class="GtkEntry" id="ui_entry_new_password2">
-                            <property name="width-request">250</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="visibility">False</property>
                             <property name="invisible-char">*</property>
@@ -408,10 +404,8 @@
                         </child>
                         <child>
                           <object class="GtkBox">
-                            <property name="width-request">250</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="halign">center</property>
                             <property name="spacing">5</property>
                             <child>
                               <object class="GtkButton" id="ui_button_reset_cancel">

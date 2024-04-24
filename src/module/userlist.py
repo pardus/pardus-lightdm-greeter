@@ -25,6 +25,7 @@ class userButton(Gtk.Box):
             delbut.connect("clicked", self.delete_button_event)
             img = Gtk.Image()
             img.set_from_icon_name("list-remove-symbolic", 0)
+            img.set_pixel_size(12*scale)
             delbut.set_image(img)
             self.pack_end(delbut, False, False, 0)
 
