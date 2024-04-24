@@ -117,4 +117,4 @@ def module_init():
 
     loginwindow.o("ui_button_userselect").connect("clicked", show_userlist)
     height = int(monitor.get_common_resolution().split("x")[1])
-    loginwindow.o("ui_popover_userlist").set_size_request(150, height/3)
+    loginwindow.o("ui_popover_userlist").set_size_request(200, height/3)

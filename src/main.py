@@ -34,7 +34,7 @@ if scale < 1:
     scale = 1
 
 os.environ["GDK_SCALE"] = str(int(scale))
-os.environ["GDK_DPI_SCALE"] = str(1/scale)
+#os.environ["GDK_DPI_SCALE"] = str(1/scale)
 
 os.environ["UBUNTU_MENUPROXY"] = ""
 os.environ["SESSION_MANAGER"] = "lightdm"

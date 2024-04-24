@@ -51,6 +51,7 @@ def network_control_event():
 wmenu = None
 def module_init():
     global wmenu
+    wifi_widget.set_scale(scale)
     if not get("show-widget", True, "network"):
         loginwindow.o("ui_button_network").hide()
         return

@@ -17,6 +17,12 @@ except :
     def _(msg):
         return msg
 
+scale=1
+
+def set_scale(s=1):
+    global scale
+    scale=s
+
 class wifimenu(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
@@ -58,7 +64,7 @@ class wifimenu(Gtk.Box):
 
 
         self.image = Gtk.Image()
-        self.image.set_pixel_size(32)
+        self.image.set_pixel_size(32*scale)
         status_box.pack_start(self.image,False,False,0)
 
         info_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -232,7 +238,7 @@ class wifi_item(Gtk.Box):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
         # wifi icon
         self.image = Gtk.Image()
-        self.image.set_pixel_size(32)
+        self.image.set_pixel_size(32*scale)
         self.wifi_obj = wifi_obj
         self.widget_ctx = widget_ctx
         if int(self.wifi_obj.signal) > 80:

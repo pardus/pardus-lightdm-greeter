@@ -237,10 +237,8 @@
                         </child>
                         <child>
                           <object class="GtkEntry" id="ui_entry_password">
-                            <property name="width-request">250</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="visibility">False</property>
                             <property name="invisible-char">*</property>
@@ -946,7 +944,7 @@ and power off the computer ?</property>
                         <property name="image-position">top</property>
                         <property name="always-show-image">True</property>
                         <child>
-                          <object class="GtkImage" id="ui_icon_wifi1">
+                          <object class="GtkImage" id="ui_icon_message">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">center</property>
@@ -1687,7 +1685,6 @@ WAN IP: </property>
     </style>
   </object>
   <object class="GtkPopover" id="ui_popover_userlist">
-    <property name="width-request">200</property>
     <property name="can-focus">False</property>
     <property name="relative-to">ui_button_userselect</property>
     <property name="position">right</property>

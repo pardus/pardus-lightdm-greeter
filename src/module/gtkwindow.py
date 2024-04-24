@@ -344,6 +344,25 @@ class LoginWindow:
                 print(str(e))
         GLib.idle_add(self.o("ui_window_main").queue_draw)
 
+    def apply_scale(self):
+        # buttons 64px
+        for but in ["ui_icon_stack_restart", "ui_icon_stack_poweroff", "ui_icon_stack_sleep"]:
+            self.o(but).set_pixel_size(64*scale)
+        # buttons 36 px
+        for but in ["ui_icon_message", "ui_icon_wifi", "ui_icon_network", "ui_icon_powermenu",
+                    "ui_icon_options", "ui_icon_capslock", "ui_icon_numlock"]:
+            self.o(but).set_pixel_size(36*scale)
+        # buttons 12px
+        for but in ["ui_icon_userselect", "ui_icon_keyboard_layout", "ui_icon_default_session",
+                    "ui_icon_virtual_keyboard", "ui_icon_poweroff", "ui_icon_reboot",
+                    "ui_icon_sleep"]:
+            self.o(but).set_pixel_size(12*scale)
+        # login box width
+        self.o("ui_box_login").set_size_request(250*scale, -1)
+        self.o("ui_button_login").set_size_request(128*scale, -1)
+        # user list
+        self.o("ui_popover_userlist").set_size_request(200*scale, self.height/3)
+
 ############### css load ###############
 
     def load_css(self):
@@ -380,6 +399,7 @@ class LoginWindow:
         else:
             self.set_background(get("background", "user", "gtkwindow"))
         self.o("ui_popover_userlist").set_size_request(250, self.height/3)
+        self.apply_scale()
 
 ############### windowmanager ###############
 
