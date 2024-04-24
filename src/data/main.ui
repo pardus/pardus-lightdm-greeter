@@ -145,8 +145,7 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">5</property>
                         <child>
-                          <object class="GtkBox">
-                            <property name="width-request">250</property>
+                          <object class="GtkBox" id="ui_box_username">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <child>
@@ -279,7 +278,6 @@
                               <object class="GtkButton" id="ui_button_login">
                                 <property name="label" translatable="yes">Login</property>
                                 <property name="width-request">128</property>
-                                <property name="height-request">31</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="receives-default">True</property>
@@ -403,7 +401,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkBox" id="ui_box_reset_buttons">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="spacing">5</property>

@@ -360,7 +360,10 @@ class LoginWindow:
         # login box width
         self.o("ui_box_reset_passwd").set_size_request(250*scale, -1)        
         self.o("ui_box_login").set_size_request(250*scale, -1)
-        self.o("ui_button_login").set_size_request(128*scale, -1)
+        # login button & entry 128 x 31
+        for but in ["ui_button_login", "ui_box_username", "ui_entry_reset_username", "ui_entry_password",
+                    "ui_entry_new_password1", "ui_entry_new_password2", "ui_box_reset_buttons"]:
+            self.o(but).set_size_request(128*scale, 31*scale)
         # user list
         self.o("ui_popover_userlist").set_size_request(200*scale, self.height/3)
 
