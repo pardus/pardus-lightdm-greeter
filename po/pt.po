@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-12 18:32+0300\n"
-"PO-Revision-Date: 2024-01-02 22:56+0000\n"
+"PO-Revision-Date: 2024-04-25 22:31+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -136,9 +136,8 @@ msgid "Reboot"
 msgstr "Reiniciar"
 
 #: src/wifi/widget.py:41
-#, fuzzy
 msgid "Connecting..."
-msgstr "Ligar"
+msgstr "A ligar..."
 
 #: src/wifi/widget.py:86 src/wifi/widget.py:140
 msgid "Connect"
@@ -194,13 +193,11 @@ msgstr "Erro ao reiniciar o sistema"
 
 #: src/msgs.py:4
 msgid "Place your right index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
 
 #: src/module/sessionlist.py:70 src/module/sessionlist.py:71
 #: src/module/sessionlist.py:72 src/module/keyboard.py:120
