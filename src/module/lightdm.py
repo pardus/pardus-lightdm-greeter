@@ -25,7 +25,7 @@ class lightdm_class:
                                  "New password:", "Retype new password:"]
         self.__prompt_messages = ["Password:"]
         # lists
-        self.__ulist = []
+        self.__ulist = None
         self.__slist = None
 
     def __init__(self):
@@ -223,12 +223,12 @@ class lightdm_class:
     @cached
     def get_user_list(self):
         uids = []
-        if self.__ulist == []:
-            for u in LightDM.UserList.get_instance().get_users():
-                if u.get_uid() in uids or u.get_uid() < 1000:
-                    continue
-                uids.append(u.get_uid())
-            self.__ulist.append(u)
+        self.__ulist = []
+        for u in LightDM.UserList.get_instance().get_users():
+            if u.get_uid() in uids or u.get_uid() < 1000:
+                continue
+            uids.append(u.get_uid())
+        self.__ulist.append(u)
         return self.__ulist
 
     def is_lockscreen(self):
