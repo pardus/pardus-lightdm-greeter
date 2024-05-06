@@ -228,7 +228,7 @@ class lightdm_class:
             if u.get_uid() in uids or u.get_uid() < 1000:
                 continue
             uids.append(u.get_uid())
-        self.__ulist.append(u)
+            self.__ulist.append(u)
         return self.__ulist
 
     def is_lockscreen(self):
