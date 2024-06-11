@@ -173,6 +173,10 @@ class LoginWindow:
             gsettings_set("last-username", lightdm.get_username())
             gsettings_set("last-session", lightdm.get_session())
 
+        busdir = "/var/lib/lightdm/"
+        if os.path.exists("/{}/pardus-greeter".format(busdir)):
+            os.unlink("/{}/pardus-greeter".format(busdir))
+
         self.kill_windowmanager()
 
 

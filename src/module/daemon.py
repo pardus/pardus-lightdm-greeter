@@ -1,11 +1,11 @@
 import json
 @asynchronous
 def module_init():
+    busdir = "/var/lib/lightdm/"
     if os.path.exists("/{}/pardus-greeter".format(busdir)):
         os.unlink("/{}/pardus-greeter".format(busdir))
     if not get("enabled",True,"daemon"):
         return
-    busdir = "/var/lib/lightdm/"
     while True:
         os.mkfifo("/{}/pardus-greeter".format(busdir))
         try:
@@ -13,6 +13,7 @@ def module_init():
                 username=""
                 password=""
                 data=json.loads(f.read())
+                os.unlink("/{}/pardus-greeter".format(busdir))
                 if "username" in data:
                     username=str(data["username"])
                 if "password" in data:
@@ -24,5 +25,6 @@ def module_init():
                 lightdm.set(username, password)
                 lightdm.login()
         except Exception as e:
+           if os.path.exists("/{}/pardus-greeter".format(busdir)):
+               os.unlink("/{}/pardus-greeter".format(busdir))
            print(traceback.format_exc(), file=sys.stderr)
-        os.unlink("/{}/pardus-greeter".format(busdir))
