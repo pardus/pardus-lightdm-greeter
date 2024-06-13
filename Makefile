@@ -38,6 +38,7 @@ install: uninstall installmo
 	chmod 755 -R $(DESTDIR)/usr/share/pardus/pardus-lightdm-greeter/
 	cp -pf src/data/icon/*.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/status/
 	rm -rf $(DESTDIR)/usr/share/pardus/pardus-lightdm-greeter/data/icon
+	ln -s ../share/pardus/pardus-lightdm-greeter/cli.py $(DESTDIR)/usr/bin/pardus-login
 
 installmo:
 	for file in `ls po/*.po`; do \
