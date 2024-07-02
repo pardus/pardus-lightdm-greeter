@@ -6,6 +6,7 @@ def module_init():
         os.unlink("/{}/pardus-greeter".format(busdir))
     if not get("enabled",True,"daemon"):
         return
+    debug("Entering daemon loop")
     while True:
         debug("Creating fifo")
         os.mkfifo("/{}/pardus-greeter".format(busdir))
@@ -17,7 +18,7 @@ def module_init():
                 data=json.loads(f.read())
                 debug("fifo data: {}".format(str(data)))
                 os.unlink("/{}/pardus-greeter".format(busdir))
-                debug("Removing fifo")
+                debug("Removing fifo after read")
                 if "username" in data:
                     username=str(data["username"])
                 if "password" in data:
@@ -28,8 +29,10 @@ def module_init():
                 GLib.idle_add(loginwindow.o("ui_entry_password").set_text, password)
                 lightdm.set(username, password)
                 lightdm.login()
+                debug("daemon login done")
         except Exception as e:
+           debug("Removing fifo")
            if os.path.exists("/{}/pardus-greeter".format(busdir)):
                os.unlink("/{}/pardus-greeter".format(busdir))
-               debug("Removing fifo")
+               debug("Removing fifo done")
            print(traceback.format_exc(), file=sys.stderr)
