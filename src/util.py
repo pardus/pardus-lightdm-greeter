@@ -68,10 +68,9 @@ def get(variable, default=None, section="pardus"):
             return False
     return str(ret)
 
-ltime=time.time()
 if get("debug", False, "pardus"):
     def debug(msg):
-        log("[DEBUG:{}] => {}\n".format((int(1000*(time.time()-ltime))), msg), type="debug")
+        log("[DEBUG:{}] => {}\n".format(time.time(), msg), type="debug")
         ltime=time.time()
 else:
     def debug(msg):
