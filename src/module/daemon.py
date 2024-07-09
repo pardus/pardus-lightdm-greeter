@@ -11,6 +11,7 @@ def module_init():
         debug("Creating fifo")
         os.mkfifo("/{}/pardus-greeter".format(busdir))
         try:
+            debug("Listening fifo")
             with open("/{}/pardus-greeter".format(busdir),"r") as f:
                 username=""
                 password=""
