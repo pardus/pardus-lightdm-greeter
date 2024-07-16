@@ -1,3 +1,37 @@
+pardus-lightdm-greeter (0.1.0) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * add notes feature
+  * fixes
+  * configurations
+  * hide message icon when message length is 0 and not editable
+  * user list fix same uid user issue and if uid is lover than 1000 ignored
+  * typo fix
+  * better scale support
+  * wifi menu width fix
+  * reset page scale fix and some improvements
+  * button height scale
+
+  [ Hugo Carvalho ]
+  * Update Portuguese translations
+
+  [ Ali Riza KESKIN ]
+  * crash log added. Users will see if greeter crashed
+  * fix user list empty issue
+  * minor fix
+  * login from cli added.
+  * fix daemon reload on read crash issue
+  * merge
+  * typo fix and remove fifo in login handler
+  * pardus-login command and library added
+  * add debug logging and GLib.idle_add to set gui
+  * upgrade logs
+  * fix missing dep
+  * logging improvements
+  * fix timing issue on debug log
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Tue, 16 Jul 2024 12:28:25 +0300
+
 pardus-lightdm-greeter (0.0.8) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
