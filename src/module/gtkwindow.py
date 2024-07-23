@@ -89,19 +89,21 @@ class LoginWindow:
         if os.path.exists("/sys/firmware/acpi/tables/MSDM"):
             self.o("ui_button_sleep").hide()
         # init username if cache enabled
+        username = ""
         if get("username-cache", True, "gtkwindow"):
             # read username from cache
             username = gsettings_get("last-username")
-            # select first username from list if empty
-            if username == "":
-                users = lightdm.get_user_list()
-                if len(users) > 0:
-                    username = users[0].get_name()
-            # Start authentication
-            self.o("ui_entry_username").set_text(username)
-            lightdm.set(username=username)
-            lightdm.greeter.authenticate(username)
-            self.update_username_button(username)
+
+        # select first username from list if empty
+        if username == "":
+            users = lightdm.get_user_list()
+            if len(users) > 0:
+                username = users[0].get_name()
+        # Start authentication
+        self.o("ui_entry_username").set_text(username)
+        lightdm.set(username=username)
+        lightdm.greeter.authenticate(username)
+        self.update_username_button(username)
 
 ############### Window event ###############
 
