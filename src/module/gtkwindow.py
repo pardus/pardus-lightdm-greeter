@@ -102,8 +102,9 @@ class LoginWindow:
         # Start authentication
         self.o("ui_entry_username").set_text(username)
         lightdm.set(username=username)
-        lightdm.greeter.authenticate(username)
         self.update_username_button(username)
+        if get("authenticate-on-start", True, "gtkwindow"):
+            lightdm.greeter.authenticate(username)
 
 ############### Window event ###############
 
@@ -148,7 +149,8 @@ class LoginWindow:
         self.ignore_password_cache = True
         username = lightdm.get_username()
         lightdm.reset()
-        lightdm.greeter.authenticate(username)
+        if get("authenticate-on-start", True, "gtkwindow"):
+            lightdm.greeter.authenticate(username)
 
     def msg_handler(self, message=""):
         log(message)
