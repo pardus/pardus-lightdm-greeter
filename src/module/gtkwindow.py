@@ -182,6 +182,7 @@ class LoginWindow:
             os.unlink("/{}/pardus-greeter".format(busdir))
 
         self.kill_windowmanager()
+        self.o("ui_window_main").hide()
 
 
 ############### events ###############

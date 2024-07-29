@@ -179,6 +179,8 @@ class lightdm_class:
             except:
                 # Exit greeter (for reload)
                 sys.exit(0)
+            debug("Greeter done")
+            sys.exit(0)
         else:
             # Authentication failed.
             self.__show_message(greeter, _(
