@@ -32,6 +32,7 @@ class monitor_class:
                     if f.read().strip() == "connected":
                         card = device.split("-")[0]
                         monitors.append(device[len(card)+1:])
+        monitors.sort()
         return monitors
 
     def get_device(self, monitor):
@@ -62,6 +63,7 @@ class monitor_class:
             for i in ["+", "*"]:
                 line = line.replace(i, "")
             monitors.append(line)
+        monitors.sort()
         return monitors
 
     def get_xrandr_resolutions(self, monitor):
@@ -162,6 +164,7 @@ def set_window_monitor(screen_index=0):
     loginwindow.o("ui_window_main").unfullscreen()
     loginwindow.o("ui_window_main").move(int(new_x), 0)
     loginwindow.o("ui_window_main").fullscreen()
+    debug("Using primatry monitor:{}::{}::{}".format(m, res, screen_index))
     update_window_resolution(w, h)
     monitor.screen_event_lock = False
 
