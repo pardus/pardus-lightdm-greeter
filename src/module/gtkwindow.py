@@ -344,10 +344,11 @@ class LoginWindow:
         if os.path.isfile(bg):
             try:
                 py = GdkPixbuf.Pixbuf.new_from_file(bg)
+                px = None
                 if self.width > 0:
                     px = py.scale_simple(
                         self.width, self.height, GdkPixbuf.InterpType.BILINEAR)
-                if px and self.background_pixbuf != px:
+                if px != None and self.background_pixbuf != px:
                     self.background_pixbuf = px
             except Exception as e:
                 print(str(e))
@@ -367,7 +368,7 @@ class LoginWindow:
                     "ui_icon_sleep", "ui_icon_keyboard_layout_dd", "ui_icon_default_session_dd"]:
             self.o(but).set_pixel_size(12*scale)
         # login box width
-        self.o("ui_box_reset_passwd").set_size_request(250*scale, -1)        
+        self.o("ui_box_reset_passwd").set_size_request(250*scale, -1)
         self.o("ui_box_login").set_size_request(250*scale, -1)
         # login button & entry 128 x 31
         for but in ["ui_button_login", "ui_box_username", "ui_entry_reset_username", "ui_entry_password",
