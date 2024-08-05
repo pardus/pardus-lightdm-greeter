@@ -386,8 +386,16 @@ class LoginWindow:
             css += open("/usr/share/pardus/pardus-lightdm-greeter/data/colors-dark.css").read()
         else:
             css += open("/usr/share/pardus/pardus-lightdm-greeter/data/colors.css").read()
-        cssprovider.load_from_data(bytes(css, "UTF-8"))
+        cssprovider.load_from_data(bytes(self.scale_css(css, scale), "UTF-8"))
 
+    def scale_css(self, ctx, ratio):
+        ret = ""
+        for token in ctx.split(" "):
+            if "px" in token:
+                pix = int(token.split("px")[0].strip())
+                token = str(ratio*pix)+"px"+token.split("px")[1]
+            ret += (token+" ")
+        return ret.strip()
 
 ############### logo update ###############
 
