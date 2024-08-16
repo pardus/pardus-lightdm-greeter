@@ -88,8 +88,7 @@ def gsettings_set(variable, value):
     debug(variable)
     debug(value)
     gsettings.set_string(variable,value)
-
-
+    gsettings.sync()
 
 def log(msg, type="log"):
     if len(msg.strip()) == 0:
