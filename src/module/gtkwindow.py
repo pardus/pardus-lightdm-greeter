@@ -34,8 +34,6 @@ class LoginWindow:
         self.o("ui_window_main").connect("destroy", Gtk.main_quit)
         self.o("ui_window_main").connect("delete-event", block_delete)
         self.o("ui_window_main").connect("draw", self.__draw_window)
-        self.o("ui_window_main").connect(
-            "focus-out-event", self.__event_window_focus_out)
         # Login button and password entry enter
         self.o("ui_button_login").connect("clicked", self.__event_login_button)
         self.o("ui_entry_password").connect(
@@ -107,9 +105,6 @@ class LoginWindow:
             lightdm.greeter.authenticate(username)
 
 ############### Window event ###############
-
-    def __event_window_focus_out(self, sender, event):
-        self.o("ui_window_main").present()
 
     def __draw_window(self, widget, context):
         if self.background_pixbuf:
