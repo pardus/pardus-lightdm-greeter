@@ -53,8 +53,6 @@ def load_sessionlist():
     _sessionlist_loaded = True
     box = loginwindow.o("ui_box_session")
     sessions = lightdm.get_session_list()
-    if is_debian_based():
-        sessions = ["default"] + sessions
     for session in sessions:
         session_buttons[session] = sessionButton(session)
 
@@ -66,11 +64,6 @@ def load_sessionlist():
         session_buttons[session].connect("clicked", button_event)
         box.add(session_buttons[session])
         box.show_all()
-    if is_debian_based():
-        session_buttons["default"].session = ""
-        session_buttons["default"].session_name = _("Default")
-        session_buttons["default"].session_name = _("Default")
-        session_buttons["default"].label.set_text("  "+_("Default"))
     last_session = gsettings_get("last-session")
     if last_session == "" or last_session not in sessions:
         last_session = sessions[0]
