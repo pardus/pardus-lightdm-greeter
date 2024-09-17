@@ -171,6 +171,8 @@ class lightdm_class:
                 self.__show_message(greeter, _(
                     "Invalid session : {}").format(self.__session))
                 self.__session = ""
+            if not is_debian_based() and self.__session == "":
+                self.__session = self.get_session_list()[0]
             try:
                 # Start session
                 if not self.greeter.start_session_sync(self.__session):

@@ -74,6 +74,7 @@ def load_sessionlist():
     last_session = gsettings_get("last-session")
     if last_session == "" or last_session not in sessions:
         last_session = sessions[0]
+        gsettings_set("last-session", last_session)
     lightdm.set(session=last_session)
     session_buttons[last_session].set_default(True)
 
@@ -88,7 +89,6 @@ def _session_button_event(widget):
     else:
         loginwindow.o("ui_icon_default_session_dd").set_from_icon_name(
             "go-down-symbolic", 0)
-    load_sessionlist()
 
 
 session_buttons = {}
@@ -98,3 +98,4 @@ def module_init():
     global session_buttons
     loginwindow.o("ui_button_default_session").connect(
         "clicked", _session_button_event)
+    load_sessionlist()
