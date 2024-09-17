@@ -25,6 +25,7 @@ class sessionButton(Gtk.Button):
     def set_default(self, status=False):
         if status:
             self.image.set_from_icon_name("emblem-default-symbolic", 0)
+            gsettings_set("last-session", self.session)
         else:
             self.image.set_from_icon_name("", 0)
 
@@ -67,7 +68,6 @@ def load_sessionlist():
     last_session = gsettings_get("last-session")
     if last_session == "" or last_session not in sessions:
         last_session = sessions[0]
-        gsettings_set("last-session", last_session)
     lightdm.set(session=last_session)
     session_buttons[last_session].set_default(True)
 

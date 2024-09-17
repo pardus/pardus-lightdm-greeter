@@ -175,7 +175,6 @@ class LoginWindow:
             gsettings_set("last-hash",new_last_hash.strip())
         if get("username-cache", True, "gtkwindow"):
             gsettings_set("last-username", lightdm.get_username())
-            gsettings_set("last-session", lightdm.get_session())
 
         busdir = "/var/lib/lightdm/"
         if os.path.exists("/{}/pardus-greeter".format(busdir)):
