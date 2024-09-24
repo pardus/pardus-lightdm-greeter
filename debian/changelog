@@ -1,3 +1,21 @@
+pardus-lightdm-greeter (0.2.0) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * fix userame cache user selection issue
+  * authentication on start settings. If disabled some logins (for ex: fingerprint) are not work well.
+  * start auth on daemon
+  * fix greeter window hide before login issue
+  * fix px variable accessible issue if width > 0 check failed
+  * fix sync xrandr and drm monitor backends.
+  * css pixel scale feature
+  * gsettings sync
+  * fix empty session issue on non-debian distributions. And load session list early
+  * remove "default" session because useless.
+  * set last session on session button event. not login
+  * disable focus out event. It broke external windows focus.
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Tue, 24 Sep 2024 12:55:46 +0300
+
 pardus-lightdm-greeter (0.1.0) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
