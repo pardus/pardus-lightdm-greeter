@@ -20,7 +20,7 @@ def _update_resolution_event(flag=None):
         resolution = monitor.get_common_resolution()
     else:
         i = int(float(get("default-monitor", "0", "screen")))
-        n = get("default-monitor-name", "", "screen")))
+        n = get("default-monitor-name", "", "screen")
         monitor.init_monitor()
         mlist = monitor.get_monitors()
         if n in mlist:
