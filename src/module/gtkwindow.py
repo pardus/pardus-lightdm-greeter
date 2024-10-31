@@ -129,11 +129,11 @@ class LoginWindow:
 
     def password_entry_button_press(self, widget=None, event=None):
         self.o("ui_entry_password").set_visibility(True)
-        self.o("ui_icon_eye").set_icon_from_icon_name(1, "view-conceal-symbolic")
+        self.o("ui_icon_eye").set_from_icon_name("view-conceal-symbolic", 0)
 
     def password_entry_button_release(self, widget=None, event=None):
         self.o("ui_entry_password").set_visibility(False)
-        self.o("ui_icon_eye").set_icon_from_icon_name(1, "view-reveal-symbolic")
+        self.o("ui_icon_eye").set_from_icon_name("view-reveal-symbolic", 0)
 
 ############### username button event ###############
 
