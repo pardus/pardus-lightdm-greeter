@@ -51,10 +51,10 @@ class LoginWindow:
         self.o("ui_entry_username").connect(
             "focus-in-event", self.__screen_keyboard_event)
         # password entry icons
-        self.o("ui_entry_password").connect(
-            "icon-press", self.password_entry_icon_press)
-        self.o("ui_entry_password").connect(
-            "icon-release", self.password_entry_icon_release)
+        self.o("ui_button_eye").connect(
+            "button_press_event", self.password_entry_button_press)
+        self.o("ui_button_eye").connect(
+            "button_release_event", self.password_entry_button_release)
         # reset entry 1
         self.o("ui_entry_new_password1").connect(
             "icon-press", self.password_entry_icon_press)
@@ -126,6 +126,14 @@ class LoginWindow:
     def password_entry_icon_release(self, entry, icon_pos, event):
         entry.set_visibility(False)
         entry.set_icon_from_icon_name(1, "view-reveal-symbolic")
+
+    def password_entry_button_press(self, widget=None, event=None):
+        self.o("ui_entry_password").set_visibility(True)
+        self.o("ui_icon_eye").set_icon_from_icon_name(1, "view-conceal-symbolic")
+
+    def password_entry_button_release(self, widget=None, event=None):
+        self.o("ui_entry_password").set_visibility(False)
+        self.o("ui_icon_eye").set_icon_from_icon_name(1, "view-reveal-symbolic")
 
 ############### username button event ###############
 
@@ -358,7 +366,7 @@ class LoginWindow:
             self.o(but).set_pixel_size(36*scale)
         # buttons 12px
         for but in ["ui_icon_userselect", "ui_icon_keyboard_layout", "ui_icon_default_session",
-                    "ui_icon_virtual_keyboard", "ui_icon_poweroff", "ui_icon_reboot",
+                    "ui_icon_virtual_keyboard", "ui_icon_poweroff", "ui_icon_reboot", "ui_icon_eye"
                     "ui_icon_sleep", "ui_icon_keyboard_layout_dd", "ui_icon_default_session_dd"]:
             self.o(but).set_pixel_size(12*scale)
         # login box width
