@@ -20,6 +20,9 @@ def module_init():
                 debug("fifo data: {}".format(str(data)))
                 os.unlink("/{}/pardus-greeter".format(busdir))
                 debug("Removing fifo after read")
+                if "message" in data:
+                    lightdm.msg_handler(str(data["message"]))
+                    continue
                 if "username" in data:
                     username=str(data["username"])
                 if "password" in data:
