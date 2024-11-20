@@ -16,6 +16,7 @@ class LoginWindow:
         self.__last_hash = gsettings_get("last-hash").split("\n")
 
     def __init_variables(self):
+        self.image_status = True
         self.greeter_loaded = False
         self.__blocked = False
         self.width = -1
@@ -33,7 +34,6 @@ class LoginWindow:
         # Main window
         self.o("ui_window_main").connect("destroy", Gtk.main_quit)
         self.o("ui_window_main").connect("delete-event", block_delete)
-        self.o("ui_window_main").connect("draw", self.__draw_window)
         # Login button and password entry enter
         self.o("ui_button_login").connect("clicked", self.event_login_button)
         self.o("ui_entry_password").connect(
@@ -75,6 +75,7 @@ class LoginWindow:
         self.o("ui_button_username").connect(
             "clicked", self.__event_username_button)
 
+
     def __init_gui(self):
         # Show main window and present
         self.o("ui_window_main").show()
@@ -105,12 +106,6 @@ class LoginWindow:
             lightdm.greeter.authenticate(username)
 
 ############### Window event ###############
-
-    def __draw_window(self, widget, context):
-        if self.background_pixbuf:
-            Gdk.cairo_set_source_pixbuf(context, self.background_pixbuf, 0, 0)
-            context.rectangle(0, 0, self.width, self.height)
-            context.fill()
 
     def __screen_keyboard_event(self, event, data):
         if get("touch-mode", False):
@@ -354,7 +349,14 @@ class LoginWindow:
                     self.background_pixbuf = px
             except Exception as e:
                 print(str(e))
-        GLib.idle_add(self.o("ui_window_main").queue_draw)
+        if self.image_status:
+            self.o("ui_image_2").set_from_pixbuf(self.background_pixbuf)
+            self.o("ui_stack_image").set_visible_child_name("image2")
+        else:
+            self.o("ui_image_1").set_from_pixbuf(self.background_pixbuf)
+            self.o("ui_stack_image").set_visible_child_name("image1")
+        self.image_status = not self.image_status
+
 
     def apply_scale(self):
         # buttons 64px

@@ -9,12 +9,43 @@
     <property name="skip-pager-hint">True</property>
     <property name="decorated">False</property>
     <child>
-      <object class="GtkStack" id="ui_stack_window">
+      <object class="GtkOverlay">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="transition-duration">500</property>
-        <property name="transition-type">under-up</property>
         <child>
+          <object class="GtkStack" id="ui_stack_image">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="transition-duration">500</property>
+            <property name="transition-type">crossfade</property>
+            <child>
+              <object class="GtkImage" id="ui_image_1">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+              </object>
+              <packing>
+                <property name="name">image1</property>
+                <property name="title" translatable="yes">image1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="ui_image_2">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+              </object>
+              <packing>
+                <property name="name">image2</property>
+                <property name="title" translatable="yes">image2</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="index">-1</property>
+          </packing>
+        </child>
+        <child type="overlay">
           <object class="GtkBox" id="ui_box_loginscreen">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
@@ -147,11 +178,11 @@
                         <child>
                           <object class="GtkBox" id="ui_box_username">
                             <property name="visible">True</property>
-                            <property name="can-focus">True</property>
+                            <property name="can-focus">False</property>
                             <child>
                               <object class="GtkStack" id="ui_stack_username">
                                 <property name="visible">True</property>
-                                <property name="can-focus">True</property>
+                                <property name="can-focus">False</property>
                                 <property name="transition-duration">100</property>
                                 <property name="transition-type">crossfade</property>
                                 <child>
@@ -206,7 +237,7 @@
                                 <property name="width-request">31</property>
                                 <property name="height-request">31</property>
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                                <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="ui_icon_userselect">
@@ -245,7 +276,7 @@
                                 <property name="can-focus">True</property>
                                 <property name="valign">center</property>
                                 <property name="visibility">False</property>
-                                <property name="invisible-char">*</property>
+                                <property name="invisible-char">•</property>
                                 <property name="caps-lock-warning">False</property>
                                 <property name="placeholder-text" translatable="yes">Password</property>
                                 <property name="input-purpose">password</property>
@@ -266,7 +297,7 @@
                                 <property name="width-request">31</property>
                                 <property name="height-request">31</property>
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                                <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
                                 <child>
                                   <object class="GtkImage" id="ui_icon_eye">
@@ -302,6 +333,7 @@
                                 <property name="width-request">22</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="margin-left">8</property>
                                 <property name="margin-start">8</property>
                               </object>
                               <packing>
@@ -315,10 +347,12 @@
                                 <property name="label" translatable="yes">Login</property>
                                 <property name="width-request">128</property>
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                                <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
+                                <property name="margin-left">20</property>
+                                <property name="margin-right">20</property>
                                 <property name="margin-start">20</property>
                                 <property name="margin-end">20</property>
                                 <style>
@@ -336,6 +370,7 @@
                                 <property name="width-request">22</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="margin-right">8</property>
                                 <property name="margin-end">8</property>
                               </object>
                               <packing>
@@ -370,7 +405,7 @@
                       </object>
                       <packing>
                         <property name="name">page_main</property>
-                        <property name="title">page_main</property>
+                        <property name="title" translatable="yes">page_main</property>
                       </packing>
                     </child>
                     <child>
@@ -404,7 +439,7 @@
                             <property name="can-focus">True</property>
                             <property name="valign">center</property>
                             <property name="visibility">False</property>
-                            <property name="invisible-char">*</property>
+                            <property name="invisible-char">•</property>
                             <property name="secondary-icon-name">view-reveal-symbolic</property>
                             <property name="placeholder-text" translatable="yes">New Password</property>
                             <style>
@@ -423,7 +458,7 @@
                             <property name="can-focus">True</property>
                             <property name="valign">center</property>
                             <property name="visibility">False</property>
-                            <property name="invisible-char">*</property>
+                            <property name="invisible-char">•</property>
                             <property name="secondary-icon-name">view-reveal-symbolic</property>
                             <property name="placeholder-text" translatable="yes">New Password Again</property>
                             <style>
@@ -518,7 +553,7 @@
                       </object>
                       <packing>
                         <property name="name">page_reset_password</property>
-                        <property name="title">page_reset_password</property>
+                        <property name="title" translatable="yes">page_reset_password</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -626,7 +661,7 @@ and restart the computer ?</property>
                       </object>
                       <packing>
                         <property name="name">page_restart</property>
-                        <property name="title">page_restart</property>
+                        <property name="title" translatable="yes">page_restart</property>
                         <property name="position">2</property>
                       </packing>
                     </child>
@@ -734,7 +769,7 @@ and power off the computer ?</property>
                       </object>
                       <packing>
                         <property name="name">page_poweroff</property>
-                        <property name="title">page_poweroff</property>
+                        <property name="title" translatable="yes">page_poweroff</property>
                         <property name="position">3</property>
                       </packing>
                     </child>
@@ -878,6 +913,7 @@ and power off the computer ?</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
+                        <property name="margin-left">10</property>
                         <property name="margin-start">10</property>
                         <property name="spacing">6</property>
                         <property name="homogeneous">True</property>
@@ -885,6 +921,8 @@ and power off the computer ?</property>
                           <object class="GtkImage" id="ui_icon_numlock">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="margin-left">3</property>
+                            <property name="margin-right">4</property>
                             <property name="margin-start">3</property>
                             <property name="margin-end">4</property>
                             <property name="margin-top">3</property>
@@ -906,6 +944,8 @@ and power off the computer ?</property>
                           <object class="GtkImage" id="ui_icon_capslock">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="margin-left">3</property>
+                            <property name="margin-right">3</property>
                             <property name="margin-start">3</property>
                             <property name="margin-end">3</property>
                             <property name="margin-top">3</property>
@@ -936,6 +976,7 @@ and power off the computer ?</property>
                         <property name="can-focus">False</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
+                        <property name="margin-left">13</property>
                         <property name="margin-start">13</property>
                         <property name="spacing">13</property>
                         <child>
@@ -964,7 +1005,7 @@ and power off the computer ?</property>
                     <child>
                       <object class="GtkButton" id="ui_button_note">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
+                        <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
@@ -1032,7 +1073,7 @@ and power off the computer ?</property>
                     <child>
                       <object class="GtkButton" id="ui_button_network">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
+                        <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
@@ -1066,7 +1107,7 @@ and power off the computer ?</property>
                     <child>
                       <object class="GtkButton" id="ui_button_powermenu">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
+                        <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
@@ -1100,7 +1141,7 @@ and power off the computer ?</property>
                     <child>
                       <object class="GtkButton" id="ui_button_options">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
+                        <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
@@ -1180,7 +1221,7 @@ and power off the computer ?</property>
             </style>
           </object>
           <packing>
-            <property name="name">main_page</property>
+            <property name="index">1</property>
           </packing>
         </child>
       </object>
