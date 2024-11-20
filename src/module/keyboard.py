@@ -145,6 +145,27 @@ def _get_xkbs_buttons(xkbs):
         xkb_buttons[layout+":"+variant].connect("clicked", button_event)
     return xkb_buttons
 
+def enable_numlock():
+    # Connect to the X server
+    d = display.Display()
+    root = d.screen().root
+
+    # Get the current state of the keyboard
+    keymap = root.get_keyboard_mapping()
+
+    # Define the Num Lock keycode (usually 77, but can vary)
+    num_lock_keycode = 77
+
+    # Check if Num Lock is already enabled
+    num_lock_state = (keymap[num_lock_keycode] & 1) != 0
+
+    if not num_lock_state:
+        # Send a key press and release event for Num Lock
+        root.grab_key(num_lock_keycode, 0, X.GrabModeAsync, X.GrabModeAsync)
+        root.send_event(request.KeyPress(keycode=num_lock_keycode))
+        root.send_event(request.KeyRelease(keycode=num_lock_keycode))
+        d.flush()
+
 
 def module_init():
     if get("numlock-on", True, "keyboard"):

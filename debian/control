@@ -17,7 +17,6 @@ Depends: ${misc:Depends},
          gir1.2-vte-2.91,
          python3-pil,
          python3-xlib,
-         numlockx,
-         python3-gi-cairo
+         numlockx
 Description: Pardus Greeter
  Pardus greeter for lightdm login screen

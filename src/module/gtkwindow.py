@@ -23,6 +23,8 @@ class LoginWindow:
         self.height = -1
         self.background_pixbuf = None
         self.ignore_password_cache = False
+        self.background_handler = None
+
 
     def o(self, name=None):
         return self.builder.get_object(name)
@@ -349,6 +351,11 @@ class LoginWindow:
                     self.background_pixbuf = px
             except Exception as e:
                 print(str(e))
+        if self.background_handler != None:
+            self.background_pixbuf = self.background_handler(self.background_pixbuf)
+        self.draw_background()
+
+    def draw_background(self):
         if self.image_status:
             self.o("ui_image_2").set_from_pixbuf(self.background_pixbuf)
             self.o("ui_stack_image").set_visible_child_name("image2")
