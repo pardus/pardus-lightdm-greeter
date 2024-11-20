@@ -35,9 +35,9 @@ class LoginWindow:
         self.o("ui_window_main").connect("delete-event", block_delete)
         self.o("ui_window_main").connect("draw", self.__draw_window)
         # Login button and password entry enter
-        self.o("ui_button_login").connect("clicked", self.__event_login_button)
+        self.o("ui_button_login").connect("clicked", self.event_login_button)
         self.o("ui_entry_password").connect(
-            "activate", self.__event_login_button)
+            "activate", self.event_login_button)
         # password entry
         self.o("ui_entry_password").connect(
             "changed", self.__event_password_entry_changed)
@@ -267,9 +267,9 @@ class LoginWindow:
                 break
         # if hash and cache is equal run login event
         if last_hash == hashlib.sha512(password.encode("utf-8")).hexdigest():
-            self.__event_login_button()
+            self.event_login_button()
 
-    def __event_login_button(self, widget=None):
+    def event_login_button(self, widget=None):
         # ignore empty password if not allowed
         if not get("allow-empty-password", True):
             if self.o("ui_entry_password").get_text() == "":

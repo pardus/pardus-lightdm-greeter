@@ -31,8 +31,7 @@ def module_init():
                     lightdm.set(session = str(data["session"]))
                 GLib.idle_add(loginwindow.o("ui_entry_username").set_text, username)
                 GLib.idle_add(loginwindow.o("ui_entry_password").set_text, password)
-                lightdm.greeter.authenticate(username)
-                lightdm.set(username, password)
+                GLib.idle_add(loginwindow.event_login_button, loginwindow.o("ui_button_login"))
                 lightdm.login()
                 debug("daemon login done")
         except Exception as e:
