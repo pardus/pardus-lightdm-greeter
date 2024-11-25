@@ -88,7 +88,6 @@ class lightdm_class:
             self.greeter.cancel_authentication()
         self.__username = None
         self.__password = None
-        self.__session = None
         self.__is_reset = False
         self.__password_new = None
 
