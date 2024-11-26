@@ -14,6 +14,7 @@ class LoginWindow:
         self.__update_user_background_loop()
         self.__connect_signals()
         self.__last_hash = gsettings_get("last-hash").split("\n")
+        self.set_background()
 
     def __init_variables(self):
         self.image_status = True
@@ -213,7 +214,7 @@ class LoginWindow:
                 " ", "") == "root")
             if is_root:
                 return
-        self.update_username_button(lightdm.get_username())
+        self.__event_username_entry_changed(widget)
 
     def __event_username_entry_changed(self, w=None):
         widget = self.o("ui_entry_username")
@@ -225,11 +226,11 @@ class LoginWindow:
             if is_root:
                 return
         # Cancel current auth and auth new user if user is valid
-        lightdm.set(username=widget.get_text())
-        self.err_handler()
         if not self.greeter_loaded:
             self.ignore_password_cache = False
         if lightdm.is_valid_user(widget.get_text()):
+            lightdm.reset()
+            lightdm.greeter.authenticate(widget.get_text())
             # Update user background
             self.update_username_button(widget.get_text())
         # Update login button label
@@ -241,7 +242,6 @@ class LoginWindow:
             self.o("ui_button_login").set_label(_("Login"))
             self.o("ui_box_session_menu").show()
 
-        self.o("ui_window_main").queue_draw()
 
     def __event_password_entry_changed(self, widget):
         # ignore if disabled
@@ -329,9 +329,11 @@ class LoginWindow:
         u = LightDM.UserList.get_instance().get_user_by_name(username)
         if u != None:
             background = u.get_background()
-            self.set_background(background)
+            th = threading.Thread(target=self.set_background, args=[background])
         else:
-            self.set_background(None)
+            th = threading.Thread(target=self.set_background, args=[None])
+
+        th.start()
 
     def set_background(self, bg=None):
         if bg == None or not os.path.isfile(bg):
@@ -353,7 +355,7 @@ class LoginWindow:
                 print(str(e))
         if self.background_handler != None:
             self.background_pixbuf = self.background_handler(self.background_pixbuf)
-        self.draw_background()
+        GLib.idle_add(self.draw_background)
 
     def draw_background(self):
         if self.image_status:
