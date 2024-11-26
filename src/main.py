@@ -57,8 +57,10 @@ if os.path.exists("/usr/share/themes/{}".format(icon_theme)):
 else:
     settings.set_property("gtk-icon-theme-name", "Adwaita")
 
-def set_scale(scale=0):
-    if scale <= 0:
+def set_scale(new_scale=0):
+    global scale
+    scale = new_scale
+    if scale < 1:
         scale = 1
     os.environ["GDK_SCALE"] = str(int(scale))
     #os.environ["GDK_DPI_SCALE"] = str(1/scale)
@@ -67,8 +69,8 @@ def set_scale(scale=0):
     settings.set_property("gtk-xft-dpi", 1024*96*scale)
     settings.set_property("gtk-xft-antialias", True)
 
-scale = float(get("scale", "0"))
-set_scale(scale)
+
+set_scale(float(get("scale", "0")))
 
 loaded_modules = []
 base_modules = ["lightdm.py", "gtkwindow.py", "monitor.py"]
