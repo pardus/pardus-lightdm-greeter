@@ -195,6 +195,7 @@ class LoginWindow:
         u = LightDM.UserList.get_instance().get_user_by_name(username)
         # if object is none go edit mode
         if u != None:
+            self.update_user_background()
             self.o("ui_stack_username").set_visible_child_name("show")
             # get real name
             realname = u.get_real_name()
@@ -206,7 +207,15 @@ class LoginWindow:
             if not lightdm.get_is_reset():
                 # password entry focus
                 self.o("ui_entry_password").grab_focus()
-        self.update_user_background()
+            if u.get_logged_in():
+                self.o("ui_button_login").set_label(_("Unlock"))
+                self.o("ui_box_session_menu").hide()
+            else:
+                self.o("ui_button_login").set_label(_("Login"))
+                self.o("ui_box_session_menu").show()
+        else:
+            self.o("ui_button_login").set_label(_("Login"))
+            self.o("ui_box_session_menu").show()
 
     def __event_username_entry_clicked(self, widget=None):
         if not get("allow-root-login", False, "lightdm"):
@@ -232,16 +241,8 @@ class LoginWindow:
             if get("authenticate-on-start", True, "gtkwindow"):
                 lightdm.reset()
                 lightdm.greeter.authenticate(widget.get_text())
-            # Update user background
-            self.update_username_button(widget.get_text())
-        # Update login button label
-        u = LightDM.UserList.get_instance().get_user_by_name(widget.get_text())
-        if u != None and u.get_logged_in():
-            self.o("ui_button_login").set_label(_("Unlock"))
-            self.o("ui_box_session_menu").hide()
-        else:
-            self.o("ui_button_login").set_label(_("Login"))
-            self.o("ui_box_session_menu").show()
+        # Update username button
+        self.update_username_button(widget.get_text())
 
 
     def __event_password_entry_changed(self, widget):
