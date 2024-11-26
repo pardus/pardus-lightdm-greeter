@@ -229,8 +229,9 @@ class LoginWindow:
         if not self.greeter_loaded:
             self.ignore_password_cache = False
         if lightdm.is_valid_user(widget.get_text()):
-            lightdm.reset()
-            lightdm.greeter.authenticate(widget.get_text())
+            if get("authenticate-on-start", True, "gtkwindow"):
+                lightdm.reset()
+                lightdm.greeter.authenticate(widget.get_text())
             # Update user background
             self.update_username_button(widget.get_text())
         # Update login button label
