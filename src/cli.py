@@ -27,7 +27,7 @@ if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: pardus-login [username] [password]", file=sys.stderr)
         exit(1)
-    sesison=None
+    session=None
     if len(sys.argv) > 3:
         session = sys.argv[3]
     login(sys.argv[1], sys.argv[2], session)
