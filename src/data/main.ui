@@ -1768,7 +1768,7 @@ WAN IP: </property>
     <property name="relative-to">ui_button_userselect</property>
     <property name="position">right</property>
     <child>
-      <object class="GtkBox">
+      <object class="GtkBox" id="ui_box_userlist_main">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
@@ -1791,7 +1791,6 @@ WAN IP: </property>
         </child>
         <child>
           <object class="GtkScrolledWindow" id="ui_scrolledwindow_userlist">
-            <property name="width-request">200</property>
             <property name="height-request">-1</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -1802,7 +1801,6 @@ WAN IP: </property>
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkBox" id="ui_box_userlist">
-                    <property name="width-request">200</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>

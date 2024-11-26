@@ -390,7 +390,8 @@ class LoginWindow:
                     "ui_entry_new_password1", "ui_entry_new_password2", "ui_box_reset_buttons"]:
             self.o(but).set_size_request(128*scale, 31*scale)
         # user list
-        self.o("ui_popover_userlist").set_size_request(200*scale, self.height/3)
+        self.o("ui_box_userlist_main").set_size_request(250*scale, self.height/3)
+        self.o("ui_popover_userlist").set_size_request(250*scale, self.height/3)
 
 ############### css load ###############
 
@@ -435,7 +436,6 @@ class LoginWindow:
             self.update_user_background()
         else:
             self.set_background(get("background", "user", "gtkwindow"))
-        self.o("ui_popover_userlist").set_size_request(250, self.height/3)
         self.apply_scale()
 
 ############### windowmanager ###############

@@ -29,12 +29,6 @@ except:
     def _(msg):
         return msg
 
-scale = float(get("scale", "0"))
-if scale < 1:
-    scale = 1
-
-os.environ["GDK_SCALE"] = str(int(scale))
-#os.environ["GDK_DPI_SCALE"] = str(1/scale)
 
 os.environ["UBUNTU_MENUPROXY"] = ""
 os.environ["SESSION_MANAGER"] = "lightdm"
@@ -63,10 +57,18 @@ if os.path.exists("/usr/share/themes/{}".format(icon_theme)):
 else:
     settings.set_property("gtk-icon-theme-name", "Adwaita")
 
-settings.set_property(
-    "gtk-font-name", "{} {}".format(get("font", "Regular"), int(10*(scale % 1 + 1))))
-settings.set_property("gtk-xft-dpi", 1024*96*scale)
-settings.set_property("gtk-xft-antialias", True)
+def set_scale(scale=0):
+    if scale <= 0:
+        scale = 1
+    os.environ["GDK_SCALE"] = str(int(scale))
+    #os.environ["GDK_DPI_SCALE"] = str(1/scale)
+    settings.set_property(
+        "gtk-font-name", "{} {}".format(get("font", "Regular"), int(10*(scale % 1 + 1))))
+    settings.set_property("gtk-xft-dpi", 1024*96*scale)
+    settings.set_property("gtk-xft-antialias", True)
+
+scale = float(get("scale", "0"))
+set_scale(scale)
 
 loaded_modules = []
 base_modules = ["lightdm.py", "gtkwindow.py", "monitor.py"]
