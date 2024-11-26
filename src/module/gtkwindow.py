@@ -223,6 +223,8 @@ class LoginWindow:
                 " ", "") == "root")
             if is_root:
                 return
+        if not lightdm.get_is_reset():
+            self.o("ui_entry_password").grab_focus()
         self.__event_username_entry_changed(widget)
 
     def __event_username_entry_changed(self, w=None):
