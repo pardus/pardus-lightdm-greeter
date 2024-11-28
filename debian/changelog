@@ -1,3 +1,35 @@
+pardus-lightdm-greeter (0.3.0) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * default monitor from name added
+  * typo fix
+  * eye icon replace with button for password entry (not reset)
+  * typo fix
+  * fix eye icon
+  * message read from daemon module
+
+  [ sulincix ]
+  * daemon module use login button event instead of lightdm.login()
+  * background change animation added
+  * blur background added (default disabled)
+  * Ulakbim -> Bilgem
+
+  [ Ali Riza KESKIN ]
+  * update bilgem
+  * add missing stack
+  * dont reset session
+  * async background load for fix user change freeze
+  * add missing config check
+  * better scale support for userlist
+  * fix set_scale function
+  * fix unlock/login button update event
+  * username entry enter event focus to password entry
+
+  [ bayramkarahan ]
+  * Update cli.py
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Thu, 28 Nov 2024 17:10:08 +0300
+
 pardus-lightdm-greeter (0.2.0) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
