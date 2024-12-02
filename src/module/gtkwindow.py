@@ -9,6 +9,7 @@ class LoginWindow:
         self.start_windowmanager()
         self.builder = Gtk.Builder()
         self.builder.add_from_file("data/main.ui")
+        self.o = self.builder.get_object
         self.__init_variables()
         self.__init_gui()
         self.__update_user_background_loop()
@@ -25,10 +26,6 @@ class LoginWindow:
         self.background_pixbuf = None
         self.ignore_password_cache = False
         self.background_handler = None
-
-
-    def o(self, name=None):
-        return self.builder.get_object(name)
 
     def __connect_signals(self):
         def block_delete(*args):
@@ -356,7 +353,7 @@ class LoginWindow:
                 if px != None and self.background_pixbuf != px:
                     self.background_pixbuf = px
             except Exception as e:
-                print(str(e))
+                print(traceback.format_exc(), file=sys.stderr)
         if self.background_handler != None:
             self.background_pixbuf = self.background_handler(self.background_pixbuf)
         GLib.idle_add(self.draw_background)
