@@ -44,29 +44,29 @@ class lightdm_class:
 
     def set(self, username=None, password=None, session=None):
         """Set greeter variables"""
-        if username != None:
+        if username is not None:
             self.__username = username.replace(" ", "")
-        if password != None:
+        if password is not None:
             self.__password = password
-        if session != None:
+        if session is not None:
             self.__session = session
 
     def set2(self, username=None, password=None):
         """Set reset password variables"""
-        if username != None:
+        if username is not None:
             self.__username = username
-        if password != None:
+        if password is not None:
             self.__password_new = password
 
     def get_username(self):
         """get current username"""
-        if self.__username == None:
+        if self.__username is None:
             return ""
         return self.__username
 
     def get_session(self):
         """get current session"""
-        if self.__session == None:
+        if self.__session is None:
             return ""
         return self.__session
 
@@ -76,9 +76,9 @@ class lightdm_class:
 
     def get_password(self):
         """get current session"""
-        if self.__password_new != None:
+        if self.__password_new is not None:
             return self.__password_new
-        if self.__password == None:
+        if self.__password is None:
             return ""
         return self.__password
 
@@ -94,14 +94,14 @@ class lightdm_class:
     def login(self):
         """Main login button event"""
         self.write_values("Login:")
-        if self.__username == None:
+        if self.__username is None:
             return
         if self.__username == "root" and not get("allow-root-login", False, "lightdm"):
             return
-        if self.__password == None:
+        if self.__password is None:
             return
         if self.greeter.get_in_authentication():
-            if not self.__is_reset and self.__last_prompt != None:
+            if not self.__is_reset and self.__last_prompt is not None:
                 self.greeter.respond(self.__password)
                 return
             # First cancel if authenticated user is not target user
@@ -128,13 +128,13 @@ class lightdm_class:
             else:
                 response = self.__password_new
             # Send response
-            if response != None:
+            if response is not None:
                 self.greeter.respond(response)
         else:
            # Check password reset required.
             if text.strip() in self.__reset_messages:
                 # Trigger reset handler
-                if (self.reset_page_handler):
+                if self.reset_page_handler is not None:
                     self.reset_page_handler()
                 # Set reset value
                 self.__is_reset = True
@@ -142,12 +142,12 @@ class lightdm_class:
                 return
             # Respond with password
             elif text.strip() in self.__prompt_messages:
-                if self.__password == None:
+                if self.__password is None:
                     return
                 self.greeter.respond(self.__password)
             # Unknown prompts.
             else:
-                return
+                self.__show_message(greeter, text)
 
     def __show_message(self, greeter, text, message_type=None, **kwargs):
         """Message function"""
@@ -164,7 +164,7 @@ class lightdm_class:
             if self.login_handler:
                 self.login_handler()
             # Check session is valid
-            if self.__session == None:
+            if self.__session is None:
                 self.__session = ""
             if self.__session == "":
                 self.__session = self.get_session_list()[0]
@@ -204,7 +204,7 @@ class lightdm_class:
 
     @cached
     def get_session_list(self):
-        if self.__slist == None:
+        if self.__slist is None:
             self.__slist = []
             hidden_sessions = ["lightdm-xsession"] + \
                 get("hidden-sessions", "", "lightdm").split(" ")

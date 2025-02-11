@@ -14,7 +14,7 @@ if blur_available and get("background-blur", False, "gtkwindow"):
         h = pix.props.height
         stride = pix.props.rowstride
         mode="RGB"
-        if pix.props.has_alpha == True:
+        if pix.props.has_alpha:
             mode = "RGBA"
         im = Image.frombytes(mode, (w, h), data, "raw", mode, stride)
         return im

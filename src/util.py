@@ -7,7 +7,6 @@ import sys
 import os
 import time
 import threading
-import subprocess
 
 from gi.repository import Gio
 
@@ -61,17 +60,13 @@ def get(variable, default=None, section="pardus"):
     if variable not in config[section]:
         return default
     ret = config[section][variable]
-    if default == True or default == False:
-        if str(ret).lower() == "true":
-            return True
-        else:
-            return False
+    if default in [True, False]:
+        return str(ret).lower() == "true"
     return str(ret)
 
 if get("debug", False, "pardus"):
     def debug(msg):
         log("[DEBUG:{}] => {}\n".format(time.time(), msg), type="debug")
-        ltime=time.time()
 else:
     def debug(msg):
         return

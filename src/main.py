@@ -57,6 +57,7 @@ if os.path.exists("/usr/share/themes/{}".format(icon_theme)):
 else:
     settings.set_property("gtk-icon-theme-name", "Adwaita")
 
+scale = 1
 def set_scale(new_scale=0):
     global scale
     scale = new_scale

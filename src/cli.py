@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
+"""
+Pardus Lightdm Greeter Command Line Interface
+Usage:
+    pardus-login <username> <password> <session>
+"""
 import json
 import os
 import sys
 
 if os.getuid() != 0:
-    print("You must be root!", file=sys.stderr);
-    exit(1)
+    print("You must be root!", file=sys.stderr)
+    sys.exit(1)
 
 def login(username=None, password=None, session=None):
+    """Login function"""
     if not os.path.exists("/var/lib/lightdm/pardus-greeter"):
         print("Failed to connect pardus lightdm greeter")
-        exit(2)
+        sys.exit(2)
     data = {}
     data["username"] = str(username)
     data["password"] = str(password)
-    if session != None:
+    if session:
         data["session"] = str(session)
 
     with open("/var/lib/lightdm/pardus-greeter", "a") as f:
@@ -26,7 +32,7 @@ def login(username=None, password=None, session=None):
 if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: pardus-login [username] [password]", file=sys.stderr)
-        exit(1)
+        sys.exit(1)
     session=None
     if len(sys.argv) > 3:
         session = sys.argv[3]

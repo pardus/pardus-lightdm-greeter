@@ -169,7 +169,6 @@ class LoginWindow:
             for h in self.__last_hash:
                 if h.startswith(username+"="):
                     continue
-                    new_last_hash += h + "\n"
             gsettings_set("last-hash",new_last_hash.strip())
         if get("username-cache", True, "gtkwindow"):
             gsettings_set("last-username", lightdm.get_username())
@@ -191,13 +190,13 @@ class LoginWindow:
         # Get lightdm user object
         u = LightDM.UserList.get_instance().get_user_by_name(username)
         # if object is none go edit mode
-        if u != None:
+        if u is not None:
             self.update_user_background()
             self.o("ui_stack_username").set_visible_child_name("show")
             # get real name
             realname = u.get_real_name()
             # fix realname if invalid
-            if realname == None or realname == "":
+            if realname is None or realname == "":
                 realname = username
             # set realname to username button label
             self.o("ui_button_username_label").set_label(realname)
@@ -328,7 +327,7 @@ class LoginWindow:
         # get lightdm username object
         username = self.o("ui_entry_username").get_text()
         u = LightDM.UserList.get_instance().get_user_by_name(username)
-        if u != None:
+        if u is not None:
             background = u.get_background()
             th = threading.Thread(target=self.set_background, args=[background])
         else:
@@ -337,7 +336,7 @@ class LoginWindow:
         th.start()
 
     def set_background(self, bg=None):
-        if bg == None or not os.path.isfile(bg):
+        if bg is None or not os.path.isfile(bg):
             bg = appdir+"/data/bg-light.png"
             if get("dark-theme", True):
                 bg = appdir+"/data/bg-dark.png"
@@ -350,11 +349,11 @@ class LoginWindow:
                 if self.width > 0:
                     px = py.scale_simple(
                         self.width, self.height, GdkPixbuf.InterpType.BILINEAR)
-                if px != None and self.background_pixbuf != px:
+                if px is not None and self.background_pixbuf != px:
                     self.background_pixbuf = px
             except Exception as e:
                 print(traceback.format_exc(), file=sys.stderr)
-        if self.background_handler != None:
+        if self.background_handler is not None:
             self.background_pixbuf = self.background_handler(self.background_pixbuf)
         GLib.idle_add(self.draw_background)
 

@@ -35,8 +35,8 @@ def module_init():
                 lightdm.login()
                 debug("daemon login done")
         except Exception as e:
-           debug("Removing fifo")
-           if os.path.exists("/{}/pardus-greeter".format(busdir)):
-               os.unlink("/{}/pardus-greeter".format(busdir))
-               debug("Removing fifo done")
-           print(traceback.format_exc(), file=sys.stderr)
+            debug("Removing fifo")
+            if os.path.exists("/{}/pardus-greeter".format(busdir)):
+                os.unlink("/{}/pardus-greeter".format(busdir))
+                debug("Removing fifo done")
+            print(e, traceback.format_exc(), file=sys.stderr)
