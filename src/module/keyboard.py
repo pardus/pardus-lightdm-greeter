@@ -145,6 +145,7 @@ def _get_xkbs_buttons(xkbs):
         xkb_buttons[layout+":"+variant].connect("clicked", button_event)
     return xkb_buttons
 
+
 def enable_numlock():
     # Connect to the X server
     d = display.Display()

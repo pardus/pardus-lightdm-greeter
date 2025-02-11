@@ -12,6 +12,7 @@ if os.getuid() != 0:
     print("You must be root!", file=sys.stderr)
     sys.exit(1)
 
+
 def login(username=None, password=None, session=None):
     """Login function"""
     if not os.path.exists("/var/lib/lightdm/pardus-greeter"):
@@ -33,7 +34,7 @@ if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: pardus-login [username] [password]", file=sys.stderr)
         sys.exit(1)
-    session=None
+    session = None
     if len(sys.argv) > 3:
         session = sys.argv[3]
     login(sys.argv[1], sys.argv[2], session)

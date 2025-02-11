@@ -10,6 +10,7 @@ import threading
 
 from gi.repository import Gio
 
+
 def asynchronous(func):
     def wrapper(*args, **kwargs):
         thread = threading.Thread(target=func, args=args, kwargs=kwargs)
@@ -18,7 +19,10 @@ def asynchronous(func):
         return thread
     return wrapper
 
+
 cached_result = {}
+
+
 def cached(func):
     def wrapper(*args, **kwargs):
         global cached_result
@@ -27,6 +31,7 @@ def cached(func):
         cached_result[func.__name__] = func(*args, **kwargs)
         return cached_result[func.__name__]
     return wrapper
+
 
 try:
     cfgs = ["/etc/pardus/greeter.conf"]
@@ -41,7 +46,7 @@ except:
 
 try:
     kernel_args = {}
-    with open("/proc/cmdline","r") as f:
+    with open("/proc/cmdline", "r") as f:
         cmdline = f.read().split(" ")
         for c in cmdline:
             if "=" in c and c.startswith("lightdm."):
@@ -64,6 +69,7 @@ def get(variable, default=None, section="pardus"):
         return str(ret).lower() == "true"
     return str(ret)
 
+
 if get("debug", False, "pardus"):
     def debug(msg):
         log("[DEBUG:{}] => {}\n".format(time.time(), msg), type="debug")
@@ -74,16 +80,19 @@ else:
 
 gsettings = Gio.Settings.new("tr.org.pardus.lightdm.greeter")
 
+
 def gsettings_get(variable):
     debug(variable)
     debug(gsettings.get_string(variable))
     return gsettings.get_string(variable)
 
+
 def gsettings_set(variable, value):
     debug(variable)
     debug(value)
-    gsettings.set_string(variable,value)
+    gsettings.set_string(variable, value)
     gsettings.sync()
+
 
 def log(msg, type="log"):
     if len(msg.strip()) == 0:
@@ -137,6 +146,7 @@ def is_virtual_machine():
             return "hypervisor" in line
     return False
 
+
 @cached
 def is_virtualbox():
     if os.path.isfile("/sys/class/dmi/id/product_name"):
@@ -146,6 +156,7 @@ def is_virtualbox():
             elif "virtual box" in f.read().lower():
                 return True
     return False
+
 
 @cached
 def is_debian_based():
@@ -169,6 +180,7 @@ def get_local_ip():
         except:
             pass
     return ret
+
 
 def which(cmd):
     for dir in os.environ["PATH"].split(":"):

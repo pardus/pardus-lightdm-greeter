@@ -75,7 +75,6 @@ class LoginWindow:
         self.o("ui_button_username").connect(
             "clicked", self.__event_username_button)
 
-
     def __init_gui(self):
         # Show main window and present
         self.o("ui_window_main").show()
@@ -169,7 +168,7 @@ class LoginWindow:
             for h in self.__last_hash:
                 if h.startswith(username+"="):
                     continue
-            gsettings_set("last-hash",new_last_hash.strip())
+            gsettings_set("last-hash", new_last_hash.strip())
         if get("username-cache", True, "gtkwindow"):
             gsettings_set("last-username", lightdm.get_username())
 
@@ -241,7 +240,6 @@ class LoginWindow:
                 lightdm.greeter.authenticate(widget.get_text())
         # Update username button
         self.update_username_button(widget.get_text())
-
 
     def __event_password_entry_changed(self, widget):
         # ignore if disabled
@@ -329,7 +327,8 @@ class LoginWindow:
         u = LightDM.UserList.get_instance().get_user_by_name(username)
         if u is not None:
             background = u.get_background()
-            th = threading.Thread(target=self.set_background, args=[background])
+            th = threading.Thread(
+                target=self.set_background, args=[background])
         else:
             th = threading.Thread(target=self.set_background, args=[None])
 
@@ -354,7 +353,8 @@ class LoginWindow:
             except Exception as e:
                 print(traceback.format_exc(), file=sys.stderr)
         if self.background_handler is not None:
-            self.background_pixbuf = self.background_handler(self.background_pixbuf)
+            self.background_pixbuf = self.background_handler(
+                self.background_pixbuf)
         GLib.idle_add(self.draw_background)
 
     def draw_background(self):
@@ -365,7 +365,6 @@ class LoginWindow:
             self.o("ui_image_1").set_from_pixbuf(self.background_pixbuf)
             self.o("ui_stack_image").set_visible_child_name("image1")
         self.image_status = not self.image_status
-
 
     def apply_scale(self):
         # buttons 64px
@@ -389,8 +388,10 @@ class LoginWindow:
                     "ui_entry_new_password1", "ui_entry_new_password2", "ui_box_reset_buttons"]:
             self.o(but).set_size_request(128*scale, 31*scale)
         # user list
-        self.o("ui_box_userlist_main").set_size_request(250*scale, self.height/3)
-        self.o("ui_popover_userlist").set_size_request(250*scale, self.height/3)
+        self.o("ui_box_userlist_main").set_size_request(
+            250*scale, self.height/3)
+        self.o("ui_popover_userlist").set_size_request(
+            250*scale, self.height/3)
 
 ############### css load ###############
 
@@ -414,7 +415,6 @@ class LoginWindow:
 
 ############### logo update ###############
 
-
     def set_logo(self, logo):
         if os.path.isfile(logo):
             self.o("ui_image_logo").set_from_file(logo)
@@ -425,7 +425,7 @@ class LoginWindow:
 
     def sync_resolution(self):
         self.o("ui_window_main").resize(
-            self.width , self.height)
+            self.width, self.height)
         self.o("ui_window_main").set_size_request(
             self.width, self.height)
         self.o("ui_window_main").fullscreen()
@@ -450,9 +450,7 @@ class LoginWindow:
             subprocess.run(["killall {}".format(wm)], shell=True)
 
 
-
 ############### class end ###############
-
 
 loginwindow = None
 screen = None
@@ -460,6 +458,8 @@ cursor = None
 cssprovider = None
 
 ############### module init ###############
+
+
 def module_init():
     global loginwindow
     global screen

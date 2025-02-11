@@ -5,7 +5,8 @@ except:
     blur_available = False
 
 if blur_available and get("background-blur", False, "gtkwindow"):
-    mode="RGB"
+    mode = "RGB"
+
     def pixbuf2image(pix):
         """Convert gdkpixbuf to PIL image"""
         global mode
@@ -13,7 +14,7 @@ if blur_available and get("background-blur", False, "gtkwindow"):
         w = pix.props.width
         h = pix.props.height
         stride = pix.props.rowstride
-        mode="RGB"
+        mode = "RGB"
         if pix.props.has_alpha:
             mode = "RGBA"
         im = Image.frombytes(mode, (w, h), data, "raw", mode, stride)
@@ -25,13 +26,14 @@ if blur_available and get("background-blur", False, "gtkwindow"):
         w, h = im.size
         data = GLib.Bytes.new(data)
         pix = GdkPixbuf.Pixbuf.new_from_bytes(data, GdkPixbuf.Colorspace.RGB,
-                (mode=="RGBA"), 8, w, h, w * len(mode))
+                                              (mode == "RGBA"), 8, w, h, w * len(mode))
         return pix
 
     def blur_draw(px):
         if px:
             im = pixbuf2image(px)
-            im = im.filter(ImageFilter.GaussianBlur( int(get("background-blur-level","15","gtkwindow")) ))
+            im = im.filter(ImageFilter.GaussianBlur(
+                int(get("background-blur-level", "15", "gtkwindow"))))
             px = image2pixbuf(im)
         return px
 

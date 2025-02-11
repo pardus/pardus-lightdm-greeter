@@ -1,17 +1,20 @@
 import asyncio
 from wifi import widget as wifi_widget
 
+
 def _network_button_event(widget=None):
     global network_label_text
     network_label_text = _("Loading...")
     loginwindow.o("ui_popover_network").popup()
     network_control_event()
 
+
 def _wifi_button_event(widget=None):
     loginwindow.o("ui_popover_wifi").popup()
     if wmenu:
         wmenu.refresh()
         wmenu.stack.set_visible_child_name("main")
+
 
 network_label_text = ""
 _last_network_label_text = ""
@@ -48,7 +51,10 @@ def network_control_event():
         ctx += _("WAN IP:\n- {}").format(wan_ip)
     network_label_text = ctx.strip()
 
+
 wmenu = None
+
+
 def module_init():
     global wmenu
     wifi_widget.set_scale(scale)
@@ -59,7 +65,7 @@ def module_init():
         "clicked", _network_button_event)
     update_popover_text()
     if not wifi_widget.wifi.available():
-         loginwindow.o("ui_button_wifi").hide()
+        loginwindow.o("ui_button_wifi").hide()
     else:
         loginwindow.o("ui_button_wifi").connect(
             "clicked", _wifi_button_event)

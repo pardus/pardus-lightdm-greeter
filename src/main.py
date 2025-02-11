@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import gi
 import os
 import sys
 import time
@@ -8,7 +7,8 @@ from util import *
 
 import traceback
 
-gi.require_version("Gtk","3.0")
+import gi
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 
 ctime = time.time()
@@ -40,8 +40,6 @@ os.system("xset s {0} {0}".format(get("blank-timeout", 300)))
 
 os.system(get("init", ""))
 
-gi.require_version('Gtk', '3.0')
-
 # Theme settings
 settings = Gtk.Settings.get_default()
 gtk_theme = get("gtk-theme", "Adwaita")
@@ -58,13 +56,15 @@ else:
     settings.set_property("gtk-icon-theme-name", "Adwaita")
 
 scale = 1
+
+
 def set_scale(new_scale=0):
     global scale
     scale = new_scale
     if scale < 1:
         scale = 1
     os.environ["GDK_SCALE"] = str(int(scale))
-    #os.environ["GDK_DPI_SCALE"] = str(1/scale)
+    # os.environ["GDK_DPI_SCALE"] = str(1/scale)
     settings.set_property(
         "gtk-font-name", "{} {}".format(get("font", "Regular"), int(10*(scale % 1 + 1))))
     settings.set_property("gtk-xft-dpi", 1024*96*scale)
