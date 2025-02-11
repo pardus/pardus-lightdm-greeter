@@ -29,11 +29,25 @@ def login(username=None, password=None, session=None):
         f.write(json.dumps(data))
         f.flush()
 
+def send_message(message=None):
+    """Print message function"""
+    if not os.path.exists("/var/lib/lightdm/pardus-greeter"):
+        print("Failed to connect pardus lightdm greeter")
+        sys.exit(2)
+    data = {}
+    data["message"] = str(message)
+    with open("/var/lib/lightdm/pardus-greeter", "a") as f:
+        print(json.dumps(data))
+        f.write(json.dumps(data))
+        f.flush()
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: pardus-login [username] [password]", file=sys.stderr)
         sys.exit(1)
+    if sys.argv[1] == "message":
+        send_message(sys.argv[2])
+        sys.exit(0)
     session = None
     if len(sys.argv) > 3:
         session = sys.argv[3]
