@@ -4,19 +4,28 @@ users = {}
 class userButton(Gtk.Box):
     def __init__(self, username):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL)
-        self.label = Gtk.Button()
-        self.label.set_can_focus(False)
-        self.label.get_style_context().add_class("icon")
-        self.label.username = username
-        self.label.set_alignment(0, self.label.get_alignment()[1])
+        ubut = Gtk.Button()
+        self.label = Gtk.Label()
+        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+
+        self.username = username
+        ubut.username = username
+
+        ubut.set_can_focus(False)
+        ubut.get_style_context().add_class("icon")
+        ubut.set_relief(Gtk.ReliefStyle.NONE)
+        ubut.connect("clicked", user_button_event)
+
         if get("show-realname", True, "userlist"):
-            self.label.set_label(self.get_realname())
+            self.label.set_text(self.get_realname())
         else:
-            self.label.set_label(username)
-        self.pack_start(self.label, True, True, 0)
+            self.label.set_text(username)
+
+        box.pack_start(self.label, False, False, 0)
+        ubut.add(box)
+        self.pack_start(ubut, True, True, 0)
+
         self.show_all()
-        self.label.set_relief(Gtk.ReliefStyle.NONE)
-        self.label.connect("clicked", user_button_event)
         if get("user-hide-button", True, "userlist"):
             delbut = Gtk.Button()
             delbut.get_style_context().add_class("icon")
@@ -33,13 +42,13 @@ class userButton(Gtk.Box):
         p = open("/etc/passwd", "r")
         realname = ""
         for line in p.read().split("\n"):
-            if line.startswith(self.label.username+":"):
+            if line.startswith(self.username+":"):
                 realname = line.split(":")[4]
                 break
         if realname.endswith(",,,"):
             realname = realname[:-3]
         if realname == "":
-            realname = self.label.username
+            realname = self.username
         p.close()
         return realname
 
