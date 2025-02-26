@@ -44,9 +44,10 @@ A powerfull, modern and customizable lightdm greeter for Pardus GNU/Linux.
 # installation
 ```shell
 # Compile
-make
+meson setup build
+ninja -C build
 # install
-make install
+ninja -C build install
 ```
 
 ![screenshot](screenshot.png "screenshot")

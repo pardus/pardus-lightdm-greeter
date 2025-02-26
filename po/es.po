@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-12 18:32+0300\n"
+"POT-Creation-Date: 2025-02-27 01:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,173 +17,244 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/data/main.ui:169
+#: data/main.ui:29
+msgid "image1"
+msgstr ""
+
+#: data/main.ui:39
+msgid "image2"
+msgstr ""
+
+#: data/main.ui:202
 msgid "username"
 msgstr ""
 
-#: src/data/main.ui:179
+#: data/main.ui:212
 msgid "show"
 msgstr ""
 
-#: src/data/main.ui:187 src/data/main.ui:358
+#: data/main.ui:219 data/main.ui:429
 msgid "Username"
 msgstr ""
 
-#: src/data/main.ui:196
+#: data/main.ui:228
 msgid "edit"
 msgstr ""
 
-#: src/data/main.ui:249
+#: data/main.ui:285
 msgid "Password"
 msgstr ""
 
-#: src/data/main.ui:281 src/module/gtkwindow.py:233
+#: data/main.ui:351 src/module/gtkwindow.py:209 src/module/gtkwindow.py:212
 msgid "Login"
 msgstr ""
 
-#: src/data/main.ui:379
+#: data/main.ui:412
+msgid "page_main"
+msgstr ""
+
+#: data/main.ui:448
 msgid "New Password"
 msgstr ""
 
-#: src/data/main.ui:400
+#: data/main.ui:467
 msgid "New Password Again"
 msgstr ""
 
-#: src/data/main.ui:420 src/data/main.ui:563 src/data/main.ui:671
-#: src/data/main.ui:778
+#: data/main.ui:485 data/main.ui:628 data/main.ui:736 data/main.ui:843
 msgid "Cancel"
 msgstr ""
 
-#: src/data/main.ui:436
+#: data/main.ui:501
 msgid "Change Password"
 msgstr ""
 
-#: src/data/main.ui:465
+#: data/main.ui:530
 msgid "Your password has expired."
 msgstr ""
 
-#: src/data/main.ui:481
+#: data/main.ui:546
 msgid "Hata Mesajı"
 msgstr ""
 
-#: src/data/main.ui:526
+#: data/main.ui:560
+msgid "page_reset_password"
+msgstr ""
+
+#: data/main.ui:591
 msgid "<big>RESTART</big>"
 msgstr ""
 
-#: src/data/main.ui:542
+#: data/main.ui:607
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
 msgstr ""
 
-#: src/data/main.ui:579
+#: data/main.ui:644
 msgid "Restart"
 msgstr ""
 
-#: src/data/main.ui:634
+#: data/main.ui:668
+msgid "page_restart"
+msgstr ""
+
+#: data/main.ui:699
 msgid "<big>POWER OFF</big>"
 msgstr ""
 
-#: src/data/main.ui:650
+#: data/main.ui:715
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
 msgstr ""
 
-#: src/data/main.ui:687
+#: data/main.ui:752
 msgid "Power Off"
 msgstr ""
 
-#: src/data/main.ui:742
+#: data/main.ui:776
+msgid "page_poweroff"
+msgstr ""
+
+#: data/main.ui:807
 msgid "<big>SLEEP</big>"
 msgstr ""
 
-#: src/data/main.ui:758
+#: data/main.ui:823
 msgid "Are you sure you want to sleep the computer ?"
 msgstr ""
 
-#: src/data/main.ui:794 src/data/main.ui:1606
+#: data/main.ui:859 data/main.ui:1736
 msgid "Sleep"
 msgstr ""
 
-#: src/data/main.ui:818
+#: data/main.ui:883
 msgid "page_sleep"
 msgstr ""
 
-#: src/data/main.ui:1208
+#: data/main.ui:1229
+msgid "main_page"
+msgstr ""
+
+#: data/main.ui:1338
 msgid "Keyboard Layout"
 msgstr ""
 
-#: src/data/main.ui:1320
+#: data/main.ui:1450
 msgid "Session"
 msgstr ""
 
-#: src/data/main.ui:1420
+#: data/main.ui:1550
 msgid "Virtual keyboard"
 msgstr ""
 
-#: src/data/main.ui:1492
+#: data/main.ui:1622
 msgid "Shutdown"
 msgstr ""
 
-#: src/data/main.ui:1549
+#: data/main.ui:1679
 msgid "Reboot"
 msgstr ""
 
-#: src/wifi/widget.py:41
+#: src/wifi/widget.py:56
 msgid "Connecting..."
 msgstr ""
 
-#: src/wifi/widget.py:86 src/wifi/widget.py:140
+#: src/wifi/widget.py:109 src/wifi/widget.py:172
 msgid "Connect"
 msgstr ""
 
-#: src/wifi/widget.py:90
+#: src/wifi/widget.py:113
 msgid "Forget"
 msgstr ""
 
-#: src/wifi/widget.py:95
+#: src/wifi/widget.py:122
 msgid "Go Back"
 msgstr ""
 
-#: src/wifi/widget.py:132
+#: src/wifi/widget.py:162
 msgid "<b>SSID:</b> {}"
 msgstr ""
 
-#: src/wifi/widget.py:133
+#: src/wifi/widget.py:164
 msgid "<b>Security:</b>{}"
 msgstr ""
 
-#: src/wifi/widget.py:134
+#: src/wifi/widget.py:166
 msgid "<b>Signal:</b> %{}"
 msgstr ""
 
-#: src/wifi/widget.py:137
+#: src/wifi/widget.py:169
 msgid "Disconnect"
 msgstr ""
 
-#: src/wifi/widget.py:236
+#: src/wifi/widget.py:272
 msgid "Connected"
 msgstr ""
 
-#: src/wifi/widget.py:238
+#: src/wifi/widget.py:274
 msgid "Saved"
 msgstr ""
 
-#: src/wifi/widget.py:240
+#: src/wifi/widget.py:276
 msgid "Insecured"
 msgstr ""
 
-#: src/wifi/widget.py:242
+#: src/wifi/widget.py:278
 msgid "Unsupported"
 msgstr ""
 
-#: src/msgs.py:2 src/module/lightdm.py:254
+#: src/module/network.py:7
+msgid "Loading..."
+msgstr ""
+
+#: src/module/network.py:43
+msgid "Network is not available"
+msgstr ""
+
+#: src/module/network.py:48
+msgid ""
+"Local IP:\n"
+"{}"
+msgstr ""
+
+#: src/module/network.py:51
+msgid ""
+"WAN IP:\n"
+"- {}"
+msgstr ""
+
+#: src/module/lightdm.py:176
+msgid "Invalid session : {}"
+msgstr ""
+
+#: src/module/lightdm.py:182
+msgid "Failed to start session: {}"
+msgstr ""
+
+#: src/module/lightdm.py:191
+msgid "Authentication failed: {}"
+msgstr ""
+
+#: src/module/lightdm.py:251 src/msgs.py:3
+msgid "Failed to reboot system"
+msgstr ""
+
+#: src/module/lightdm.py:258
+msgid "Failed to sleep system"
+msgstr ""
+
+#: src/module/lightdm.py:265 src/msgs.py:2
 msgid "Failed to shutdown system"
 msgstr ""
 
-#: src/msgs.py:3 src/module/lightdm.py:240
-msgid "Failed to reboot system"
+#: src/module/keyboard.py:118
+msgid "Default"
+msgstr ""
+
+#: src/module/gtkwindow.py:206
+msgid "Unlock"
 msgstr ""
 
 #: src/msgs.py:4
@@ -192,49 +263,4 @@ msgstr ""
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
-msgstr ""
-
-#: src/module/sessionlist.py:70 src/module/sessionlist.py:71
-#: src/module/sessionlist.py:72 src/module/keyboard.py:120
-msgid "Default"
-msgstr ""
-
-#: src/module/network.py:6
-msgid "Loading..."
-msgstr ""
-
-#: src/module/network.py:40
-msgid "Network not available"
-msgstr ""
-
-#: src/module/network.py:45
-msgid ""
-"Local IP:\n"
-"{}"
-msgstr ""
-
-#: src/module/network.py:48
-msgid ""
-"WAN IP:\n"
-"- {}"
-msgstr ""
-
-#: src/module/lightdm.py:172
-msgid "Invalid session : {}"
-msgstr ""
-
-#: src/module/lightdm.py:178
-msgid "Failed to start session: {}"
-msgstr ""
-
-#: src/module/lightdm.py:185
-msgid "Authentication failed: {}"
-msgstr ""
-
-#: src/module/lightdm.py:247
-msgid "Failed to sleep system"
-msgstr ""
-
-#: src/module/gtkwindow.py:230
-msgid "Unlock"
 msgstr ""

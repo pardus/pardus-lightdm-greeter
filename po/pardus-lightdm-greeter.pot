@@ -3,19 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-27 01:41+0300\n"
-"PO-Revision-Date: 2022-10-18 11:11+0300\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: tr\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 
 #: data/main.ui:29
 msgid "image1"
@@ -27,27 +27,27 @@ msgstr ""
 
 #: data/main.ui:202
 msgid "username"
-msgstr "kullanıcı adı"
+msgstr ""
 
 #: data/main.ui:212
 msgid "show"
-msgstr "göster"
+msgstr ""
 
 #: data/main.ui:219 data/main.ui:429
 msgid "Username"
-msgstr "Kullanıcı adı"
+msgstr ""
 
 #: data/main.ui:228
 msgid "edit"
-msgstr "düzenle"
+msgstr ""
 
 #: data/main.ui:285
 msgid "Password"
-msgstr "Parola"
+msgstr ""
 
 #: data/main.ui:351 src/module/gtkwindow.py:209 src/module/gtkwindow.py:212
 msgid "Login"
-msgstr "Giriş"
+msgstr ""
 
 #: data/main.ui:412
 msgid "page_main"
@@ -55,27 +55,27 @@ msgstr ""
 
 #: data/main.ui:448
 msgid "New Password"
-msgstr "Yeni Parola"
+msgstr ""
 
 #: data/main.ui:467
 msgid "New Password Again"
-msgstr "Yeni Parola Tekrarla"
+msgstr ""
 
 #: data/main.ui:485 data/main.ui:628 data/main.ui:736 data/main.ui:843
 msgid "Cancel"
-msgstr "İptal"
+msgstr ""
 
 #: data/main.ui:501
 msgid "Change Password"
-msgstr "Parola Değiştir"
+msgstr ""
 
 #: data/main.ui:530
 msgid "Your password has expired."
-msgstr "Parolanızın geçerlilik süresi doldu."
+msgstr ""
 
 #: data/main.ui:546
 msgid "Hata Mesajı"
-msgstr "Hata Mesajı"
+msgstr ""
 
 #: data/main.ui:560
 msgid "page_reset_password"
@@ -83,40 +83,35 @@ msgstr ""
 
 #: data/main.ui:591
 msgid "<big>RESTART</big>"
-msgstr "<big>YENİDEN BAŞLAT</big>"
+msgstr ""
 
 #: data/main.ui:607
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
 msgstr ""
-"Tüm programları sonlandırıp bilgisayarı yeniden \n"
-"başlatmak istediğinizden emin misiniz?"
 
 #: data/main.ui:644
 msgid "Restart"
-msgstr "Yeniden başlat"
+msgstr ""
 
 #: data/main.ui:668
-#, fuzzy
 msgid "page_restart"
-msgstr "Yeniden başlat"
+msgstr ""
 
 #: data/main.ui:699
 msgid "<big>POWER OFF</big>"
-msgstr "<big>KAPAT</big>"
+msgstr ""
 
 #: data/main.ui:715
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
 msgstr ""
-"Tüm programları sonlandırıp bilgisayarı kapatmak \n"
-"istediğinizden emin misiniz?"
 
 #: data/main.ui:752
 msgid "Power Off"
-msgstr "Kapat"
+msgstr ""
 
 #: data/main.ui:776
 msgid "page_poweroff"
@@ -124,19 +119,19 @@ msgstr ""
 
 #: data/main.ui:807
 msgid "<big>SLEEP</big>"
-msgstr "<big>UYKU</big>"
+msgstr ""
 
 #: data/main.ui:823
 msgid "Are you sure you want to sleep the computer ?"
-msgstr "Bilgisayarınızı uyutmak istediğinizden emin misiniz ?"
+msgstr ""
 
 #: data/main.ui:859 data/main.ui:1736
 msgid "Sleep"
-msgstr "Uyku"
+msgstr ""
 
 #: data/main.ui:883
 msgid "page_sleep"
-msgstr "page_sleep"
+msgstr ""
 
 #: data/main.ui:1229
 msgid "main_page"
@@ -144,142 +139,128 @@ msgstr ""
 
 #: data/main.ui:1338
 msgid "Keyboard Layout"
-msgstr "Klavye Düzeni"
+msgstr ""
 
 #: data/main.ui:1450
 msgid "Session"
-msgstr "Oturum"
+msgstr ""
 
 #: data/main.ui:1550
 msgid "Virtual keyboard"
-msgstr "Sanal Klavye"
+msgstr ""
 
 #: data/main.ui:1622
 msgid "Shutdown"
-msgstr "Kapat"
+msgstr ""
 
 #: data/main.ui:1679
 msgid "Reboot"
-msgstr "Yeniden başlat"
+msgstr ""
 
 #: src/wifi/widget.py:56
 msgid "Connecting..."
-msgstr "Bağlanıyor..."
+msgstr ""
 
 #: src/wifi/widget.py:109 src/wifi/widget.py:172
 msgid "Connect"
-msgstr "Bağlan"
+msgstr ""
 
 #: src/wifi/widget.py:113
 msgid "Forget"
-msgstr "Unut"
+msgstr ""
 
 #: src/wifi/widget.py:122
 msgid "Go Back"
-msgstr "Geri Dön"
+msgstr ""
 
 #: src/wifi/widget.py:162
 msgid "<b>SSID:</b> {}"
-msgstr "<b>SSID:</b> {}"
+msgstr ""
 
 #: src/wifi/widget.py:164
 msgid "<b>Security:</b>{}"
-msgstr "<b>Güvenlik:</b> {}"
+msgstr ""
 
 #: src/wifi/widget.py:166
 msgid "<b>Signal:</b> %{}"
-msgstr "<b>Sinyal:</b> {}"
+msgstr ""
 
 #: src/wifi/widget.py:169
 msgid "Disconnect"
-msgstr "Bağlantıyı Kes"
+msgstr ""
 
 #: src/wifi/widget.py:272
 msgid "Connected"
-msgstr "Bağlı"
+msgstr ""
 
 #: src/wifi/widget.py:274
 msgid "Saved"
-msgstr "Kayıtlı"
+msgstr ""
 
 #: src/wifi/widget.py:276
 msgid "Insecured"
-msgstr "Güvensiz"
+msgstr ""
 
 #: src/wifi/widget.py:278
 msgid "Unsupported"
-msgstr "Desteklenmeyen"
+msgstr ""
 
 #: src/module/network.py:7
 msgid "Loading..."
-msgstr "Yükleniyor..."
+msgstr ""
 
 #: src/module/network.py:43
-#, fuzzy
 msgid "Network is not available"
-msgstr "Ağ mevcut değil"
+msgstr ""
 
 #: src/module/network.py:48
 msgid ""
 "Local IP:\n"
 "{}"
 msgstr ""
-"Yerel IP:\n"
-"{}"
 
 #: src/module/network.py:51
 msgid ""
 "WAN IP:\n"
 "- {}"
 msgstr ""
-"WAN IP:\n"
-"- {}"
 
 #: src/module/lightdm.py:176
 msgid "Invalid session : {}"
-msgstr "Geçersiz oturum: {}"
+msgstr ""
 
 #: src/module/lightdm.py:182
 msgid "Failed to start session: {}"
-msgstr "Oturum başlatılamadı: {}"
+msgstr ""
 
 #: src/module/lightdm.py:191
 msgid "Authentication failed: {}"
-msgstr "Doğrulama başarısız: {}"
+msgstr ""
 
 #: src/module/lightdm.py:251 src/msgs.py:3
 msgid "Failed to reboot system"
-msgstr "Sistem yeniden başlatılamadı"
+msgstr ""
 
 #: src/module/lightdm.py:258
 msgid "Failed to sleep system"
-msgstr "Sistem uyutulamadı"
+msgstr ""
 
 #: src/module/lightdm.py:265 src/msgs.py:2
 msgid "Failed to shutdown system"
-msgstr "Sistem kapatılamadı"
+msgstr ""
 
 #: src/module/keyboard.py:118
 msgid "Default"
-msgstr "Varsayılan"
+msgstr ""
 
 #: src/module/gtkwindow.py:206
 msgid "Unlock"
-msgstr "Kilit Aç"
+msgstr ""
 
 #: src/msgs.py:4
 msgid "Place your right index finger on the fingerprint reader"
-msgstr "Sağ işaret parmağınızı parmak izi okuyucusuna yerleştirin"
+msgstr ""
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
-msgstr "Sol işaret parmağınızı parmak izi okuyucusuna yerleştirin"
-
-#~ msgid "login as root is blocked"
-#~ msgstr "root ile giriş engellendi"
-
-#~ msgid "Num"
-#~ msgstr "Num"
-
-#~ msgid "Caps"
-#~ msgstr "Caps"
+msgstr ""

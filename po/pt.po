@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-12 18:32+0300\n"
+"POT-Creation-Date: 2025-02-27 01:41+0300\n"
 "PO-Revision-Date: 2024-04-25 22:31+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: \n"
@@ -18,60 +18,75 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#: src/data/main.ui:169
+#: data/main.ui:29
+msgid "image1"
+msgstr ""
+
+#: data/main.ui:39
+msgid "image2"
+msgstr ""
+
+#: data/main.ui:202
 msgid "username"
 msgstr "nome de utilizador"
 
-#: src/data/main.ui:179
+#: data/main.ui:212
 msgid "show"
 msgstr "mostrar"
 
-#: src/data/main.ui:187 src/data/main.ui:358
+#: data/main.ui:219 data/main.ui:429
 msgid "Username"
 msgstr "Nome de utilizador"
 
-#: src/data/main.ui:196
+#: data/main.ui:228
 msgid "edit"
 msgstr "editar"
 
-#: src/data/main.ui:249
+#: data/main.ui:285
 msgid "Password"
 msgstr "Palavra-passe"
 
-#: src/data/main.ui:281 src/module/gtkwindow.py:233
+#: data/main.ui:351 src/module/gtkwindow.py:209 src/module/gtkwindow.py:212
 msgid "Login"
 msgstr "Entrar"
 
-#: src/data/main.ui:379
+#: data/main.ui:412
+msgid "page_main"
+msgstr ""
+
+#: data/main.ui:448
 msgid "New Password"
 msgstr "Nova palavra-passe"
 
-#: src/data/main.ui:400
+#: data/main.ui:467
 msgid "New Password Again"
 msgstr "Reintroduzir a nova palavra-passe"
 
-#: src/data/main.ui:420 src/data/main.ui:563 src/data/main.ui:671
-#: src/data/main.ui:778
+#: data/main.ui:485 data/main.ui:628 data/main.ui:736 data/main.ui:843
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/data/main.ui:436
+#: data/main.ui:501
 msgid "Change Password"
 msgstr "Alterar palavra-passe"
 
-#: src/data/main.ui:465
+#: data/main.ui:530
 msgid "Your password has expired."
 msgstr "A sua palavra-passe expirou."
 
-#: src/data/main.ui:481
+#: data/main.ui:546
 msgid "Hata Mesajı"
 msgstr "Hata Mesajı"
 
-#: src/data/main.ui:526
+#: data/main.ui:560
+msgid "page_reset_password"
+msgstr ""
+
+#: data/main.ui:591
 msgid "<big>RESTART</big>"
 msgstr "<big>REINICIAR</big>"
 
-#: src/data/main.ui:542
+#: data/main.ui:607
 msgid ""
 "Are you sure you want to close all programs \n"
 "and restart the computer ?"
@@ -79,15 +94,20 @@ msgstr ""
 "Fechar todos os programas \n"
 "e reiniciar o computador ?"
 
-#: src/data/main.ui:579
+#: data/main.ui:644
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: src/data/main.ui:634
+#: data/main.ui:668
+#, fuzzy
+msgid "page_restart"
+msgstr "Reiniciar"
+
+#: data/main.ui:699
 msgid "<big>POWER OFF</big>"
 msgstr "<big>DESLIGAR</big>"
 
-#: src/data/main.ui:650
+#: data/main.ui:715
 msgid ""
 "Are you sure you want to close all programs \n"
 "and power off the computer ?"
@@ -95,124 +115,112 @@ msgstr ""
 "Fechar todos os programas \n"
 "e desligar o computador ?"
 
-#: src/data/main.ui:687
+#: data/main.ui:752
 msgid "Power Off"
 msgstr "Desligar"
 
-#: src/data/main.ui:742
+#: data/main.ui:776
+msgid "page_poweroff"
+msgstr ""
+
+#: data/main.ui:807
 msgid "<big>SLEEP</big>"
 msgstr "<big>SUSPENDER</big>"
 
-#: src/data/main.ui:758
+#: data/main.ui:823
 msgid "Are you sure you want to sleep the computer ?"
 msgstr "Suspender o computador ?"
 
-#: src/data/main.ui:794 src/data/main.ui:1606
+#: data/main.ui:859 data/main.ui:1736
 msgid "Sleep"
 msgstr "Suspender"
 
-#: src/data/main.ui:818
+#: data/main.ui:883
 msgid "page_sleep"
 msgstr "page_sleep"
 
-#: src/data/main.ui:1208
+#: data/main.ui:1229
+msgid "main_page"
+msgstr ""
+
+#: data/main.ui:1338
 msgid "Keyboard Layout"
 msgstr "Disposição do teclado"
 
-#: src/data/main.ui:1320
+#: data/main.ui:1450
 msgid "Session"
 msgstr "Sessão"
 
-#: src/data/main.ui:1420
+#: data/main.ui:1550
 msgid "Virtual keyboard"
 msgstr "Teclado virtual"
 
-#: src/data/main.ui:1492
+#: data/main.ui:1622
 msgid "Shutdown"
 msgstr "Desligar"
 
-#: src/data/main.ui:1549
+#: data/main.ui:1679
 msgid "Reboot"
 msgstr "Reiniciar"
 
-#: src/wifi/widget.py:41
+#: src/wifi/widget.py:56
 msgid "Connecting..."
 msgstr "A ligar..."
 
-#: src/wifi/widget.py:86 src/wifi/widget.py:140
+#: src/wifi/widget.py:109 src/wifi/widget.py:172
 msgid "Connect"
 msgstr "Ligar"
 
-#: src/wifi/widget.py:90
+#: src/wifi/widget.py:113
 msgid "Forget"
 msgstr "Esquecer"
 
-#: src/wifi/widget.py:95
+#: src/wifi/widget.py:122
 msgid "Go Back"
 msgstr "Voltar"
 
-#: src/wifi/widget.py:132
+#: src/wifi/widget.py:162
 msgid "<b>SSID:</b> {}"
 msgstr "<b>SSID:</b> {}"
 
-#: src/wifi/widget.py:133
+#: src/wifi/widget.py:164
 msgid "<b>Security:</b>{}"
 msgstr "<b>Segurança:</b>{}"
 
-#: src/wifi/widget.py:134
+#: src/wifi/widget.py:166
 msgid "<b>Signal:</b> %{}"
 msgstr "<b>Sinal:</b> %{}"
 
-#: src/wifi/widget.py:137
+#: src/wifi/widget.py:169
 msgid "Disconnect"
 msgstr "Desligar"
 
-#: src/wifi/widget.py:236
+#: src/wifi/widget.py:272
 msgid "Connected"
 msgstr "Ligado"
 
-#: src/wifi/widget.py:238
+#: src/wifi/widget.py:274
 msgid "Saved"
 msgstr "Guardada"
 
-#: src/wifi/widget.py:240
+#: src/wifi/widget.py:276
 msgid "Insecured"
 msgstr "Insegura"
 
-#: src/wifi/widget.py:242
+#: src/wifi/widget.py:278
 msgid "Unsupported"
 msgstr "Sem suporte"
 
-#: src/msgs.py:2 src/module/lightdm.py:254
-msgid "Failed to shutdown system"
-msgstr "Erro ao desligar o sistema"
-
-#: src/msgs.py:3 src/module/lightdm.py:240
-msgid "Failed to reboot system"
-msgstr "Erro ao reiniciar o sistema"
-
-#: src/msgs.py:4
-msgid "Place your right index finger on the fingerprint reader"
-msgstr "Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
-
-#: src/msgs.py:5
-msgid "Place your left index finger on the fingerprint reader"
-msgstr "Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
-
-#: src/module/sessionlist.py:70 src/module/sessionlist.py:71
-#: src/module/sessionlist.py:72 src/module/keyboard.py:120
-msgid "Default"
-msgstr "Predefinido"
-
-#: src/module/network.py:6
+#: src/module/network.py:7
 msgid "Loading..."
 msgstr "A carregar..."
 
-#: src/module/network.py:40
-msgid "Network not available"
+#: src/module/network.py:43
+#, fuzzy
+msgid "Network is not available"
 msgstr "Rede não disponível"
 
-#: src/module/network.py:45
+#: src/module/network.py:48
 msgid ""
 "Local IP:\n"
 "{}"
@@ -220,7 +228,7 @@ msgstr ""
 "IP local:\n"
 "{}"
 
-#: src/module/network.py:48
+#: src/module/network.py:51
 msgid ""
 "WAN IP:\n"
 "- {}"
@@ -228,25 +236,47 @@ msgstr ""
 "IP WAN:\n"
 "- {}"
 
-#: src/module/lightdm.py:172
+#: src/module/lightdm.py:176
 msgid "Invalid session : {}"
 msgstr "Sessão inválida : {}"
 
-#: src/module/lightdm.py:178
+#: src/module/lightdm.py:182
 msgid "Failed to start session: {}"
 msgstr "Erro ao iniciar sessão: {}"
 
-#: src/module/lightdm.py:185
+#: src/module/lightdm.py:191
 msgid "Authentication failed: {}"
 msgstr "Erro de autenticação: {}"
 
-#: src/module/lightdm.py:247
+#: src/module/lightdm.py:251 src/msgs.py:3
+msgid "Failed to reboot system"
+msgstr "Erro ao reiniciar o sistema"
+
+#: src/module/lightdm.py:258
 msgid "Failed to sleep system"
 msgstr "Erro ao suspender o sistema"
 
-#: src/module/gtkwindow.py:230
+#: src/module/lightdm.py:265 src/msgs.py:2
+msgid "Failed to shutdown system"
+msgstr "Erro ao desligar o sistema"
+
+#: src/module/keyboard.py:118
+msgid "Default"
+msgstr "Predefinido"
+
+#: src/module/gtkwindow.py:206
 msgid "Unlock"
 msgstr "Desbloquear"
+
+#: src/msgs.py:4
+msgid "Place your right index finger on the fingerprint reader"
+msgstr ""
+"Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
+
+#: src/msgs.py:5
+msgid "Place your left index finger on the fingerprint reader"
+msgstr ""
+"Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
 
 #~ msgid "login as root is blocked"
 #~ msgstr "iniciar sessão como root está bloqueado"
