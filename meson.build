@@ -1,11 +1,14 @@
 project('pardus-lightdm-greeter')
 
 subdir('po')
+subdir('debian')
+
+# generate version
 
 # install sources
 install_subdir('src', install_dir : '/usr/share/pardus/pardus-lightdm-greeter', strip_directory : true)
-install_data('data/main.ui', install_dir : '/usr/pardus/pardus-lightdm-greeter/data/')
-install_data('data/servers.txt', install_dir : '/usr/pardus/pardus-lightdm-greeter/data/')
+install_data('data/main.ui', install_dir : '/usr/share/pardus/pardus-lightdm-greeter/data/')
+install_data('data/servers.txt', install_dir : '/usr/share/pardus/pardus-lightdm-greeter/data/')
 
 # glib schema
 install_data('data/gsettings.xml', install_dir : '/usr/share/glib-2.0/schemas/', rename: 'tr.org.pardus.lightdm.greeter.gschema.xml')
@@ -25,11 +28,11 @@ install_data('src/cli.py', install_dir : '/usr/bin/', rename: 'pardus-login', in
 install_subdir('data/icon', install_dir : '/usr/share/icons/hicolor/scalable/status', strip_directory : true)
 
 # css
-install_data('data/main.css', install_dir : '/usr/pardus/pardus-lightdm-greeter/data/')
-install_data('data/colors.css', install_dir : '/usr/pardus/pardus-lightdm-greeter/data/')
-install_data('data/colors-dark.css', install_dir : '/usr/pardus/pardus-lightdm-greeter/data/')
+install_data('data/main.css', install_dir : '/usr/share/pardus/pardus-lightdm-greeter/data/')
+install_data('data/colors.css', install_dir : '/usr/share/pardus/pardus-lightdm-greeter/data/')
+install_data('data/colors-dark.css', install_dir : '/usr/share/pardus/pardus-lightdm-greeter/data/')
 
 # default backgrounds
-install_data('data/bg-dark.png', install_dir : '/usr/pardus/pardus-lightdm-greeter/data/')
-install_data('data/bg-light.png', install_dir : '/usr/pardus/pardus-lightdm-greeter/data/')
-install_data('data/emblem-pardus.svg', install_dir : '/usr/pardus/pardus-lightdm-greeter/data/')
+install_data('data/bg-dark.png', install_dir : '/usr/share/pardus/pardus-lightdm-greeter/data/')
+install_data('data/bg-light.png', install_dir : '/usr/share/pardus/pardus-lightdm-greeter/data/')
+install_data('data/emblem-pardus.svg', install_dir : '/usr/share/pardus/pardus-lightdm-greeter/data/')
