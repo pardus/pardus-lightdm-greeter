@@ -2,7 +2,7 @@ Source: pardus-lightdm-greeter
 Section: misc
 Priority: optional
 Maintainer: Ali Riza KESKIN <aliriza.keskin@pardus.org.tr>
-Build-Depends: debhelper (>= 10), make
+Build-Depends: debhelper (>= 10), meson, ninja-build, gettext
 Standards-Version: 4.3.0
 Homepage: https://www.pardus.org.tr
 
