@@ -45,8 +45,8 @@ class userButton(Gtk.Box):
             if line.startswith(self.username+":"):
                 realname = line.split(":")[4]
                 break
-        if realname.endswith(",,,"):
-            realname = realname[:-3]
+        if "," in realname:
+            realname = realname.split(",")[0]
         if realname == "":
             realname = self.username
         p.close()
