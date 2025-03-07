@@ -897,8 +897,8 @@ and power off the computer ?</property>
                         </child>
                       </object>
                       <packing>
-                        <property name="name">page0</property>
-                        <property name="title" translatable="yes">page0</property>
+                        <property name="name">page_main</property>
+                        <property name="title" translatable="yes">page_main</property>
                       </packing>
                     </child>
                   </object>
@@ -1235,8 +1235,8 @@ and power off the computer ?</property>
                 </style>
               </object>
               <packing>
-                <property name="name">main_page</property>
-                <property name="title" translatable="yes">main_page</property>
+                <property name="name">page_main</property>
+                <property name="title" translatable="yes">page_main</property>
               </packing>
             </child>
           </object>
