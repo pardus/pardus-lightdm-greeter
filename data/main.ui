@@ -113,110 +113,181 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="ui_box_main">
+                  <object class="GtkStack" id="ui_stack_main">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="halign">center</property>
-                    <property name="valign">center</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">5</property>
                     <child>
-                      <object class="GtkImage" id="ui_image_logo">
+                      <object class="GtkBox" id="ui_box_main">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="pixbuf">emblem-pardus.svg</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="ui_label_time">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label">&lt;span font='64'&gt;13:49&lt;/span&gt;</property>
-                        <property name="use-markup">True</property>
-                        <style>
-                          <class name="text"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="ui_label_date">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label">&lt;span font='16'&gt;10 Jun 2022 - Monday&lt;/span&gt;</property>
-                        <property name="use-markup">True</property>
-                        <style>
-                          <class name="text"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkStack" id="ui_stack_main">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="margin-top">21</property>
-                        <property name="transition-duration">500</property>
-                        <property name="transition-type">slide-left-right</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">5</property>
                         <child>
-                          <object class="GtkBox" id="ui_box_login">
-                            <property name="width-request">250</property>
+                          <object class="GtkImage" id="ui_image_logo">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="halign">center</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">5</property>
+                            <property name="pixbuf">emblem-pardus.svg</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="ui_label_time">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label">&lt;span font='64'&gt;13:49&lt;/span&gt;</property>
+                            <property name="use-markup">True</property>
+                            <style>
+                              <class name="text"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="ui_label_date">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label">&lt;span font='16'&gt;10 Jun 2022 - Monday&lt;/span&gt;</property>
+                            <property name="use-markup">True</property>
+                            <style>
+                              <class name="text"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkStack" id="ui_stack_login">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="margin-top">21</property>
+                            <property name="transition-duration">500</property>
+                            <property name="transition-type">slide-left-right</property>
                             <child>
-                              <object class="GtkBox" id="ui_box_username">
+                              <object class="GtkBox" id="ui_box_login">
+                                <property name="width-request">250</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">5</property>
                                 <child>
-                                  <object class="GtkStack" id="ui_stack_username">
+                                  <object class="GtkBox" id="ui_box_username">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="transition-duration">100</property>
-                                    <property name="transition-type">crossfade</property>
                                     <child>
-                                      <object class="GtkButton" id="ui_button_username">
+                                      <object class="GtkStack" id="ui_stack_username">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="transition-duration">100</property>
+                                        <property name="transition-type">crossfade</property>
+                                        <child>
+                                          <object class="GtkButton" id="ui_button_username">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="receives-default">True</property>
+                                            <child>
+                                              <object class="GtkLabel" id="ui_button_username_label">
+                                                <property name="visible">True</property>
+                                                <property name="can-focus">False</property>
+                                                <property name="halign">start</property>
+                                                <property name="label" translatable="yes">username</property>
+                                              </object>
+                                            </child>
+                                            <style>
+                                              <class name="button"/>
+                                              <class name="button_left"/>
+                                            </style>
+                                          </object>
+                                          <packing>
+                                            <property name="name">show</property>
+                                            <property name="title" translatable="yes">show</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="ui_entry_username">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="placeholder-text" translatable="yes">Username</property>
+                                            <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                                            <style>
+                                              <class name="entry"/>
+                                              <class name="button_left"/>
+                                            </style>
+                                          </object>
+                                          <packing>
+                                            <property name="name">edit</property>
+                                            <property name="title" translatable="yes">edit</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_userselect">
+                                        <property name="width-request">31</property>
+                                        <property name="height-request">31</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
                                         <property name="receives-default">True</property>
                                         <child>
-                                          <object class="GtkLabel" id="ui_button_username_label">
+                                          <object class="GtkImage" id="ui_icon_userselect">
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
-                                            <property name="halign">start</property>
-                                            <property name="label" translatable="yes">username</property>
+                                            <property name="icon-name">system-users-symbolic</property>
                                           </object>
                                         </child>
                                         <style>
                                           <class name="button"/>
-                                          <class name="button_left"/>
+                                          <class name="button_right"/>
                                         </style>
                                       </object>
                                       <packing>
-                                        <property name="name">show</property>
-                                        <property name="title" translatable="yes">show</property>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
                                       </packing>
                                     </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkBox" id="ui_box_password">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
                                     <child>
-                                      <object class="GtkEntry" id="ui_entry_username">
+                                      <object class="GtkEntry" id="ui_entry_password">
+                                        <property name="width-request">31</property>
+                                        <property name="height-request">31</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
-                                        <property name="placeholder-text" translatable="yes">Username</property>
+                                        <property name="valign">center</property>
+                                        <property name="visibility">False</property>
+                                        <property name="invisible-char">•</property>
+                                        <property name="caps-lock-warning">False</property>
+                                        <property name="placeholder-text" translatable="yes">Password</property>
+                                        <property name="input-purpose">password</property>
                                         <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
                                         <style>
                                           <class name="entry"/>
@@ -224,158 +295,114 @@
                                         </style>
                                       </object>
                                       <packing>
-                                        <property name="name">edit</property>
-                                        <property name="title" translatable="yes">edit</property>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_eye">
+                                        <property name="width-request">31</property>
+                                        <property name="height-request">31</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <child>
+                                          <object class="GtkImage" id="ui_icon_eye">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="icon-name">view-reveal-symbolic</property>
+                                          </object>
+                                        </child>
+                                        <style>
+                                          <class name="button"/>
+                                          <class name="button_right"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
                                         <property name="position">1</property>
                                       </packing>
                                     </child>
                                   </object>
                                   <packing>
-                                    <property name="expand">True</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="ui_button_userselect">
-                                    <property name="width-request">31</property>
-                                    <property name="height-request">31</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <child>
-                                      <object class="GtkImage" id="ui_icon_userselect">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <property name="icon-name">system-users-symbolic</property>
-                                      </object>
-                                    </child>
-                                    <style>
-                                      <class name="button"/>
-                                      <class name="button_right"/>
-                                    </style>
-                                  </object>
-                                  <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">True</property>
                                     <property name="position">1</property>
                                   </packing>
                                 </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox" id="ui_box_password">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
                                 <child>
-                                  <object class="GtkEntry" id="ui_entry_password">
-                                    <property name="width-request">31</property>
-                                    <property name="height-request">31</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="valign">center</property>
-                                    <property name="visibility">False</property>
-                                    <property name="invisible-char">•</property>
-                                    <property name="caps-lock-warning">False</property>
-                                    <property name="placeholder-text" translatable="yes">Password</property>
-                                    <property name="input-purpose">password</property>
-                                    <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
-                                    <style>
-                                      <class name="entry"/>
-                                      <class name="button_left"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">True</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="ui_button_eye">
-                                    <property name="width-request">31</property>
-                                    <property name="height-request">31</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <child>
-                                      <object class="GtkImage" id="ui_icon_eye">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <property name="icon-name">view-reveal-symbolic</property>
-                                      </object>
-                                    </child>
-                                    <style>
-                                      <class name="button"/>
-                                      <class name="button_right"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="width-request">22</property>
+                                  <object class="GtkBox">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="margin-left">8</property>
-                                    <property name="margin-start">8</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="width-request">22</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="margin-left">8</property>
+                                        <property name="margin-start">8</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_login">
+                                        <property name="label" translatable="yes">Login</property>
+                                        <property name="width-request">128</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="margin-left">20</property>
+                                        <property name="margin-right">20</property>
+                                        <property name="margin-start">20</property>
+                                        <property name="margin-end">20</property>
+                                        <style>
+                                          <class name="button"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">2</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkSpinner" id="ui_spinner_login">
+                                        <property name="width-request">22</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="margin-right">8</property>
+                                        <property name="margin-end">8</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">3</property>
+                                      </packing>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="ui_button_login">
-                                    <property name="label" translatable="yes">Login</property>
-                                    <property name="width-request">128</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <property name="halign">center</property>
-                                    <property name="valign">center</property>
-                                    <property name="margin-left">20</property>
-                                    <property name="margin-right">20</property>
-                                    <property name="margin-start">20</property>
-                                    <property name="margin-end">20</property>
-                                    <style>
-                                      <class name="button"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">True</property>
                                     <property name="fill">True</property>
                                     <property name="position">2</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinner" id="ui_spinner_login">
-                                    <property name="width-request">22</property>
+                                  <object class="GtkLabel" id="ui_label_login_error">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="margin-right">8</property>
-                                    <property name="margin-end">8</property>
+                                    <property name="valign">start</property>
+                                    <property name="label">error message</property>
+                                    <style>
+                                      <class name="text"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -385,109 +412,27 @@
                                 </child>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
+                                <property name="name">page_main</property>
+                                <property name="title" translatable="yes">page_main</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="ui_label_login_error">
+                              <object class="GtkBox" id="ui_box_reset_passwd">
+                                <property name="width-request">250</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="valign">start</property>
-                                <property name="label">error message</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="name">page_main</property>
-                            <property name="title" translatable="yes">page_main</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="ui_box_reset_passwd">
-                            <property name="width-request">250</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="halign">center</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">5</property>
-                            <child>
-                              <object class="GtkEntry" id="ui_entry_reset_username">
-                                <property name="visible">True</property>
-                                <property name="sensitive">False</property>
-                                <property name="can-focus">True</property>
-                                <property name="valign">center</property>
-                                <property name="placeholder-text" translatable="yes">Username</property>
-                                <style>
-                                  <class name="entry"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="ui_entry_new_password1">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="valign">center</property>
-                                <property name="visibility">False</property>
-                                <property name="invisible-char">•</property>
-                                <property name="secondary-icon-name">view-reveal-symbolic</property>
-                                <property name="placeholder-text" translatable="yes">New Password</property>
-                                <style>
-                                  <class name="entry"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="ui_entry_new_password2">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="valign">center</property>
-                                <property name="visibility">False</property>
-                                <property name="invisible-char">•</property>
-                                <property name="secondary-icon-name">view-reveal-symbolic</property>
-                                <property name="placeholder-text" translatable="yes">New Password Again</property>
-                                <style>
-                                  <class name="entry"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox" id="ui_box_reset_buttons">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
                                 <property name="spacing">5</property>
                                 <child>
-                                  <object class="GtkButton" id="ui_button_reset_cancel">
-                                    <property name="label" translatable="yes">Cancel</property>
+                                  <object class="GtkEntry" id="ui_entry_reset_username">
                                     <property name="visible">True</property>
+                                    <property name="sensitive">False</property>
                                     <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
+                                    <property name="valign">center</property>
+                                    <property name="placeholder-text" translatable="yes">Username</property>
                                     <style>
-                                      <class name="button"/>
+                                      <class name="entry"/>
                                     </style>
                                   </object>
                                   <packing>
@@ -497,398 +442,463 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkButton" id="ui_button_change_password">
-                                    <property name="label" translatable="yes">Change Password</property>
-                                    <property name="width-request">128</property>
+                                  <object class="GtkEntry" id="ui_entry_new_password1">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <property name="halign">center</property>
                                     <property name="valign">center</property>
+                                    <property name="visibility">False</property>
+                                    <property name="invisible-char">•</property>
+                                    <property name="secondary-icon-name">view-reveal-symbolic</property>
+                                    <property name="placeholder-text" translatable="yes">New Password</property>
                                     <style>
-                                      <class name="button"/>
+                                      <class name="entry"/>
                                     </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">True</property>
-                                    <property name="pack-type">end</property>
                                     <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkEntry" id="ui_entry_new_password2">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="valign">center</property>
+                                    <property name="visibility">False</property>
+                                    <property name="invisible-char">•</property>
+                                    <property name="secondary-icon-name">view-reveal-symbolic</property>
+                                    <property name="placeholder-text" translatable="yes">New Password Again</property>
+                                    <style>
+                                      <class name="entry"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkBox" id="ui_box_reset_buttons">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="spacing">5</property>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_reset_cancel">
+                                        <property name="label" translatable="yes">Cancel</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <style>
+                                          <class name="button"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_change_password">
+                                        <property name="label" translatable="yes">Change Password</property>
+                                        <property name="width-request">128</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <style>
+                                          <class name="button"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="pack-type">end</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">3</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">Your password has expired.</property>
+                                    <style>
+                                      <class name="text"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">4</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="ui_label_reset_password_error">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="valign">start</property>
+                                    <property name="label" translatable="yes">Hata Mesajı</property>
+                                    <style>
+                                      <class name="text"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">5</property>
                                   </packing>
                                 </child>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
+                                <property name="name">page_reset_password</property>
+                                <property name="title" translatable="yes">page_reset_password</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkBox" id="ui_box_restart">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">5</property>
+                                <child>
+                                  <object class="GtkImage" id="ui_icon_stack_restart">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="pixel-size">64</property>
+                                    <property name="icon-name">pardus-greeter-reboot-symbolic</property>
+                                    <property name="icon_size">6</property>
+                                    <style>
+                                      <class name="icon"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="ui_label_stack_restart1">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">&lt;big&gt;RESTART&lt;/big&gt;</property>
+                                    <property name="use-markup">True</property>
+                                    <style>
+                                      <class name="text"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="ui_label_stack_restart2">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">Are you sure you want to close all programs 
+and restart the computer ?</property>
+                                    <property name="justify">center</property>
+                                    <style>
+                                      <class name="text"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">center</property>
+                                    <property name="spacing">5</property>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_stack_restart_cancel">
+                                        <property name="label" translatable="yes">Cancel</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <style>
+                                          <class name="button"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_stack_restart">
+                                        <property name="label" translatable="yes">Restart</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <style>
+                                          <class name="button"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">3</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="name">page_restart</property>
+                                <property name="title" translatable="yes">page_restart</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkBox" id="ui_box_poweroff">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">5</property>
+                                <child>
+                                  <object class="GtkImage" id="ui_icon_stack_poweroff">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="pixel-size">64</property>
+                                    <property name="icon-name">pardus-greeter-shutdown-symbolic</property>
+                                    <property name="icon_size">6</property>
+                                    <style>
+                                      <class name="icon"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="ui_label_stack_poweroff1">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">&lt;big&gt;POWER OFF&lt;/big&gt;</property>
+                                    <property name="use-markup">True</property>
+                                    <style>
+                                      <class name="text"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="ui_label_stack_poweroff2">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">Are you sure you want to close all programs 
+and power off the computer ?</property>
+                                    <property name="justify">center</property>
+                                    <style>
+                                      <class name="text"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">center</property>
+                                    <property name="spacing">5</property>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_stack_poweroff_cancel">
+                                        <property name="label" translatable="yes">Cancel</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <style>
+                                          <class name="button"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_stack_poweroff">
+                                        <property name="label" translatable="yes">Power Off</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <style>
+                                          <class name="button"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">3</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="name">page_poweroff</property>
+                                <property name="title" translatable="yes">page_poweroff</property>
                                 <property name="position">3</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkBox" id="ui_box_sleep">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Your password has expired.</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">5</property>
+                                <child>
+                                  <object class="GtkImage" id="ui_icon_stack_sleep">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="pixel-size">64</property>
+                                    <property name="icon-name">pardus-greeter-suspend-symbolic</property>
+                                    <property name="icon_size">6</property>
+                                    <style>
+                                      <class name="icon"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="ui_label_stack_sleep1">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">&lt;big&gt;SLEEP&lt;/big&gt;</property>
+                                    <property name="use-markup">True</property>
+                                    <style>
+                                      <class name="text"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="ui_label_stack_sleep2">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">Are you sure you want to sleep the computer ?</property>
+                                    <property name="justify">center</property>
+                                    <style>
+                                      <class name="text"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="halign">center</property>
+                                    <property name="spacing">5</property>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_stack_sleep_cancel">
+                                        <property name="label" translatable="yes">Cancel</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <style>
+                                          <class name="button"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton" id="ui_button_stack_sleep">
+                                        <property name="label" translatable="yes">Sleep</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <style>
+                                          <class name="button"/>
+                                        </style>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">3</property>
+                                  </packing>
+                                </child>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
+                                <property name="name">page_sleep</property>
+                                <property name="title" translatable="yes">page_sleep</property>
                                 <property name="position">4</property>
                               </packing>
                             </child>
-                            <child>
-                              <object class="GtkLabel" id="ui_label_reset_password_error">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="valign">start</property>
-                                <property name="label" translatable="yes">Hata Mesajı</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">5</property>
-                              </packing>
-                            </child>
                           </object>
                           <packing>
-                            <property name="name">page_reset_password</property>
-                            <property name="title" translatable="yes">page_reset_password</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="ui_box_restart">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">5</property>
-                            <child>
-                              <object class="GtkImage" id="ui_icon_stack_restart">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="pixel-size">64</property>
-                                <property name="icon-name">pardus-greeter-reboot-symbolic</property>
-                                <property name="icon_size">6</property>
-                                <style>
-                                  <class name="icon"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="ui_label_stack_restart1">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">&lt;big&gt;RESTART&lt;/big&gt;</property>
-                                <property name="use-markup">True</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="ui_label_stack_restart2">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Are you sure you want to close all programs 
-and restart the computer ?</property>
-                                <property name="justify">center</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">center</property>
-                                <property name="spacing">5</property>
-                                <child>
-                                  <object class="GtkButton" id="ui_button_stack_restart_cancel">
-                                    <property name="label" translatable="yes">Cancel</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <style>
-                                      <class name="button"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="ui_button_stack_restart">
-                                    <property name="label" translatable="yes">Restart</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <style>
-                                      <class name="button"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="name">page_restart</property>
-                            <property name="title" translatable="yes">page_restart</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="ui_box_poweroff">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">5</property>
-                            <child>
-                              <object class="GtkImage" id="ui_icon_stack_poweroff">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="pixel-size">64</property>
-                                <property name="icon-name">pardus-greeter-shutdown-symbolic</property>
-                                <property name="icon_size">6</property>
-                                <style>
-                                  <class name="icon"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="ui_label_stack_poweroff1">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">&lt;big&gt;POWER OFF&lt;/big&gt;</property>
-                                <property name="use-markup">True</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="ui_label_stack_poweroff2">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Are you sure you want to close all programs 
-and power off the computer ?</property>
-                                <property name="justify">center</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">center</property>
-                                <property name="spacing">5</property>
-                                <child>
-                                  <object class="GtkButton" id="ui_button_stack_poweroff_cancel">
-                                    <property name="label" translatable="yes">Cancel</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <style>
-                                      <class name="button"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="ui_button_stack_poweroff">
-                                    <property name="label" translatable="yes">Power Off</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <style>
-                                      <class name="button"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="name">page_poweroff</property>
-                            <property name="title" translatable="yes">page_poweroff</property>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
                             <property name="position">3</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="ui_box_sleep">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">5</property>
-                            <child>
-                              <object class="GtkImage" id="ui_icon_stack_sleep">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="pixel-size">64</property>
-                                <property name="icon-name">pardus-greeter-suspend-symbolic</property>
-                                <property name="icon_size">6</property>
-                                <style>
-                                  <class name="icon"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="ui_label_stack_sleep1">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">&lt;big&gt;SLEEP&lt;/big&gt;</property>
-                                <property name="use-markup">True</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="ui_label_stack_sleep2">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Are you sure you want to sleep the computer ?</property>
-                                <property name="justify">center</property>
-                                <style>
-                                  <class name="text"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">center</property>
-                                <property name="spacing">5</property>
-                                <child>
-                                  <object class="GtkButton" id="ui_button_stack_sleep_cancel">
-                                    <property name="label" translatable="yes">Cancel</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <style>
-                                      <class name="button"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="ui_button_stack_sleep">
-                                    <property name="label" translatable="yes">Sleep</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="receives-default">True</property>
-                                    <style>
-                                      <class name="button"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="name">page_sleep</property>
-                            <property name="title" translatable="yes">page_sleep</property>
-                            <property name="position">4</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
+                        <property name="name">page0</property>
+                        <property name="title" translatable="yes">page0</property>
                       </packing>
                     </child>
                   </object>

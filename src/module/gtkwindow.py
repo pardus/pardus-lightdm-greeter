@@ -156,7 +156,7 @@ class LoginWindow:
         self.o("ui_label_reset_password_error").set_text(message)
         self.o("ui_entry_new_password1").set_text("")
         self.o("ui_entry_new_password2").set_text("")
-        self.o("ui_stack_main").set_visible_child_name("page_main")
+        self.o("ui_stack_login").set_visible_child_name("page_main")
 
     def login_handler(self):
         if get("password-cache", True, "gtkwindow"):
@@ -303,14 +303,14 @@ class LoginWindow:
         if not self.__blocked:
             return
         self.__blocked = False
-        self.o("ui_stack_main").set_sensitive(True)
+        self.o("ui_stack_login").set_sensitive(True)
         if not lightdm.get_is_reset():
             self.o("ui_entry_password").grab_focus()
         self.o("ui_spinner_login").stop()
 
     def block_gui(self):
         self.__blocked = True
-        self.o("ui_stack_main").set_sensitive(False)
+        self.o("ui_stack_login").set_sensitive(False)
         self.o("ui_spinner_login").start()
         # unblock after timeout
         timeout = 1000*int(get("block-gui-timeout", "10", "gtkwindow"))
