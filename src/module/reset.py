@@ -24,7 +24,8 @@ def _reset_event(widget=None):
     # Change page
     loginwindow.o("ui_stack_login").set_visible_child_name(
         "page_reset_password")
-    loginwindow.o("ui_stack_window").set_visible_child_name("main_page")
+    loginwindow.o("ui_stack_window").set_visible_child_name("page_main")
+    loginwindow.o("ui_stack_main").set_visible_child_name("page_main")
 
 
 def _reset_password_entry1_event(widget):
