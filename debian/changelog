@@ -1,3 +1,23 @@
+pardus-lightdm-greeter (0.4.0) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * self.o definition changed
+  * some logic improvements
+  * fix pep8 rules
+  * fix deprecated warning
+  * cli send message function added
+  * cli function exit mechanism fix
+  * move to meson
+  * extract version from debian/changelog and fix directory name
+  * fix build dependencies
+  * fix user commend issue
+  * rename ui_stack_main as ui_stack_login
+  * fix page name
+  * add animation
+  * fix reset page change
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 07 Apr 2025 15:29:33 +0300
+
 pardus-lightdm-greeter (0.3.0) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
