@@ -49,7 +49,6 @@ def module_init():
     loginwindow.o("ui_button_sleep").connect("clicked", _sleep_event)
     loginwindow.o("ui_button_poweroff").connect("clicked", _poweroff_event)
     loginwindow.o("ui_button_restart").connect("clicked", _restart_event)
-    loginwindow.o("ui_button_reset_cancel").connect("clicked", _cancel_event)
     loginwindow.o("ui_button_stack_poweroff_cancel").connect(
         "clicked", _cancel_event)
     loginwindow.o("ui_button_stack_restart_cancel").connect(

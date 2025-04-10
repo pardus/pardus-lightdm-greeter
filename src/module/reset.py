@@ -28,14 +28,23 @@ def _reset_event(widget=None):
     loginwindow.o("ui_stack_main").set_visible_child_name("page_main")
 
 
+def _reset_cancel(widget=None):
+    """send empty password to cancel reset"""
+    lightdm.set(password=_reset_password, username=_reset_username)
+    lightdm.set2(password="", username=_reset_username)
+    lightdm.login()
+
+
 def _reset_password_entry1_event(widget):
     loginwindow.o("ui_entry_new_password2").grab_focus()
-
 
 def module_init():
     # button
     loginwindow.o("ui_button_change_password").connect(
         "clicked", _reset_password)
+    loginwindow.o("ui_button_reset_cancel").connect(
+        "clicked", _reset_cancel)
+
     # entry enter events
     loginwindow.o("ui_entry_new_password1").connect(
         "activate", _reset_password_entry1_event)
