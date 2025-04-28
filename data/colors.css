@@ -37,3 +37,7 @@ menu {
 .textview {
   background: alpha(white,0.31);
 }
+
+.wrongpass {
+    border: 1px solid red;
+}

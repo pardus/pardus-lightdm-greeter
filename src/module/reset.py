@@ -35,6 +35,22 @@ def _reset_cancel(widget=None):
     lightdm.login()
 
 
+_last_wrong = False
+def _reset_entry_visual(widget = None):
+    global _last_wrong
+    p1 = loginwindow.o("ui_entry_new_password1")
+    p2 = loginwindow.o("ui_entry_new_password2")
+    wrong = (p1.get_text() != p2.get_text())
+    if _last_wrong == wrong:
+        return
+    _last_wrong = wrong
+    if wrong:
+        p1.get_style_context().add_class("wrongpass")
+        p2.get_style_context().add_class("wrongpass")
+    else:
+        p1.get_style_context().remove_class("wrongpass")
+        p2.get_style_context().remove_class("wrongpass")
+
 def _reset_password_entry1_event(widget):
     loginwindow.o("ui_entry_new_password2").grab_focus()
 
@@ -50,5 +66,12 @@ def module_init():
         "activate", _reset_password_entry1_event)
     loginwindow.o("ui_entry_new_password2").connect(
         "activate", _reset_password)
+
+    # entry change events
+    loginwindow.o("ui_entry_new_password1").connect(
+        "changed", _reset_entry_visual)
+    loginwindow.o("ui_entry_new_password2").connect(
+        "changed", _reset_entry_visual)
+
     # handler connect
     lightdm.reset_page_handler = _reset_event
