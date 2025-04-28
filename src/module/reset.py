@@ -44,6 +44,7 @@ def _reset_entry_visual(widget = None):
     if _last_wrong == wrong:
         return
     _last_wrong = wrong
+    loginwindow.o("ui_button_change_password").set_sensitive(not wrong)
     if wrong:
         p1.get_style_context().add_class("wrongpass")
         p2.get_style_context().add_class("wrongpass")
