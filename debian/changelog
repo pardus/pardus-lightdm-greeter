@@ -1,3 +1,12 @@
+pardus-lightdm-greeter (0.4.1) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * fix cancel reset button
+  * wrong password indicator
+  * reset button sensitive
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Tue, 06 May 2025 12:37:26 +0300
+
 pardus-lightdm-greeter (0.4.0) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
