@@ -37,7 +37,6 @@ def module_init():
                     "ui_entry_password").set_text, password)
                 GLib.idle_add(loginwindow.event_login_button,
                               loginwindow.o("ui_button_login"))
-                lightdm.login()
                 debug("daemon login done")
         except Exception as e:
             debug("Removing fifo")
