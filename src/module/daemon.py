@@ -22,6 +22,11 @@ def module_init():
                 debug("fifo data: {}".format(str(data)))
                 os.unlink("/{}/pardus-greeter".format(busdir))
                 debug("Removing fifo after read")
+                if "event" in data:
+                    if data["event"] == "block-gui":
+                        loginwindow.block_gui()
+                    elif data["event"] == "unblock-gui":
+                        loginwindow.unblock_gui()
                 if "message" in data:
                     lightdm.msg_handler(str(data["message"]))
                     continue
