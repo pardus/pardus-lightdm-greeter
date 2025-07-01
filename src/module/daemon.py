@@ -18,17 +18,18 @@ def module_init():
                 username = ""
                 password = ""
                 debug("Reading fifo")
-                data = json.loads(f.read())
+                data = f.read()
+                data = json.loads(data)
                 debug("fifo data: {}".format(str(data)))
                 os.unlink("/{}/pardus-greeter".format(busdir))
                 debug("Removing fifo after read")
                 if "event" in data:
                     if data["event"] == "block-gui":
-                        loginwindow.block_gui()
+                        GLib.idle_add(loginwindow.block_gui)
                     elif data["event"] == "unblock-gui":
-                        loginwindow.unblock_gui()
+                        GLib.idle_add(loginwindow.unblock_gui)
                 if "message" in data:
-                    lightdm.msg_handler(str(data["message"]))
+                    GLib.idle_add(lightdm.msg_handler, str(data["message"]))
                     continue
                 if "username" in data:
                     username = str(data["username"])
