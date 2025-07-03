@@ -14,11 +14,12 @@ class sessionButton(Gtk.Button):
         self.label = Gtk.Label()
         self.image = Gtk.Image()
         self.image.set_pixel_size(12*scale)
-        self.label.set_text("  "+self.session_name)
+        self.label.set_text(self.session_name)
         box = Gtk.Box()
         box.pack_start(self.label, False, False, 0)
         box.pack_start(Gtk.Label(), True, True, 0)
         box.pack_start(self.image, False, False, 0)
+        box.set_margin_left(13*scale)
         box.show_all()
         self.add(box)
 

@@ -26,6 +26,7 @@ class xkbButton(Gtk.Button):
         box.pack_start(self.label, False, False, 0)
         box.pack_start(Gtk.Label(), True, True, 0)
         box.pack_start(self.image, False, False, 0)
+        box.set_margin_start(13*scale)
         self.add(box)
         self.show_all()
 
