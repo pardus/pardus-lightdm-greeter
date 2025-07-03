@@ -1,5 +1,33 @@
 import json
 
+############### Main thread functions ###############
+
+def process_daemon_data(data):
+    ### message and event
+    if "message" in data:
+        lightdm.msg_handler(str(data["message"]))
+    if "event" in data:
+        if data["event"] == "block-gui":
+            loginwindow.block_gui()
+        elif data["event"] == "unblock-gui":
+            loginwindow.unblock_gui()
+    if "message" in data or "event" in data:
+        return
+    ### login
+    username = ""
+    password = ""
+    if "username" in data:
+        username = str(data["username"])
+    if "password" in data:
+        password = str(data["password"])
+    if "session" in data:
+        lightdm.set(session=str(data["session"]))
+    loginwindow.o("ui_entry_username").set_text(username)
+    loginwindow.o("ui_entry_password").set_text(password)
+    loginwindow.event_login_button(loginwindow.o("ui_button_login"))
+    debug("daemon login done")
+
+############### Async functions ###############
 
 @asynchronous
 def module_init():
@@ -15,35 +43,13 @@ def module_init():
         try:
             debug("Listening fifo")
             with open("/{}/pardus-greeter".format(busdir), "r") as f:
-                username = ""
-                password = ""
                 debug("Reading fifo")
                 data = f.read()
                 data = json.loads(data)
                 debug("fifo data: {}".format(str(data)))
                 os.unlink("/{}/pardus-greeter".format(busdir))
                 debug("Removing fifo after read")
-                if "event" in data:
-                    if data["event"] == "block-gui":
-                        GLib.idle_add(loginwindow.block_gui)
-                    elif data["event"] == "unblock-gui":
-                        GLib.idle_add(loginwindow.unblock_gui)
-                if "message" in data:
-                    GLib.idle_add(lightdm.msg_handler, str(data["message"]))
-                    continue
-                if "username" in data:
-                    username = str(data["username"])
-                if "password" in data:
-                    password = str(data["password"])
-                if "session" in data:
-                    lightdm.set(session=str(data["session"]))
-                GLib.idle_add(loginwindow.o(
-                    "ui_entry_username").set_text, username)
-                GLib.idle_add(loginwindow.o(
-                    "ui_entry_password").set_text, password)
-                GLib.idle_add(loginwindow.event_login_button,
-                              loginwindow.o("ui_button_login"))
-                debug("daemon login done")
+                GLib.idle_add(process_daemon_data, data)
         except Exception as e:
             debug("Removing fifo")
             if os.path.exists("/{}/pardus-greeter".format(busdir)):

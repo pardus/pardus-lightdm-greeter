@@ -303,6 +303,7 @@ class LoginWindow:
         if not self.__blocked:
             return
         self.__blocked = False
+        debug("Block GUI")
         self.o("ui_stack_login").set_sensitive(True)
         if not lightdm.get_is_reset():
             self.o("ui_entry_password").grab_focus()
@@ -310,6 +311,7 @@ class LoginWindow:
 
     def block_gui(self):
         self.__blocked = True
+        debug("Unblock GUI")
         self.o("ui_stack_login").set_sensitive(False)
         self.o("ui_spinner_login").start()
         # unblock after timeout
