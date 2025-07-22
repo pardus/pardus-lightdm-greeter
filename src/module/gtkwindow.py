@@ -43,6 +43,8 @@ class LoginWindow:
             "changed", self.__event_password_entry_changed)
         self.o("ui_entry_password").connect(
             "focus-in-event", self.__screen_keyboard_event)
+        self.o("ui_entry_password").connect(
+            "button_press_event", self.__screen_keyboard_event)
         # username entry
         self.o("ui_entry_username").connect(
             "activate", self.__event_username_entry_clicked)
@@ -50,6 +52,8 @@ class LoginWindow:
             "changed", self.__event_username_entry_changed)
         self.o("ui_entry_username").connect(
             "focus-in-event", self.__screen_keyboard_event)
+        self.o("ui_entry_username").connect(
+            "button_press_event", self.__screen_keyboard_event)
         # password entry icons
         self.o("ui_button_eye").connect(
             "button_press_event", self.password_entry_button_press)
