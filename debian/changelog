@@ -1,3 +1,10 @@
+pardus-lightdm-greeter (0.4.3) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * keyboard event on entry clicks
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 25 Jul 2025 12:15:46 +0300
+
 pardus-lightdm-greeter (0.4.2) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
