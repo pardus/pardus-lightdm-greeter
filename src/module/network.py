@@ -27,6 +27,16 @@ def update_popover_text():
         loginwindow.o("ui_label_network").set_text(network_label_text)
     GLib.timeout_add(500, update_popover_text)
 
+@asynchronous
+def update_network_icon():
+    ip_list = get_local_ip()
+    if len(ip_list) == 0:
+        GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-error", Gtk.IconSize.DND)
+    else:
+        GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-wired", Gtk.IconSize.DND)
+    # check local network every 5 seconds
+    GLib.timeout_add(5000, update_network_icon)
+
 
 @asynchronous
 def network_control_event():
@@ -64,6 +74,7 @@ def module_init():
     loginwindow.o("ui_button_network").connect(
         "clicked", _network_button_event)
     update_popover_text()
+    update_network_icon()
     if not wifi_widget.wifi.available():
         loginwindow.o("ui_button_wifi").hide()
     else:
