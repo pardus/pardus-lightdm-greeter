@@ -35,7 +35,7 @@ os.environ["SESSION_MANAGER"] = "lightdm"
 if get("touch-mode", False):
     os.environ["GTK_TEST_TOUCHSCREEN"] = "1"
 os.environ["GDK_CORE_DEVICE_EVENTS"] = "1"
-os.system("xhost +local:")
+os.system("xhost +local: 2>/dev/null")
 os.system("xset s {0} {0}".format(get("blank-timeout", 300)))
 
 os.system(get("init", ""))
@@ -93,7 +93,7 @@ for module in base_modules + os.listdir("module"):
                 module_init()
             del (module_init)
         except Exception as e:
-            print(traceback.format_exc(), file=sys.stderr)
+            print(module, traceback.format_exc(), file=sys.stderr)
         loaded_modules.append(module)
 loginwindow.greeter_loaded = True
 ltime = time.time()
