@@ -13,6 +13,7 @@ from gi.repository import Gio
 
 def asynchronous(func):
     def wrapper(*args, **kwargs):
+        debug("async call: "+func.__name__+str(args))
         thread = threading.Thread(target=func, args=args, kwargs=kwargs)
         thread.daemon = True
         thread.start()

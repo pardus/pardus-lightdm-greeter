@@ -29,13 +29,14 @@ def update_popover_text():
 
 @asynchronous
 def update_network_icon():
-    ip_list = get_local_ip()
-    if len(ip_list) == 0:
-        GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-error-symbolic", Gtk.IconSize.DND)
-    else:
-        GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-wired-symbolic", Gtk.IconSize.DND)
-    # check local network every 5 seconds
-    GLib.timeout_add(5000, update_network_icon)
+    while True:
+        ip_list = get_local_ip()
+        if len(ip_list) == 0:
+            GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-error-symbolic", Gtk.IconSize.DND)
+        else:
+            GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-wired-symbolic", Gtk.IconSize.DND)
+        # Check every 5 seconds
+        time.sleep(5)
 
 
 @asynchronous
