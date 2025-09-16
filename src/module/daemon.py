@@ -27,17 +27,14 @@ def process_daemon_data(data):
     loginwindow.event_login_button(loginwindow.o("ui_button_login"))
     debug("daemon login done")
 
-############### Async functions ###############
 
-@asynchronous
-def module_init():
+def daemon_func():
     busdir = "/var/lib/lightdm/"
     if os.path.exists("/{}/pardus-greeter".format(busdir)):
         os.unlink("/{}/pardus-greeter".format(busdir))
-    if not get("enabled", True, "daemon"):
-        return
     debug("Entering daemon loop")
     while True:
+        time.sleep(1) # wait 1 second
         debug("Creating fifo")
         os.mkfifo("/{}/pardus-greeter".format(busdir))
         try:
@@ -56,3 +53,11 @@ def module_init():
                 os.unlink("/{}/pardus-greeter".format(busdir))
                 debug("Removing fifo done")
             print(e, traceback.format_exc(), file=sys.stderr)
+
+############### Async functions ###############
+
+def module_init():
+    if not get("enabled", True, "daemon"):
+        return
+    dm = threading.Thread(target=daemon_func)
+    dm.start()
