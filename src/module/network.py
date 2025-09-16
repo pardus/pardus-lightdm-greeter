@@ -15,33 +15,29 @@ def _wifi_button_event(widget=None):
         wmenu.refresh()
         wmenu.stack.set_visible_child_name("main")
 
-
-network_label_text = ""
-_last_network_label_text = ""
-
-
-def update_popover_text():
-    global _last_network_label_text
-    if _last_network_label_text != network_label_text:
-        _last_network_label_text = network_label_text
-        loginwindow.o("ui_label_network").set_text(network_label_text)
-    GLib.timeout_add(500, update_popover_text)
+def is_net_available():
+    for dev in os.listdir("/sys/class/net/"):
+        if dev == "lo":
+            continue
+        with open("/sys/class/net/{}/operstate".format(dev),"r") as f:
+            if f.read() == "up":
+                return True
+    return False
 
 @asynchronous
 def update_network_icon():
     while True:
-        ip_list = get_local_ip()
-        if len(ip_list) == 0:
+        if is_net_available():
             GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-error-symbolic", Gtk.IconSize.DND)
         else:
             GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-wired-symbolic", Gtk.IconSize.DND)
         # Check every 5 seconds
-        time.sleep(5)
+        time.sleep(1)
 
 
 @asynchronous
 def network_control_event():
-    global network_label_text
+    network_label_text = ""
     lan_ip = ""
     # Calculate line length
     i = 0
@@ -61,6 +57,7 @@ def network_control_event():
         wan_ip = get_ip()
         ctx += _("WAN IP:\n- {}").format(wan_ip)
     network_label_text = ctx.strip()
+    GLib.idle_add(loginwindow.o("ui_label_network").set_text, network_label_text)
 
 
 wmenu = None
