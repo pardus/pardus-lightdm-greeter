@@ -20,17 +20,17 @@ def is_net_available():
         if dev == "lo":
             continue
         with open("/sys/class/net/{}/operstate".format(dev),"r") as f:
-            if f.read() == "up":
+            if "up" in f.read():
                 return True
     return False
 
 @asynchronous
 def update_network_icon():
     while True:
-        if is_net_available():
+        if not is_net_available():
             GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-error-symbolic", Gtk.IconSize.DND)
         else:
-            GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-wired-symbolic", Gtk.IconSize.DND)
+            GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-transmit-receive-symbolic", Gtk.IconSize.DND)
         # Check every 5 seconds
         time.sleep(1)
 
@@ -71,7 +71,6 @@ def module_init():
         return
     loginwindow.o("ui_button_network").connect(
         "clicked", _network_button_event)
-    update_popover_text()
     update_network_icon()
     if not wifi_widget.wifi.available():
         loginwindow.o("ui_button_wifi").hide()

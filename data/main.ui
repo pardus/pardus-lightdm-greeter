@@ -1103,7 +1103,7 @@ and power off the computer ?</property>
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="pixel-size">36</property>
-                                <property name="icon-name">network-wired-symbolic</property>
+                                <property name="icon-name">network-transmit-receive-symbolic</property>
                                 <property name="icon_size">5</property>
                                 <style>
                                   <class name="text"/>
