@@ -15,7 +15,7 @@ def _wifi_button_event(widget=None):
         wmenu.refresh()
         wmenu.stack.set_visible_child_name("main")
 
-def is_net_available():
+def is_cable_available():
     for dev in os.listdir("/sys/class/net/"):
         if dev == "lo":
             continue
@@ -24,14 +24,20 @@ def is_net_available():
                 return True
     return False
 
+def is_net_available():
+    ip_list = get_local_ip()
+    return len(ip_list) > 0
+
 @asynchronous
 def update_network_icon():
     while True:
-        if not is_net_available():
+        if not is_cable_available():
             GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-error-symbolic", Gtk.IconSize.DND)
+        elif not is_net_available():
+            GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-offline-symbolic", Gtk.IconSize.DND)
         else:
             GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-transmit-receive-symbolic", Gtk.IconSize.DND)
-        # Check every 5 seconds
+        # Check every second. TODO: remove this and trace changes
         time.sleep(1)
 
 
@@ -58,6 +64,7 @@ def network_control_event():
         ctx += _("WAN IP:\n- {}").format(wan_ip)
     network_label_text = ctx.strip()
     GLib.idle_add(loginwindow.o("ui_label_network").set_text, network_label_text)
+    GLib.idle_add(update_network_icon)
 
 
 wmenu = None
