@@ -28,15 +28,19 @@ def is_net_available():
     ip_list = get_local_ip()
     return len(ip_list) > 0
 
-@asynchronous
+
 def update_network_icon():
+    if not is_cable_available():
+        GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-error-symbolic", Gtk.IconSize.DND)
+    elif not is_net_available():
+        GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-offline-symbolic", Gtk.IconSize.DND)
+    else:
+        GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-transmit-receive-symbolic", Gtk.IconSize.DND)
+
+@asynchronous
+def update_network_icon_loop():
     while True:
-        if not is_cable_available():
-            GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-error-symbolic", Gtk.IconSize.DND)
-        elif not is_net_available():
-            GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-offline-symbolic", Gtk.IconSize.DND)
-        else:
-            GLib.idle_add(loginwindow.o("ui_icon_network").set_from_icon_name, "network-transmit-receive-symbolic", Gtk.IconSize.DND)
+        update_network_icon()
         # Check every second. TODO: remove this and trace changes
         time.sleep(1)
 
@@ -79,7 +83,10 @@ def module_init():
         return
     loginwindow.o("ui_button_network").connect(
         "clicked", _network_button_event)
-    update_network_icon()
+    if not get("network-check-loop", False, "network"):
+        update_network_icon_loop()
+    else:
+        update_network_icon()
     if not wifi_widget.wifi.available():
         loginwindow.o("ui_button_wifi").hide()
     else:
