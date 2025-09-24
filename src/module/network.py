@@ -45,16 +45,17 @@ def update_network_icon():
 def network_control_event():
     network_label_text = ""
     lan_ip = ""
+    ip_list = get_local_ip()
+    if len(ip_list) == 0 or not is_cable_available():
+        GLib.idle_add(loginwindow.o("ui_label_network").set_text,  _("Network is not available"))
+        return
     # Calculate line length
     i = 0
-    for ip, dev in get_local_ip():
+    for ip, dev in ip_list:
         j = len(ip) + len(dev) + 3
         if j > i:
             i = j
-    ip_list = get_local_ip()
-    if len(ip_list) == 0:
-        network_label_text = _("Network is not available")
-        return
+
     for ip, dev in ip_list:
         j = len(ip) + len(dev) + 2
         lan_ip += "- {} {}{}\n".format(dev, " "*(i-j), ip)
