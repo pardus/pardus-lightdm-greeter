@@ -1,3 +1,11 @@
+pardus-lightdm-greeter (0.4.6) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * fix network icon update issue
+  * translation update and connection message
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Thu, 25 Sep 2025 17:22:53 +0300
+
 pardus-lightdm-greeter (0.4.5) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
