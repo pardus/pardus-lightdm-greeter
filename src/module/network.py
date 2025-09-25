@@ -49,6 +49,7 @@ def update_network_icon_loop():
 def network_control_event():
     network_label_text = ""
     lan_ip = ""
+    update_network_icon()
     ip_list = get_local_ip()
     if len(ip_list) == 0 or not is_cable_available():
         GLib.idle_add(loginwindow.o("ui_label_network").set_text,  _("Network is not available"))
@@ -69,7 +70,6 @@ def network_control_event():
         ctx += _("WAN IP:\n- {}").format(wan_ip)
     network_label_text = ctx.strip()
     GLib.idle_add(loginwindow.o("ui_label_network").set_text, network_label_text)
-    GLib.idle_add(update_network_icon)
 
 
 wmenu = None
@@ -83,7 +83,7 @@ def module_init():
         return
     loginwindow.o("ui_button_network").connect(
         "clicked", _network_button_event)
-    if not get("network-check-loop", False, "network"):
+    if get("network-check-loop", False, "network"):
         update_network_icon_loop()
     else:
         update_network_icon()
