@@ -51,7 +51,10 @@ def network_control_event():
     lan_ip = ""
     update_network_icon()
     ip_list = get_local_ip()
-    if len(ip_list) == 0 or not is_cable_available():
+    if is_cable_available():
+        GLib.idle_add(loginwindow.o("ui_label_network").set_text,  _("No network connection"))
+        return
+    elif len(ip_list) == 0:
         GLib.idle_add(loginwindow.o("ui_label_network").set_text,  _("Network is not available"))
         return
     # Calculate line length

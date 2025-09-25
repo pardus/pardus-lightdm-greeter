@@ -26,7 +26,7 @@
               </object>
               <packing>
                 <property name="name">image1</property>
-                <property name="title" translatable="yes">image1</property>
+                <property name="title" translatable="no">image1</property>
               </packing>
             </child>
             <child>
@@ -36,7 +36,7 @@
               </object>
               <packing>
                 <property name="name">image2</property>
-                <property name="title" translatable="yes">image2</property>
+                <property name="title" translatable="no">image2</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -415,7 +415,7 @@
                               </object>
                               <packing>
                                 <property name="name">page_main</property>
-                                <property name="title" translatable="yes">page_main</property>
+                                <property name="title" translatable="no">page_main</property>
                               </packing>
                             </child>
                             <child>
@@ -563,7 +563,7 @@
                               </object>
                               <packing>
                                 <property name="name">page_reset_password</property>
-                                <property name="title" translatable="yes">page_reset_password</property>
+                                <property name="title" translatable="no">page_reset_password</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -671,7 +671,7 @@ and restart the computer ?</property>
                               </object>
                               <packing>
                                 <property name="name">page_restart</property>
-                                <property name="title" translatable="yes">page_restart</property>
+                                <property name="title" translatable="no">page_restart</property>
                                 <property name="position">2</property>
                               </packing>
                             </child>
@@ -779,7 +779,7 @@ and power off the computer ?</property>
                               </object>
                               <packing>
                                 <property name="name">page_poweroff</property>
-                                <property name="title" translatable="yes">page_poweroff</property>
+                                <property name="title" translatable="no">page_poweroff</property>
                                 <property name="position">3</property>
                               </packing>
                             </child>
@@ -886,7 +886,7 @@ and power off the computer ?</property>
                               </object>
                               <packing>
                                 <property name="name">page_sleep</property>
-                                <property name="title" translatable="yes">page_sleep</property>
+                                <property name="title" translatable="no">page_sleep</property>
                                 <property name="position">4</property>
                               </packing>
                             </child>
@@ -900,7 +900,7 @@ and power off the computer ?</property>
                       </object>
                       <packing>
                         <property name="name">page_main</property>
-                        <property name="title" translatable="yes">page_main</property>
+                        <property name="title" translatable="no">page_main</property>
                       </packing>
                     </child>
                   </object>
@@ -1238,7 +1238,7 @@ and power off the computer ?</property>
               </object>
               <packing>
                 <property name="name">page_main</property>
-                <property name="title" translatable="yes">page_main</property>
+                <property name="title" translatable="no">page_main</property>
               </packing>
             </child>
           </object>
