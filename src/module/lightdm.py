@@ -103,7 +103,10 @@ class lightdm_class:
             return
         if self.__password is None:
             return
-        if self.greeter.get_in_authentication():
+        if self.greeter.get_authentication_user() != self.__username:
+            debug("Auth user changed: {} -> {}".format(self.greeter.get_authentication_user(), self.__username))
+            self.greeter.cancel_authentication()
+        elif self.greeter.get_in_authentication():
             if not self.__is_reset and self.__last_prompt is not None:
                 self.greeter.respond(self.__password)
                 return
