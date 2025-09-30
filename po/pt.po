@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022, 2023, 2024.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022, 2023, 2024, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-25 13:38+0000\n"
-"PO-Revision-Date: 2024-04-25 22:31+0100\n"
+"PO-Revision-Date: 2025-09-30 14:37+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.7\n"
 
 #: data/main.ui:208
 msgid "username"
@@ -168,12 +168,11 @@ msgstr "A carregar..."
 
 #: src/module/network.py:55
 msgid "No network connection"
-msgstr ""
+msgstr "Sem ligação à rede"
 
 #: src/module/network.py:58
-#, fuzzy
 msgid "Network is not available"
-msgstr "Rede não disponível"
+msgstr "A rede não está disponível"
 
 #: src/module/network.py:70
 msgid ""
@@ -193,13 +192,11 @@ msgstr ""
 
 #: src/msgs.py:4
 msgid "Place your right index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador direito sobre o leitor de impressões digitais"
 
 #: src/msgs.py:5
 msgid "Place your left index finger on the fingerprint reader"
-msgstr ""
-"Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
+msgstr "Coloque o seu dedo indicador esquerdo sobre o leitor de impressões digitais"
 
 #: src/wifi/widget.py:56
 msgid "Connecting..."
