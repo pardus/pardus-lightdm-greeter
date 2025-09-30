@@ -1,3 +1,4 @@
+import socket
 import json
 
 ############### Main thread functions ###############
@@ -32,26 +33,19 @@ def daemon_func():
     busdir = "/var/lib/lightdm/"
     if os.path.exists("/{}/pardus-greeter".format(busdir)):
         os.unlink("/{}/pardus-greeter".format(busdir))
+    server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    server.bind("/{}/pardus-greeter".format(busdir))
+    server.listen(1)
+
     debug("Entering daemon loop")
     while True:
-        time.sleep(1) # wait 1 second
-        debug("Creating fifo")
-        os.mkfifo("/{}/pardus-greeter".format(busdir))
+        connection, client_address = server.accept()
         try:
-            debug("Listening fifo")
-            with open("/{}/pardus-greeter".format(busdir), "r") as f:
-                debug("Reading fifo")
-                data = f.read()
-                data = json.loads(data)
-                debug("fifo data: {}".format(str(data)))
-                os.unlink("/{}/pardus-greeter".format(busdir))
-                debug("Removing fifo after read")
-                GLib.idle_add(process_daemon_data, data)
+            data = connection.recv(1024**2) # read max 1mb
+            data = json.loads(data.decode())
+            debug("socket data: {}".format(str(data)))
+            GLib.idle_add(process_daemon_data, data)
         except Exception as e:
-            debug("Removing fifo")
-            if os.path.exists("/{}/pardus-greeter".format(busdir)):
-                os.unlink("/{}/pardus-greeter".format(busdir))
-                debug("Removing fifo done")
             print(e, traceback.format_exc(), file=sys.stderr)
 
 ############### Async functions ###############

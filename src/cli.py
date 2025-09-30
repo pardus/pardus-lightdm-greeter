@@ -8,9 +8,18 @@ import json
 import os
 import sys
 
+import socket
+
 if os.getuid() != 0:
     print("You must be root!", file=sys.stderr)
     sys.exit(1)
+
+
+def __send_sock(data):
+    client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    client.connect("/var/lib/lightdm/pardus-greeter")
+    client.sendall(data.encode())
+    client.close()
 
 
 def login(username=None, password=None, session=None):
@@ -24,10 +33,7 @@ def login(username=None, password=None, session=None):
     if session:
         data["session"] = str(session)
 
-    with open("/var/lib/lightdm/pardus-greeter", "a") as f:
-        print(json.dumps(data))
-        f.write(json.dumps(data))
-        f.flush()
+    __send_sock(json.dumps(data))
     return 0
 
 def send_message(message=None):
@@ -37,10 +43,8 @@ def send_message(message=None):
         return 2
     data = {}
     data["message"] = str(message)
-    with open("/var/lib/lightdm/pardus-greeter", "a") as f:
-        print(json.dumps(data))
-        f.write(json.dumps(data))
-        f.flush()
+
+    __send_sock(json.dumps(data))
     return 0
 
 if __name__ == "__main__":
