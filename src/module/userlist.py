@@ -56,9 +56,9 @@ class userButton(Gtk.Box):
         self.hide()
         hidden = gsettings_get("hidden-users")
         log(str(hidden))
-        if self.label.username not in hidden.split("\n"):
+        if self.username not in hidden.split("\n"):
             gsettings_set("hidden-users", hidden +
-                          "\n{}".format(self.label.username))
+                          "\n{}".format(self.username))
 
 
 def user_button_event(widget):
