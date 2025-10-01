@@ -1,3 +1,15 @@
+pardus-lightdm-greeter (0.4.8) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * fix user remove button
+  * fix user change in authenticate on login
+  * daemon fifo replaced with unix socket
+
+  [ Hugo Carvalho ]
+  * Update Portuguese translation
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Wed, 01 Oct 2025 10:49:02 +0300
+
 pardus-lightdm-greeter (0.4.7) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
