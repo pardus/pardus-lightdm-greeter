@@ -449,13 +449,22 @@ class LoginWindow:
     def start_windowmanager(self):
         wm = get("window-manager", "x-window-manager")
         if which(wm.split(" ")[0]):
-            subprocess.run(["{} 2>/dev/null &".format(wm)], shell=True)
+            self.wm_pid = os.fork()
+            if self.wm_pid == 0:
+                os.execvp(wm.split(" ")[0], wm.split(" "))
+            else:
+                print(f"Started window manager with PID: {self.wm_pid}")
 
     def kill_windowmanager(self):
-        wm = get("window-manager", "xfwm4")
-        if which(wm.split(" ")[0]):
-            subprocess.run(["killall {}".format(wm)], shell=True)
-
+        if self.wm_pid is not None:
+            try:
+                os.kill(self.wm_pid, signal.SIGKILL)
+                print(f"Killed window manager with PID: {self.wm_pid}")
+                self.wm_pid = None
+            except ProcessLookupError:
+                print(f"No process found with PID: {self.wm_pid}")
+            except Exception as e:
+                print(f"Error killing window manager: {e}")
 
 ############### class end ###############
 
