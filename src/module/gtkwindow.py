@@ -447,7 +447,7 @@ class LoginWindow:
 ############### windowmanager ###############
 
     def start_windowmanager(self):
-        wm = get("window-manager", "xfwm4")
+        wm = get("window-manager", "x-window-manager")
         if which(wm.split(" ")[0]):
             subprocess.run(["{} 2>/dev/null &".format(wm)], shell=True)
 
