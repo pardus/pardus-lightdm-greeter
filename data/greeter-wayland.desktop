@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Pardus Greeter (wayland)
+Comment=This runs the Pardus greeter, it should only be run from LightDM (wayland)
+Exec=cage -m extand -s -d /usr/libexec/pardus-lightdm-greeter
+Type=Application
+X-Ubuntu-Gettext-Domain=lightdm
+X-LightDM-Session-Type=wayland

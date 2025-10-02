@@ -17,8 +17,9 @@ install_data('data/gsettings.xml', install_dir : '/usr/share/glib-2.0/schemas/',
 install_data('data/lightdm.conf', install_dir : '/usr/share/lightdm/lightdm.conf.d/', rename: '99-pardus.conf')
 install_data('data/config.ini', install_dir : '/etc/pardus/', rename: 'greeter.conf')
 
-# xgreeters file
-install_data('data/greeter.desktop', install_dir : '/usr/share/xgreeters/', rename: 'pardus.desktop')
+# greeters file
+install_data('data/greeter-x11.desktop', install_dir : '/usr/share/lightdm/greeters/', rename: 'pardus.desktop')
+install_data('data/greeter-wayland.desktop', install_dir : '/usr/share/lightdm/greeters/', rename: 'pardus-wayland.desktop')
 
 # cli
 install_data('pardus-lightdm-greeter.sh', install_dir : '/usr/libexec/', rename: 'pardus-lightdm-greeter', install_mode: 'rwxr-xr-x')
