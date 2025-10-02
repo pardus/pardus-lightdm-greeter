@@ -84,6 +84,7 @@ class LoginWindow:
         self.o("ui_window_main").show()
         self.o("ui_window_main").present()
         self.o("ui_window_main").set_app_paintable(True)
+        self.o("ui_window_main").set_keep_below(True)
         # Clear error messages
         self.o("ui_label_login_error").set_text("")
         self.o("ui_label_reset_password_error").set_text("")
