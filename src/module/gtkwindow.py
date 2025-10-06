@@ -11,6 +11,7 @@ class LoginWindow:
         self.builder.add_from_file("data/main.ui")
         self.o = self.builder.get_object
         self.__init_variables()
+        self.wm_pid = None
         self.__init_gui()
         self.__update_user_background_loop()
         self.__connect_signals()
@@ -456,7 +457,7 @@ class LoginWindow:
                 print(f"Started window manager with PID: {self.wm_pid}")
 
     def kill_windowmanager(self):
-        if self.wm_pid is not None:
+        if self.wm_pid:
             try:
                 os.kill(self.wm_pid, signal.SIGKILL)
                 print(f"Killed window manager with PID: {self.wm_pid}")
