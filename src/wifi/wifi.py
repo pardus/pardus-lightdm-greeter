@@ -52,19 +52,19 @@ class wifi_object:
 
     def connect(self, password=""):
         if not self.need_password():
-            return 0 == os.system("nmcli device wifi connect '{}'".format(self.bssid))
+            return 0 == subprocess.run(["nmcli", "device","wifi", "connect", self.bssid]).returncode
         elif self.security in ["WPA2", "WPA1 WPA2"]:
-            return 0 == os.system("nmcli device wifi connect '{}' password '{}'".format(self.bssid, password))
+            return 0 == subprocess.run(["nmcli","device", "wifi", "connect", self.bssid, "password", password]).returncode
         else:
             print("Failed to connect wifi", sys.stderr)
             return False
         return True
 
     def disconnect(self):
-        return 0 == os.system("nmcli con down '{}'".format(self.ssid))
+        return 0 == subprocess.run(["nmcli","con", "down", self.ssid]).returncode
 
     def forget(self):
-        return 0 == os.system("nmcli con delete '{}'".format(self.ssid))
+        return 0 == subprocess.run(["nmcli","con", "delete", self.ssid]).returncode
 
 
 def available():
