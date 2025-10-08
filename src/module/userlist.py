@@ -65,7 +65,10 @@ def user_button_event(widget):
     username = widget.username
     loginwindow.o("ui_entry_search_user").set_text("")
     loginwindow.o("ui_popover_userlist").popdown()
-    loginwindow.o("ui_stack_username").set_visible_child_name("show")
+    if get("show-realname", True, "userlist"):
+        loginwindow.o("ui_stack_username").set_visible_child_name("show")
+    else:
+        loginwindow.o("ui_stack_username").set_visible_child_name("edit")
     loginwindow.o("ui_entry_username").set_text(username)
     loginwindow.o("ui_entry_password").grab_focus()
     loginwindow.update_username_button(username)

@@ -197,14 +197,20 @@ class LoginWindow:
         # if object is none go edit mode
         if u is not None:
             self.update_user_background()
-            self.o("ui_stack_username").set_visible_child_name("show")
-            # get real name
-            realname = u.get_real_name()
-            # fix realname if invalid
-            if realname is None or realname == "":
-                realname = username
-            # set realname to username button label
-            self.o("ui_button_username_label").set_label(realname)
+            if get("enabled", True, "userlist"):
+                self.o("ui_stack_username").set_visible_child_name("show")
+                # get real name
+                if get("enabled", True, "userlist"):
+                    realname = u.get_real_name()
+                    # fix realname if invalid
+                    if realname is None or realname == "":
+                        realname = username
+                    # set realname to username button label
+                    self.o("ui_button_username_label").set_label(realname)
+                else:
+                    self.o("ui_button_username_label").set_label(username)
+            else:
+                self.o("ui_stack_username").set_visible_child_name("edit")
             if not lightdm.get_is_reset():
                 # password entry focus
                 self.o("ui_entry_password").grab_focus()
@@ -229,6 +235,8 @@ class LoginWindow:
         self.__event_username_entry_changed(widget)
 
     def __event_username_entry_changed(self, w=None):
+        if not get("enabled", True, "userlist"):
+            return
         widget = self.o("ui_entry_username")
         # Get lightdm user object
         if not get("allow-root-login", False, "lightdm"):
