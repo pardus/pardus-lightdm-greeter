@@ -35,8 +35,8 @@ class sessionButton(Gtk.Button):
         for path in ["/usr/share/xsessions/{}.desktop".format(self.session),
                      "/usr/share/wayland-sessions/{}.desktop".format(self.session)]:
             if os.path.exists(path):
-                for line in open(path, "r").read().split("\n"):
-                    for n in ["Name"+_lang+"=", "Name="]:
+                for n in ["Name=", "Name"+_lang+"="]:
+                    for line in open(path, "r").read().split("\n"):
                         if n in line:
                             session = line.replace(n, "")
                             break
