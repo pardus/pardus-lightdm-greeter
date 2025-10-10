@@ -1,3 +1,10 @@
+pardus-lightdm-greeter (0.4.11) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * fix session name read
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 10 Oct 2025 16:04:02 +0300
+
 pardus-lightdm-greeter (0.4.10) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
