@@ -20,7 +20,7 @@ class monitor_class:
         mres = []
         if os.path.isdir("/sys/class/drm"):
             mres = self.get_drm_resolutions(monitor)
-        if len(res) == 0:
+        if len(mres) == 0:
             mres = self.get_xrandr_resolutions(monitor)
         return mres
 
