@@ -1,4 +1,5 @@
 import hashlib
+import subprocess
 
 ############### class definition ###############
 
@@ -457,17 +458,13 @@ class LoginWindow:
 
     def start_windowmanager(self):
         wm = get("window-manager", "x-window-manager")
-        if which(wm.split(" ")[0]):
-            self.wm_pid = os.fork()
-            if self.wm_pid == 0:
-                os.execvp(wm.split(" ")[0], wm.split(" "))
-            else:
-                print(f"Started window manager with PID: {self.wm_pid}")
+        if len(wm) > 0:
+            self.wm_pid = subprocess.Popen(wm, stdout=subprocess.PIPE, shell=True)
 
     def kill_windowmanager(self):
         if self.wm_pid:
             try:
-                os.kill(self.wm_pid, signal.SIGKILL)
+                self.wm_pid.kill()
                 print(f"Killed window manager with PID: {self.wm_pid}")
                 self.wm_pid = None
             except ProcessLookupError:
