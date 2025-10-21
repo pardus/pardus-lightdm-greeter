@@ -47,7 +47,7 @@ class monitor_class:
 
     def get_drm_resolutions(self, monitor):
         ret = []
-        if not os.path.exists("/sys/class/drm/{}/modes".format(self.get_device(monitor)):
+        if not os.path.exists("/sys/class/drm/{}/modes".format(self.get_device(monitor))):
             return ret
         with open("/sys/class/drm/{}/modes".format(self.get_device(monitor)), "r") as f:
             for line in f.read().split("\n"):
