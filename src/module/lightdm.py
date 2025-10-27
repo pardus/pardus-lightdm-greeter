@@ -220,7 +220,8 @@ class lightdm_class:
                     if session.get_session_type() == "wayland":
                         continue
                 if session.get_key() not in hidden_sessions:
-                    self.__slist.append(session.get_key())
+                    if session.get_key() not in self.__slist:
+                        self.__slist.append(session.get_key())
         return self.__slist
 
     def is_valid_user(self, name):
