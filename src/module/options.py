@@ -17,16 +17,19 @@ def _network_button_event(widget):
 
 
 def _poweroff_event(widget):
+    loginwindow.o("ui_stack_main").set_visible_child_name("page_main")
     loginwindow.o("ui_stack_login").set_visible_child_name("page_poweroff")
     loginwindow.o("ui_popover_powermenu").popdown()
 
 
 def _restart_event(widget):
+    loginwindow.o("ui_stack_main").set_visible_child_name("page_main")
     loginwindow.o("ui_stack_login").set_visible_child_name("page_restart")
     loginwindow.o("ui_popover_powermenu").popdown()
 
 
 def _sleep_event(widget):
+    loginwindow.o("ui_stack_main").set_visible_child_name("page_main")
     loginwindow.o("ui_stack_login").set_visible_child_name("page_sleep")
     loginwindow.o("ui_popover_powermenu").popdown()
 
