@@ -1,6 +1,8 @@
 import os
 from util import get
 import subprocess
+import re
+import sys
 
 import gi
 gi.require_version('NM', '1.0')
@@ -11,6 +13,7 @@ class wifi_object:
     def __init__(self, ap):
         self.bssid = ap.get_bssid()
         self.ssid = self._ssid_to_utf8(ap)
+        self.safe_ssid = self._safe_ssid(self.ssid)   
         self.signal = ap.get_strength()
         self.security = self.flags_to_security(
             ap.get_flags(), ap.get_wpa_flags(), ap.get_rsn_flags())
@@ -22,26 +25,30 @@ class wifi_object:
             return ""
         return NM.utils_ssid_to_utf8(ap.get_ssid().get_data())
 
+    def _safe_ssid(self, ssid):
+        return re.sub(r'[^a-zA-Z0-9._-]', '_', ssid)
+
     def flags_to_security(self, flags, wpa_flags, rsn_flags):
-        str = ""
+        sec = ""
         if (
             (flags & getattr(NM, "80211ApFlags").PRIVACY)
             and (wpa_flags == 0)
             and (rsn_flags == 0)
         ):
-            str = str + " WEP"
+            sec += " WEP"
         if wpa_flags != 0:
-            str = str + " WPA1"
+            sec += " WPA1"
         if rsn_flags != 0:
-            str = str + " WPA2"
+            sec += " WPA2"
         if (wpa_flags & getattr(NM, "80211ApSecurityFlags").KEY_MGMT_802_1X) or (
             rsn_flags & getattr(NM, "80211ApSecurityFlags").KEY_MGMT_802_1X
         ):
-            str = str + " 802.1X"
-        return str.lstrip()
+            sec += " 802.1X"
+        return sec.lstrip()
 
     def is_saved(self):
-        return os.path.exists("/etc/NetworkManager/system-connections/{}.nmconnection".format(self.ssid))
+        path = f"/etc/NetworkManager/system-connections/{self.safe_ssid}.nmconnection"
+        return os.path.exists(path)
 
     def need_password(self):
         if self.is_saved():
@@ -52,29 +59,41 @@ class wifi_object:
 
     def connect(self, password=""):
         if not self.need_password():
-            return 0 == subprocess.run(["nmcli", "device","wifi", "connect", self.bssid]).returncode
+            return 0 == subprocess.run(
+                ["nmcli", "device", "wifi", "connect", self.bssid]
+            ).returncode
+
         elif self.security in ["WPA2", "WPA1 WPA2"]:
-            return 0 == subprocess.run(["nmcli","device", "wifi", "connect", self.bssid, "password", password]).returncode
+            return 0 == subprocess.run(
+                ["nmcli", "device", "wifi", "connect",
+                 self.bssid, "password", password]
+            ).returncode
         else:
-            print("Failed to connect wifi", sys.stderr)
+            print("Failed to connect wifi", file=sys.stderr)
             return False
-        return True
 
     def disconnect(self):
-        return 0 == subprocess.run(["nmcli","con", "down", self.ssid]).returncode
+        return 0 == subprocess.run(
+            ["nmcli", "con", "down", self.safe_ssid]
+        ).returncode
 
     def forget(self):
-        return 0 == subprocess.run(["nmcli","con", "delete", self.ssid]).returncode
+        return 0 == subprocess.run(
+            ["nmcli", "con", "delete", self.safe_ssid]
+        ).returncode
 
 
 def available():
     if get("debug", False, "pardus"):
         return True
+
     for adapter in os.listdir("/sys/class/net/"):
-        if os.path.exists("/sys/class/net/{}/wireless".format(adapter)):
+        if os.path.exists(f"/sys/class/net/{adapter}/wireless"):
             return True
+
     if len(list_wifi()) != 0:
         return True
+
     return False
 
 
