@@ -35,8 +35,7 @@ os.environ["SESSION_MANAGER"] = "lightdm"
 if get("touch-mode", False):
     os.environ["GTK_TEST_TOUCHSCREEN"] = "1"
 os.environ["GDK_CORE_DEVICE_EVENTS"] = "1"
-os.system("xhost +local: 2>/dev/null")
-os.system("xset s {0} {0}".format(get("blank-timeout", 300)))
+subprocess.run(["xset", "s", get("blank-timeout", 300), get("blank-timeout", 300)])
 
 os.system(get("init", ""))
 
