@@ -38,28 +38,33 @@ def update_network_icon():
         loginwindow.o("ui_icon_network").set_from_icon_name("network-transmit-receive-symbolic", Gtk.IconSize.DND)
 
 
-pyroute_available = True
-try:
-    from pyroute2 import IPRoute
-except:
-    pyroute_available = False
+# https://www.man7.org/linux/man-pages/man7/rtnetlink.7.html
+# https://github.com/torvalds/linux/blob/master/include/uapi/linux/rtnetlink.h
+
+RTM_NEWLINK = 16
+RTM_DELLINK = 17
+RTM_NEWADDR = 20
+RTM_DELADDR = 21
+RTMGRP_LINK = 1
+RTMGRP_IPV4_IFADDR = 0x10
+RTMGRP_IPV6_IFADDR = 0x100
 
 
 @asynchronous
 def update_network_icon_handler():
-    if pyroute_available:
-        ipr = IPRoute()
-        ipr.bind()
+    try:
+        sock = socket.socket(socket.AF_NETLINK, socket.SOCK_RAW, 0)
+        sock.bind((0, RTMGRP_LINK | RTMGRP_IPV4_IFADDR | RTMGRP_IPV6_IFADDR))
         while True:
-            for message in ipr.get():
-                if "index" in message:
-                    GLib.idle_add(update_network_icon)
-
-    elif get("network-check-loop", False, "network"):
-        while True:
-            GLib.idle_add(update_network_icon)
-            # Check every second.
-            time.sleep(1)
+            data = sock.recv(4096)
+            nlmsg_type = struct.unpack("=IHHII", data[:16])[1]
+            if nlmsg_type in (RTM_NEWLINK, RTM_DELLINK, RTM_NEWADDR, RTM_DELADDR):
+                GLib.idle_add(update_network_icon)
+    except Exception:
+        if get("network-check-loop", False, "network"):
+            while True:
+                GLib.idle_add(update_network_icon)
+                time.sleep(1)
 
 
 @asynchronous

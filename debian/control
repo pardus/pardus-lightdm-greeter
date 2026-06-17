@@ -17,7 +17,6 @@ Depends: ${misc:Depends},
          gir1.2-vte-2.91,
          python3-pil,
          python3-xlib,
-         python3-pyroute2,
          numlockx
 Recommends: cage
 Description: Pardus Greeter
