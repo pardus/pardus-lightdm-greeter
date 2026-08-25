@@ -279,23 +279,40 @@ class lightdm_class:
             if self.msg_handler:
                 self.msg_handler(_("Failed to shutdown system"))
 
+    @cached
+    def is_first_run(self):
+        boot_id = None
+        current_id = None
+        id_file = "{}/.boot_id".format(os.environ.get("HOME"))
+        bid_file = "/proc/sys/kernel/random/boot_id"
+        # read boot id
+        if os.path.isfile(bid_file):
+            with open(bid_file, "r") as f:
+                boot_id = f.read().strip()
+        # read current id
+        if os.path.isfile(id_file):
+            with open(id_file, "r") as f:
+                current_id = f.read().strip()
+        # detect first run
+        if boot_id == current_id:
+            return False
+        else:
+            with open(id_file, "w") as f:
+                f.write(boot_id)
+        return True
+
+
 ############### end of class ###############
 
 
 lightdm = None
 
 
+
 def module_init():
     global lightdm
     lightdm = lightdm_class()
-    first_run = True
-    if "XDG_RUNTIME_DIR" in os.environ:
-        runtime = os.environ["XDG_RUNTIME_DIR"]
-        if os.path.isdir(runtime):
-            first_run = os.path.isfile(f"{runtime}/fistrun")
-        with open(f"{runtime}/fistrun", "w") as f:
-            f.write("1")
-    if get("allow-autologin", True, "lightdm") and first_run:
+    if get("allow-autologin", True, "lightdm") and lightdm.is_first_run():
         try:
             lightdm.greeter.authenticate_autologin()
         except:
