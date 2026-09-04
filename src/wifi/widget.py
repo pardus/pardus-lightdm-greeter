@@ -159,11 +159,20 @@ class wifimenu(Gtk.Box):
                 "network-wireless-signal-weak-symbolic", 0)
 
         self.ssid.set_markup(
-            _("<b>SSID:</b> {}").format(self.wifi_item.wifi_obj.ssid))
+            _("<b>SSID:</b> {}").format(
+                GLib.markup_escape_text(str(self.wifi_item.wifi_obj.ssid))
+            )
+        )
         self.security.set_markup(
-            _("<b>Security:</b>{}").format(self.wifi_item.wifi_obj.security))
+            _("<b>Security:</b>{}").format(
+                GLib.markup_escape_text(str(self.wifi_item.wifi_obj.security))
+            )
+        )
         self.signal.set_markup(
-            _("<b>Signal:</b> %{}").format(self.wifi_item.wifi_obj.signal))
+            _("<b>Signal:</b> %{}").format(
+                GLib.markup_escape_text(str(self.wifi_item.wifi_obj.signal))
+            )
+        )
 
         if self.wifi_item.wifi_obj.connected:
             self.connect_button.set_label(_("Disconnect"))
@@ -259,7 +268,7 @@ class wifi_item(Gtk.Box):
             self.image.set_from_icon_name(
                 "network-wireless-signal-weak-symbolic", 0)
         self.ssid = Gtk.Label()
-        self.ssid.set_markup("<b>{}</b>".format(self.wifi_obj.ssid))
+        self.ssid.set_markup("<b>{}</b>".format(GLib.markup_escape_text(str(self.wifi_obj.ssid))))
         self.ssid.set_xalign(0)
         self.signal = Gtk.Label()
         self.signal.set_text("%"+str(self.wifi_obj.signal))
