@@ -1,5 +1,7 @@
 import sys
 
+import subprocess
+
 import gi
 gi.require_version('LightDM', '1')
 from gi.repository import LightDM
@@ -192,6 +194,7 @@ class lightdm_class:
                 self.__session = ""
             try:
                 # Start session
+                subprocess.run(["xset", "s", "default"], check=False)
                 if not self.greeter.start_session_sync(self.__session):
                     self.__show_message(greeter, _(
                         "Failed to start session: {}").format(self.__session))
