@@ -6,6 +6,8 @@ import gi
 gi.require_version('LightDM', '1')
 from gi.repository import LightDM
 
+from gettext import dgettext as d
+
 ############### class definition ###############
 
 
@@ -27,8 +29,13 @@ class lightdm_class:
         self.reset_page_handler = None
         # Messages
         self.__reset_messages = ["Current password:",
-                                 "New password:", "Retype new password:"]
-        self.__prompt_messages = ["Password:"]
+                                 "New password:",
+                                 "Retype new password:",
+                                 d("Linux-PAM", "Current password: ").strip(),
+                                 d("Linux-PAM", "New password: ").strip(),
+                                 d("Linux-PAM", "Retype new password: ").strip()
+                                ]
+        self.__prompt_messages = ["Password:", d("Linux-PAM", "Password: ").strip()]
         # lists
         self.__ulist = None
         self.__slist = None
@@ -141,9 +148,9 @@ class lightdm_class:
             # create response variable
             response = None
             # set response from prompt message
-            if text.strip() == "Current password:":
+            if text.strip() in ["Current password:",  d("Linux-PAM", "Current password: ").strip()]:
                 response = self.__password
-            elif text.strip() == "Password:":
+            elif text.strip() in ["Password:", d("Linux-PAM", "Password: ").strip()]:
                 response = self.__password
             else:
                 response = self.__password_new
