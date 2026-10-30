@@ -17,7 +17,12 @@ class LoginWindow:
         self.__init_gui()
         self.__update_user_background_loop()
         self.__connect_signals()
-        self.__last_hash = gsettings_get("last-hash").split("\n")
+        self.__last_hash = []
+        if get("password-cache", False, "gtkwindow"):
+            self.__last_hash = gsettings_get("last-hash").split("\n")
+        elif gsettings_get("last-hash") != "":
+            # older versions saved it by default, don't leave it behind
+            gsettings_set("last-hash", "")
         self.set_background()
 
     def __init_variables(self):
@@ -194,7 +199,7 @@ class LoginWindow:
             self.o("ui_box_notify").show_all()
 
     def login_handler(self):
-        if get("password-cache", True, "gtkwindow"):
+        if get("password-cache", False, "gtkwindow"):
             username = lightdm.get_username()
             new_hash = hashlib.sha512(
                 lightdm.get_password().encode("utf-8")).hexdigest()
@@ -288,7 +293,7 @@ class LoginWindow:
         # ignore if disabled
         if self.ignore_password_cache:
             return
-        if not get("password-cache", True, "gtkwindow"):
+        if not get("password-cache", False, "gtkwindow"):
             return
         # Get password from entry
         password = widget.get_text()
