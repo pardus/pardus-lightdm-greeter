@@ -43,7 +43,7 @@ def daemon_func():
         try:
             data = connection.recv(1024**2) # read max 1mb
             data = json.loads(data.decode())
-            debug("socket data: {}".format(str(data)))
+            debug("socket data: {}".format({k: v for k, v in data.items() if k != "password"}))
             GLib.idle_add(process_daemon_data, data)
         except Exception as e:
             print(e, traceback.format_exc(), file=sys.stderr)

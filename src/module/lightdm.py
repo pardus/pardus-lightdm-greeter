@@ -222,10 +222,10 @@ class lightdm_class:
     def write_values(self, msg):
         debug(msg)
         debug("   Username: {}".format(self.__username))
-        debug("   Password: {}".format(self.__password))
+        debug("   Password set: {}".format(self.__password is not None))
         debug("   Session: {}".format(self.__session))
         debug("   Is reset: {}".format(self.__is_reset))
-        debug("   New password: {}".format(self.__password_new))
+        debug("   New password set: {}".format(self.__password_new is not None))
         debug("   In User: {}".format(self.greeter.get_authentication_user()))
         debug("   In Auth: {}".format(self.greeter.get_in_authentication()))
 

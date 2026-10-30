@@ -84,13 +84,15 @@ gsettings = Gio.Settings.new("tr.org.pardus.lightdm.greeter")
 
 def gsettings_get(variable):
     debug(variable)
-    debug(gsettings.get_string(variable))
+    if variable != "last-hash":
+        debug(gsettings.get_string(variable))
     return gsettings.get_string(variable)
 
 
 def gsettings_set(variable, value):
     debug(variable)
-    debug(value)
+    if variable != "last-hash":
+        debug(value)
     gsettings.set_string(variable, value)
     gsettings.sync()
 
