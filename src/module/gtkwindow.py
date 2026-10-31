@@ -390,11 +390,11 @@ class LoginWindow:
                 bg = "/etc/alternatives/desktop-theme/login/background.svg"
         if os.path.isfile(bg):
             try:
-                py = GdkPixbuf.Pixbuf.new_from_file(bg)
                 px = None
                 if self.width > 0:
-                    px = py.scale_simple(
-                        self.width, self.height, GdkPixbuf.InterpType.BILINEAR)
+                    # An svg is drawn at screen size instead of being stretched
+                    px = GdkPixbuf.Pixbuf.new_from_file_at_scale(
+                        bg, self.width, self.height, False)
                 if px is not None and self.background_pixbuf != px:
                     self.background_pixbuf = px
             except Exception as e:
