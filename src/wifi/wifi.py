@@ -1,4 +1,5 @@
 import os
+import sys
 from util import get
 import subprocess
 
@@ -15,6 +16,7 @@ class wifi_object:
         self.security = self.flags_to_security(
             ap.get_flags(), ap.get_wpa_flags(), ap.get_rsn_flags())
         self.connected = False
+        self.saved = False
 
     def _ssid_to_utf8(self, ap):
         ssid = ap.get_ssid()
@@ -41,7 +43,7 @@ class wifi_object:
         return str.lstrip()
 
     def is_saved(self):
-        return os.path.exists("/etc/NetworkManager/system-connections/{}.nmconnection".format(self.ssid))
+        return self.saved
 
     def need_password(self):
         if self.is_saved():
@@ -56,7 +58,7 @@ class wifi_object:
         elif self.security in ["WPA2", "WPA1 WPA2"]:
             return 0 == subprocess.run(["nmcli","device", "wifi", "connect", self.bssid, "password", password]).returncode
         else:
-            print("Failed to connect wifi", sys.stderr)
+            print("Failed to connect wifi", file=sys.stderr)
             return False
         return True
 
@@ -83,11 +85,14 @@ def list_wifi():
     nmc = NM.Client.new(None)
     devs = nmc.get_devices()
     cache = []
+    # system-connections is 0700 root, the greeter user can't look inside it
+    saved = [con.get_id() for con in nmc.get_connections()]
 
     for dev in devs:
         if dev.get_device_type() == NM.DeviceType.WIFI:
             for ap in dev.get_access_points():
                 wo = wifi_object(ap)
+                wo.saved = wo.ssid in saved
                 if wo.ssid not in cache:
                     wifis.append(wo)
                     cache.append(wo.ssid)
